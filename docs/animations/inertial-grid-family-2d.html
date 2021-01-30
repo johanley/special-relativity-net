@@ -1,0 +1,162 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+ <title>Inertial Grid Family</title>
+ <link rel="stylesheet" type="text/css" href="../css/stylesheet11.css" media="all"> 
+ <script type='text/javascript' src='../script/processing-1.4.1.js'></script>
+ 
+ <script type="text/javascript">
+  /** Extract user input from the form, and redraw the grid using the given values. */
+  function applyUserInput() {
+    var drawing = Processing.getInstanceById('transformGrid');
+    var translateX = document.getElementById('translatex').value;
+    var translateY = document.getElementById('translatey').value;
+    var translateT = document.getElementById('translatet').value;
+    var reverseT = document.getElementById('reverset').checked;
+    var boostX = document.getElementById('boostx').value;
+    var boostY = document.getElementById('boosty').value;
+    var rotation1 = document.getElementById('rotation1').value;
+    var reverseX = document.getElementById('reversex').checked;
+    var reverseY = document.getElementById('reversey').checked
+    drawing.applyUserInput(translateX, translateY, translateT, reverseT, boostX, boostY, rotation1, reverseX, reverseY); 
+  }
+  function resetAll(){
+    var drawing = Processing.getInstanceById('transformGrid');
+    drawing.resetAll();
+  }
+  </script>
+ 
+</head>
+
+<body>
+
+<canvas id='transformGrid' data-processing-sources="../script/inertial-grid-family-2d.pde" style='float:right;margin-left:0.50em;'>
+</canvas>
+
+
+<h3>Inertial Grid Family</h3>
+<form>
+ <table>
+ <tr>
+  <td>Displace x 
+  <td><select id='translatex'>
+      <option>-5
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+      <option>5
+     </select>
+ <tr>
+  <td>Displace y
+  <td><select id='translatey'>
+      <option>-5
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+      <option>5
+     </select>
+ <tr>
+  <td>Displace t
+  <td><select id='translatet'>
+      <option>-5
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+      <option>5
+     </select>
+ 
+ <tr>
+  <td>Reverse x 
+  <td><input type='checkbox' id='reversex' value='true'>
+ <tr>
+  <td>Reverse y
+  <td><input type='checkbox' id='reversey'>
+ <tr>
+  <td>Reverse t
+  <td><input type='checkbox' id='reverset' value='true'>
+ 
+ <tr>
+  <td>Rotation
+  <td>
+    <select id='rotation1' title=''Degrees'>
+      <option selected>0
+      <option>30
+      <option>60
+      <option>90
+      <option>120
+      <option>150
+      <option>180
+      <option>210
+      <option>240
+      <option>270
+      <option>300
+      <option>330
+   </select>
+ 
+ <tr>
+  <td>Boost x
+  <td>
+    <select id='boostx'>
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+   </select>
+ <tr>
+  <td>Boost y
+  <td>
+    <select id='boosty'>
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+   </select>
+ <tr>
+  <td><input type='button' value='Transform' onclick="applyUserInput()" title='Apply the above transformations to the grid'>
+  <td><input type='reset' onclick="resetAll()" title='Go back to the start'>
+ </table>
+</form>
+
+<P>2D inertial grids in space.
+Use the controls to alter the grid.
+There are 4 types of changes
+you can make to an inertial grid:
+<ul>
+ <li>displacements
+ <li>reversals
+ <li>re-orient 
+ <li>boost
+</ul>
+
+
+</body>
+</html>

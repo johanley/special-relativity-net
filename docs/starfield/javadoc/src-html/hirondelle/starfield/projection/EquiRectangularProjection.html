@@ -1,0 +1,32 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+EquiRectangularProjection.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.projection;<a name=line.1></a>
+<a name=line.2></a>
+<span class='comment'>/** <a name=line.3></a>
+ Whole sky projection; mathematically, this one has the simplest implementation.<a name=line.4></a>
+ &lt;P&gt;Reference: &lt;a href='http://en.wikipedia.org/wiki/Equirectangular_projection'&gt;wikipedia&lt;/a&gt;. <a name=line.5></a>
+*/</span><a name=line.6></a>
+<span class='keyword'>final</span> <span class='keyword'>class</span> EquiRectangularProjection <span class='keyword'>extends</span> WholeSkyProjection {<a name=line.7></a>
+<a name=line.8></a>
+  <span class='comment'>/** See class comment. */</span><a name=line.9></a>
+  <span class='keyword'>@Override</span> Coords projectWithLatLong(<span class='keyword'>double</span> aLatitude, <span class='keyword'>double</span> aLongitude, <span class='keyword'>double</span> aScale, Coords aCenter) {<a name=line.10></a>
+    Coords result = <span class='keyword'>new</span> Coords();<a name=line.11></a>
+    <span class='keyword'>double</span> deltax = aScale * aLongitude;<a name=line.12></a>
+    <span class='keyword'>double</span> deltay = aScale * aLatitude;<a name=line.13></a>
+    result.X = aCenter.X + deltax;<a name=line.14></a>
+    result.Y = aCenter.Y + deltay;<a name=line.15></a>
+    <span class='keyword'>return</span> result;<a name=line.16></a>
+  }<a name=line.17></a>
+  <a name=line.18></a>
+}<a name=line.19></a>
+ <a name=line.20></a>
+</PRE><a name=line.21></a>
+ </BODY><a name=line.22></a>
+<HTML><a name=line.23></a>

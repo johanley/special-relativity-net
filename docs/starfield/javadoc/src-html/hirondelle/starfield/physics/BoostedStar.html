@@ -1,0 +1,45 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+BoostedStar.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.physics;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Consts;<a name=line.3></a>
+<a name=line.4></a>
+<span class='comment'>/**<a name=line.5></a>
+  Struct to carry the results of a boost calculation for a star.<a name=line.6></a>
+*/</span><a name=line.7></a>
+<span class='keyword'>final</span> <span class='keyword'>class</span> BoostedStar {<a name=line.8></a>
+<a name=line.9></a>
+  <span class='comment'>/** The angle from direction of motion, after the boost. */</span> <a name=line.10></a>
+  <span class='keyword'>double</span> ThetaPrime;<a name=line.11></a>
+  <span class='comment'>/** The apparent magnitude of the star after the boost. */</span><a name=line.12></a>
+  <span class='keyword'>double</span> Magnitude;<a name=line.13></a>
+  <span class='comment'>/** The apparent blackbody surface temperature of the star, after the boost. */</span><a name=line.14></a>
+  <span class='keyword'>double</span> Temperature;<a name=line.15></a>
+<a name=line.16></a>
+  <span class='comment'>/** Coordinate for rendering the star on an image. */</span> <a name=line.17></a>
+  <span class='keyword'>double</span> X;<a name=line.18></a>
+  <span class='comment'>/** Coordinate for rendering the star on an image. */</span> <a name=line.19></a>
+  <span class='keyword'>double</span> Y;<a name=line.20></a>
+<a name=line.21></a>
+  <span class='comment'>/** For debugging only. */</span><a name=line.22></a>
+  <span class='keyword'>@Override</span> <span class='keyword'>public</span> String toString(){<a name=line.23></a>
+    StringBuilder result = <span class='keyword'>new</span> StringBuilder();<a name=line.24></a>
+    result.append(<span class='literal'>"Boosted Star ThetaPrime: "</span> + ThetaPrime);<a name=line.25></a>
+    result.append(<span class='literal'>" Mag: "</span> + Magnitude);<a name=line.26></a>
+    result.append(<span class='literal'>" Temp: "</span> + Temperature);<a name=line.27></a>
+    result.append(<span class='literal'>" X: "</span> + X);<a name=line.28></a>
+    result.append(<span class='literal'>" Y: "</span> + Y + Consts.NL);<a name=line.29></a>
+    <span class='keyword'>return</span> result.toString();<a name=line.30></a>
+  }<a name=line.31></a>
+  <a name=line.32></a>
+} <a name=line.33></a>
+</PRE><a name=line.34></a>
+ </BODY><a name=line.35></a>
+<HTML><a name=line.36></a>

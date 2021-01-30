@@ -1,0 +1,52 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+UiConsts.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.util;<a name=line.1></a>
+<a name=line.2></a>
+<a name=line.3></a>
+<span class='comment'>/**<a name=line.4></a>
+ Collected constants related to the user interface.<a name=line.5></a>
+<a name=line.6></a>
+ &lt;P&gt;All constants must be immutable.<a name=line.7></a>
+ No instances of this class can be constructed.<a name=line.8></a>
+<a name=line.9></a>
+ &lt;P&gt;The Java Look and Feel Design Guidelines recommend that components be <a name=line.10></a>
+ spaced using this scheme :<a name=line.11></a>
+&lt;ul&gt;<a name=line.12></a>
+ &lt;li&gt;place &lt;tt&gt;6*N&lt;/tt&gt; pixels between items <a name=line.13></a>
+ &lt;li&gt;but, place &lt;tt&gt;6*N-1&lt;/tt&gt; pixels between items if there is one <a name=line.14></a>
+ white border present<a name=line.15></a>
+&lt;/ul&gt;<a name=line.16></a>
+<a name=line.17></a>
+ The &lt;tt&gt;XXX_SPACE(S)&lt;/tt&gt; and {@link #STANDARD_BORDER} items follow the second scheme, <a name=line.18></a>
+ and use &lt;tt&gt;6*N-1&lt;/tt&gt; pixel spacings (since this is the more common case). <a name=line.19></a>
+*/</span><a name=line.20></a>
+<span class='keyword'>public</span> <span class='keyword'>final</span> <span class='keyword'>class</span> UiConsts  {<a name=line.21></a>
+<a name=line.22></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>final</span> <span class='keyword'>int</span> ONE_SPACE = <span class='literal'>5</span>;<a name=line.23></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>final</span> <span class='keyword'>int</span> TWO_SPACES = <span class='literal'>11</span>;<a name=line.24></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>final</span> <span class='keyword'>int</span> THREE_SPACES = <span class='literal'>17</span>;<a name=line.25></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>final</span> <span class='keyword'>int</span> STANDARD_BORDER = TWO_SPACES; <a name=line.26></a>
+<a name=line.27></a>
+  <span class='comment'>/** Symbolic name for absence of keystroke mask.  */</span><a name=line.28></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>final</span> <span class='keyword'>int</span> NO_KEYSTROKE_MASK = <span class='literal'>0</span>;<a name=line.29></a>
+  <a name=line.30></a>
+  <span class='comment'>/** Suggested width for a &lt;tt&gt;JTextField&lt;/tt&gt;  */</span><a name=line.31></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>final</span> <span class='keyword'>int</span> SIMPLE_FIELD_WIDTH = <span class='literal'>20</span>;<a name=line.32></a>
+ <a name=line.33></a>
+  <span class='comment'>// PRIVATE<a name=line.34></a>
+</span>  <a name=line.35></a>
+  <span class='comment'>/** Prevent object construction.  */</span><a name=line.36></a>
+  <span class='keyword'>private</span> UiConsts(){<a name=line.37></a>
+    <span class='keyword'>throw</span> <span class='keyword'>new</span> AssertionError();<a name=line.38></a>
+  }<a name=line.39></a>
+} <a name=line.40></a>
+</PRE><a name=line.41></a>
+ </BODY><a name=line.42></a>
+<HTML><a name=line.43></a>

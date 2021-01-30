@@ -1,0 +1,46 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+InputParameterException.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.physics;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> java.util.ArrayList;<a name=line.3></a>
+<span class='keyword'>import</span> java.util.Collections;<a name=line.4></a>
+<span class='keyword'>import</span> java.util.List;<a name=line.5></a>
+<a name=line.6></a>
+<span class='comment'>/**<a name=line.7></a>
+ Checked exception thrown when an error in user input is detected.<a name=line.8></a>
+*/</span><a name=line.9></a>
+<span class='keyword'>public</span> <span class='keyword'>final</span> <span class='keyword'>class</span> InputParameterException <span class='keyword'>extends</span> Exception {<a name=line.10></a>
+  <a name=line.11></a>
+  InputParameterException(){ <a name=line.12></a>
+    <span class='keyword'>super</span>();<a name=line.13></a>
+  }<a name=line.14></a>
+  <a name=line.15></a>
+  <span class='comment'>/** Add a single error message. This method is called once for each error. */</span><a name=line.16></a>
+  <span class='keyword'>void</span> add(String aError){<a name=line.17></a>
+    fErrors.add(aError);<a name=line.18></a>
+  }<a name=line.19></a>
+<a name=line.20></a>
+  <span class='comment'>/** Return &lt;tt&gt;true&lt;/tt&gt; only if there's 1 or more errors. */</span><a name=line.21></a>
+  <span class='keyword'>boolean</span> hasError(){<a name=line.22></a>
+    <span class='keyword'>return</span> ! fErrors.isEmpty();<a name=line.23></a>
+  }<a name=line.24></a>
+<a name=line.25></a>
+  <span class='comment'>/** Return all the error messages. */</span><a name=line.26></a>
+  <span class='keyword'>public</span> List&lt;String&gt; getErrors(){<a name=line.27></a>
+    <span class='keyword'>return</span> Collections.unmodifiableList(fErrors);<a name=line.28></a>
+  }<a name=line.29></a>
+  <a name=line.30></a>
+  <span class='keyword'>private</span> List&lt;String&gt; fErrors = <span class='keyword'>new</span> ArrayList&lt;&gt;();<a name=line.31></a>
+<a name=line.32></a>
+}<a name=line.33></a>
+ <a name=line.34></a>
+</PRE><a name=line.35></a>
+ </BODY><a name=line.36></a>
+<HTML><a name=line.37></a>

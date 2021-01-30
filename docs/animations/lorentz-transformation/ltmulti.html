@@ -1,0 +1,96 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+ <title>Boost Transformation - Histories</title>
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='../../script/diagrams.js?v=12'></script>
+ <script type='text/javascript' src='ltmulti.js?v=12'></script>
+ <script type="text/javascript">   
+  window.onload = function() {
+    animate(); //call the animate function, to actually start it running
+  }
+  function ctx(){
+    var canvas = document.getElementById('lorentzTransformMulti');
+    return canvas.getContext('2d');  
+  }
+  /** Redraw the canvas from scratch. There's no animation here, just a simple redraw. */
+  function postUserInput() {
+    var hist1 = document.getElementById('hist1').value;
+    var hist2 = document.getElementById('hist2').value;
+    var beta = parseFloat(document.getElementById('beta').value);
+    var anim = document.getElementById('anim').checked;
+    applyUserInput(hist1,hist2,beta,anim);
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  function animate() {
+    reqAnimFrame = 
+      window.mozRequestAnimationFrame    ||
+      window.webkitRequestAnimationFrame ||
+      window.msRequestAnimationFrame     ||
+      window.oRequestAnimationFrame
+    ;
+    reqAnimFrame(animate); //self-reference! 
+    //in this case, the animation controls erasure
+    drawLorentzTransformMulti(ctx());
+  }  
+ </script>
+</head>
+
+<body style='margin-top:0em;'>
+
+<canvas id='lorentzTransformMulti' width='800' height='600' style='float:right;' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+<h3>Boost Histories</h3>
+<form>
+ <table>
+ <tr><td>History1<td><input id='hist1' title='Enter N pairs of events, separated by a comma' value='-50,0,-50,80' size='15'>
+ <tr><td>History2<td><input id='hist2' title='Enter N pairs of events, separated by a comma' value='50,0,50,80' size='15'>
+ <tr><td>&beta;<td><input id='beta' value='-0.6' title='Velocity of G2 with respect to G1. Inside the range -1..+1'  size='10'>
+ <tr><td>Animate<td><input id='anim' type='checkbox' checked title='Turn off to show just the final beta value'>
+ <tr>
+  <td>&nbsp;<td><input type='button' value='Boost' onclick="postUserInput()" title='Show the histories, as measured in both grids.'>
+ </table>
+</form>
+Look for the <b>toothpaste effect</b>: events are stretched apart in some cases, and squeezed together in others.
+<p><a href='../../index.html#Boosts'>Back to Main</a>
+
+<P style='clear:right;'>
+ Different inertial grids have different 
+ coordinates for events.
+ Here, two grids, Grid 1 and Grid 2, differ by a <em>boost</em>, in 
+ which Grid 2 is moving along the x-axis of Grid 1, 
+ at a speed &beta;, with -1<&beta;<1.
+ The sign of &beta; indicates if Grid 2 moves in the 
+ +x direction, or the -x direction.
+<P>
+Given the coordinates of an event as measured in Grid 1, you use the boost transformation 
+to find the coordinates for the same event, as measured in Grid 2.
+
+<P>The form lets you input <b>multiple events</b> for each of the two separate histories. 
+For example, this input for a history:
+<pre>-100,-150,100,175</pre>
+generates these two events:
+<pre>
+(x,ct)=(-100,-150)
+
+(x,ct)=(100,175)
+</pre>
+These events are joined by a line to make a history.
+If you entered 3 events, then they would be joined to form a single history as well, and so on.
+
+
+<P>
+<P>The units used in this chart aren't specified. It shows values only within a certain range, 
+about +/- 225 or so.
+ 
+
+</body>
+</html>

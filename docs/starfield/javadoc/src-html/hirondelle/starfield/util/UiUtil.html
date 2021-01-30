@@ -1,0 +1,380 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+UiUtil.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.util;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> java.util.*;<a name=line.3></a>
+<span class='keyword'>import</span> java.net.URL;<a name=line.4></a>
+<span class='keyword'>import</span> javax.swing.*;<a name=line.5></a>
+<span class='keyword'>import</span> javax.swing.border.Border;<a name=line.6></a>
+<span class='keyword'>import</span> java.awt.*;<a name=line.7></a>
+<a name=line.8></a>
+<span class='comment'>/** <a name=line.9></a>
+ Static convenience methods for GUIs which eliminate code duplication.<a name=line.10></a>
+ <a name=line.11></a>
+ &lt;P&gt;Your application will likely need to add to such a class. For example, <a name=line.12></a>
+ using &lt;tt&gt;GrdiBagLayout&lt;/tt&gt; usually benefits from utility methods to <a name=line.13></a>
+ reduce code repetition.<a name=line.14></a>
+*/</span><a name=line.15></a>
+<span class='keyword'>public</span> <span class='keyword'>final</span> <span class='keyword'>class</span> UiUtil {<a name=line.16></a>
+<a name=line.17></a>
+  <span class='comment'>/**<a name=line.18></a>
+   &lt;tt&gt;pack&lt;/tt&gt;, center, and &lt;tt&gt;show&lt;/tt&gt; a window on the screen.<a name=line.19></a>
+  <a name=line.20></a>
+   &lt;P&gt;If the size of &lt;tt&gt;aWindow&lt;/tt&gt; exceeds that of the screen, <a name=line.21></a>
+   then the size of &lt;tt&gt;aWindow&lt;/tt&gt; is reset to the size of the screen.<a name=line.22></a>
+  */</span><a name=line.23></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> centerAndShow(Window aWindow){<a name=line.24></a>
+    <span class='comment'>//note that the order here is important<a name=line.25></a>
+</span>    <a name=line.26></a>
+    aWindow.pack();<a name=line.27></a>
+    <span class='comment'>/*<a name=line.28></a>
+     * If called from outside the event dispatch thread (as is <a name=line.29></a>
+     * the case upon startup, in the launch thread), then <a name=line.30></a>
+     * in principle this code is not thread-safe: once pack has <a name=line.31></a>
+     * been called, the component is realized, and (most) further<a name=line.32></a>
+     * work on the component should take place in the event-dispatch <a name=line.33></a>
+     * thread. <a name=line.34></a>
+     *<a name=line.35></a>
+     * In practice, it is exceedingly unlikely that this will lead <a name=line.36></a>
+     * to an error, since invisible components cannot receive events.<a name=line.37></a>
+     */</span><a name=line.38></a>
+    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();<a name=line.39></a>
+    Dimension window = aWindow.getSize();<a name=line.40></a>
+    <span class='comment'>//ensure that no parts of aWindow will be off-screen<a name=line.41></a>
+</span>    <span class='keyword'>if</span> (window.height &gt; screen.height) {<a name=line.42></a>
+      window.height = screen.height;<a name=line.43></a>
+    }<a name=line.44></a>
+    <span class='keyword'>if</span> (window.width &gt; screen.width) {<a name=line.45></a>
+      window.width = screen.width;<a name=line.46></a>
+    }<a name=line.47></a>
+    <span class='keyword'>int</span> xCoord = (screen.width/<span class='literal'>2</span> - window.width/<span class='literal'>2</span>);<a name=line.48></a>
+    <span class='keyword'>int</span> yCoord = (screen.height/<span class='literal'>2</span> - window.height/<span class='literal'>2</span>);<a name=line.49></a>
+    aWindow.setLocation( xCoord, yCoord );<a name=line.50></a>
+   <a name=line.51></a>
+    aWindow.setVisible(<span class='keyword'>true</span>);<a name=line.52></a>
+  }<a name=line.53></a>
+  <a name=line.54></a>
+  <span class='comment'>/**<a name=line.55></a>
+   A window is packed, centered with respect to a parent, and then shown.<a name=line.56></a>
+  <a name=line.57></a>
+   &lt;P&gt;This method is intended for dialogs only.<a name=line.58></a>
+  <a name=line.59></a>
+   &lt;P&gt;If centering with respect to a parent causes any part of the dialog <a name=line.60></a>
+   to be off screen, then the centering is overidden, such that all of the <a name=line.61></a>
+   dialog will always appear fully on screen, but it will still appear <a name=line.62></a>
+   near the parent.<a name=line.63></a>
+  <a name=line.64></a>
+   @param aWindow must have non-null result for &lt;tt&gt;aWindow.getParent&lt;/tt&gt;.<a name=line.65></a>
+  */</span><a name=line.66></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> centerOnParentAndShow(Window aWindow){<a name=line.67></a>
+    aWindow.pack();<a name=line.68></a>
+    <a name=line.69></a>
+    Dimension parent = aWindow.getParent().getSize();<a name=line.70></a>
+    Dimension window = aWindow.getSize();<a name=line.71></a>
+    <span class='keyword'>int</span> xCoord = <a name=line.72></a>
+      aWindow.getParent().getLocationOnScreen().x + <a name=line.73></a>
+     (parent.width/<span class='literal'>2</span> - window.width/<span class='literal'>2</span>)<a name=line.74></a>
+    ;<a name=line.75></a>
+    <span class='keyword'>int</span> yCoord = <a name=line.76></a>
+      aWindow.getParent().getLocationOnScreen().y + <a name=line.77></a>
+      (parent.height/<span class='literal'>2</span> - window.height/<span class='literal'>2</span>)<a name=line.78></a>
+    ;<a name=line.79></a>
+    <a name=line.80></a>
+    <span class='comment'>//Ensure that no part of aWindow will be off-screen<a name=line.81></a>
+</span>    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();<a name=line.82></a>
+    <span class='keyword'>int</span> xOffScreenExcess = xCoord + window.width - screen.width;<a name=line.83></a>
+    <span class='keyword'>if</span> ( xOffScreenExcess &gt; <span class='literal'>0</span> ) {<a name=line.84></a>
+      xCoord = xCoord - xOffScreenExcess;<a name=line.85></a>
+    }<a name=line.86></a>
+    <span class='keyword'>if</span> (xCoord &lt; <span class='literal'>0</span> ) {<a name=line.87></a>
+      xCoord = <span class='literal'>0</span>;<a name=line.88></a>
+    }<a name=line.89></a>
+    <span class='keyword'>int</span> yOffScreenExcess = yCoord + window.height - screen.height;<a name=line.90></a>
+    <span class='keyword'>if</span> ( yOffScreenExcess &gt; <span class='literal'>0</span> ) {<a name=line.91></a>
+      yCoord = yCoord - yOffScreenExcess;<a name=line.92></a>
+    }<a name=line.93></a>
+    <span class='keyword'>if</span> (yCoord &lt; <span class='literal'>0</span>) {<a name=line.94></a>
+      yCoord = <span class='literal'>0</span>;<a name=line.95></a>
+    }<a name=line.96></a>
+    <a name=line.97></a>
+    aWindow.setLocation( xCoord, yCoord );<a name=line.98></a>
+    aWindow.setVisible(<span class='keyword'>true</span>);<a name=line.99></a>
+  }<a name=line.100></a>
+<a name=line.101></a>
+  <span class='comment'>/**<a name=line.102></a>
+   Return a border of dimensions recommended by the Java Look and Feel <a name=line.103></a>
+   Design Guidelines, suitable for many common cases.<a name=line.104></a>
+  <a name=line.105></a>
+  &lt;P&gt;Each side of the border has size {@link UiConsts#STANDARD_BORDER}.<a name=line.106></a>
+  */</span><a name=line.107></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> Border getStandardBorder(){<a name=line.108></a>
+    <span class='keyword'>return</span> BorderFactory.createEmptyBorder(<a name=line.109></a>
+      UiConsts.STANDARD_BORDER, <a name=line.110></a>
+      UiConsts.STANDARD_BORDER, <a name=line.111></a>
+      UiConsts.STANDARD_BORDER, <a name=line.112></a>
+      UiConsts.STANDARD_BORDER<a name=line.113></a>
+    );<a name=line.114></a>
+  }<a name=line.115></a>
+<a name=line.116></a>
+  <span class='comment'>/**<a name=line.117></a>
+   Return text which conforms to the Look and Feel Design Guidelines <a name=line.118></a>
+   for the title of a dialog : the application name, a colon, then <a name=line.119></a>
+   the name of the specific dialog.<a name=line.120></a>
+  <a name=line.121></a>
+  &lt;P&gt;Example return value: &lt;tt&gt;My Movies: Login&lt;/tt&gt;<a name=line.122></a>
+  <a name=line.123></a>
+   @param aSpecificDialogName must have visible content<a name=line.124></a>
+  */</span><a name=line.125></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> String getDialogTitle(String aSpecificDialogName){<a name=line.126></a>
+    Args.checkForContent(aSpecificDialogName);<a name=line.127></a>
+    StringBuilder result = <span class='keyword'>new</span> StringBuilder(Consts.APP_NAME);<a name=line.128></a>
+    result.append(<span class='literal'>": "</span>);<a name=line.129></a>
+    result.append(aSpecificDialogName);<a name=line.130></a>
+    <span class='keyword'>return</span> result.toString(); <a name=line.131></a>
+  }<a name=line.132></a>
+  <a name=line.133></a>
+  <span class='comment'>/**<a name=line.134></a>
+   Make a horizontal row of buttons of equal size, whch are equally spaced, <a name=line.135></a>
+   and aligned on the right.<a name=line.136></a>
+  <a name=line.137></a>
+   &lt;P&gt;The returned component has border spacing only on the top (of the size <a name=line.138></a>
+   recommended by the Look and Feel Design Guidelines).<a name=line.139></a>
+   All other spacing must be applied elsewhere ; usually, this will only mean <a name=line.140></a>
+   that the dialog's top-level panel should use {@link #getStandardBorder}.<a name=line.141></a>
+   <a name=line.142></a>
+   @param aButtons contains the buttons to be placed in a row.<a name=line.143></a>
+  */</span><a name=line.144></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> JComponent getCommandRow(java.util.List&lt;JComponent&gt; aButtons){<a name=line.145></a>
+    equalizeSizes( aButtons );<a name=line.146></a>
+    JPanel panel = <span class='keyword'>new</span> JPanel();<a name=line.147></a>
+    LayoutManager layout = <span class='keyword'>new</span> BoxLayout(panel, BoxLayout.X_AXIS);<a name=line.148></a>
+    panel.setLayout(layout);<a name=line.149></a>
+    panel.setBorder(BorderFactory.createEmptyBorder(UiConsts.THREE_SPACES, <span class='literal'>0</span>, <span class='literal'>0</span>, <span class='literal'>0</span>));<a name=line.150></a>
+    panel.add(Box.createHorizontalGlue());<a name=line.151></a>
+    Iterator&lt;JComponent&gt; buttonsIter = aButtons.iterator();<a name=line.152></a>
+    <span class='keyword'>while</span> (buttonsIter.hasNext()) {<a name=line.153></a>
+      panel.add( buttonsIter.next() );<a name=line.154></a>
+      <span class='keyword'>if</span> (buttonsIter.hasNext()) {<a name=line.155></a>
+        panel.add(Box.createHorizontalStrut(UiConsts.ONE_SPACE));<a name=line.156></a>
+      }<a name=line.157></a>
+    }<a name=line.158></a>
+    <span class='keyword'>return</span> panel;<a name=line.159></a>
+  }<a name=line.160></a>
+  <a name=line.161></a>
+  <span class='comment'>/**<a name=line.162></a>
+   Make a vertical row of buttons of equal size, whch are equally spaced, <a name=line.163></a>
+   and aligned on the right.<a name=line.164></a>
+  <a name=line.165></a>
+   &lt;P&gt;The returned component has border spacing only on the left (of the size <a name=line.166></a>
+   recommended by the Look and Feel Design Guidelines).<a name=line.167></a>
+   All other spacing must be applied elsewhere ; usually, this will only mean <a name=line.168></a>
+   that the dialog's top-level panel should use {@link #getStandardBorder}.<a name=line.169></a>
+   <a name=line.170></a>
+   @param aButtons contains the buttons to be placed in a column<a name=line.171></a>
+  */</span><a name=line.172></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> JComponent getCommandColumn( java.util.List&lt;JComponent&gt; aButtons ){<a name=line.173></a>
+    equalizeSizes( aButtons );<a name=line.174></a>
+    JPanel panel = <span class='keyword'>new</span> JPanel();<a name=line.175></a>
+    LayoutManager layout = <span class='keyword'>new</span> BoxLayout(panel, BoxLayout.Y_AXIS);<a name=line.176></a>
+    panel.setLayout( layout );<a name=line.177></a>
+    panel.setBorder(<a name=line.178></a>
+      BorderFactory.createEmptyBorder(<span class='literal'>0</span>,UiConsts.THREE_SPACES, <span class='literal'>0</span>,<span class='literal'>0</span>)<a name=line.179></a>
+    );<a name=line.180></a>
+    <span class='comment'>//(no for-each is used here, because of the 'not-yet-last' check)<a name=line.181></a>
+</span>    Iterator&lt;JComponent&gt; buttonsIter = aButtons.iterator();<a name=line.182></a>
+    <span class='keyword'>while</span> ( buttonsIter.hasNext() ) {<a name=line.183></a>
+      panel.add(buttonsIter.next());<a name=line.184></a>
+      <span class='keyword'>if</span> ( buttonsIter.hasNext() ) {<a name=line.185></a>
+        panel.add( Box.createVerticalStrut(UiConsts.ONE_SPACE) );<a name=line.186></a>
+      }<a name=line.187></a>
+    }<a name=line.188></a>
+    panel.add( Box.createVerticalGlue() );<a name=line.189></a>
+    <span class='keyword'>return</span> panel;<a name=line.190></a>
+  }<a name=line.191></a>
+<a name=line.192></a>
+  <span class='comment'>/** Return the currently active frame. */</span><a name=line.193></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> Frame getActiveFrame() {<a name=line.194></a>
+    Frame result = <span class='keyword'>null</span>;<a name=line.195></a>
+    Frame[] frames = Frame.getFrames();<a name=line.196></a>
+    <span class='keyword'>for</span> (<span class='keyword'>int</span> i = <span class='literal'>0</span>; i &lt; frames.length; i++) {<a name=line.197></a>
+      Frame frame = frames[i];<a name=line.198></a>
+      <span class='keyword'>if</span> (frame.isVisible()) { <span class='comment'>//Component method<a name=line.199></a>
+</span>        result = frame;<a name=line.200></a>
+        <span class='keyword'>break</span>;<a name=line.201></a>
+      }<a name=line.202></a>
+    }<a name=line.203></a>
+    <span class='keyword'>return</span> result;<a name=line.204></a>
+  }<a name=line.205></a>
+  <a name=line.206></a>
+  <span class='comment'>/**<a name=line.207></a>
+   Return a &lt;tt&gt;Dimension&lt;/tt&gt; whose size is defined not in terms of pixels, <a name=line.208></a>
+   but in terms of a given percent of the screen's width and height. <a name=line.209></a>
+  <a name=line.210></a>
+  &lt;P&gt; Use to set the preferred size of a component to a certain <a name=line.211></a>
+   percentage of the screen.  <a name=line.212></a>
+  <a name=line.213></a>
+   @param aPercentWidth percentage width of the screen, in range &lt;tt&gt;1..100&lt;/tt&gt;.<a name=line.214></a>
+   @param aPercentHeight percentage height of the screen, in range &lt;tt&gt;1..100&lt;/tt&gt;.<a name=line.215></a>
+  */</span><a name=line.216></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>final</span> Dimension getDimensionFromPercent(<span class='keyword'>int</span> aPercentWidth, <span class='keyword'>int</span> aPercentHeight){<a name=line.217></a>
+    <span class='keyword'>int</span> low = <span class='literal'>1</span>;<a name=line.218></a>
+    <span class='keyword'>int</span> high = <span class='literal'>100</span>;<a name=line.219></a>
+    Args.checkForRange(aPercentWidth, low, high);<a name=line.220></a>
+    Args.checkForRange(aPercentHeight, low, high);<a name=line.221></a>
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();<a name=line.222></a>
+    <span class='keyword'>return</span> calcDimensionFromPercent(screenSize, aPercentWidth, aPercentHeight);<a name=line.223></a>
+  }<a name=line.224></a>
+<a name=line.225></a>
+  <span class='comment'>/**<a name=line.226></a>
+    Sets the items in &lt;tt&gt;aComponents&lt;/tt&gt; to the same size.<a name=line.227></a>
+   <a name=line.228></a>
+    &lt;P&gt;Sets each component's preferred and maximum sizes. <a name=line.229></a>
+    The actual size is determined by the layout manager, whcih adjusts <a name=line.230></a>
+    for locale-specific strings and customized fonts. (See this <a name=line.231></a>
+    &lt;a href="http://java.sun.com/products/jlf/ed2/samcode/prefere.html"&gt;Sun doc&lt;/a&gt; <a name=line.232></a>
+    for more information.)<a name=line.233></a>
+   <a name=line.234></a>
+    @param aComponents items whose sizes are to be equalized<a name=line.235></a>
+   */</span><a name=line.236></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> equalizeSizes(java.util.List&lt;JComponent&gt; aComponents) {<a name=line.237></a>
+    Dimension targetSize = <span class='keyword'>new</span> Dimension(<span class='literal'>0</span>,<span class='literal'>0</span>);<a name=line.238></a>
+    <span class='keyword'>for</span>(JComponent comp: aComponents ) {<a name=line.239></a>
+      Dimension compSize = comp.getPreferredSize();<a name=line.240></a>
+      <span class='keyword'>double</span> width = Math.max(targetSize.getWidth(), compSize.getWidth());<a name=line.241></a>
+      <span class='keyword'>double</span> height = Math.max(targetSize.getHeight(), compSize.getHeight());<a name=line.242></a>
+      targetSize.setSize(width, height);<a name=line.243></a>
+    }<a name=line.244></a>
+    setSizes(aComponents, targetSize);<a name=line.245></a>
+  }<a name=line.246></a>
+<a name=line.247></a>
+  <span class='comment'>/**<a name=line.248></a>
+   Make the system emit a beep.<a name=line.249></a>
+  <a name=line.250></a>
+   &lt;P&gt;May not beep unless the speakers are turned on, so this cannot <a name=line.251></a>
+   be guaranteed to work.<a name=line.252></a>
+  */</span><a name=line.253></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> beep(){<a name=line.254></a>
+    Toolkit.getDefaultToolkit().beep();<a name=line.255></a>
+  }<a name=line.256></a>
+  <a name=line.257></a>
+  <span class='comment'>/**<a name=line.258></a>
+   Imposes a uniform horizontal alignment on all items in a container.<a name=line.259></a>
+  <a name=line.260></a>
+  &lt;P&gt; Intended especially for &lt;tt&gt;BoxLayout&lt;/tt&gt;, where all components need <a name=line.261></a>
+   to share the same alignment in order for display to be reasonable. <a name=line.262></a>
+   (Indeed, this method may only work for &lt;tt&gt;BoxLayout&lt;/tt&gt;, since apparently <a name=line.263></a>
+   it is the only layout to use &lt;tt&gt;setAlignmentX, setAlignmentY&lt;/tt&gt;.)<a name=line.264></a>
+  <a name=line.265></a>
+   @param aContainer contains only &lt;tt&gt;JComponent&lt;/tt&gt; objects.<a name=line.266></a>
+  */</span><a name=line.267></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> alignAllX(Container aContainer, UiUtil.AlignX aAlignment){<a name=line.268></a>
+    java.util.List&lt;Component&gt; components = Arrays.asList( aContainer.getComponents() );<a name=line.269></a>
+    <span class='keyword'>for</span>(Component comp: components){<a name=line.270></a>
+      JComponent jcomp = (JComponent)comp;<a name=line.271></a>
+      jcomp.setAlignmentX( aAlignment.getValue() );<a name=line.272></a>
+    }<a name=line.273></a>
+  }<a name=line.274></a>
+  <a name=line.275></a>
+  <span class='comment'>/** Enumeration for horizontal alignment. */</span><a name=line.276></a>
+  <span class='keyword'>public</span> <span class='keyword'>enum</span> AlignX {<a name=line.277></a>
+    LEFT(Component.LEFT_ALIGNMENT),<a name=line.278></a>
+    CENTER(Component.CENTER_ALIGNMENT),<a name=line.279></a>
+    RIGHT(Component.RIGHT_ALIGNMENT);<a name=line.280></a>
+    <span class='keyword'>public</span> <span class='keyword'>float</span> getValue(){<a name=line.281></a>
+      <span class='keyword'>return</span> fValue;<a name=line.282></a>
+    }<a name=line.283></a>
+    <span class='keyword'>private</span> <span class='keyword'>final</span> <span class='keyword'>float</span> fValue;<a name=line.284></a>
+    <span class='keyword'>private</span> AlignX(<span class='keyword'>float</span> aValue){<a name=line.285></a>
+      fValue = aValue;<a name=line.286></a>
+    }<a name=line.287></a>
+  }<a name=line.288></a>
+  <a name=line.289></a>
+  <span class='comment'>/**<a name=line.290></a>
+   Imposes a uniform vertical alignment on all items in a container.<a name=line.291></a>
+  <a name=line.292></a>
+  &lt;P&gt; Intended especially for &lt;tt&gt;BoxLayout&lt;/tt&gt;, where all components need <a name=line.293></a>
+   to share the same alignment in order for display to be reasonable.<a name=line.294></a>
+   (Indeed, this method may only work for &lt;tt&gt;BoxLayout&lt;/tt&gt;, since apparently <a name=line.295></a>
+   it is the only layout to use &lt;tt&gt;setAlignmentX, setAlignmentY&lt;/tt&gt;.)<a name=line.296></a>
+  <a name=line.297></a>
+   @param aContainer contains only &lt;tt&gt;JComponent&lt;/tt&gt; objects.<a name=line.298></a>
+  */</span><a name=line.299></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> alignAllY(Container aContainer, UiUtil.AlignY aAlignment){<a name=line.300></a>
+    java.util.List components = Arrays.asList( aContainer.getComponents() );<a name=line.301></a>
+    Iterator compsIter = components.iterator();<a name=line.302></a>
+    <span class='keyword'>while</span> ( compsIter.hasNext() ) {<a name=line.303></a>
+      JComponent comp = (JComponent)compsIter.next();<a name=line.304></a>
+      comp.setAlignmentY( aAlignment.getValue() );<a name=line.305></a>
+    }<a name=line.306></a>
+  }<a name=line.307></a>
+<a name=line.308></a>
+  <span class='comment'>/** Type-safe enumeration vertical alignment. */</span><a name=line.309></a>
+  <span class='keyword'>public</span> <span class='keyword'>enum</span> AlignY {<a name=line.310></a>
+    TOP(Component.TOP_ALIGNMENT),<a name=line.311></a>
+    CENTER(Component.CENTER_ALIGNMENT),<a name=line.312></a>
+    BOTTOM(Component.BOTTOM_ALIGNMENT);<a name=line.313></a>
+    <span class='keyword'>float</span> getValue(){<a name=line.314></a>
+      <span class='keyword'>return</span> fValue;<a name=line.315></a>
+    }<a name=line.316></a>
+    <span class='keyword'>private</span> <span class='keyword'>final</span> <span class='keyword'>float</span> fValue;<a name=line.317></a>
+    <span class='keyword'>private</span> AlignY( <span class='keyword'>float</span> aValue){<a name=line.318></a>
+      fValue = aValue;<a name=line.319></a>
+    }<a name=line.320></a>
+  }<a name=line.321></a>
+  <a name=line.322></a>
+  <span class='comment'>/**<a name=line.323></a>
+   Ensure that &lt;tt&gt;aRootPane&lt;/tt&gt; has no default button associated with it.<a name=line.324></a>
+  <a name=line.325></a>
+   &lt;P&gt;Intended mainly for dialogs where the user is confirming a delete action.<a name=line.326></a>
+   In this case, an explicit Yes or No is preferred, with no default action being <a name=line.327></a>
+   taken when the user hits the Enter key. <a name=line.328></a>
+  */</span><a name=line.329></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> noDefaultButton(JRootPane aRootPane){<a name=line.330></a>
+    aRootPane.setDefaultButton(<span class='keyword'>null</span>);<a name=line.331></a>
+  }<a name=line.332></a>
+  <a name=line.333></a>
+  <span class='comment'>/**<a name=line.334></a>
+  Create an icon for use by a given class.<a name=line.335></a>
+  <a name=line.336></a>
+  Returns &lt;tt&gt;null&lt;/tt&gt; if the icon cannot be found.<a name=line.337></a>
+  <a name=line.338></a>
+  @param aPath path to the file, relative to the calling class, as in '../images/blah.png'<a name=line.339></a>
+  @param aDescription description of the image<a name=line.340></a>
+  @param aClass class that needs to use the image<a name=line.341></a>
+  */</span><a name=line.342></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> ImageIcon createImageIcon(String aPath, String aDescription, Class aClass) {<a name=line.343></a>
+    ImageIcon result = <span class='keyword'>null</span>;<a name=line.344></a>
+    URL imageURL = aClass.getResource(aPath); <span class='comment'>//resolves to an absolute path<a name=line.345></a>
+</span>    <span class='keyword'>if</span> (imageURL != <span class='keyword'>null</span>) {<a name=line.346></a>
+      result = <span class='keyword'>new</span> ImageIcon(imageURL, aDescription);<a name=line.347></a>
+    } <a name=line.348></a>
+    <span class='keyword'>return</span> result;<a name=line.349></a>
+  }<a name=line.350></a>
+<a name=line.351></a>
+  <span class='comment'>// PRIVATE<a name=line.352></a>
+</span>  <a name=line.353></a>
+  <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='keyword'>void</span> setSizes(java.util.List aComponents, Dimension aDimension){<a name=line.354></a>
+    Iterator compsIter = aComponents.iterator();      <a name=line.355></a>
+    <span class='keyword'>while</span> ( compsIter.hasNext() ) {<a name=line.356></a>
+      JComponent comp = (JComponent) compsIter.next();<a name=line.357></a>
+      comp.setPreferredSize( (Dimension)aDimension.clone() );<a name=line.358></a>
+      comp.setMaximumSize( (Dimension)aDimension.clone() );<a name=line.359></a>
+    }<a name=line.360></a>
+  }<a name=line.361></a>
+<a name=line.362></a>
+  <span class='keyword'>private</span> <span class='keyword'>static</span> Dimension calcDimensionFromPercent(Dimension aSourceDimension, <span class='keyword'>int</span> aPercentWidth, <span class='keyword'>int</span> aPercentHeight){<a name=line.363></a>
+    <span class='keyword'>int</span> width = aSourceDimension.width * aPercentWidth/<span class='literal'>100</span>;<a name=line.364></a>
+    <span class='keyword'>int</span> height = aSourceDimension.height * aPercentHeight/<span class='literal'>100</span>;<a name=line.365></a>
+    <span class='keyword'>return</span> <span class='keyword'>new</span> Dimension(width, height);<a name=line.366></a>
+  }<a name=line.367></a>
+} <a name=line.368></a>
+</PRE><a name=line.369></a>
+ </BODY><a name=line.370></a>
+<HTML><a name=line.371></a>

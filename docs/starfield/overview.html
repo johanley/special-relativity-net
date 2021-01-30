@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" media="all"> 
+ <link rel="shortcut icon" href="../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <title>Special Relativity - Relativistic Starfield Software </title>
+ <script type="text/javascript">
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-2633428-7']);
+   _gaq.push(['_trackPageview']);
+   (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+ </script> 
+</head>
+<body>
+<a href='../contents.html'>Contents</a>
+
+
+<div id="header"><h1>Relativistic Starfield - Software</h1></div>
+
+<h2>Overview</h2>
+The <a href='../animations/starfield/starfield.html?beta=0.8&color=on&circles=on&avgstellardensity=0.11&starpopulation=yalebsc&limitingMag=5&projection=stereographic&anim=on&runningTime=8'>starfield simulation</a> 
+is an interesting part of this site. 
+The default animation uses about 9,000 stars from the Yale Bright Star Catalog. 
+For an animation running in a browser, that's an appropriate number of stars, and 
+the results do demonstrate the proper physics. 
+
+<P>But <em>for a more realistic result, closer to what you would actually see</em>, you need to 
+use more stars - <em>many</em> more stars, even millions.
+Since an animation using that many stars would not work well in a typical browser, a small desktop application 
+(implemented in the Java programming language, version 1.7.0)
+has been created for generating such images from large star catalogs. 
+The software is simple, and consists of a single dialog, where you input various parameters, and then generate 
+a single image file. No animation is created, just a single image file. 
+(With the number of stars in the millions, it can take several minutes to generate a single image.)
+
+
+<h2>Download One or More Star Catalogs</h2>
+To use this software, you also need raw data from a star catalog. 
+As is, the software will work with three commonly used astronomical catalogs. 
+(Note for progammers: adding a parser for some other catalog isn't difficult, 
+and would usually take about 15 minutes or so.)
+The three catalogs are available here (<em>look for the FTP links at the top</em>):
+<ul>
+ <li><a href='http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50'>Yale Bright Star Catalog</a> (the smallest; recommended for starting out, and making sure it's working)
+ <li><a href='http://cdsarc.u-strasbg.fr/viz-bin/Cat?III/135A'>Henry Draper Catalog</a> (intermediate size)
+ <li><a href='http://cdsarc.u-strasbg.fr/viz-bin/Cat?I/259'>Tycho-2 Catalog</a> (large but sexy; multiple data files)
+</ul>
+
+<p>You don't have to download all of these if you don't want to, but you will need at least one of them. 
+<b>The Tycho-2 catalog gives the most impressive result</b>, but it takes longest to download.
+Save the data files for each star catalog in some convenient, separate location on your computer.
+If the data files are zipped, you'll need to unzip them.
+
+<P>Here's an example of how you might arrange the catalogs and their data files:
+<pre>
+C:\astro-cat
+  \henry-draper
+    <em>catalog.dat</em>
+  \tycho-2
+    <em>tyc2.dat.00</em>
+    <em>tyc2.dat.01</em>
+    ...
+    <em>tyc2.dat.18</em>
+    <em>tyc2.dat.19</em>
+  \yale-bright-star-cat
+    <em>catalog.txt</em>
+</pre>
+
+The above is just an example. 
+You can place these data files anywhere you want.
+However, you'll need to <b>ensure that the data files for each star catalog are placed in their own separate 
+directory by themselves, with no other extraneous files</b>. 
+The names of the files don't matter, but note that if you change the name of a data file to end with '.ignore', then 
+this application will ignore it. (This is useful when experimenting with different data sets.)
+
+<h2>Download the Software</h2>
+
+There are two items you can download:
+<ul>
+ <li><a href='starfield-binary.zip'>starfield-binary.zip</a> - the binary used to run the application.
+ Simply save this file to some convenient location on your computer, and unzip it. (The examples below use C:\TEMP.)
+ <li><a href='starfield-source.zip'>starfield-source.zip</a> - the source code, released under a BSD license. Download 
+ this only if you want to examine or modify the source code. (Note that you can also browse the source code
+ using links from classes in the <a href='javadoc/index.html'>javadoc</a>.)
+</ul>
+
+<h2>Run the Software</h2>
+To run the software, you'll need <a href='https://www.java.com/en/download/'>Java</a> installed on your computer.
+(Most personal computers already have it installed.)
+Here's an example of launching the application as a <b>graphical</b> tool. 
+This example assumes that you've put the unzipped contents of <tt>starfield-binary.zip</tt> in C:\TEMP&gt;.
+<pre>
+C:\TEMP\&gt; <em>dir /b</em>
+jgoodies-common-1.7.0.jar
+jgoodies-forms-1.7.2.jar
+starfield.jar
+
+C:\TEMP> <em>echo %JAVA_HOME%</em>
+C:\jdk1.7.0
+
+C:\TEMP\&gt; <em>C:\jdk1.7.0\bin\java -jar starfield.jar</em>
+
+(If java is on your path, then you may use this style.)
+C:\TEMP\&gt; <em>java -jar starfield.jar</em>
+</pre>
+
+This will launch the application, which consists of a single dialog:
+<P>
+<img src='screenshot.jpg' title='Screen shot of the application' width='643' height='586'>
+
+<P>When the application is running, you'll see that <b>each input field has an explanatory tool-tip</b>, 
+which pops up when the mouse is hovering over the input field. 
+For more information, please see the documentation on 
+<a href='javadoc/hirondelle/starfield/physics/InputParameters.html'>input parameters</a>.
+
+<P>Here's a second example, but this time the tool is run as <b>command-line</b> tool only, with no graphical interface. 
+Note that there are 11 parameters passed to the <tt>hirondelle.starfield.Main</tt> class. 
+<pre>
+C:\TEMP\&gt; <em>dir /b</em>
+jgoodies-common-1.7.0.jar
+jgoodies-forms-1.7.2.jar
+starfield.jar
+
+C:\TEMP> <em>echo %JAVA_HOME%</em>
+C:\jdk1.7.0
+
+(this command is really on a single line)
+C:\TEMP\&gt; <em>java -cp starfield.jar -Xmx512m hirondelle.starfield.Main 0.993 5.0 
+C:\astro-cat\yale-bright-star-cat YALE_BRIGHT_STAR_CATALOG 
+C:\temp\test.png STEREOSCOPIC 800 1 0 90 0</em>
+</pre>
+
+<h2>Detailed Documentation</h2>
+For more detailed information, please see the application's <a href='javadoc/index.html'>javadoc</a>.
+
+<P>
+
+<div id="footer">  
+  <a  href='contents.html'>Table of Contents</a>.
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:webmaster@javapractices.com'>Contact</a>
+</div>
+
+</body>
+</html>

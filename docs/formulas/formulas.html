@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" media="all"> 
+ <title>Special Relativity - Formulas</title> 
+ <script type='text/javascript' src='../script/general-graphics.js'></script>
+ <script type='text/javascript' src='../script/physics-and-math.js'></script>
+ <script type='text/javascript' src='../script/diagrams.js'></script>
+ <script type='text/javascript' src='../script/diagrams-part-2.js'></script>
+</head>
+
+<body>
+
+<a href='../contents.html'>Contents</a>
+
+
+<h2>Collected Formulas</h2>
+
+For reference, this page collects all of the formulas mentioned 
+elsewhere on this site.  
+It's worth noting that &beta;, &Gamma;, and D are all <b>dimensionless quantitities</b>: 
+they are pure numbers, with no units attached to them.
+
+
+<P><a name='beta'></a>
+The <b>speed</b> is usually expressed as a fraction of the speed limit:
+<br><img src='beta.png' class='equation'>
+<br>When used as a velocity along some axis, then &beta; will also have a sign, either positive or negative.
+
+<P><a name='interval'></a>
+The square of the <b>space-time interval</b> between any pair of events, with &Delta;d for the distance:
+<br><img src='interval.png'  class='equation'> 
+
+<P><a name='gamma'></a>
+The <b>warp factor</b> (or <b>Lorentz factor</b>) for time dilation and other effects:
+<br><img src='gamma.png'  class='equation'> 
+
+<P>
+<a name='boost'></a>
+The <b>boost transformation</b> (or <b>Lorentz transformation</b>), relating event coordinates in one grid (unprimed), to a second 
+boosted grid (primed), moving along the x axis at speed &beta; (-1<&beta;<1) with respect to the first:
+<br><img src='boosttransformation.png' class='equation'>
+<br><canvas id='lorentzGrids1' width='300' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('lorentzGrids1');
+ var ctx = canvas.getContext('2d');
+ lorentzGrids1(ctx);
+</script>
+
+<P>If y and z dimensions are included:
+<br><img src='boosttransformationfull.png' class='equation'>
+
+
+<P>
+Boost for <b>velocity</b>, with each component of the speed expressed (as usual) as a fraction 
+of the speed limit:
+<a name='boostvelocity'></a>
+<br><img src='boostvelocityx.png' class='equation'>
+<img src='boostvelocityy.png' class='equation'>
+<img src='boostvelocityz.png' class='equation'>
+
+
+<P>
+<a name='doppler'></a>
+The <b>Doppler factor</b>, with &theta; as the angle between the line-of-sight and the line-of-motion.
+<br><img src='doppler.png'  class='equation'> 
+
+<br><canvas id='dopplerGeometry' width='200' height='200'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('dopplerGeometry');
+ var ctx = canvas.getContext('2d');
+ dopplerGeometry(ctx);
+</script>
+
+
+<P>
+<a name='criticalangle'></a>
+The <b>Doppler neutral angle</b>, where D=1:
+<br><img src='criticalangle.png'  class='equation'> 
+
+
+<P>
+<a name='aberration'></a>
+The <b>aberration</b> of light:
+<br><img src='aberration2.png' class='equation'> 
+<br>In this diagram explaining the geometry, S is the source emitter, P is the photon:
+<br><canvas id='aberrationTheta2' width='200' height='200' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('aberrationTheta2');
+ var ctx = canvas.getContext('2d');
+ aberrationTheta2(ctx);
+</script>
+
+
+<P>
+<a name='apparent_velocity'></a>
+The <b>apparent velocity</b> of an object, as seen in a detector. 
+The angle &theta; is between 0&deg; and 180&deg;. 
+It's the angle between the line of sight and the object's direction of motion.
+There are two components, transverse (t) and radial (r).
+<br><img src='apparent_velocity_transverse.png' class='equation'> 
+<img src='apparent_velocity_radial.png' class='equation'> 
+<br><canvas id='radialAndTransverse' width='200' height='200'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('radialAndTransverse');
+ var ctx = canvas.getContext('2d');
+ radialAndTransverse(ctx);
+</script>
+
+
+<p>For galaxies, astronomers usually prefer to separate the motion into two parts:
+<UL>
+ <li>the galaxy recedes from the Earth because of the Hubble expansion of the Universe
+ <li>the jet moves with some high speed relative the galaxy
+</UL>
+In that case, they use this variation on the formula for apparent transverse motion:
+<br><img src='apparent_velocity_transverse_hubble.png' class='equation'  style='vertical-align:top;'> 
+<br>Here, D is the Doppler factor for the Hubble recession, and &beta; is the speed of the jet with respect to 
+the galaxy.
+
+<P>
+<a name='star_apparent_magnitude'></a>
+The <b>change in apparent magnitude of a star</b>, approximated with a blackbody spectrum of temperature T expressed in kelvins (McKinley, Doherty 1979):
+<br><img src='magnitude.png' class='equation'> 
+
+
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:webmaster@javapractices.com'>Contact</a>
+</div>
+
+</body>
+</html>

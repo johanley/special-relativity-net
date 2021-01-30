@@ -1,0 +1,42 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+EqualAreaCylindricalProjection.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.projection;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Util;<a name=line.3></a>
+<a name=line.4></a>
+<span class='comment'>/**<a name=line.5></a>
+  Whole sky projection with many variations, according to the value of the 'standard latitude'.<a name=line.6></a>
+  &lt;P&gt;Reference: &lt;a href='http://en.wikipedia.org/wiki/Cylindrical_equal-area_projection'&gt;wikipedia&lt;/a&gt;.<a name=line.7></a>
+*/</span><a name=line.8></a>
+<span class='keyword'>final</span> <span class='keyword'>class</span> EqualAreaCylindricalProjection <span class='keyword'>extends</span> WholeSkyProjection {<a name=line.9></a>
+<a name=line.10></a>
+  <span class='comment'>/**<a name=line.11></a>
+   Constructor.<a name=line.12></a>
+   @param aStandardLat in degrees<a name=line.13></a>
+  */</span><a name=line.14></a>
+  EqualAreaCylindricalProjection(<span class='keyword'>double</span> aStandardLat) {<a name=line.15></a>
+    fStandardLat = Util.radians(aStandardLat);<a name=line.16></a>
+  }<a name=line.17></a>
+  <a name=line.18></a>
+  <span class='keyword'>@Override</span>  <span class='keyword'>public</span> Coords projectWithLatLong(<span class='keyword'>double</span> aLat, <span class='keyword'>double</span> aLong, <span class='keyword'>double</span> aScale, Coords aCenter) {<a name=line.19></a>
+    Coords result = <span class='keyword'>new</span> Coords();<a name=line.20></a>
+    <span class='keyword'>double</span> deltax = aScale * aLong * Math.cos(fStandardLat);<a name=line.21></a>
+    <span class='keyword'>double</span> deltay = aScale * Math.sin(aLat)/Math.cos(fStandardLat);<a name=line.22></a>
+    result.X = aCenter.X + deltax;<a name=line.23></a>
+    result.Y = aCenter.Y + deltay;<a name=line.24></a>
+    <span class='keyword'>return</span> result;<a name=line.25></a>
+  }<a name=line.26></a>
+<a name=line.27></a>
+  <span class='keyword'>private</span> <span class='keyword'>double</span> fStandardLat;<a name=line.28></a>
+}<a name=line.29></a>
+ <a name=line.30></a>
+</PRE><a name=line.31></a>
+ </BODY><a name=line.32></a>
+<HTML><a name=line.33></a>

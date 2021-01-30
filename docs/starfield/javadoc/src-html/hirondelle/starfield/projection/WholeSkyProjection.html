@@ -1,0 +1,38 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+WholeSkyProjection.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.projection;<a name=line.1></a>
+<a name=line.2></a>
+<span class='comment'>/**<a name=line.3></a>
+ Template base class for whole-sky projections.<a name=line.4></a>
+  <a name=line.5></a>
+ &lt;P&gt;For whole-sky projections, it's convenient to transform to numbers that can be plugged <a name=line.6></a>
+ directly into typical formulas for map projections, that use latitude and longitude (positive east of the prime meridian).<a name=line.7></a>
+  <a name=line.8></a>
+ &lt;P&gt;In essence, this effects a 90 degree rotation, changing from a pole-on view using (r,theta,phi) <a name=line.9></a>
+  and having the z-axis into the screen, to a pole-up view, with latitude up-down, and longitude left-right. <a name=line.10></a>
+*/</span><a name=line.11></a>
+<span class='keyword'>abstract</span> <span class='keyword'>class</span> WholeSkyProjection <span class='keyword'>implements</span> Projection {<a name=line.12></a>
+<a name=line.13></a>
+  <span class='keyword'>@Override</span> <span class='keyword'>public</span> <span class='keyword'>final</span> Coords project(<span class='keyword'>double</span> aThetaprime, <span class='keyword'>double</span> aPhi, <span class='keyword'>double</span> aScale, Coords aCenter) {<a name=line.14></a>
+    <span class='keyword'>double</span>  x=aPhi-<span class='literal'>1.5</span>*Math.PI;<a name=line.15></a>
+    <span class='keyword'>double</span> latitudeVal=Math.asin(Math.sin(aThetaprime)*Math.cos(x)); <span class='comment'>//-pi/2..+pi/2<a name=line.16></a>
+</span>    <span class='keyword'>double</span> longitudeVal=Math.atan2(Math.sin(aThetaprime)*Math.sin(x),Math.cos(aThetaprime)); <span class='comment'>//-pi..+pi<a name=line.17></a>
+</span>    <span class='keyword'>return</span> projectWithLatLong(-latitudeVal, longitudeVal, aScale, aCenter);<a name=line.18></a>
+  }<a name=line.19></a>
+<a name=line.20></a>
+  <span class='comment'>/** <a name=line.21></a>
+   Use a projection formula expressed in latitude and longitude. See class comment.<a name=line.22></a>
+  */</span><a name=line.23></a>
+  <span class='keyword'>abstract</span> Coords projectWithLatLong(<span class='keyword'>double</span> aLatitude, <span class='keyword'>double</span> aLongitude, <span class='keyword'>double</span> aScale, Coords aCenter);<a name=line.24></a>
+}<a name=line.25></a>
+ <a name=line.26></a>
+</PRE><a name=line.27></a>
+ </BODY><a name=line.28></a>
+<HTML><a name=line.29></a>

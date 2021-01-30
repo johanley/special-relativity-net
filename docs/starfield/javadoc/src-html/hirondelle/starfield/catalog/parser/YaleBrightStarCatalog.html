@@ -1,0 +1,69 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+YaleBrightStarCatalog.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.catalog.parser;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.physics.Star;<a name=line.3></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Util;<a name=line.4></a>
+<a name=line.5></a>
+<span class='comment'>/** <a name=line.6></a>
+  Parse a record from the &lt;a href='http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50'&gt;Yale Bright Star Catalog&lt;/a&gt;.<a name=line.7></a>
+  Uses epoch J2000, to mag 6.5 (mostly). This catalog is small, having about 9,000 stars.<a name=line.8></a>
+  This catalog is a good choice when starting out, since the application runs so quickly when using such a small <a name=line.9></a>
+  amount of data.<a name=line.10></a>
+<a name=line.11></a>
+ &lt;P&gt;Record details:<a name=line.12></a>
+&lt;pre&gt;<a name=line.13></a>
+Byte 76..77: RA-H<a name=line.14></a>
+Byte 78..79: RA-M<a name=line.15></a>
+Byte 80..83: RA-S to 0.1, includes decimal point. Example '09.9': <a name=line.16></a>
+Byte 84:     Sign of declination<a name=line.17></a>
+Byte 85..86: Dec-deg<a name=line.18></a>
+Byte 87..88: Dec-min<a name=line.19></a>
+Byte 89..90: Dec-sec<a name=line.20></a>
+Byte 103..107: Visual Mag. Example '6.70';  two decimals, with decimal point, <a name=line.21></a>
+                     with leading '-' sign for the brightest stars<a name=line.22></a>
+Byte 128-147: Spectral Type. Take byte 130 only.<a name=line.23></a>
+&lt;/pre&gt;<a name=line.24></a>
+<a name=line.25></a>
+&lt;P&gt;Records discarded by this parser:<a name=line.26></a>
+&lt;ul&gt;<a name=line.27></a>
+   &lt;li&gt;those with spectral type starting with S,C,p,N,W<a name=line.28></a>
+   &lt;li&gt;those with spectral type blank (items that should not have been in the catalog to begin with)<a name=line.29></a>
+&lt;/ul&gt;<a name=line.30></a>
+*/</span><a name=line.31></a>
+<span class='keyword'>final</span> <span class='keyword'>class</span> YaleBrightStarCatalog <span class='keyword'>implements</span> RecordParser {<a name=line.32></a>
+<a name=line.33></a>
+  <span class='comment'>/** See class comment.  */</span><a name=line.34></a>
+  <span class='keyword'>@Override</span> <span class='keyword'>public</span> Star parse(String aLine) {<a name=line.35></a>
+    Star result = <span class='keyword'>null</span>;<a name=line.36></a>
+    Chomper chomper = <span class='keyword'>new</span> Chomper(aLine);<a name=line.37></a>
+    String spectralClass = chomper.forText(<span class='literal'>130</span>);<a name=line.38></a>
+    <span class='keyword'>if</span> (! Util.textHasContent(spectralClass) ){<a name=line.39></a>
+      Util.logVerbose(<span class='literal'>"Skipping record. Missing spectral class."</span>);<a name=line.40></a>
+    }<a name=line.41></a>
+    <span class='keyword'>else</span> <span class='keyword'>if</span> (spectralClass.startsWith(<span class='literal'>"S"</span>) || spectralClass.startsWith(<span class='literal'>"C"</span>) || spectralClass.startsWith(<span class='literal'>"p"</span>) || spectralClass.startsWith(<span class='literal'>"W"</span>) || spectralClass.startsWith(<span class='literal'>"N"</span>)){<a name=line.42></a>
+      Util.logVerbose(<span class='literal'>"Skipping record. Not in the set of expected spectral classes: "</span> + spectralClass);<a name=line.43></a>
+    }<a name=line.44></a>
+    <span class='keyword'>else</span> {<a name=line.45></a>
+      <span class='comment'>//no more reasons left for skipping a record<a name=line.46></a>
+</span>      result = <span class='keyword'>new</span> Star();<a name=line.47></a>
+      result.Temperature = Star.spectralTypeToTemperature(spectralClass.substring(<span class='literal'>0</span>,<span class='literal'>1</span>)); <span class='comment'>//first letter only<a name=line.48></a>
+</span>      result.RightAscension = chomper.forRightAscension(<span class='literal'>76</span>,<span class='literal'>77</span>,<span class='literal'>78</span>,<span class='literal'>79</span>,<span class='literal'>80</span>,<span class='literal'>83</span>);<a name=line.49></a>
+      result.Declination = chomper.forDeclination(<span class='literal'>84</span>,<span class='literal'>85</span>,<span class='literal'>86</span>,<span class='literal'>87</span>,<span class='literal'>88</span>,<span class='literal'>89</span>,<span class='literal'>90</span>);<a name=line.50></a>
+      result.Magnitude = chomper.forMagnitude(<span class='literal'>103</span>,<span class='literal'>107</span>);<a name=line.51></a>
+    }<a name=line.52></a>
+    <span class='keyword'>return</span> result;<a name=line.53></a>
+  }<a name=line.54></a>
+  <a name=line.55></a>
+}<a name=line.56></a>
+ <a name=line.57></a>
+</PRE><a name=line.58></a>
+ </BODY><a name=line.59></a>
+<HTML><a name=line.60></a>

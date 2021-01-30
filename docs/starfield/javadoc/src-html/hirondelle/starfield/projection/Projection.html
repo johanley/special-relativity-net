@@ -1,0 +1,37 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+Projection.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.projection;<a name=line.1></a>
+<a name=line.2></a>
+<span class='comment'>/** <a name=line.3></a>
+ Project a star's location on the celestial sphere onto the plane of an image.<a name=line.4></a>
+ <a name=line.5></a>
+ &lt;P&gt;Some projections may apply to the whole sky, while some may apply to half the sky.<a name=line.6></a>
+ The half-sky projections correspond better to what can be seen by a human eye. <a name=line.7></a>
+ In addition, at very high speeds, almost all stars will be concentrated towards the direction of motion, because <a name=line.8></a>
+ of aberration; in this case, the use of a whole-sky projection is probably not the best choice. <a name=line.9></a>
+*/</span><a name=line.10></a>
+<span class='keyword'>public</span> <span class='keyword'>interface</span> Projection {<a name=line.11></a>
+  <a name=line.12></a>
+  <span class='comment'>/**<a name=line.13></a>
+   Return the coordinates of the star, ready for rendering on an image context.<a name=line.14></a>
+   <a name=line.15></a>
+   &lt;P&gt;The two arguments correspond to two angles on the celestial sphere.<a name=line.16></a>
+   These two angles can take a different meaning according to context.<a name=line.17></a>
+   For example, in the simple case of stereographic projection centered on the North Celestial Pole,<a name=line.18></a>
+   the two arguments correspond to the (aberrated) zenith angle from the Pole and the right ascension, respectively.  <a name=line.19></a>
+   For the full-sky projections, the two arguments correspond more to latitude and longitude <a name=line.20></a>
+   (declination and right ascension), respectively.<a name=line.21></a>
+  */</span><a name=line.22></a>
+  Coords project(<span class='keyword'>double</span> aAngle1, <span class='keyword'>double</span> aAngle2, <span class='keyword'>double</span> aScale, Coords aCenter);<a name=line.23></a>
+}<a name=line.24></a>
+ <a name=line.25></a>
+</PRE><a name=line.26></a>
+ </BODY><a name=line.27></a>
+<HTML><a name=line.28></a>

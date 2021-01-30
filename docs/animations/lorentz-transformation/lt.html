@@ -1,0 +1,64 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+ <title>Boost Transformation</title>
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='../../script/diagrams.js?v=12'></script>
+ <script type='text/javascript' src='lt.js?v=12'></script>
+ <script type="text/javascript">   
+  window.onload = function() {
+    postUserInput(); //default values are used for the initial draw
+  }
+  function ctx(){
+    var canvas = document.getElementById('lorentzTransform');
+    return canvas.getContext('2d');  
+  }
+  /** Redraw the canvas from scratch. There's no animation here, just a simple redraw. */
+  function postUserInput() {
+    var x = parseFloat(document.getElementById('x').value);
+    var ct = parseFloat(document.getElementById('ct').value);
+    var beta = parseFloat(document.getElementById('beta').value);
+    drawLorentzTransform(ctx(),x,ct,beta);
+  }
+ </script>
+</head>
+
+<body style='margin-top:0em;'>
+
+<canvas id='lorentzTransform' width='800' height='600' style='float:right;' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+<h3>Boost an Event</h3>
+<form>
+ <table>
+ <tr><td>x<td><input id='x' title='Enter a number' value='100' size='10'>
+ <tr><td>ct<td><input id='ct' title='Enter a number' value='150'  size='10'>
+ <tr><td>&beta;<td><input id='beta' value='0.5' title='Velocity of G2 with respect to G1. Inside the range -1..+1'  size='10'>
+ <tr>
+  <td>&nbsp;<td><input type='button' value='Boost' onclick="postUserInput()" title='Show the event coordinates, as measured in both grids.'>
+ </table>
+</form>
+<p><a href='../../index.html#Boosts'>Back to Main</a>
+
+<P style='clear:right;'>
+ Different inertial grids have different 
+ coordinates for events.
+ Here, two grids, Grid 1 and Grid 2, differ by a <em>boost</em>, in 
+ which Grid 2 is moving along the x-axis of Grid 1, 
+ at a speed &beta;, with -1<&beta;<1.
+ The sign of &beta; indicates if Grid 2 moves in the 
+ +x direction, or the -x direction.
+<P>
+Given the coordinates of an event as measured in Grid 1, you use the boost transformation 
+to find the coordinates for the same event, as measured in Grid 2.
+
+<P>The units used in this chart aren't specified. It shows values only within a certain range, 
+about +/- 225 or so.
+ 
+
+</body>
+</html>

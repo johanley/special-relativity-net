@@ -1,0 +1,2386 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="stylesheet" type="text/css" href="css/stylesheet.css?v=12" media="all"> 
+ <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
+ <title>Special Relativity - Speed Limits and Geometry</title>
+ <script type='text/javascript' src='script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='script/diagrams.js?v=12'></script>
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-2633428-7', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+</head>
+
+<body>
+<a href='contents.html'>Contents</a>
+
+
+<div id="header"><h1>Special Relativity Part I - Speed Limits and Geometry</h1></div>
+
+<a name='Motivation'></a>
+<h2>Why Special Relativity Is Interesting</h2>
+Special Relativity (SR) is one of the main cornerstones of modern physics.
+If SR is wrong, then everything based on it will crumble too, like a house of cards. 
+(For example, quantum field theories and the standard model of particle physics are based on SR.)
+<b>If you can falsify SR, you get <em>10</em> Nobel Prizes, not just 1, <em>and</em> you get a gold star from your grade 3 teacher.</b>
+
+<P><b>SR lets you understand the rules for time machines.</b>
+Time machines into the <em>past</em> are strongly forbidden.
+Time machines going into the future <em>are</em> permitted, and use high speeds (or strong gravity fields).
+
+<P>SR has something very unusual.
+<b>SR has a Rule Zero: a rule for making all the other rules.</b>
+This Rule Zero is interesting because it's a set of handcuffs: it's very tightly constraining.
+Being tightly constrained is a good thing for a scientific theory, because it's easier to falsify.
+SR is a cornerstone of modern physics mostly because of Rule Zero. 
+
+
+<P><b>SR is mathematically simple. 
+If you know what a square root is, then you can understand the core of SR.</b> 
+For bonus points, if you're not afraid of a cosine, then you can understand what SR says about optics (photons and light rays).  
+
+<P><b>SR is a reboot of physics. It goes back to the beginning, and fixes an important mistake</b>.
+When physics began in the 1600s, they had certain ideas about space and time.
+We now know that some of those ideas were mistaken.
+(Those mistakes were completely natural, since they had no data for objects moving at really high speeds.)
+Albert Einstein was the first person to figure this out. 
+He pointed out the mistake, which has to do with time.
+In short, the mistake was assuming that time is absolute.
+<b>Instead of absolute time, you have an absolute speed limit, and an absolute 'space-time interval'</b> (see below). 
+
+<P>When you learn SR, you get to <b>understand how time dilation works</b>.
+The discovery of time dilation is one of the most important discoveries in all of science.
+Some have compared its discovery with the discovery that the Earth is spherical, for instance.
+
+<P>When you know SR well, you can spot a common mistake - the mistake of forgetting about time dilation. 
+(This mistake can even be made by trained physicists who should know better. 
+In some cases, they know the theory, but they haven't really internalized it.) 
+Take this statement as an example:
+<em>'The Pleiades are 400 light-years away. So, it will take at least 400 years travelling at near light speed to get there.'</em>
+This statement is appropriate only in the world of Isaac Newton. 
+<b>In the world of SR, this statement, in unqualified form, is wrong.</b> 
+Why? Because in the world of SR,  the time between two events in general depends on who's doing the talking. 
+For a traveller going to the Pleiades at near light speed, the time that <em>they</em> care about is the time on their own wristwatch.
+And measured by their own wristwatch, that time is going to be <em>less</em> than 400 years.
+In principle, <b>there's no minimum travel-time, as measured by the traveller.</b>
+The nearer they approach light speed, the smaller the travel-time becomes. That's time dilation. 
+
+<a name='Summary'></a>
+<h2>Summary of Important Results</h2>
+Here's a quick summary of some important results in SR. More details are found below.
+
+<P>Speeds: 
+<ul>
+ <li>there's a <em>speed limit</em> c for all signals (matter, photons)
+ <li>there's <em>no</em> speed limit for things that <em>aren't</em> signals (geometrical ideas, not matter or photons)
+ <li>v &lt; c when the signal has <em>mass</em> (matter)
+ <li>v = c when the signal has <em>no mass</em> (photons)
+</ul>
+
+Time:
+<ul>
+ <li>moving clocks run slowly with respect to stationary clocks
+ <li>high speed one-way trips are <em>wormholes</em>
+ <li>high speed return-trips are <em>time machines into the future</em>
+ <li>time machines can go to the future, but not to the past
+ <li>there's no minimal travel-time for any trip between any two places in the Universe
+</ul>
+
+Length:
+<ul>
+ <li>moving objects are smaller in size (in the direction of their motion), with respect to stationary identical objects
+</ul>
+
+
+Pairs of events:
+<ul>
+ <li>the time interval between the events is <em>not</em> invariant (absolute)
+ <li>sometimes the time-order of the pair is invariant, sometimes it's not
+ <li>a pair that's simultaneous in one grid, may not be simultaneous in another
+ <li>the interval-squared s<sup>2</sup> = c<sup>2</sup>t<sup>2</sup> - d<sup>2</sup> between the events is invariant 
+</ul>
+
+
+Optics:
+<ul>
+ <li>high-speed travel changes the apparent color, brightness, and direction of stars, moving them towards the direction of travel
+ <li>high-speed jets of matter have <em>beaming</em> effects that change their apparent brightness
+ <li>high-speed jets of matter moving towards you can appear to move faster than c, but this is only a geometrical effect
+</ul>
+
+Other:
+<ul>
+ <li>space-time is an <em>idea</em>, not something you can point to
+ <li>there's a <em>rule zero</em>, a rule for making all the other rules
+ <li>principles are most effective (and beautiful) when they strongly <em>limit</em> the number of possible theories
+</ul>
+
+
+
+<a name='SpaceTime'></a>
+<h2>The Idea of Space-Time is Pretty Simple</h2>
+A ball rolls across the floor in a path, in a straight line from A to B. 
+It starts by moving quickly, slows down, and then stops.
+You can draw a picture of the ball's motion in 3 ways:
+
+<P>1. Draw a straight line from A to B. 
+<P><canvas id='simplePath1' width='200' height='40'></canvas>
+<script>
+ var canvas = document.getElementById('simplePath1');
+ var ctx = canvas.getContext('2d');
+ simplePath1(ctx, false);
+</script>
+<p>This isn't very good, because there's no information about the <em>speed</em> of the ball. So this picture is incomplete. 
+
+<P> 2. Draw a straight line from A to B, but also add tick marks to the the line, indicating its position, once per second.
+<P><canvas id='simplePath2' width='200' height='40'></canvas>
+<script>
+ var canvas = document.getElementById('simplePath2');
+ var ctx = canvas.getContext('2d');
+ simplePath1(ctx, true);
+</script>
+ <p>This is better, because it has information about both the position <em>and</em> the speed.
+ You could say that the first try has only information about <em>where</em>, and the second try has 
+ information about both <em>where</em> and <em>when</em>. 
+
+<P>3. Draw a curve in space-time.
+To do that, just represent the time as another coordinate in the diagram, at a right angle to the x-axis.
+
+<P>
+<canvas id='simpleSpaceTimePath' width='200' height='200'></canvas>
+<script>
+ var canvas = document.getElementById('simpleSpaceTimePath');
+ var ctx = canvas.getContext('2d');
+ simpleSpaceTimePath(ctx);
+</script>
+
+<P>In this case, the 1-dimensional <em>line</em> is replaced by a 2-dimensional <em>plane</em>.
+The tick marks that were used to indicate the time are replaced by a time coordinate.
+The time axis is placed vertically here, simply to follow a common convention.
+This is a 2-dimensional space-time.
+<b>The points in this plane are <em>events</em>, consisting of a where (x) and a when (t).</b>
+The path of the ball is a continuous sequence of connected events in space-time, which form its <em><b>history</b></em>, or <em><b>world-line</b></em>.
+
+<P>When the ball is motionless, the history is vertical. 
+When the ball is moving, the history bends away from the vertical. 
+The faster the ball is moving, the more its history bends away from the vertical. 
+
+<P>In order to make these diagrams, you need convert the unit of time (seconds) into a unit of distance (meters).
+The conversion looks like this:
+
+<pre>seconds * (meters / second) => meters</pre>
+The conversion factor is a fixed quantity having the unit of <em>speed</em> (meters per second).
+The speed you pick is up to you. 
+But, as explained below, most of the time the speed is chosen to be Nature's speed limit <em>c</em> (see below).
+
+<P><span class='highlight'><b>The basic idea of <em>space-time</em> is to convert times to lengths, 
+and simply pretend that this time/length is an extra dimension, in addition to the space dimensions.</b></span>
+It's important to understand that space-time, with its 'extra' dimension of time, is a geometrical idea, a mental abstraction.
+It's not something you can physically point to. 
+
+<P>The idea of representing the history of an object as a curve in space-time is not just a mathematical curiosity. 
+Space-time actually has a lot of interesting and important geometrical structure.
+Nature has many important rules that can be expressed elegantly only using the idea of space-time.
+Indeed, it's not an exaggeration to say that <b>the geometry of space-time is at the very core of physics</b>.
+
+
+<a name='ExampleHistories'></a>
+<h2>Example Histories</h2>
+
+When an object is moving along a straight line, you can draw its history in a space-time diagram having 
+two <em>axes</em> at 90&deg; to each other, one for the time (t), and one for the distance (x). 
+These are the simplest kinds of space-time diagrams, and sometimes they're all you need. 
+Some examples are shown below:
+<ul>
+ <li>A) an object that's not moving at all (stationary) is just a vertical line
+ <li>B) an object moving at a speed that doesn't change is a line that makes an angle with the vertical; <em>the 
+ faster it's moving, the greater the angle with the vertical</em>
+ <li>C) stationary, then moving, then stationary again
+ <li>D) a round-trip, and <em>going slower on the way back</em>
+</ul>
+
+
+<canvas id='canvas1' width='150' height='150'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var thehistory = function(ctx){
+  ctx.moveTo(50, 130); 
+  ctx.lineTo(50, 0);
+  ctx.stroke();
+ }
+ var canvas = document.getElementById('canvas1');
+ var ctx = canvas.getContext('2d');
+ spacetime2d(ctx, thehistory,'A');
+</script>
+
+<canvas id='canvas2' width='150' height='150'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var thehistory = function(ctx){
+  ctx.moveTo(40, 130); 
+  ctx.lineTo(75, 0);
+  ctx.stroke();
+ }
+ var canvas = document.getElementById('canvas2');
+ var ctx = canvas.getContext('2d');
+ spacetime2d(ctx, thehistory,'B');
+</script>
+
+<canvas id='canvas3' width='150' height='150'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var thehistory = function(ctx){
+   ctx.moveTo(30, 130); 
+   ctx.lineTo(30, 100);
+   ctx.lineTo(55, 35);
+   ctx.lineTo(55, 5);
+   ctx.stroke();
+ }
+ var canvas = document.getElementById('canvas3');
+ var ctx = canvas.getContext('2d');
+ spacetime2d(ctx, thehistory,'C');
+</script>
+
+
+
+<canvas id='canvas4' width='150' height='150'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var thehistory = function(ctx){
+  ctx.moveTo(50, 130); 
+  ctx.lineTo(75, 80);
+  ctx.lineTo(50, 0);
+  ctx.stroke();
+ }
+ var canvas = document.getElementById('canvas4');
+ var ctx = canvas.getContext('2d');
+ spacetime2d(ctx, thehistory,'D');
+</script>
+
+
+<P>Sharp corners in the history correspond to abrupt changes in the motion. 
+Gradual changes in speed are shown with curving lines.
+<ul>
+ <li>E) moving in the +x direction with an increasing speed
+ <li>F) moving in the -x direction with an increasing speed
+ <li>G) playing catch: an object bouncing back and forth between two places is a zig-zag
+ <li>H) two objects move towards each other, collide, then bounce back to where they came from
+</ul>
+
+<canvas id='canvas5' width='150' height='150'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var thehistory = function(ctx){
+  ctx.moveTo(30, 130); 
+  ctx.bezierCurveTo(30,120,45,50,75,30); 
+  ctx.stroke();
+ }
+ var canvas = document.getElementById('canvas5');
+ var ctx = canvas.getContext('2d');
+ spacetime2d(ctx, thehistory,'E');
+</script>
+
+
+<canvas id='canvas6' width='150' height='150'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var thehistory = function(ctx){
+  ctx.moveTo(60, 130); 
+  ctx.bezierCurveTo(60,120,65,100,30,30); 
+  ctx.stroke();
+ }
+ var canvas = document.getElementById('canvas6');
+ var ctx = canvas.getContext('2d');
+ spacetime2d(ctx, thehistory,'F');
+</script>
+
+
+<canvas id='canvas7' width='150' height='150'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var thehistory = function(ctx){
+  ctx.moveTo(30, 130); 
+  ctx.lineTo(50, 100);
+  ctx.lineTo(30, 70);
+  ctx.lineTo(50, 40);
+  ctx.lineTo(30, 10);
+  ctx.stroke();
+ }
+ var canvas = document.getElementById('canvas7');
+ var ctx = canvas.getContext('2d');
+ spacetime2d(ctx, thehistory,'G');
+</script>
+
+<canvas id='canvas8' width='150' height='150'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var thehistory = function(ctx){
+  ctx.moveTo(30, 130); 
+  ctx.lineTo(50, 80);
+  ctx.lineTo(30, 30);
+  ctx.stroke();
+  ctx.moveTo(70, 130); 
+  ctx.lineTo(50, 80);
+  ctx.lineTo(70, 30);
+  //ctx.strokeStyle = '#ff0000';
+  ctx.stroke();
+ }
+ var canvas = document.getElementById('canvas8');
+ var ctx = canvas.getContext('2d');
+ spacetime2d(ctx, thehistory,'H');
+</script>
+
+<P>
+These <a href='animations/example-histories/hist2d.html?motion=example4'>simple animations</a> also show how simple motions 
+appear as histories in space-time.
+
+<a name='RebootingPhysics'></a>
+<h2>Rebooting Physics</h2>
+<b>SR is a reboot of physics from the beginning.</b>
+Physics begins with examining motion, and the examination of motion begins like this:
+<ul> 
+ <li>using <b>grids</b> to measure motion
+ <li>the rule of <b>inertia</b>
+ <li>the <b>inertial grid family</b>: the group of grids in which the rule of inertia holds
+</ul>
+
+So let's examine these ideas in sequence.
+
+<a name='Grids'></a>
+<h2>Grids Measure Motion</h2>
+The motion of an object is always relative to something else.
+<b><span class='highlight'>A <em>grid</em> (or a <em>frame of reference</em>) is used to measure positions and times.</span></b>
+A grid is most easily pictured as a cubic lattice.
+The lattice is constructed out of meter sticks (or whatever you prefer).
+Here are some pictures to illustrate (these are diagrams of <em>space</em>, not <em>space-time</em>):
+<P><canvas id='measuringGrid' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('measuringGrid');
+ var ctx = canvas.getContext('2d');
+ measuringGrid(ctx);
+</script>
+
+<canvas id='measuringGrid3d' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('measuringGrid3d');
+ var ctx = canvas.getContext('2d');
+ measuringGrid3d(ctx);
+</script>
+
+<P>The idea of course is to use numbers to state the position of an event in an object's history.
+Let's take the 3D case (3 space dimensions): 
+<ul>
+ <li>traditionally, the 3 numbers are labeled x, y, and z.
+ <li>each of these 3 numbers corresponds to a distance measured along one of the axes (x, y, or z).
+ <li>there is an origin point, where the axes all meet, and where x, y, and z are all 0.
+ <li>these axes are at right angles to each other.
+ <li>the sign of the numbers indicates direction, for example the +x direction, or the -x direction.
+</ul>
+
+So far, this scheme only measures positions.
+Next we'll look at measuring time with a grid.
+
+<a name='GridsHaveManySensors'></a>
+<h2>Grids Measure Time With Many Sensors, Not One</h2>
+
+To measure time, you might think that only a single master clock would be needed for a grid.
+But that's hard, because you need to figure out how to measure the time of distant events.
+It's simpler to use <span class='highlight'><b>multiple, synchronized clocks, that are spread out over the entire grid</b></span>.
+(You can picture these clocks as being placed at the intersection points of the meter sticks.) 
+When you measure the position of an object, you can measure the time as well, just by using the clock at the same location.
+When you simultaneously measure both the position and the time, then you measure the <b>coordinates of an event</b>, a <em>where</em> and a <em>when</em>.
+This is simpler than using a single master clock, since <b>everything remains completely local</b>.
+
+<P>
+Now we have a system for measuring the positions of things in space,
+combined with many stationary, synchronized clocks (or <em>sensors</em>) spread out over that system to measure the time as well.
+Calling them sensors instead of clocks is useful, since they have to detect and record local events.
+
+<P>Now picture making measurements with such a grid. 
+Imagine being in interstellar space, building a grid, and then <b>throwing objects through the grid</b>. 
+As the object passes by each sensor, the sensor detects the object, and records the event: at time t, the object was at some sensor location (x,y,z).
+The sum total of all these events (t,x,y,z) is a measurement of the history of the object. 
+You could imagine a master computer that gathers together all these events, and reconstructs the history of the object.
+
+<P>There are ways of making measurements that don't use grids.
+For example, in astronomy, there is only a single sensor (the telescope), not many, so there's no grid at all.
+The reason grids are emphasized here is that it's <em>the simplest way</em> to describe the basic rules of how measurements of space and time work.
+The key point is this: <b>grids are simplest because each sensor is responsible for recording only the local 
+events that happen in its own little neighbourhood.</b>
+Any other way of looking at measurements is more complicated.
+
+<P>To summarize, when you think of a grid, <b>you should have this sort of picture in your head:</b>
+<ul>
+<li>a cubic grid of sensors spread out over an area or volume (either 2D or 3D)
+<li>the sensors are separated by meter sticks
+<li>the grid can have any orientation, location, or speed, but it's <em>not allowed to be spinning or accelerating</em> (more on acceleration below)
+<li>the sensors don't move with respect to each other
+<li>sensors record local events only, and not distant ones
+<li>the sensors have a clock, and record the time of each event
+<li>the sensor clocks are synchronized with each other
+</ul>
+
+<a name='GridsVersusCameras'></a>
+<h2>A Camera Is Not A Grid</h2>
+Let's use the term <b>camera</b> to represent <b>a single sensor</b>.
+With a camera, you're usually concerned with incoming light signals from far away objects.
+This corresponds with actual observations made by astronomers (and by your own eyes too).
+
+<P>It's important to understand that <b>a camera is not a grid</b>.
+A grid is always a collection of a large number of sensors, not just one. With a grid, 
+you can make calculations using numbers from multiple sensors (as seen below). 
+With a camera, you can't do that, since there's only one sensor.
+These perspectives are different, and must be kept in mind.
+
+<P>The question of what a camera (or your own eye) actually sees is an interesting one.
+It's also a practical one, since astronomers use such sensors in their instruments, to 
+view the behaviour of objects having large speeds (jets, active galactic nuclei, and so on).
+We'll return to this later, in Part II.
+
+
+<div class='aside-remarks'>
+It's important to keep the ideas of a grid and a single camera very clear in your head. 
+They are very different things.
+<b>You need to know which of these two ideas is being used in a given context.</b> 
+
+<P>Many references use the word <em>observer</em>. 
+That term is completely avoided here, because of its ambiguity.
+The word <em>observer</em>, in its typical usage, connotes a single thing - a single camera/sensor.
+But, in most cases, it's really referring to a grid.
+</div>
+
+
+
+<a name='InertialGrid'></a>
+<h2>Inertial Grid</h2>
+<img src='images/spacewalk.jpg' class='photo' style='float: right'>
+What's the simplest kind of motion in the Universe?
+To see the simplest motion of all, you need to go to interstellar (or intergalactic) space, and look at the motion of an object 
+which is far, far away from everything else (except for your idealized grid, of course).
+Such an object is called a <b>freely moving object</b> - it doesn't interact with anything; no forces, no friction, nothing.
+How does it move? It drifts perfectly and serenely, in a straight line, at constant speed.
+By definition, this straight line motion is only true in an <em>inertial</em> grid (this is Newton's first rule of motion):
+<P><b class='highlight'>
+In an inertial grid, the speed and direction of motion of a freely moving object doesn't change.</b>
+ 
+<P>
+Important: in English, the word <em>acceleration</em> means <em>to speed up</em>.
+But <b>in physics, the word acceleration is more broad</b>, and means <em>any</em> kind of a change in how an object is moving:
+<ul>
+ <li>the speed increases
+ <li>the speed decreases
+ <li>the direction of motion changes
+</ul>
+So, you can say that in an inertial grid, a freely moving object doesn't accelerate.
+You can test a grid to see if it's inertial by observing a freely moving object; 
+if it accelerates at any time, then the grid isn't inertial.
+
+<P>In principle, there are an infinite number of possible inertial grids. 
+<b>Each inertial grid is parochial</b> (<em>"confined to a narrow area"</em>), in the sense that the 
+raw measurements of event coordinates made in each grid are specific to that grid, and only that grid.
+<b>The event coordinates don't match between grids.</b>
+
+
+<a name='InertialGridFamily'></a>
+<h2>Inertial Grid Family</h2>
+Inertial grids form a <em>family</em>.
+If you have one inertial grid, then you can make another one by applying one or more of the 
+<span title='The full Lorentz group'><b>four allowable grid transformations</b></span>:
+<ul>
+ <li><b>change the starting point</b> (displacement): change the place selected for the origin (x y z)=(0 0 0), or 
+ the moment in time for which t=0.
+ <li><b>rotate</b>: change the directions of the spatial <em>xyz</em> axes, to point to some other <em><b>fixed</b></em> directions. 
+ <li><b>mirror reflection</b>: swap the directions of the positive and negative directions for 1 or 3 axes.
+ (The case of swapping 2 axes is actually the same as a rotation, so it's left out here.) 
+ You can do this for the time as well, by having the clocks go backwards into the future.
+ <li><b>boost</b>: let the grid move in some <b><em>fixed</em></b> direction, at a <b><em>constant</em></b> speed (this is the only change that involves 
+ one grid moving with respect to another).
+</ul>
+
+If you have an inertial grid to start with, 
+then you can gleefully mix and match the above transformations in any way you want, and you will 
+always end up with another inertial grid; you will always stay within the inertial grid family.
+(You can explore these transformations using this <a href='animations/inertial-grid-family-3d/grid3d.html'>animation</a>.)
+
+<P>But if you go <em>outside</em> the above kinds of transformations, 
+then you are outside the family. 
+You'll have a non-inertial grid, 
+in which the motion of a freely moving object isn't uniform.
+Here are some examples of non-inertial grids:
+<ul>
+ <li>a grid which is spinning or tumbling in any way
+ <li>a grid which whose speed is changing, either speeding up or slowing down (a spacecraft firing its engines, for example)
+ <li>a grid which whose direction of motion is changing (going in a circle, for example)
+</ul>
+
+
+<div class='aside-remarks'>
+ <img src='images/noether.gif' title='Mathematician Emmy Noether' class='photo' style='float:right; margin-top:0;'>
+One of the deepest ideas in physics relates these sorts of transformations with things called <em>conservation rules</em>.
+(It's called Noether's Theorem, after <a href='http://en.wikipedia.org/wiki/Emmy_Noether'>Emmy Noether</a>.) 
+A conservation rule is a rule that states that some physical quantity (a number) doesn't change over time. 
+<b>There's a deep connection between 
+conservation rules and ideas of symmetry</b> (transformations which leave things unchanged).
+Here are the most important ones:
+ <P>
+
+<table class='report' align='center' style='border:1px;'>
+ <th>If Symmetric Under<th>Then This Item Is Conserved
+ <tr><td>Displacement in time<td>Energy
+ <tr><td>Displacement in space<td>Momentum
+ <tr><td>Rotation in space<td>Angular Momentum
+</table>
+</div>
+
+
+<a name='Invariants'></a>
+<h2>Invariants: What Family Members Agree On</h2>
+So far, all we have is a big pile of data about events.
+Even worse, each member of the inertial grid family has their own version of the data, with different values 
+for the <em>where</em> and <em>when</em> coordinates of each event.
+<P>Questions:
+<ul>
+ <li><b>what can all members of the inertial grid family agree on? </b>
+ <li>how do we move from the raw data of measurements, specific to each sensor grid, to the rules of physics?</b>
+ <li>in summary, <b>how do we go from the <em>parochial</em> to the <em>universal</em></b>?
+</ul>
+<P>
+
+One way of moving from the parochial to the universal is to look for special combinations of quantities, 
+calculated (<em>derived</em>) from the raw data, that happen to have <em>the same value</em> for all members of the inertial grid family. 
+If you find such a combination, then you'll likely be able to make a new rule of physics with it.
+This leads to an important definition:
+<P><b class='highlight'>If a quantity is the same for all members of the inertial grid family, then it's said to be an <em>invariant</em> quantity.</b>
+
+<P>(For brevity, this site will always use the word <em>invariant</em> in the above sense, as applying to 
+all members of the inertial grid family.) 
+Here are some examples of the many invariant quantities that have been found:
+<ul>
+ <li>the maximum speed limit for all signals (discussed below)
+ <li>the space-time interval between any two events (discussed below)
+ <li>action integrals, which are related to forces and fields (discussed below)
+ <li>the volume of a region in space-time (discussed below)
+ <li>the electric charge and rest-mass of any particle
+ <li>E<sup>2</sup> - H<sup>2</sup>, the difference in the squared sizes of electric and magnetic fields 
+ <li>...and many others...
+</ul>
+
+<div class='aside-remarks'>
+A better name for <em>theory of relativity</em> would be <em>the theory of invariance</em>, or something similar. 
+The phrase <em>theory of relativity</em> is a mediocre term: it's ambiguous, leads to misunderstandings, 
+and doesn't emphasize the most important idea.
+According to <a href='http://en.wikipedia.org/wiki/Criticism_of_the_theory_of_relativity#Philosophical_criticism'>wikipedia</a>,
+this dissactisfaction with the word <em>relativity</em> was even held by the theory's inventor, Albert Einstein.
+The term should really be abandoned, but it's difficult to change the inertia of long-standing tradition (if you'll pardon the pun).
+</div>
+
+
+<a name='RuleAboutRules'></a>
+<h2>Rule Zero: The Rule About All The Other Rules</h2>
+Invariants lead directly to an important rule.
+It's a strange one, since it's really <b>a rule about all the other rules</b>:
+
+<P><b class='highlight'>Rules must be expressible using only invariants.</b>
+
+<P>In a sense, relativity <em>is</em> the search for invariants - the search for what we can all agree on.
+This is a kind of <em>mission statement</em>, which starts a quest to find out what these invariants are, and what are their consequences.
+<em>The most beautiful thing about this rule is that it's so deeply constraining.</em>
+Constraints don't hurt a scientific theory, they actually help it, by making it easier to falsify.
+
+<div class='aside-remarks'>
+[<em>An aside for experts</em>] The rule-about-rules is often stated like this: 
+<em>The rules of physics have the same form in all inertial grids.</em>
+But what exactly does it mean to say that a <em>rule has the same form</em>? 
+What exactly is the same? The 'same-ness' of differential equations can be precisely 
+expressed only with 4-vectors and covariance. But that language isn't appropriate for beginners. 
+It's too complicated.
+
+<P>It's also unnecessary. 
+The fundamental covariant differential equations can be derived from a corresponding action integral.
+Action integrals are scalar invariants - quantities that are the same for all inertial grids.
+Hence, the principle of relativity can (and should) be stated in a simple form which speaks only of invariants - 
+concrete numbers that can be derived from <em>measurements</em> - as opposed to more abstract ideas about the form of covariant 
+differential equations.
+
+</div>
+
+<a name='SpeedLimit'></a>
+<h2>Invariant #1: Speed Limit</h2>
+The first and mightiest of all invariants is this:
+
+<P><b class='highlight'>There's an invariant universal speed limit for all signals.</b>
+
+<P>What's a signal? Any physical object (matter, radiation) that moves from one place to another.
+So, the above rule says that no signal is instantaneous, and that the speed of any signal, anywhere in the Universe, 
+at any time in the history of the Universe, can only be between 0 and a fixed  
+maximum speed, as measured in any inertial grid. 
+The speed limit is a <b>universal constant</b>: it's the same at all times, and in all places.
+
+<canvas id='canvas9' width='90' height='90' style="margin: 1.0em; float:right; border:2px solid; border-color: rgb(50%,50%,50%);">
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('canvas9');
+ var ctx = canvas.getContext('2d');
+ speedLimit(ctx);
+</script>
+
+<P>Is this rule consistent with the rule-about-rules? Yes, because it speaks only about an invariant (the speed limit).
+In fact, the speed limit rule is simply an assertion that a certain invariant exists.
+
+<P>The value of the speed limit is <b>299,792,458 meters per second</b>, 
+usually denoted by the letter <em>c</em>.
+Most people refer to this speed as the speed of light. 
+<em>But that's not the best way to think about it.</em>
+For one thing, it's the speed of <em>any</em> massless particle, not just the speed of photons.
+The most important thing about this speed is that <em>it's a speed limit for all signals</em>.
+
+<P>The existence of this speed limit means that <b>the night sky is a time machine</b>.
+When you look up at night and gaze at the stars, the starlight you see has different ages,
+from a minimum of 4.4 years 
+(<a href='http://en.wikipedia.org/wiki/Alpha_Centauri'>Alpha Centauri</a>)
+to a maximum of 2.5 million years (the <a href='http://en.wikipedia.org/wiki/Andromeda_galaxy'>Andromeda Galaxy</a>).
+The largest telescopes can detect light that is older than any 
+dinosaur fossil, and even older than the Earth itself. 
+The oldest light is the <a href='http://en.wikipedia.org/wiki/Cosmic_microwave_background'>cosmic microwave background</a>
+(detected by radio telescopes). Its photons were emitted about 380,000 years after the Big Bang,  
+which makes them about 13.8 billion years old.
+In this sense, astronomers are also archaeologists, looking backwards in time, using a fossil record made of light.
+The light has travelled undisturbed for even billions of years, until, at last, in a final act before ceasing 
+to be, it offers up its quantum of energy, perfectly preserved for aeons, into the waiting bucket of a telescope, pointed 
+by a curious human towards the night sky.
+
+<P>Here's where the fun begins. 
+<b>You can combine the speed-limit rule with the rule-about-rules, 
+and that's when weird things start to happen.</b>
+If the speed limit rule is valid, then all inertial grids need to measure the same value for the speed limit.
+But remember that one of the allowable transformations for the inertial grid family talks about a 
+<em>boost</em>, where one inertial grid is moving with respect to another. If two inertial grids are 
+moving with respect to each other, then how can they possibly agree on the speed of anything? 
+Most important, <em>how could they measure the same value for the speed limit?</em>
+
+<P>So it appears that the these ideas are a complete flop, 
+since they seem to contradict each other. But they actually <em>don't</em> contradict each other.
+The reasoning above is wrong because it assumes that speeds always behave as they do at low speeds.
+They don't. When speeds approach the speed limit, the behavior of 
+measurements of space and time gets weird. This is the crux of the matter: if you 
+insist that the speed-limit rule and the rule-about-rules are both valid, then you are 
+forced into a serious re-examination
+of the basic facts regarding measurements of distance and time.
+
+
+
+
+
+<a name='ExampleSpeeds'></a>
+<h2>Examples of Fast Objects</h2>
+<!-- Image from: http://apod.nasa.gov/apod/ap060814.html -->
+<img src='images/crshower2_nasa.jpg' class='photo' style='float: right; margin-top:0;' title='Primary cosmic rays, and secondary showers (Drawing by Simon Swordy, U. Chicago)'>
+<table class='report'>
+ <tr><th>Description<th>Speed &beta; = v/c
+ <tr><td>Jets in microquasars <td>~0.95 (max)
+ <tr><td>Secondary cosmic rays - muons at sea-level <td>~0.99 (mean)
+ <tr><td>Electrons from radioactive decays <td>~0.99 (max)
+ <tr><td>Protons in the Large Hadron Collider<td>0.9999999895816072
+ <tr><td>Primary cosmic rays - most energetic<td>0.99999999999999999999995598229
+</table>
+
+<P>The existence of a speed limit in Nature means we can use it as a natural unit for expressing any other speed 
+as a simple fraction or percentage of the speed limit.
+In relativity, speeds are usually expressed in this way, using the conventional Greek 
+letter &beta; (beta), as in <tt>&beta; = v/c</tt>.
+
+
+When the speed is a significant fraction of c, the motion is said to be <b>relativistic</b>.
+If &beta; is nearly 1, then the motion is called <b>ultra-relativistic</b>.
+<P><img src='formulas/beta.png' class='equation'>
+
+
+<P>
+ For most people, the speed limit seems incredibly fast.
+ But in most astronomical contexts, <b>the speed limit is actually very slow</b>, because the distances are so vast.
+ How much time does it take a photon to go from the Sun to the Earth?
+ A little over 8 minutes. 
+ Even the Sun itself is so large that a photon needs 4.64s just to go a distance equal to its diameter.
+ <b>News may travel fast on Earth, but it sure doesn't in space.</b>
+ See this <a href='animations/sun-earth-travel-time/slow.html'>animation</a> for a simple demonstration.
+
+
+<P>In English, the words <em>speed</em> and <em>velocity</em> mean the same thing, but
+in physics, they don't:
+<ul>
+ <li>speed - the speed only, without the direction of motion
+ <li>velocity - includes both the speed <em>and</em> the direction of motion, taken together as a unit
+</ul>
+
+The symbol &beta; can be used in both ways. 
+<b>When it appears in a formula, &beta; is usually treated as a velocity.</b>
+When &beta; is a velocity, you just use the <em>sign</em> of the value to indicate the direction 
+of motion (usually along one of the spatial <em>xyz</em> axes).
+
+It's important to understand that the range of values taken by &beta; depends on whether it's 
+treated as a speed or a velocity:
+<ul>
+ <li>if &beta; is a speed: 0<=&beta;<1
+ <li>if &beta; is a velocity: -1<&beta;<1
+</ul>
+
+ 
+
+<a name='GeometricPoints'></a>
+<h2>Geometric Points Have No Speed Limit</h2>
+The speed limit rule applies to signals - to physical objects moving through space, like a spacecraft, a banana,  
+or a photon. These are physical objects. 
+<b>A geometric point isn't a physical object, and doesn't obey the speed limit rule.</b>
+Here are some examples of such geometric points:
+<ul>
+ <li>lighthouse: a moving spot from a spinning laser, as projected on a distant object like the Moon
+ <li>scissors: the moving intersection point of two scissor blades, as the scissors close
+ <li>beach: the place where a wave is breaking, as it moves laterally along the shoreline
+ <li>oscilloscope: the moving spot on the screen of a cathode-ray oscilloscope
+ (very similar to the example of the laser on the Moon)
+</ul>
+What's moving in these cases is not a single object.
+Over time, the moving point is made up of <em>different</em> objects.
+For the laser lighthouse, the photons emitted by the laser all travel at the speed limit.
+What's moving on the Moon is a collection of different events, represented by <em>different</em> photons
+hitting the Moon at a <em>different places</em>, one after the other. 
+Each photon obeys the speed limit, but the spot on the Moon can travel at any speed, 
+with no limit.
+
+
+<a name='UseCt'></a>
+<h2><em>ct</em> Is Better Than <em>t</em></h2>
+There's another way of representing the time on the vertical axis in a space-time diagram.
+Instead of using just the time <em>t</em>, you can multiply <em>t</em> by the speed limit <em>c</em>, 
+and use the result <em>ct</em>.
+This is usually the preferred way since it has two pleasant side-effects.
+First, the product <em>ct</em> has the unit of length, not time.
+As you can see, the <em>seconds</em> cancels out:
+<pre>(meters/second) x seconds = meters</pre>
+Thus, the time axis will have the same unit as the 3 space axes (meters, for example).
+
+<P> 
+Second, anything moving at the speed limit will be represented as a line at an angle of  
+45&deg; with respect to the vertical. Since the speed limit is so important, it's nice to 
+have it appear in such a simple way. (It's also easy to draw.)
+
+<P>If no object can travel faster than the speed limit <em>c</em>, 
+then in diagrams using <em>ct</em> instead of <em>t</em>, 
+<em>the tangent of the history of any moving object can never be at an angle greater than 45&deg; with respect to the vertical.</em>
+
+<P>
+We know how to draw the history for an object having &beta;=0 (not moving at all) and &beta;=1 (moving at the speed limit).
+But what about values of &beta; between 0 and 1? How do you draw those?
+Well, that's pretty easy as well. 
+You can find its angle with respect to the vertical using a simple <em>geometrical construction</em>,
+using your space-time diagram and a ruler. The example below is for &beta;=0.3. As you can see, the trick 
+is to take your ruler and divide the line <em>BC</em> into equal parts. 
+It's important to understand that the tick marks on <em>BC</em> are evenly spaced, but the corresponding angles with respect to the vertical 
+are not.
+
+<table class='report' style='float:right;'>
+ <tr><th>&beta;<th>Angle
+ <tr><td>0.60<td>31.0&deg;
+ <tr><td>0.70<td>35.0&deg;
+ <tr><td>0.75<td>36.9&deg;
+ <tr><td>0.80<td>38.7&deg;
+ <tr><td>0.90<td>42.0&deg;
+ <tr><td>0.95<td>43.5&deg;
+ <tr><td>0.99<td>44.7&deg;
+</table>
+<table class='report' style='float:right;'>
+ <tr><th>&beta;<th>Angle
+ <tr><td>0.00<td>00.0&deg;
+ <tr><td>0.10<td>05.7&deg;
+ <tr><td>0.20<td>11.3&deg;
+ <tr><td>0.25<td>14.0&deg;
+ <tr><td>0.30<td>16.7&deg;
+ <tr><td>0.40<td>21.8&deg;
+ <tr><td>0.50<td>26.6&deg;
+</table>
+
+<P>
+<canvas id='preferCt' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('preferCt');
+ var ctx = canvas.getContext('2d');
+ preferCt(ctx);
+</script>
+
+<canvas id='intermediateBeta' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('intermediateBeta');
+ var ctx = canvas.getContext('2d');
+ intermediateBeta(ctx);
+</script>
+
+<a name='SpaceTimeInterval'></a>
+<h2>Invariant #2 - The Space-Time Interval</h2>
+There's a second invariant which can be constructed out 
+of any <em>pair</em> of events A and B whatsoever, using any inertial grid's measurements for the 
+time interval and space interval (the distance) 
+between them, combined in a special way.
+This number is simply called the <b>space-time interval</b> (or just <b>interval</b> for short). 
+The <em>square</em> of the interval (and thus the interval itself) is calculated like this:
+<P><img src='formulas/interval2.png' class='equation'>
+<!-- <pre><b><span class='highlight'>s<sup>2</sup> = c<sup>2</sup> * &#916;t<sup>2</sup> - &#916;d<sup>2</sup></span></b></pre> -->
+
+<P> <canvas id='interval' width='200' height='150' style='float:left;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('interval');
+ var ctx = canvas.getContext('2d');
+ interval(ctx);
+</script>
+
+<table class='report'>
+ <tr><th>Symbol<th>Means
+ <tr><td>s<sup>2</sup><td>the square of space-time interval between the 2 events
+ <tr><td>c<td>the speed limit
+ <tr><td>&#916;t<td> the time interval between the 2 events
+ <tr><td>&#916;d<td> the distance between the 2 events
+</table>
+
+<P style='clear:left;'>Each pair of events has a value for s<sup>2</sup>.
+The value may be positive, negative, or 0. 
+When s<sup>2</sup> is negative, the value of s is imaginary.
+(Warning: people often refer to <em>both</em> s and s<sup>2</sup> as the interval, but that's sloppy language.)
+To state it explicitly, the rule is this:
+
+<P><b class='highlight'>The value of <em>s<sup>2</sup></em> for any two events is invariant.</b>
+
+<P>
+The <em>space</em>-interval &#916;d  has always been parochial: 
+when one grid is moving with respect to another, then the distance &#916;d between 2 events will, in general, vary between the 2 grids.
+That's not new. 
+What <em>is</em> new is that the same applies to the <em>time</em>-interval &#916;t as well. 
+That's new, because when physics began in the 1600s, the time-interval was assumed to be universal.
+But that was a fundamental mistake.
+<b>Instead, it's the <em>space-time</em> interval s, constructed from the space-interval &#916;d and the time-interval &#916;t, that's really universal, and neither of its parts.</b>
+That is, <b><span class='highlight'>time is parochial, not universal</span></b>.   
+
+<P>Roughly speaking, sometimes time and space can be converted into each other.
+You can trade one for the other.
+Time intervals can be converted into space-intervals, and vice versa, as long as s<sup>2</sup> stays the same.
+ 
+<div class='aside-remarks'>
+"The discovery that time is relative brought about a profound revolution in our picture of nature. It represents
+one of the greatest victories of the human mind over the distorted notions acquired over the ages. It 
+can be compared only with the revolution in human ideas brought about by the discovery of the fact that the 
+Earth is a sphere."  <br>- <em>What Is Relativity?</em>, L. D. Landau
+
+</div>
+
+<P>Another important thing to know about s<sup>2</sup> is this:
+<P><span class='highlight'><b>The formula for <em>s<sup>2</sup></em> defines the geometry of space-time.</b></span>
+
+<div class='aside-remarks'>
+ General relativity (also called <em>geometrodynamics</em>) is a theory of gravity.
+ Like special relativity, it also centers on the idea of the interval as defining the geometry of space-time. 
+ The rules of geometrodynamics (rather complicated) describe how the presence of mass or energy changes the formula for s<sup>2</sup>, 
+ and thus how mass or energy <em>warps</em> the normal geometry of space-time seen in special relativity.
+</div>
+
+<P>Here's a <b>summary</b> of the logical progression so far:
+<ol>
+ <li>Inertial grid: In an inertial grid, the speed and direction of motion of an object that's not interacting with anything doesn't change.
+ <li>Invariant: If a quantity is measured to be the same in all inertial grids, then it's said to be an invariant quantity.
+ <li>Rule about all other rules: Physics rules must be expressible using only invariant quantities.
+ <li>Invariant #1: There's an invariant universal speed limit for all signals.
+ <li>Invariant #2: The space-time interval between any two events is invariant. Time is relative, not absolute.
+</ol>
+(The last rule can actually be seen as a consequence of the preceding two.)
+<b>Everything else follows from these basic rules.</b> 
+All of the space-time diagrams and ideas presented below are essentially ways of helping you think correctly 
+about the consequences of these rules.
+
+
+<a name='LightCone'></a>
+<h2>Light-like, Time-like, and Space-like</h2>
+
+You begin investigating the structure of space-time simply by looking at the numeric <em>sign</em> of <em>s<sup>2</sup></em>.
+Since all inertial grids agree on the value of <em>s<sup>2</sup></em>, then they must necessarily agree on its sign too.
+Take any event <em>A</em> and then calculate <em>s<sup>2</sup></em> between <em>A</em> and 
+the surrounding events. 
+You can see that there is a surface where <em>s<sup>2</sup></em> is zero, and this surface separates the regions 
+where the value of <em>s<sup>2</sup></em> is alternately positive or negative.
+
+<P>
+The events having <em>s<sup>2</sup> = 0</em> with respect to <em>A</em> are said to have a 
+<b>light-like</b> relation to <em>A</em>.
+In a two-dimensional space-time diagram, they form diagonal lines forming a big 'X' centered on <em>A</em>.
+If you add another space dimension, then these events will be in the shape of 
+two <em>cones</em> with their pointy ends at <em>A</em>, with one opening upwards along the +ct axis, 
+called the <b>future light cone</b>,
+and the other opening downwards along the -ct axis, called the <b>past light cone</b>.
+Both of these cones taken together are called the <b>light cone of the event <em>A</em></b>.
+The history of any object travelling through event <em>A</em> at the speed limit will be somewhere 
+on the light cone of <em>A</em>.
+
+<P>
+<canvas id='signOfInterval' width='200' height='200'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('signOfInterval');
+ var ctx = canvas.getContext('2d');
+ signOfInterval(ctx);
+</script>
+<canvas id='lightCone' width='200' height='200'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('lightCone');
+ var ctx = canvas.getContext('2d');
+ lightCone(ctx);
+</script>
+<canvas id='futurePastElsewhere' width='200' height='200'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('futurePastElsewhere');
+ var ctx = canvas.getContext('2d');
+ futurePastElsewhere(ctx);
+</script>
+
+<P>The light cone of event <em>A</em> <b>divides the Universe neatly into two parts</b>: 
+<ul>
+<li>the events <em>inside</em> the light cone (that have <em>s<sup>2</sup> > 0</em>, with respect to <em>A</em>)
+<li>the events <em>outside</em> the light cone (that have <em>s<sup>2</sup> < 0</em>, with respect to <em>A</em>)
+</ul>
+
+<P>
+The <em>s<sup>2</sup> > 0</em> events are centered on the time-axis. 
+They are said to have a <b>time-like</b> relation with <em>A</em>.
+They are separated into two <em>unconnected</em> regions, according to whether or not the other event happens before or after event <em>A</em>.
+The region inside the past light cone is called the <b>absolute past</b> (or just the <b>past</b>) of <em>A</em>, 
+and the region inside the future light cone is called the <b>absolute future</b> (or just the <b>future</b>) of <em>A</em>.
+
+<P>The <em>s<sup>2</sup> < 0</em> events are centered on the spatial axes.
+They are said to have a <b>space-like</b> relation with <em>A</em>.
+In the two-dimensional space-time diagram, it looks as if there are two unconnected negative regions, 
+but that's incorrect. When another space dimension is added (as in the middle diagram above), you can see that it's all connected 
+together, on the outside of the light cone, and there's only one such negative region, not two. 
+It's called the <b>absolute elsewhere</b> (or just the <b>elsewhere</b>).
+
+<p>Note that <b>events can't cross over from one region to another</b> when you change grids. 
+That would violate the rules, since it would change the value of the <em>s<sup>2</sup></em>.
+For example, if an event is in the past of event <em>A</em> according to one inertial grid, 
+then it must be in the past of event <em>A</em> for all inertial grids.
+
+
+
+<a name='CauseAndEffect'></a>
+<h2>Cause And Effect</h2>
+In space-time diagrams having <em>ct</em> as the time axis, 
+the history of a signal travelling at the speed limit <em>c</em>
+is drawn as a line, 45&deg; with respect to the vertical. 
+Histories drawn at an angle greater than 45&deg; to the 
+vertical represent impossible signals, because they represent motions faster than the speed limit.
+<canvas id='historyStaysInLightCone' width='160' height='160' style='float:right;margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('historyStaysInLightCone');
+ var ctx = canvas.getContext('2d');
+ historyStaysInLightCone(ctx);
+</script>
+
+For an event <em>A</em> and its division of space-time into past, future, and elsewhere,
+this rule means:
+<ul>
+<li>event <em>A</em> can be affected by signals from events in its past, <em>and only its past</em>.
+<li>event <em>A</em> can send a signal to events in its future, <em>and only its future</em>.
+<li>none of the events in the <em>elsewhere</em> of event <em>A</em> can either send a signal to <em>A</em>, or receive one from it;
+ that is, events in the elsewhere of event <em>A</em> cannot interact with event <em>A</em> in any way.
+</ul>
+
+<P>If two events are related as <em>cause and effect</em>, then <span class='highlight'><b>the cause must always precede the effect</b></span>.
+In a space-time diagram, if event <em>A</em> is the cause of event <em>B</em>, then <em>B</em> must be 
+able to receive a signal from <em>A</em>; in other words, <em>B</em> must be in the future of <em>A</em>.
+
+
+<P>For any history, you can construct a light cone at any event along the history. 
+Again, because of the limiting nature of the speed limit, <b>the entire history will always 
+remain inside the light cone</b>.
+
+
+
+<a name='SurfacesWithConstantInterval'></a>
+<h2>Surfaces With Constant s<sup>2</sup></h2>
+As shown above, the sign <em>s<sup>2</sup></em> defines the basic structure of space-time - the light cone, 
+the past, the future, and the elsewhere.
+But instead of looking at just the <em>sign</em> of <em>s<sup>2</sup></em>, let's go a step further and look its <em>value</em>.
+What do you get if you insist that <em>s<sup>2</sup></em> is constant with respect to an event <em>A</em>?
+Mathematically, this is expressed by the formula:
+<pre>c<sup>2</sup>&#916;t<sup>2</sup> - &#916;d<sup>2</sup> = constant</pre>
+
+Geometrically, this equation defines a <em>hyperbola</em> in space-time near the event <em>A</em>.
+For different values of the constant, you get different hyperbolas.
+
+In a 2-dimensional space-time diagram, the hyperbola is a curve.
+If you add another space dimension, the hyperbola is a surface (called a <a href='http://en.wikipedia.org/wiki/Hyperboloid_of_revolution'>hyperboloid of revolution</a>).
+
+<P>There are two cases, according to the sign of the constant:
+<ul>
+<li>for positive (time-like) values, the hyperbolas 'open up' along the time axis.
+<li>for negative (space-like) values, the hyperbolas 'open up' along the space axis.
+</ul>
+
+
+<P>
+<canvas id='surfaceConstantPositiveInterval' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('surfaceConstantPositiveInterval');
+ var ctx = canvas.getContext('2d');
+ surfaceConstantPositiveInterval(ctx);
+</script>
+
+
+<canvas id='surfaceConstantNegativeInterval' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('surfaceConstantNegativeInterval');
+ var ctx = canvas.getContext('2d');
+ surfaceConstantNegativeInterval(ctx);
+</script>
+
+<canvas id='hyperbolicShellPositiveInterval' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('hyperbolicShellPositiveInterval');
+ var ctx = canvas.getContext('2d');
+ hyperbolicShellPositiveInterval(ctx);
+</script>
+
+
+<canvas id='hyperbolicShellNegativeInterval' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('hyperbolicShellNegativeInterval');
+ var ctx = canvas.getContext('2d');
+ hyperbolicShellNegativeInterval(ctx);
+</script>
+
+
+
+<P>The most important point about hyperbolas is that <em>they approach limits</em>: they 
+get closer and closer to straight lines, called <a href='http://en.wikipedia.org/wiki/Asymptote'>asymptotes</a>, but never actually touch them.
+Hyperbolas are said to be <em>asymptotic</em>.
+In our case, <b>the light cone is an asymptote.</b>
+In special relativity, this sort of asymptotic behavior is seen again and again.
+For example, a moving object can <a href='#ExampleSpeeds'>approach the speed limit</a>, but it can never reach it (unless it has no mass, like a photon). 
+
+<P><span class='highlight'><b>If you had to describe space-time using a single word, that word would be <em>hyperbolic</em>.</b></span>
+
+<P>These surfaces appear repeatedly in special relativity.
+Instead of calling them "hyperbolas of constant s<sup>2</sup>", 
+this site uses the more concise term <b>interval shell</b> (or simply <b>shell</b> for short).
+
+<P>These space-time diagrams, showing constant <em>s<sup>2</sup></em> with respect to an event, 
+can actually be viewed or interpreted in two different ways:
+<ul>
+ <li>they show <em>multiple events</em> near event <em>A</em> in a <em>single grid</em> (which is what we have done so far)
+ <li>or, they show a <em>single event B</em> near event <em>A</em>, but <em>as measured in multiple grids</em>
+</ul>
+ 
+<P>The second interpretation is usually the more interesting, since it relates directly to one of the main 
+rules: <em>s<sup>2</sup></em> between any two events is invariant across all inertial grids. 
+So, you can use these sorts of diagrams to examine how the coordinates of an event <em>B</em> 
+will change with respect to an event <em>A</em>, when measured in grids that are moving around with respect to 
+each other.
+The event <em>B</em> can change its coordinates with respect to <em>A</em>, but it can only do so 
+in accordance with the rule that the <em>A</em>-to-<em>B</em> square-interval must remain the same. 
+In other words, 
+<b>the coordinates of <em>B</em> relative to <em>A</em> must remain on the same interval shell</b>, as seen from any 
+inertial grid.
+(There's a second rule: in the time-like case, event <em>B</em> is not allowed to go from the 
+past of <em>A</em> to the future of <em>A</em>, or vice versa.)
+
+
+
+
+<a name='MeasureTimeDilation'></a>
+<h2>Measure Time Dilation</h2>
+<P>In principle, the measurement of time dilation in the lab is simple.
+(See this <a href='https://www.youtube.com/watch?v=rbzt8gDSYIM'>video from 1962</a> for a demonstration of measuring time dilation with muons.)
+In the following diagram, the clock X moves past two stationary clocks A and B.
+<P>
+<canvas id='canvas-measure-time-dilation' width='200' height='75'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('canvas-measure-time-dilation');
+ var ctx = canvas.getContext('2d');
+ timeDilationMeasuredInTheLab(ctx);
+</script>
+
+<P>
+Pay attention to 2 events: X coincides with A, and X coincides with B.
+<P>For both of these events, you take the readings on the two clocks.
+You will have 2 readings for X, and 1 reading each for A and B.
+Question: is the time interval between these 2 events the same, as measured by the 1 moving clock, and the 2 stationary clocks?
+The answer is <em>no</em>.
+
+<P>It's helpful to write it as a ratio, where the numerator is the difference in readings on 
+the 2 <em>stationary</em> clocks (A and B), and the denominator is the difference in readings on the 1 <em>moving</em> clock (X).
+<P>
+(B - A) / &Delta;X 
+
+<P>Experimentally, what you find is that the ratio is not 1.0, but <em>greater</em> than 1.0: 
+<P>(B - A) / &Delta;X  > 1.0
+
+<P>
+<b><span class='highlight'>The strangest part of special relativity is this effect, called time dilation</b></span>.
+At low speeds, the ratio is very close to 1.0, and the effect is hard to detect.
+But as the moving clock moves faster and faster, the ratio gets larger and larger.
+<span class='highlight'><b>Moving clocks run slowly with respect to stationary clocks.</b></span>
+
+
+
+
+<a name='MovingClocksGoSlow'></a>
+<h2>The Faster The Object, The Slower The Physics</h2>
+Let's look at time dilation using space-time and intervals.
+The effect is this: take any pair of events having a time-like relation.
+Then, the <em>time</em> interval between these events can increase <em>without limit</em>, 
+simply by choosing a different grid.
+
+<P>Pretend you're an astronaut in a spacecraft named <em>Zoomer</em>, moving through space at a speed of &beta;=0.87 
+with respect to a second spacecraft, named <em>Home Base</em>.
+You need to stay in good physical condition, so you exercise every day.
+You always start by skipping rope. 
+(In the weightlessness of space, you are held down by springs, or some other mechanism, as you do this.)
+When you skip rope, you count the number of skips you've taken, and your movements are very regular.
+In effect, <em>you're acting like a human clock</em>, repeating the same motions with a regular beat. 
+Let's look at one full skip, and how it appears in space-time diagrams.
+There will be two events defining a skip:
+<ul>
+ <li>event <em>A</em>: the start of the skip, when the rope hits the floor
+ <li>event <em>B</em>: the end of the skip, the next time the rope hits the floor
+</ul>
+Let's measure the coordinates of <em>B</em> with respect to <em>A</em>.
+In fact, we'll measure them in two sensor grids, one attached to the <em>Zoomer</em> spacecraft, 
+and a second attached to the <em>Home Base</em> spacecraft.
+Here's what you'll see:
+
+<P><canvas id='skippingRopeSpacecraft' width='120' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('skippingRopeSpacecraft');
+ var ctx = canvas.getContext('2d');
+ skippingRopeSpacecraft(ctx);
+</script>
+<canvas id='skippingRopeEarth' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('skippingRopeEarth');
+ var ctx = canvas.getContext('2d');
+ skippingRopeEarth(ctx);
+</script>
+<canvas id='skippingRopeBoth' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('skippingRopeBoth');
+ var ctx = canvas.getContext('2d');
+ skippingRopeBoth(ctx);
+</script>
+
+<P>The space-time diagram on the right is a bit unusual, since 
+it <em>combines information from two different grids</em>. This just makes it easier to compare 
+their measurements.
+Note that the event <em>B</em> appears twice in the last diagram, once for each grid.
+This is intentional, since it's the exact same event, as measured in the two different grids.
+Let's review what these diagrams are saying.
+
+<P>In the <em>Zoomer</em> grid, the events are separated by a time, but not by a distance, since they happen
+at the same place. 
+A typical value for the time between <em>A</em> and <em>B</em> would be about 0.5 seconds, for skipping rope.
+
+The value of the squared interval, for this grid, depends only on the time interval, since the space interval (the distance) is 0: 
+<pre>s<sup>2</sup> = c<sup>2</sup> * (&Delta;t)<sup>2</sup> - (&Delta;x)<sup>2</sup></pre>
+<pre>s<sup>2</sup> = (300,000)<sup>2</sup> * (0.5)<sup>2</sup> - 0 km<sup>2</sup></pre>
+The interval shell corresponding to this value is shown in the third diagram above. 
+<b>It must necessarily connect the two <em>B</em>'s</b> on the diagram, because of the 
+basic rule that says that the square-interval between two events is invariant for all inertial grids.
+
+<P>In the <em>Home Base</em> grid, the events are separated by both a time and a distance, since the 
+<em>Zoomer</em> spacecraft is 
+moving swiftly with respect to it. 
+And, of course, the event <em>B</em> must be on the interval shell.
+ 
+<P>
+<canvas id='skippingRopeDeltaTs' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('skippingRopeDeltaTs');
+ var ctx = canvas.getContext('2d');
+ skippingRopeDeltaTs(ctx);
+</script>
+
+<canvas id='skippingRopeVariousSpeeds' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('skippingRopeVariousSpeeds');
+ var ctx = canvas.getContext('2d');
+ skippingRopeVariousSpeeds(ctx);
+</script>
+ 
+<P>Next, if you compare just the <em>time</em> interval between <em>A</em> and <em>B</em>, 
+along the vertical <em>ct</em> axis only, 
+as measured in the two grids, you can see <b>there's a large disagreement</b>.
+If you actually measure it on the screen, you'll see that the <em>Home Base</em> 
+time interval is twice the <em>Zoomer</em> time interval.
+If the <em>Zoomer</em> time interval for skipping the rope is 0.5s, then the <em>Home Base</em> time interval is 1.0s.
+(The value of &beta;=0.87 was chosen specifically to get this doubling. For other values of  &beta;, 
+the factor is different.) 
+You can also see from the shape of the interval shell that the disagreement in 
+the time intervals is very small when &beta; is small, and gets increasingly large as &beta; increases.
+
+
+<p>We can draw this stunning conclusion: 
+<p><span class='highlight'><b>The faster the object, the slower the physics.</b></span>
+
+<P>To restate what we've seen earlier, <b>measurements of time intervals are parochial, not universal.</b>
+That is, it's only <em>s<sup>2</sup></em> between two events which is invariant.
+The time-interval between events can take different values, according to the grid used to make 
+the measurements. 
+
+<P>Here's a good way to describe time dilation: <span class='highlight'><b>moving clocks run slowly with respect to stationary clocks.</b></span> 
+
+<P>Does an astronaut on the <em>Zoomer</em> feel anything strange in their experience of time?
+No, the astronaut experiences no change at all in their experience. 
+The fact that the <em>Zoomer</em> is moving with respect to the <em>Home Base</em> 
+makes no difference at all to the astronauts on the <em>Zoomer</em>. 
+It's only the measurement of time <em>as seen from the Home Base</em> that slows down.
+But, from the point of view of <em>Home Base</em>, those measurements are completely real.
+From the perspective of the <em>Home Base</em>, absolutely <em>everything</em> sloooooows doooooown on the <em>Zoomer</em>,
+including, for example:
+<ul>
+ <li>the motions of the exercising astronaut
+ <li>the astronaut's heart rate
+ <li>how long it takes a banana in the kitchen to turn brown
+ <li>the half-life of radioactive material on board the ship
+</ul>
+
+<P>An excellent mental picture of time dilation comes from <b>musical recordings on magnetic tape</b>.
+If the tape is recorded at one speed, and then played back at a slower speed, then the playback 
+will sound different from the original in two ways:
+<ul>
+ <li>the tempo (the beat) will be slower by some factor 
+ <li>the frequencies of the sounds will all be lowered, also by the same factor
+</ul>
+For example, if the playback-speed is exactly half the recording-speed, a high C note becomes a low C note, 
+played for twice as long. 
+(The song <em>Strawberry Fields Forever</em> by the <em>Beatles</em> uses such 
+effects, with different parts of the recording made at slightly different speeds.)
+
+
+<P>It's important to recall here something mentioned earlier: a grid is a grid of 
+sensors having synchronized clocks, each of which records only the nearby events.
+That is, there are many sensors in a grid, not just one. 
+So, for our astronaut skipping rope on the <em>Zoomer</em> spacecraft, 
+<em>the times recorded for the two events A and B in the Home Base grid are recorded by two different sensors</em>.
+In fact, the various measurements shown above involve 3 different sensors - one in the <em>Zoomer</em> grid, 
+and two in the <em>Home Base</em> grid. 
+
+
+
+
+<a name='ReverseThePerspective'></a>
+<h2>Reverse The Perspective</h2>
+
+<P>What happens when you <b>reverse the perspective</b>, and
+ take the <em>Home Base</em> spacecraft as moving at &beta;=0.87 with 
+respect to the <em>Zoomer</em> spacecraft instead? 
+You see the same effect -  the physics on the moving object goes slowly with respect to stationary clocks.
+On the surface, this seems to be a contradiction: how can the physics be slowed down on <em>both</em> 
+spacecraft at the same time?
+
+<P>It's actually not a contradiction, because there are two things wrong:
+<ul>
+<li>first, the phrase "they are both going slow <em>at the same time</em>" assumes what's <em>not</em> true - that 
+the passage of time is universal.
+<li>second, you need to examine exactly what's being measured and how. 
+Each case uses 2 pairs of measurements taken from 3 sensor clocks.
+There's no contradiction because the measurements that show the slowing-down are completely different.
+</ul>
+
+<P>To see this, just look at it carefully from both perspectives, and think about how the measurements are made.
+<P>
+In the following diagram, first we have clocks X,Y moving past clocks A,B.
+Then we have the opposite perspective on the same situation: clocks A,B moving past clocks X,Y (in the opposite direction, of course).
+There are 4 clocks in total, 2 attached to each grid.
+<P>
+<canvas id='canvas-compare-time-dilation' width='200' height='150'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('canvas-compare-time-dilation');
+ var ctx = canvas.getContext('2d');
+ timeDilationCompareTwoGrids(ctx);
+</script>
+
+<P>To measure the time dilation effect in a given grid, you use only 3 of the 4 clocks, and you ignore the remaining one.
+Schematically, you can write it like this, where the numerator is the difference in readings on 2 <em>stationary</em> clocks, and the denominator is 
+the difference in readings on 1 <em>moving</em> clock.
+The main point is that both of these ratios are greater than 1.0:
+<P>
+(B - A) / &Delta;X  > 1.0
+<P>
+(Y - X ) / &Delta;A > 1.0
+
+<P>(In the first case, we choose to ignore Y, in the second we choose to ignore B.)
+SR simply says that these two ratios are equal. 
+<P>
+(B - A) / &Delta;X  = (Y - X) / &Delta;A
+
+<P>But note that <em>the two sides come from different measurements</em>.
+That's why there's no contradiction between the two perspectives.
+
+ 
+ 
+<a name='WarpFactor'></a>
+<h2>Warp Factor</h2>
+The above ratio of time intervals is officially called the <b>Lorentz factor</b>, 
+but here we'll simply call it the <b>warp factor</b>.
+It relates to the distortion of times and distances when high speeds are involved.
+The traditional symbol for the warp factor is the Greek letter gamma &Gamma;.
+(The small gamma '&gamma;' renders poorly in many browsers, so this site will use a capital gamma 
+'&Gamma;' instead.)
+Like &beta;, you will see the warp factor &Gamma; appearing repeatedly.
+
+
+<P>The warp factor &Gamma; depends only on &beta;. 
+It increases slowly from 1, and then increases very rapidly as &beta; approaches 1.
+<em>It has no upper limit, and increases without bound.</em>
+<P>
+
+<table class='report' style='float:right;'>
+ <tr><th>&beta;<th>&Gamma;
+ <tr><td>0.00<td>1.0
+ <tr><td>0.75<td>1.5
+ <tr><td>0.87<td>2.0
+ <tr><td>0.98<td>5.0
+ <tr><td>0.99<td>7.1
+ <tr><td>0.995<td>10.0
+</table>
+
+<canvas id='betaIntervalGamma' width='320' height='320'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('betaIntervalGamma');
+ var ctx = canvas.getContext('2d');
+ betaIntervalGamma(ctx, 2);
+</script>
+
+<canvas id='gammaWarpFactor' width='320' height='320' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('gammaWarpFactor');
+ var ctx = canvas.getContext('2d');
+ gammaWarpFactor(ctx);
+</script>
+
+<P>The diagram on the left is interesting, since it combines three important things 
+all in one picture: the speed &beta;, the interval shell, and the warp factor &Gamma;.
+Here's a <a href='betaIntervalGamma.html'>larger version</a> of the same diagram, suitable for printing.
+There's also an <a href='animations/beta-interval-gamma/bgs.html'>animated version</a>.
+You can use that diagram to find the warp factor corresponding to each value of &beta;, simply by 
+drawing two lines: one for the speed &beta;, to find its intersection with the hyperbola; then a second line, 
+going horizontally over to the left, to find the corresponding value of &Gamma;.
+Here's an example, using &beta;=0.75, showing that &Gamma; is 1.5:
+<P>
+<canvas id='betaIntervalGammaExample' width='320' height='320'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('betaIntervalGammaExample');
+ var ctx = canvas.getContext('2d');
+ betaIntervalGammaExample(ctx, 2);
+</script>
+<img src='formulas/gamma.png' class='equation' style='margin-left:5.0em;margin-bottom:2.0em;' >
+
+
+<a name='WristwatchTime'></a>
+<h2>Measuring Intervals With Only A Single Sensor</h2>
+In general, space-time intervals are measured with both sensor clocks and meter sticks.
+It's also possible to measure any <em>time-like</em> space-time interval with just a single sensor, 
+but you have to choose the correct grid.
+We've already seen an example of this in our skipping rope experiment with the 
+astronauts on the <em>Zoomer</em> and <em>Home Base</em> spacecraft.
+The consolidated space-time diagram for the two events A and B for the astronaut skipping rope 
+on the <em>Zoomer</em> looked like this:
+
+<P>
+<canvas id='skippingRopeBoth2' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('skippingRopeBoth2');
+ var ctx = canvas.getContext('2d');
+ skippingRopeBoth(ctx);
+</script>
+
+
+<P>
+In the <em>Zoomer</em> grid, the interval was measured just with 
+a single sensor clock in the <em>Zoomer</em> spacecraft, because there was no distance between the 
+two events A and B:
+<pre>s<sup>2</sup> = c<sup>2</sup> * (&Delta;t)<sup>2</sup> - (&Delta;x)<sup>2</sup>
+s<sup>2</sup> = c<sup>2</sup> * (&Delta;t)<sup>2</sup> - 0
+s = c * (&Delta;t)</pre>
+
+This is true in the <em>Zoomer</em> grid. 
+But for any grid which is <em>moving</em> with respect to the <em>Zoomer</em> grid, 
+it's no longer true.
+
+
+<P>In general: 
+for any events A and B that have a time-like separation, you can always find a grid in which 
+the the spatial distance between A and B is 0. 
+This just corresponds to the 'lowest point' of the interval shell.
+In such a grid, the interval is measured 
+just <b>by a single sensor clock</b> in that grid, located at the same position as A and B.
+A time interval measured by such a sensor clock is called <b>proper time</b>, but it's important 
+to remember that the proper time is just the same old space-time interval, measured in a certain way.
+
+<a name='WristwatchesShowInterval'></a>
+<h2>An Object's Wristwatch Measures The Interval</h2>
+The above can be interpreted in a slightly different way.
+Pretend there's a freely moving object moving through a sensor grid.
+How can you measure the interval between any two events on the object's history?
+Well, there are two ways:
+<ul>
+ <li>the hard way: make the usual <em>where</em> and <em>when</em> measurements as it passes through your 
+ grid. Then, for any pair of events, calculate the interval using the interval formula (see above).
+ <li>the lazy way: just attach a sensor to the moving object. As it passes through your grid, your grid sensors will talk
+ to the moving sensor, and ask it for its time reading. 
+ Then, the interval between two events in the object's history is just the difference between two such time readings, multiplied by <em>c</em>.
+</ul>
+
+You can remember this like so: 
+<span class='highlight'><b>An object's wristwatch-time is proportional to the interval between events in the object's history.</b></span>
+
+<a name='TimeDilationRevisited'></a>
+<h2>Time Dilation Revisited</h2>
+
+<P>Let's return to the example of the two spacecraft, <em>Zoomer</em> and <em>Home Base</em>.
+Let's focus on the history of a single sensor, a sensor belonging to the <em>Zoomer</em>'s grid, but let's 
+record that history in <em>both</em> the <em>Zoomer</em> grid <em>and</em> the <em>Home Base</em> grid.
+This is almost the same space-time diagram as before, but now we have a full history of the sensor, 
+not just two separate events.
+
+<P>
+<canvas id='movingSensor' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('movingSensor');
+ var ctx = canvas.getContext('2d');
+ movingSensor(ctx);
+</script>
+
+<P>In the <em>Zoomer</em> grid, the sensor doesn't move, &beta;=0.
+In the <em>Home Base</em> grid, the <em>Zoomer</em>-sensor is moving at &beta;=0.87.
+The dots show three ticks of the <em>Zoomer</em>-sensor's clock. 
+You can easily see the effect of time dilation.
+As the <em>Zoomer</em>-sensor passes through the <em>Home Base</em> grid, it shares its 
+current time reading with the various <em>Home Base</em> sensors it meets along the way. 
+(Remember that sensors can only record local events.)
+Note that the <em>Home Base</em> sensors record an event like this, for example: 
+at a <em>Home Base</em> time of 6.0s, the 
+passing <em>Zoomer</em>-sensor says that its <em>own</em> time was 3.0s.
+
+<P>It's important to have this exact picture in your head when thinking about 
+time dilation. 
+The clock moves through a sensor grid, and as it moves through the grid, 
+the moving clock's time is compared with the time on the many grid sensors it meets along the way.
+To see the effect of time dilation, you need at least 3 clocks: the moving clock, 
+and at least 2 grid sensors to compare it to.
+
+<P>This example uses a sensor clock, but the same effect is seen with any object.
+If a banana takes 7 days to turn brown on the <em>Zoomer</em> spacecraft, then,
+according to the the sensor readings in the <em>Home Base</em> grid, it will take 14 days (if &beta;=0.87).
+That is, <b>moving bananas take longer to turn brown</b>.
+
+
+
+<a name='NoMininmumTravelTime'></a>
+<h2>Three Weeks To The Pleiades</h2>
+As &beta; gets closer to the speed limit of 1, the value of the warp factor &Gamma; increases <em>without limit</em>.
+The warp factor keeps going up, and up, and up, the closer &beta; gets to 1.
+The warp factor &Gamma; gives the size of the time dilation effect.
+For the <em>Zoomer</em> spacecraft moving with respect to <em>Home Base</em>, 
+ <span class='highlight'><b>there's no limit to the amount of time dilation</b></span> seen by <em>Home Base</em>.
+For a traveller in <em>Zoomer</em>, the travel-time from one place to another, from their point of view, is 
+just the time on their wristwatch. (The wristwatch is a sensor in <em>Zoomer</em>'s grid.)
+
+
+<P>So, for the <em>Zoomer</em>-astronaut, the travel-time to any destination can approach zero time.
+
+<P>Here's an example, using a proton in the <a href='http://en.wikipedia.org/wiki/Large_Hadron_Collider'>Large Hadron Collider</a>.
+Pretend that one of these protons is sent on a proton vacation to the <a href='http://en.wikipedia.org/wiki/Pleiades'>Pleiades</a>, 
+a cluster of stars about 385 light-years from Earth. 
+<!-- Generated from SDSS data, by sky-map.org: -->
+<img src='images/pleiades.jpg' class='photo' style='float:right;' title='Pleiades star cluster, in Taurus'>
+If you were able to attach a wristwatch to this proton, what would it record as the 
+travel-time of the proton to the Pleiades?
+
+<P>The answer is given by our friend, the warp factor &Gamma;. Here are the numbers:
+<pre>
+&beta; = 0.99999998958
+&Gamma; = 6928
+travel-time on the proton's wristwatch:
+  = 385 years / 6928
+  = 20 days, 7 hours
+</pre>
+
+This is a stunning fact. 
+There is a universal speed limit <em>c</em>, but from the point of view 
+of an actual traveller, this <b>does <em>not limit the travel-time</em> seen by a traveller in any way</b>.
+In principle, a traveller's travel-time from any place in the Universe to any other place in the Universe 
+can be made as small as desired, by getting closer to the speed limit. <em>Zounds!</em> 
+
+<P>As &beta; approaches 1 and &Gamma; climbs higher and higher,
+<span class='highlight'><b>the geometry of space-time lets you travel quickly to the stars</b></span>.
+
+
+
+<a name='MovingChildrenAgeMoreSlowly'></a>
+<h2>Moving Children Age More Slowly</h2>
+Imagine that a parent is at home, being annoyed by the children.
+<em>"Children, I'm truly thankful for your existence, but at this moment, you are annoying me.
+Please go outside and play, while I sit here and have my coffee... Be back in an hour for supper."</em>
+Everyone is carrying a device (like a wristwatch, or a phone) that measures the time to an extreeeeeeme accuracy.
+Before the children go outside, all of the watches are synchronized, and set to read the same time.
+The children run around for a while playing    
+<a href='http://en.wikipedia.org/wiki/Kick_the_can'>kick-the-can</a>, and then 
+go back inside the house.
+<!-- http://www.familyfunhouston.com/kick_the_can.html -->
+<img src='images/kick-the-can.gif' class='photo' style='float:right;' title='Kick-the-can'>
+Everyone compares the time reading on their devices.
+What do they see? Well, they see two things:
+<ul>
+ <li>the elapsed time for the parent is the greatest
+ <li>the elapsed time for the children varies, but is always less than the parent 
+</ul>
+
+This is just the effect of time dilation, of course. Moving clocks run slowly with respect to stationary clocks.
+Here's a strange fact to chew on: <b>each child's watch reflects how much exercise the child had</b>.
+The more running done by the child (either for longer times, or at greater speeds), the greater the warp factor &Gamma;, and the greater 
+the time difference between the parent's watch and the child's watch.
+
+<P>You can also look an it this way: when you take a trip, the distance travelled is shown 
+by your odometer. 
+Everyone knows that its reading depends on the route you took. If you took a longer route, the odometer shows a larger number.
+But a similar sort of thing can also be said of the elapsed time on your wristwatch.
+If two people leave from event A, separate, and then arrive later simultaneously at event B, 
+then the elapsed time on their watches won't agree, and will depend on the details of how 
+they made the trip.
+Again, <b>time is parochial</b>.
+
+<a name='MaximumAging'></a>
+<h2>Rule For Uniform Motion</h2>
+The above scenario with the playing children 
+provides <b>a rule to distinguish between accelerated and unaccelerated motion</b>.
+
+<P>In an inertial grid, a freely moving object moves without any acceleration. 
+It doesn't change speed, and it doesn't change the direction in which it's moving.
+In a space-time diagram, the history of a freely moving object is the simplest kind 
+of history - a straight line, at some angle with respect to the vertical ct axis.
+For any such object, we know that we can pick a grid where the object is actually at rest; in that grid,
+the history is a vertical line. 
+
+<P>So, the above scenario with the children going out to play looks like this in space-time, where, 
+simply for convenience, we've chosen a grid in which the parent isn't moving:
+
+<P>
+<canvas id='maxAgeing1' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('maxAgeing1');
+ var ctx = canvas.getContext('2d');
+ maxAgeing1(ctx);
+</script>
+
+<canvas id='maxAgeing2' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('maxAgeing2');
+ var ctx = canvas.getContext('2d');
+ maxAgeing2(ctx);
+</script>
+
+<canvas id='maxAgeing3' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('maxAgeing3');
+ var ctx = canvas.getContext('2d');
+ maxAgeing3(ctx);
+</script>
+
+<P>Everyone's history joins event A to event B. 
+Everyone starts out at one place-and-time (event A), and then, later, they join up again at the same place (event B).
+The history for the stationary parent is vertical, 
+while the histories for the running children <em>wiggle around</em> the vertical, because they run around while 
+playing outside. 
+In other words, <b>the children's histories show accelerated motion, while the parent's history does not.</b>
+
+<P>The histories of the parent and the children form a set of histories that share 
+a start-event A and an end-event B. Other than that, they can wiggle around a bit in between.
+Let's call this a <b>set of wiggle histories</b>.
+It's useful to include the parent's history as being just another wiggle history, where
+the wiggle happens to be zero.
+
+
+<P>There are two ways of thinking about the motion of a freely moving object, between two events A and B:
+<ul>
+ <li><em>graphically</em>, uniform motion is just a straight-line history connecting A and B.
+ <li><em>numerically</em>, uniform motion has the maximum reading on a wristwatch attached to the object, 
+ compared to the same reading for any alternative wiggle history between A and B. 
+This is sometimes called the <b>maximum ageing rule</b>.
+</ul>
+
+<P>As we saw before, the reading on the wristwatch, multiplied by <em>c</em>, is just the space-time interval.
+So, you can also say that uniform motion has the <b>maximum total interval</b> in comparison with the 
+nearby wiggle histories.
+
+
+
+<a name='ActionPrinciples'></a>
+<h2>Action Principles</h2>
+The above idea of wiggle histories, along with one history corresponding to a maximum value
+of some quantity,  
+is an example of a <b>action principle</b>.
+<span class='highlight'><b>Fundamental physics often uses an action principle.</b></span>
+They provide powerful and elegant ways of looking at a problem.
+They can describe how objects move, or how fields change in space and time.
+Action principles appear in many parts of physics: 
+<ul>
+ <li>classical mechanics
+ <li>special relativity
+ <li>electrodynamics
+ <li>geometrodynamics
+ <li>quantum mechanics
+</ul>
+
+
+<P>Skipping the mathematical details, here's a summary of how an action principle works:
+<ul>
+ <li>begin with a start-event A and an end-event B
+ <li>pick a wiggle history connecting A and B
+ <li>calculate a number for a small part of the wiggle history; this number is called the <em>lagrangian</em>.
+ <li>sum up the lagrangian values along the wiggle history; this sum is called the <em>action</em>.
+ <li>single out one wiggle history from all the others, as having a minimum (or maximum) value of the action. 
+</ul>
+
+In the case of the maximum ageing rule in the previous section, the numbers being added up are the wristwatch time intervals,
+along the wiggle histories. The rule is that the total wristwatch time is maximum for the history that 
+has no wiggle at all.
+
+
+<P>The invariants we've seen so far are simple - the speed limit c and the space-time interval squared s<sup>2</sup>.
+When you go searching for more invariants, guess what you find?
+You find action sums - or <b>action integrals</b>, as they are really called.
+That is, <b>the remaining invariants are (mostly) action integrals.</b>
+We aren't going to look at these action integrals in detail here.
+But to give you a taste, here's the simplest action integral of all, the one for the 
+motion of a freely moving object: 
+<P>
+<img src='formulas/action-freely-moving.png' style='margin-top:0.5em;' class='equation'>
+<P>
+Here are the details:
+<ul>
+<li><em>S</em>: the total action
+<li><em>a</em> and <em>b</em>: the events at the start and end of the history
+<li><em>m</em>: the (rest) mass of the object
+<li><em>c</em>: the speed limit
+<li><em>ds</em>: the interval s for a tiny part of the object's history
+</ul>
+Notice that the product <em>mcds</em> is an invariant. This means that the sum S of many such items, 
+represented by the long &#x222b; symbol, is also an invariant.
+
+
+
+
+<a name='Boosts'></a>
+<h2>Boost Transformation - Overview</h2>
+
+In the <a href='#InertialGridFamily'>inertial grid family</a>, 
+there are 4 kinds of <em>allowable transformations</em>.
+Only one of these transformations involves a speed: the <em>boost</em> transformation, 
+where one grid is moving with respect to another, at a fixed speed, and in a fixed direction.
+
+<P>The simplest case of a boost looks like this:
+<P>
+<canvas id='lorentzGrids1' width='300' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('lorentzGrids1');
+ var ctx = canvas.getContext('2d');
+ lorentzGrids1(ctx);
+</script>
+<canvas id='lorentzGrids2' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('lorentzGrids2');
+ var ctx = canvas.getContext('2d');
+ lorentzGrids2(ctx);
+</script>
+
+
+<P>These two grids are almost the same.
+Their spatial axes (xyz) all point in the same directions, and they share the same event for the origin:
+<pre>(ct,x,y,z)=(0,0,0,0)</pre>
+The only difference is that grid 2 (in red) moves along the x-axis, in 
+either the positive or negative direction, with respect to grid 1 (in black).
+Here, &beta; is a <em>velocity</em> - it has both a size (the speed) <em>and</em> a direction (along the + or - x-axis, as indicated by the sign of &beta;).
+Given the event coordinates in grid 1, the task is to find the coordinates for the same event
+in grid 2, which is moving in this specific way with respect to grid 1.
+
+<P>As always, each event must keep the same interval squared s<sup>2</sup> with respect to the origin event. 
+In each boosted grid, each event will 'flow' along its interval shell.
+Let's use one space-time diagram, to show how the coordinates of 4 events (one for each part of space-time near the origin) 
+will appear in 
+different grids. The general direction of the flow looks like this:
+<P><canvas id='lorentzFlow1' width='170' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('lorentzFlow1');
+ var ctx = canvas.getContext('2d');
+ lorentzFlow1(ctx);
+</script>
+<canvas id='lorentzFlow2' width='170' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('lorentzFlow2');
+ var ctx = canvas.getContext('2d');
+ lorentzFlow2(ctx);
+</script>
+<P>Notice these things about the flow of events:
+<ul>
+ <li>events never cross the light cone
+ <li>events always stay within the same space-time region
+ <li><span class='highlight'><b>during a boost, events flow like toothpaste</b></span>: 
+ some events are squeezed towards the origin, while others stretch away from it
+ <li>the flow is symmetric with respect to the light cone
+ <li>when &beta; changes sign, the flow reverses 
+</ul>
+You can <b>remember the direction of flow by using your hands</b>. Here's an example for &beta;>0:
+<ul>
+ <li>put your left hand in front of you, with the palm facing you.
+ <li>point your fingers to the right. This indicates the direction of motion of grid 2 (with &beta;>0).
+ <li>point your fingers up 45&deg;, to imitate the 'X' of the light cone. (Coincidentally, this is 
+ the most comfortable position when holding your hand in front of your face.)
+ <li>imagine squeezing a tube of toothpaste with your hand in that position; this will indicate the direction of the flow of events.
+</ul>
+
+For &beta;<0, you do the same thing, but with your right hand instead of your left.
+That's the general picture of how event coordinates change from grid to grid, during a boost.
+
+<a name='BoostDetails'></a>
+<h2>Boost Transformation - Details</h2>
+
+Here are some tools for exploring boost transformations in more detail:
+<ul>
+ <li>transform a <a href='animations/boost-transformation/lt.html?x=50&ct=100&beta=0.60'>single event</a>.
+ <li>transform <a href='animations/boost-transformation/ltmulti.html?hist1=-50%2C-80%2C-50%2C80&hist2=50%2C-80%2C50%2C80&beta=-0.6&anim=on'>multiple events</a> that define a history.  
+ <span class='highlight'><b>This is an important animation, and you should experiment with it.</b></span>
+</ul>
+
+<p>There are two ways of finding out the event coordinates in the boosted grid:
+<ul>
+ <li>use a geometrical construction
+ <li>use a formula
+</ul>
+
+<P>Both of these ways depend on just two numbers, our old friends &beta; and &Gamma;.
+Let's start with the geometrical construction.
+Here are two examples, for &beta;=+0.5 (grid 2 moving to the <em>right</em>), and &beta;=-0.5 (grid 2 moving to the <em>left</em>):
+
+<P><canvas id='boostAxes1' width='200' height='200' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('boostAxes1');
+ var ctx = canvas.getContext('2d');
+ boostAxes1(ctx);
+</script>
+<canvas id='boostAxes2' width='200' height='200' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('boostAxes2');
+ var ctx = canvas.getContext('2d');
+ boostAxes2(ctx);
+</script>
+
+
+<P>These space-time diagrams are a bit unusual, since they have two sets of axes.
+The blue set of axes (for grid 2) is at an angle with respect to the black set of axes (for grid 1). 
+Don't attach too much importance to the distorted appearance of grid 2.
+The distortion isn't "real", it's just how grid 2 looks <em>with respect to</em> grid 1.
+From grid 2's point of view, grid 1 looks distorted, in a similar but reciprocal way (with &beta; having the opposite sign).
+
+<P>The geometrical construction combines two things you've already seen before:
+<ol>
+ <li><b>Find the <em>directions</em> of the axes, using &beta;.</b> 
+ This is done using <a href='#UseCt'>the same technique</a> as before, with &beta; marked off on a 
+ horizontal scale, from the ct axis to the light cone.
+ The sign of &beta; controls which way the angle goes - to the left or the right of the ct axis.
+ The angle between the ct and ct' axes is the same as the angle between the x and x' axes.
+ <li><b>Find the <em>scale</em> of the axes, using &Gamma;.</b> 
+ Above, the scale of each axis is shown by regularly spaced dots.
+ If you look closely, you'll see that the blue dots have a slightly larger spacing, controlled by the value 
+ of &Gamma;. In our case &beta;=0.5, and &Gamma;=1.15. So, the spacing of the blue dots is 1.15 times the spacing 
+ of the black dots. As we've seen already, you can find the value of &Gamma; by construction 
+ using <a href='betaIntervalGamma.html'>this graph</a>. (Or, you can just use the <a href='formulas/formulas.html#gamma'>formula</a> for &Gamma;.)
+ <li>From the event whose coordinates you want to find in grid 2, draw lines parallel to the new axes, and 
+ read off the corresponding numbers on the ct' axis and the x' axis.
+</ol>
+
+It's interesting that this geometrical construction exists.
+But because the axes are bent, it's not possible to get a good feel for how histories really appear in 
+the second grid, with perpendicular axes.
+Instead of this geometric construction, you can also easily calculate the event coordinates in grid 2.
+This will give you a better picture of how histories appear in a boosted grid.
+As you would expect from the above, the formulas depend only on c, &beta;, and &Gamma; :
+
+<P>
+<img src='formulas/boosttransformation.png' class='equation'> 
+
+<P>Here, the primed grid moves with velocity &beta; along the x-axis with respect to the unprimed grid. 
+The inverse transformation is found simply by switching the sign of &beta;.
+
+<P>Remember that -1<&beta;<1. That is, &beta; is the <em>velocity</em> along the x axis, not just the speed.
+It can be either positive (grid 2 moving in the +x direction) or negative (grid 2 moving in the -x direction).
+These equations describe how an event changes coordinates during a boost from 
+one inertial grid to another. Let's call these equations the <b>boost transformation</b>
+(also called the <b>Lorentz transformation</b>).
+
+
+
+<a name='TimeOrder'></a>
+<h2>Time Order Can Change</h2>
+We're usually concerned with time-like intervals, since only time-like intervals occur along the history 
+of an object. Let's take a look at space-like intervals for a moment.
+Here's a reminder of what the interval shell looks like for a space-like interval.
+As usual, we have an origin event A, and an event B having a space-like separation from A.
+That is, event B is in the <em>absolute elsewhere</em> of A:
+
+<P><canvas id='timeOrder1' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('timeOrder1');
+ var ctx = canvas.getContext('2d');
+ timeOrder1(ctx);
+</script>
+<canvas id='timeOrder2' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('timeOrder2');
+ var ctx = canvas.getContext('2d');
+ timeOrder2(ctx);
+</script>
+
+
+<P>This shell shows the set of possible coordinates for event B, as seen from different grids 
+that are moving with respect to each other.
+Notice that event B can come <em>before</em> A (appears lower than A in the diagram), or it can come <em>after</em> A
+(appears higher than A in the diagram). It can also come at the same time as A (simultaneous).
+In other words, <span class='highlight'><b>the time order of events having a space-like interval is not invariant</b></span>. 
+It can change between different grids.
+Also, if two events with a space-like interval are simultaneous in one grid, then they will not be 
+simultaneous in a boosted grid. 
+
+
+<P>Earlier, we made some remarks above about <a href='#CauseAndEffect'>cause and effect</a>.
+Events that might be related by cause and effect must be in each other's light cone.
+They also have to keep the same order in time: the cause must always come before the effect.
+With space-like intervals, the opposite is the case. In summary:
+
+
+<table class='report'>
+ <tr><th>&nbsp;<th>Time-like<th>Space-like
+ <tr><td>Time order is invariant<td>yes<td>no
+ <tr><td>Cause-effect relation allowed<td>yes<td>no
+</table>
+
+
+<a name='DistanceCompression'></a>
+<h2>Length Contraction</h2>
+
+A grid measures the coordinates of events, and it can easily measure the distance between two events.
+But how does it measure the distance between two <em>objects</em>, when they may be moving around?
+To measure the distance between two objects, you first need their histories.
+Then you pick a time, and draw a corresponding <b>horizontal line ct=constant in space-time</b>.
+The horizontal line will connect the two histories, and the distance between the 
+two objects <em>at that time</em> is then just the &Delta;x along that horizontal line.
+
+
+<P>Let's return to the <em>Zoomer</em> and <em>Home Base</em> spacecraft, 
+and look at the <em>spatial dimensions</em> (the size) of the <em>Zoomer</em> spacecraft.
+
+
+<P>In the <em>Zoomer</em> grid, the dimensions of the <em>Zoomer</em> spacecraft have some fixed values.
+If we take the direction of motion of the <em>Zoomer</em> spacecraft as the x-direction, then 
+we might say, for example, that it has these dimensions:
+<ul>
+ <li>&Delta;x=20 meters long (in the direction of motion)
+ <li>&Delta;y=8 meters wide
+ <li>&Delta;z=5 meters high
+</ul>
+
+Does the <em>Home Base</em> grid measure the same dimensions in its grid, for the 
+moving <em>Zoomer</em> spacecraft? Nope. It measures these dimensions:
+<ul>
+ <li>&Delta;x=20/&Gamma; meters long (in the direction of motion)
+ <li>&Delta;y=8 meters wide
+ <li>&Delta;z=5 meters high
+</ul>
+
+For y and z, the dimensions are the same. 
+For the dimension <em>in the direction of motion</em>,
+<b>the size is divided by &Gamma;</b> (with &Gamma; calculated using the speed of <em>Zoomer</em>), and is smaller,
+since &Gamma; is greater than or equal to 1.
+The same can be said of the <em>volume</em> of the <em>Zoomer</em> spacecraft 
+as well: the volume is also divided by the same number &Gamma;.
+
+<P>
+This effect is called <span class='highlight'><b>length contraction</b></span>.
+Note that it takes place in a specific direction, the direction of motion.
+Both time dilation and length contraction have the same underlying cause: the geometry of space-time. 
+You can think of both of these effects as being two aspects of the same thing.
+
+<P>An ultra-relativistic ball appears like a pancake: when measured in the lab, its size along its 
+direction of motion will be <em>less than</em> that of an identical, stationary ball, by a factor of &Gamma;.
+Of course, in the rest frame of the ball, the ball remains round.
+The effects of time dilation and length contraction are real, but they come from the geometry of space-time, not 
+from physical changes in the objects themselves.
+
+<P>Both time intervals &Delta;t and space intervals (distances) &Delta;x are parochial. 
+They change values from one grid to another. 
+The values of &Delta;t and &Delta;x in any one grid have no special status.
+For example, <b>the assertion that the Pleiades has a specific distance of 385 light years from the Earth 
+is a parochial statement attached to a specific 
+grid</b>, a grid comoving with the Earth.
+In other grids, moving with high &Gamma; with respect to 
+the Earth, and in the direction of the Pleiades, it's a different story: 
+the effect of length contraction changes the distance to the Pleiades,
+and divides it by the value of &Gamma;.
+
+<a name='DilationVersusContraction'></a>
+<h2>Dilation Versus Contraction</h2>
+Dilation means getting bigger, and contraction means getting smaller.
+<ul>
+ <li>time <em>dilation</em>: the time it takes for a clock to tick gets <em>bigger</em> (multiply by &Gamma;) when it's moving 
+ <li>length <em>contraction</em>: the length of a moving stick gets <em>smaller</em> (divide by &Gamma;) in the direction it's moving 
+</ul>
+
+It's useful to look at space-time diagrams to see why times and lengths change in opposite ways.
+<P>
+<canvas id='dilateVersusContract1' width='170' height='170' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('dilateVersusContract1');
+ var ctx = canvas.getContext('2d');
+ dilateVersusContract1(ctx);   
+</script>
+<canvas id='dilateVersusContract2' width='170' height='170' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('dilateVersusContract2');
+ var ctx = canvas.getContext('2d');
+ dilateVersusContract2(ctx);   
+</script>
+
+<P>The diagrams show the events for the Lab grid (in which the clock/stick is moving), and the Rest grid (in which the clock/stick is not moving).
+You can see there is asymmetry. 
+
+<P>In the first diagram, the apex of the hyperbola is for the Rest grid. 
+The value of c&Delta;t is bigger (multiply by &Gamma;) in the Lab grid than in the Rest grid.
+
+<P>In the second diagram, the apex of the hyperbola is for the Lab grid.
+The value of &Delta;x is smaller (divide by &Gamma;) in the Lab grid than the Rest grid.
+
+
+
+<a name='ReallySlowContracted'></a>
+<h2>Does It Really Dilate/Contract?</h2>
+There are two common questions:
+<ul>
+ <li>does the moving clock <em>really</em> slow down?
+ <li>does the moving stick <em>really</em> get shorter?
+</ul>
+
+<P>In SR, the short answer to these two <em>does-it-really</em> questions is <em>yes</em>, while the long answer is:
+<ul>
+ <li>the measurements depend <em>both</em> on the state of the clock/stick at rest <em>and</em> on how the clock/stick is moving with respect to the chosen grid
+ <li>measurements are always <em>real</em>; measurements made in one grid are just as real as measurements made in any other grid
+</ul> 
+
+<P><em>The measurements are relative: they don't depend solely on the thing itself.</em>
+The measurements depend <em>both</em> on the thing itself, <em>and</em> on how the thing is moving through a specific grid.
+
+<P>These two <em>does-it-really</em> questions are ambiguous. 
+There are at least two possible points points of view the questioner may have:
+<ul>
+ <li>the measurements can't show different results (the absolute or Newtonian point of view)
+ <li>the measurements can show different results, but one is somehow real while the other is not
+</ul>
+
+Both of these points of view are incorrect.
+
+
+
+<a name='SpaceTimeVolumesInvariant'></a>
+<h2>Invariant #3: Volumes in Space-Time</h2>
+As seen above, the boost transformation makes events flow like toothpaste in space-time.
+Some pairs of events are stretched out, while others are squeezed together.
+When you consider <em>volumes</em> of space-time, then these two effects actually cancel each other out. 
+
+<P><span class='highlight'><b>The volume of a region of space-time is invariant.</b></span>
+
+<P>
+<canvas id='spaceTimeVolume1' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('spaceTimeVolume1');
+ var ctx = canvas.getContext('2d');
+ spaceTimeVolume1(ctx);   
+</script>
+<canvas id='spaceTimeVolume2' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('spaceTimeVolume2');
+ var ctx = canvas.getContext('2d');
+ spaceTimeVolume2(ctx);   
+</script>
+
+
+<P>A volume of space-time is defined by a <em>closed boundary</em> of some sort.
+Roughly speaking, the boundary needs to "go in a circle" in order to get back to where it started.
+You can't make such closed boundaries using only histories, because histories can't go in loops.
+(Any loops in a history would imply speeds faster than the speed limit, which is against the rules.)
+But you can make a space-time volume using a <em>mixture</em> of histories and non-histories, as shown above.
+In the above diagram for Grid 1 on the left, the vertical sides are histories, while the horizontal sides are not.
+You can measure the areas of the two grey areas shown above: they are the same. 
+(The area of a <a href='http://en.wikipedia.org/wiki/Parallelogram#Area_formula'>parallelogram</a> is 'base times height'.)
+
+<P>
+A space-time volume has different units, depending on the number 
+of dimensions you're using:
+<ul>
+ <li>2-dimensional (ct, x): meters<sup>2</sup> (an area)
+ <li>3-dimensional (ct,x,y): meters<sup>3</sup> (an actual volume)
+ <li>4-dimensional (ct,x,y,z): meters<sup>4</sup> (there's no standard name for this)
+</ul>
+
+
+It's interesting to note that the "flow" of space-time volumes resembles  
+the flow of an <a href='http://en.wikipedia.org/wiki/Fluid_parcel'>incompressible fluid</a>.
+
+<a name='HighGammaTravel'></a>
+<h2>Time Machines and Wormholes</h2>
+If a civilization can engineer spacecraft that can travel at very high speeds, where &Gamma; takes a 
+large value, then the effects of time dilation and length contraction will significantly 
+affect the experience of travellers. 
+As a threshold for high-&Gamma; travel, you might take the value &Gamma;=2, corresponding to &beta;=0.87.
+
+<P><span class='highlight'><b>To the traveller, high-&Gamma; travel is experienced as a combination of wormhole 
+and time machine.</b></span>
+
+<P>When you travel from the Earth to another star with high &Gamma;, your travel time will be shrunken by time 
+dilation. 
+Alternatively, you could say that the distance to the star is changed by length contraction, in the direction of travel.
+Either way, when &Gamma; is sufficiently high, the result is that you arrive at the destination much more quickly
+than you would have without these effects. 
+In the language of science-fiction, the trip feels as if you've passed through a
+wormhole - a weird short-cut through space. 
+(As well, you will also see optical distortions in the directions of the stars when you look out the window 
+of the spacecraft.)
+
+<P>
+After the travellers have reached the other star, then, <em>in a grid attached to the Earth</em>, 
+the travellers are also in the deep future. From the Earth's perspective, it's taken a long time for 
+the travellers to reach their destination.
+
+<em>From the traveller's perspective</em>, they will know intellectually that they are now in Earth's 
+deep future, but they won't feel it in their bones:
+when they turn their radio telescopes back towards the Earth, they will pick up transmissions that were 
+emitted long ago.
+To the traveller, nothing very strange will be seen in the apparent date of these transmissions.
+Of course, if they make the return trip back to the Earth, that impression will be corrected, and 
+they will finally experience the time-machine aspects of high-speed travel.
+
+<table class='report' style='border:1px;'>
+ <tr><th>Machine <th>How To Build It
+ <tr><td>Wormhole <td>high-&Gamma; travel, one-way trip
+ <tr><td>Time machine into the <em>future</em> <td>high-&Gamma; travel, return trip (also: return trip to a black hole)
+ <tr><td>Time machine into the <em>past</em> <td>strictly forbidden, reverses cause-and-effect
+</table>
+
+<P>In practice, such machines don't exist, because it's <em>extremely</em> difficult to accelerate a large mass to such high speeds (and high accelerations will kill paltry humans).
+But, the rules of physics allow for their construction <em>in principle</em>.
+
+<P>For Hollywood movies, the only problem is that time-travel into the <em>past</em> is strictly forbidden.
+
+<a name='HereAndNow'></a>
+<h2>The Here-And-Now Is Stretched Out</h2>
+In ordinary geometry, each point in space is a certain non-zero distance from all other points.
+In the hyperbolic geometry of space-time, however, <em>the same cannot be said of events</em>.
+In space-time, each event A has its light cone, the set of events having light-like (zero) intervals with respect to A.
+The event A is, roughly speaking, "nearby" these other events, and those other events 
+are stretched out across the Universe.
+
+<P>Of course, to take advantange of the "closeness" of the events on the future light cone,
+travellers need to have a high value of &Gamma;.
+If you take seriously the idea that no one member of the inertial grid family has special status, 
+then the fact that high speeds are needed is seen as a detail.
+
+<a name='IsTimeTheFourthDimension'></a>
+<h2>Is Time The Fourth Dimension?</h2>
+Yes and no.
+As we saw in the beginning, the <a href='#SpaceTime'>basic idea of space-time</a> is a pretty simple one. 
+You just translate times into distances, in order to draw a picture of an object's history.
+In this rather trivial sense, yes, time is treated as a fourth dimension.
+But there's nothing deep or strange about that. 
+
+<P>Is time a kind of fourth <em>spatial</em> dimension? 
+<b>Definitely not.</b> Here's why:
+<ul>
+ <li>times are measured with clocks, not meter sticks
+ <li>the geometry of space-time is defined by the <a href='#SpaceTimeInterval'>formula</a> for <em>s<sup>2</sup></em>.
+ In that formula, time and space are <b>not treated the same</b> - there's a difference in sign.
+ The time is not treated as just another space coordinate. 
+</ul>
+
+Because of this, many people refer to space-time as having a <b>3+1 structure</b>, to emphasize the difference.
+<P>
+
+<a name='GeometryConstrainsPhyics'></a>
+<h2>Space-Time Geometry Constrains The Rules</h2>
+To create new rules that are compatible with special relativity, you 
+need to <a href='#RuleAboutRules'>express them using invariants</a>.
+
+<P><span class='highlight'><b>The boost transformation is the template for building all other invariants</b></span>:
+<br><img src='formulas/boosttransformationfull.png' class='equation'> 
+
+<br>The basic facts about the <a href='#Boosts'>boost transformation</a> are:
+
+<ul>
+ <li>it transforms one set of 4 numbers  (ct,x,y,z) to another set of 4 numbers (ct',x',y',z').
+ <li>the 4 numbers (ct,x,y,z) share the same units
+ <li>it uses only &beta; and &Gamma;, which are both <em>dimensionless</em> - they have no unit, and are pure numbers.
+ <li>mathematically, it guarantees the invariance of this quantity, built out of the 4 parts: c<sup>2</sup>t<sup>2</sup> - (x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup>). This is
+  just the squared interval with respect to the origin event (0,0,0,0).
+</ul>
+You can <b>treat these equations as a little machine</b> that translates one set of 4 numbers into
+another set of 4 numbers (with the above restriction about the units).
+Let's label the 4 numbers as (a,b,c,d), with 'a' corresponding to 'ct'.
+If these 4 numbers satisfy the boost transformation, then, mathematically, this quantity must also be an invariant:
+<P>a<sup>2</sup> - (b<sup>2</sup> + c<sup>2</sup> + d<sup>2</sup>)
+
+<P>If you find a new 4-pack of numbers that behaves according to the rules of this little machine, 
+then you will also have found a corresponding new invariant.
+These 4-packs are called <b>4-vectors</b>. 
+
+<P>The game played by physicists is to make guesses about new rules, with new 4-vectors, and their corresponding invariants.
+They then see if those guesses are in agreement with experiment.
+<span class='highlight'><b>It's stunning that the geometry of space-time so tightly constrains the creation of new rules.</b></span>
+ 
+<a name='ElectrodynamicsFallsOutOfSpecialRelativity'></a>
+<h2>Electrodynamics Pops Out Of Special Relativity</h2>
+As stated above, any rule that claims to be compatible with special relativity must be expressible using invariants.
+So, you can play at simply <em>guessing</em> new rules, by imagining equations that are compatible with the rule-about-rules.
+Of course, such guesses may or may not agree with experiment.
+These guesses can take many forms. One of the simplest such guesses is this (don't worry about the details):
+
+<br><img src='formulas/actionparticleemfield.png' class='equation' title='My favourite equation of all time'> 
+<br>
+Does this correspond to anything in Nature?
+Yes. <span class='highlight'><b>This precisely describes motion of a particle in an electromagnetic field!</b></span>
+In fact, all of the equations of electrodynamics (electricity and magnetism) are expressed most elegantly using the 
+language of space-time and 4-vectors.
+
+<div class='aside-remarks'>
+Pure mathematics starts with general principles or axioms, and then deduces consequences.
+In math, the only constraints are those of logic.
+Physics is almost always presented to the student in imitation of mathematics, with many separate results 
+deduced from a few general principles (as is done here on this website).
+
+<P>It's interesting and important that physics imitates mathematics in this way.
+But, in the end, you must remember that <b>in physics the final arbiter is not logic - it's <em>experiment</em></b>. 
+Strictly speaking, there's no idea of "proof" in physics; at least, not in the formal sense 
+of the word used by mathematicians.
+</div> 
+
+
+<div class='aside-remarks'>
+The same sort of thing happens in Quantum Field Theory, which more or less pops out of these 3 core ideas (not explained here):
+<ul>
+ <li>Lorentz invariance (the standard name for invariance in SR)
+ <li>renormalizability (removing infinities from the theory)
+ <li>local gauge invariance
+</ul>
+
+"From the beginning it seemed to me a very wonderful thing that very few quantum field theories are renormalizable.
+Limitations of this sort are, after all, what we most <em>want</em>; not mathematical methods which can make 
+sense out of an infinite variety of physically irrelevant theories, but methods which carry constraints, 
+because these constraints may point the way to the one true theory." 
+<P>- Steven Weinberg [Nobel Prize lecture, 1979].
+</div> 
+
+
+
+<a name='BoostVelocity'></a>
+<h2>Boost Velocity</h2>
+Velocity is a vector, and has both direction and speed.
+<br>
+<img src='formulas/velocityx.png' class='equation'>
+<img src='formulas/velocityy.png' class='equation'>
+<img src='formulas/velocityz.png' class='equation'>
+
+<br>During a boost transformation, the <em>xyz</em> components of the velocity vector change from one grid to another.
+Of course, <a href='formulas/formulas.html#boostvelocity'>this transformation</a> follows the rule that the speed of any object cannot exceed the speed limit.
+This always remains true, no matter how big the boost, and no matter how big the original speed in the unboosted grid.
+
+
+<P>This <a href='animations/boost-velocity/velocity.html?speed=0.4&beta=0.8&numAngles=32&showLines=true&anim=true'>animation</a> demonstrates how the velocity changes during 
+a boost transformation. Note that:
+<ul>
+ <li>the boosted speed never exceeds the speed limit (the large outer circle).
+ <li>when the object's speed is 1 in the unboosted grid, its speed remains 1 in the boosted grid.
+ <li>when the object's speed is 1, only the direction of the velocity vector changes. In this case,
+the transformation of velocity leads to the aberration of light.
+</ul>
+
+<a name='CoreItemsDimensionless'></a>
+<h2>Three Core Items Are Dimensionless</h2>
+There are 3 core numbers in SR, and they're all dimensionless (they have no units).
+
+<P>
+<img src='formulas/beta.png' class='equation' style='margin-left:1.0em;margin-bottom:1.0em;' >
+<img src='formulas/gamma.png' class='equation' style='margin-left:1.0em;margin-bottom:1.0em;' >
+<img src='formulas/doppler.png' class='equation' style='margin-left:1.0em;margin-bottom:1.0em;' >
+
+<P>Dimensionless quantities are infrequent in physics, so perhaps this fact is noteworthy.
+
+<P>&beta; is dimensionless simply because it's defined as a ratio of speeds.
+&Gamma; and D are also dimensionless, but they aren't simple ratios.
+
+<P>D is the Doppler factor, discussed in <a href='part2.html'>Part II</a>.
+
+<a name='AvoidCommonPitfalls'></a>
+<h2>Avoid Common Pitfalls</h2>
+
+<P><b>The word <em>observer</em> is dangerous</b>
+<br>The idea you have of an inertial grid (frame of reference) needs to be crystal clear. 
+It's critical that you make the distinction between a grid (used in the core theory) and a single camera (used in optics).
+This isn't a small detail.
+You <em>need</em> to know about this distinction.
+If you don't know about it, then you don't understand the theory well.
+<P>Many authors use the term <em>observer</em> to refer to a grid or frame of reference. 
+This is probably a bad idea.
+<b>The word <em>observer</em> has exactly the wrong connotation for a frame of reference.</b>
+It puts the wrong image into your head. A grid needs to fill space, with many meter sticks and synchronized clocks. 
+The word <em>observer</em> does not push you toward that image. 
+It pushes you in the exact opposite direction, toward a camera, not a grid. 
+That's not good.
+
+<P><b><em>Relativistic mass</em> is a mistake</b>
+<br>The term <em>relativistic mass</em> is <a href='https://www.youtube.com/watch?v=LTJauaefTZM'>an error</a>.
+The mass of an object is an invariant. 
+The mass of an object doesn't change according to which grid it's measured in.
+When an object is moving at 0.99c in some grid, it's also moving at speed 0 in its own rest-frame. 
+In that rest frame, its mass is just the same as it has always been.
+The fact that an object becomes harder to accelerate at high speeds doesn't reflect a change in the object's mass.
+It reflects the structure of space-time.
+
+<P><b>The minimal travel-time isn't limited by c</b>
+<br>Many people have gone through the ideas of SR, but without fully internalizing what it means. 
+The best example of this are remarks like the following: "The Pleiades are 400 light-years away. 
+So, travelling at the speed limit, it will take a minimum of 400 years to get there."
+This is wrong (at least in its unqualified form). According the traveller's clock (which is what the traveller cares about), 
+the time will be less than 400 years, if they are travelling at ultra-relativistic speeds, because of time dilation.
+Indeed, there's <em>no lower limit</em> to the travel-time, according to the traveller's clock.
+
+<P><b>s<sup>2</sup> isn't the same as s</b>
+<br>The interval s is the square root of s<sup>2</sup>.
+In most contexts, it's s<sup>2</sup> that's significant.
+It's easy to refer to s<sup>2</sup> as <em>the interval</em>.
+But that's sloppy language, because s<sup>2</sup> is the square-interval, not the interval.
+(This is a bit pedantic, but it's still worth noting.)
+
+
+
+
+
+<h2>End of Part I</h2>
+This concludes Part I, which covers the fundamental ideas of special relativity.
+Please continue on to <a href='part2.html'>Part II</a>, which explores light signals and optics.
+
+<div id="footer">  
+  <a  href='contents.html'>Table of Contents</a>.
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+</body>
+</html>

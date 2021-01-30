@@ -1,0 +1,87 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+HenryDraperCatalog.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.catalog.parser;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.physics.Star;<a name=line.3></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Util;<a name=line.4></a>
+<a name=line.5></a>
+<span class='comment'>/** <a name=line.6></a>
+Parse a record from the &lt;a href='http://cdsarc.u-strasbg.fr/viz-bin/Cat?III/135A'&gt;Henry Draper Catalog&lt;/a&gt;.<a name=line.7></a>
+Uses epoch 1900.<a name=line.8></a>
+<a name=line.9></a>
+&lt;P&gt;Record details:<a name=line.10></a>
+&lt;pre&gt;<a name=line.11></a>
+Byte 19..20: RA-H<a name=line.12></a>
+Byte 21..23: RA-M, example '053' (for 05.3) with no decimal point; has no seconds.<a name=line.13></a>
+Byte 24:      Sign of declination<a name=line.14></a>
+Byte 25..26: Dec-deg<a name=line.15></a>
+Byte 27..28: Dec-min; no seconds<a name=line.16></a>
+Byte 30..34: Photovisual Mag. Some missing. Example '10.0'; possible leading minus sign. <a name=line.17></a>
+                 Uses weird magic values to identify non-stellar objects:<a name=line.18></a>
+                   20.0 30.0 40.0 50.0<a name=line.19></a>
+Byte 43..45: Spectral Type. Take byte 43 only.<a name=line.20></a>
+&lt;/pre&gt;<a name=line.21></a>
+<a name=line.22></a>
+&lt;P&gt;Records discarded by this parser:<a name=line.23></a>
+&lt;ul&gt;<a name=line.24></a>
+ &lt;li&gt;those missing magnitude or spectral class<a name=line.25></a>
+ &lt;li&gt;those of spectral class N,P,R,C,S<a name=line.26></a>
+&lt;/ul&gt;<a name=line.27></a>
+*/</span><a name=line.28></a>
+<span class='keyword'>final</span> <span class='keyword'>class</span> HenryDraperCatalog <span class='keyword'>implements</span> RecordParser {<a name=line.29></a>
+  <a name=line.30></a>
+  <span class='comment'>/** See class comment.  */</span><a name=line.31></a>
+  <span class='keyword'>public</span> Star parse(String aLine) {<a name=line.32></a>
+    Star result = <span class='keyword'>null</span>;<a name=line.33></a>
+    <span class='comment'>//Util.logVerbose(aLine);<a name=line.34></a>
+</span>    <span class='keyword'>if</span> ( aLine.length() &lt; <span class='literal'>43</span> ){<a name=line.35></a>
+      Util.logVerbose(<span class='literal'>"Skipping record. Truncated."</span>);<a name=line.36></a>
+    }<a name=line.37></a>
+    <span class='keyword'>else</span> {<a name=line.38></a>
+      Chomper chomper = <span class='keyword'>new</span> Chomper(aLine);<a name=line.39></a>
+      String spectralClass = chomper.forText(<span class='literal'>43</span>); <span class='comment'>//first letter only<a name=line.40></a>
+</span>      <span class='keyword'>if</span> (! Util.textHasContent(spectralClass) ){<a name=line.41></a>
+        Util.logVerbose(<span class='literal'>"Skipping record. Missing spectral class."</span>);<a name=line.42></a>
+      }<a name=line.43></a>
+      <span class='keyword'>else</span> <span class='keyword'>if</span> (spectralClass.startsWith(<span class='literal'>"N"</span>) || spectralClass.startsWith(<span class='literal'>"P"</span>) || spectralClass.startsWith(<span class='literal'>"R"</span>) || spectralClass.startsWith(<span class='literal'>"C"</span>) ||  spectralClass.startsWith(<span class='literal'>"S"</span>)){<a name=line.44></a>
+        Util.logVerbose(<span class='literal'>"Skipping record. Not in the set of expected spectral classes: "</span> + spectralClass);<a name=line.45></a>
+      }<a name=line.46></a>
+      <span class='keyword'>else</span> <span class='keyword'>if</span> ( chomper.isMissing(<span class='literal'>30</span>,<span class='literal'>34</span>) ){<a name=line.47></a>
+        Util.logVerbose(<span class='literal'>"Skipping record. Missing magnitude."</span>);<a name=line.48></a>
+      }<a name=line.49></a>
+      <span class='keyword'>else</span> {<a name=line.50></a>
+        <span class='comment'>//no more reasons left for skipping a record<a name=line.51></a>
+</span>        result = <span class='keyword'>new</span> Star();<a name=line.52></a>
+        result.Temperature = Star.spectralTypeToTemperature(spectralClass); <a name=line.53></a>
+        <a name=line.54></a>
+        <span class='keyword'>int</span> hour = chomper.forInt(<span class='literal'>19</span>, <span class='literal'>20</span>);<a name=line.55></a>
+        <span class='keyword'>int</span> min =  chomper.forInt(<span class='literal'>21</span>, <span class='literal'>23</span>);<a name=line.56></a>
+        <span class='keyword'>double</span> hours = hour + min/<span class='literal'>600.0D</span>; <span class='comment'>//be careful to avoid integer division!<a name=line.57></a>
+</span>        result.RightAscension = Util.radians(hours*<span class='literal'>15.0D</span>);<a name=line.58></a>
+        <a name=line.59></a>
+        <span class='keyword'>int</span> deg = chomper.forInt(<span class='literal'>25</span>, <span class='literal'>26</span>);<a name=line.60></a>
+        <span class='keyword'>int</span> arcmin = chomper.forInt(<span class='literal'>27</span>, <span class='literal'>28</span>);<a name=line.61></a>
+        <span class='keyword'>double</span> degrees = deg + arcmin/<span class='literal'>60.0D</span>; <span class='comment'>//be careful to avoid integer division!<a name=line.62></a>
+</span>        <span class='keyword'>if</span> ( <span class='literal'>"-"</span>.equals(chomper.forText(<span class='literal'>24</span>)) ){<a name=line.63></a>
+          degrees = -<span class='literal'>1</span> * degrees;<a name=line.64></a>
+        }<a name=line.65></a>
+        result.Declination = Util.radians(degrees);<a name=line.66></a>
+        <a name=line.67></a>
+        result.Magnitude = chomper.forMagnitude(<span class='literal'>30</span>,<span class='literal'>34</span>);<a name=line.68></a>
+      }<a name=line.69></a>
+    }<a name=line.70></a>
+    <span class='keyword'>return</span> result;<a name=line.71></a>
+  }<a name=line.72></a>
+<a name=line.73></a>
+}<a name=line.74></a>
+ <a name=line.75></a>
+</PRE><a name=line.76></a>
+ </BODY><a name=line.77></a>
+<HTML><a name=line.78></a>

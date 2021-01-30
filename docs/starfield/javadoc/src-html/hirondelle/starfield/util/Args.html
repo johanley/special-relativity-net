@@ -1,0 +1,90 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+Args.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.util;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> java.util.Collection;<a name=line.3></a>
+<a name=line.4></a>
+<span class='comment'>/**<a name=line.5></a>
+ Utility methods for common argument validations.<a name=line.6></a>
+<a name=line.7></a>
+&lt;P&gt; Replace &lt;tt&gt;if&lt;/tt&gt; statements at the start of a method with <a name=line.8></a>
+ more compact method calls.<a name=line.9></a>
+*/</span><a name=line.10></a>
+<span class='keyword'>public</span> <span class='keyword'>final</span> <span class='keyword'>class</span> Args {<a name=line.11></a>
+  <a name=line.12></a>
+  <span class='comment'>/**<a name=line.13></a>
+   If &lt;tt&gt;aObject&lt;/tt&gt; is null, throw a &lt;tt&gt;NullPointerException&lt;/tt&gt;.<a name=line.14></a>
+  <a name=line.15></a>
+  &lt;P&gt;Use cases :<a name=line.16></a>
+  &lt;pre&gt;<a name=line.17></a>
+   doSomething( SoccerBall aBall ){<a name=line.18></a>
+     //call some method on the argument : <a name=line.19></a>
+     //if aBall is null, then exception is automatically thrown, so <a name=line.20></a>
+     //there is no need for an explicit check for null.<a name=line.21></a>
+     aBall.inflate();<a name=line.22></a>
+    <a name=line.23></a>
+     //assign to a corresponding field (common in constructors): <a name=line.24></a>
+     //if aBall is null, no exception is immediately thrown, so <a name=line.25></a>
+     //an explicit check for null may be useful here<a name=line.26></a>
+     Args.checkForNull( aBall );<a name=line.27></a>
+     fBall = aBall;<a name=line.28></a>
+     <a name=line.29></a>
+     //passed on to some other method as param : <a name=line.30></a>
+     //it may or may not be appropriate to have an explicit check <a name=line.31></a>
+     //for null here, according the needs of the problem<a name=line.32></a>
+     Args.checkForNull( aBall ); //??<a name=line.33></a>
+     fReferee.verify( aBall );<a name=line.34></a>
+   }<a name=line.35></a>
+   &lt;/pre&gt;<a name=line.36></a>
+  */</span><a name=line.37></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> checkForNull(Object aObject) {<a name=line.38></a>
+    <span class='keyword'>if</span> ( aObject == <span class='keyword'>null</span> ) {<a name=line.39></a>
+      <span class='keyword'>throw</span> <span class='keyword'>new</span> NullPointerException();<a name=line.40></a>
+    }<a name=line.41></a>
+  }<a name=line.42></a>
+  <a name=line.43></a>
+  <span class='comment'>/**<a name=line.44></a>
+   Throw an &lt;tt&gt;IllegalArgumentException&lt;/tt&gt; if &lt;tt&gt;aText&lt;/tt&gt; does not <a name=line.45></a>
+   satisfy {@link Util#textHasContent}.<a name=line.46></a>
+  <a name=line.47></a>
+   &lt;P&gt;Most text used in an application is meaningful only if it has visible content.<a name=line.48></a>
+  */</span><a name=line.49></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> checkForContent(String aText){<a name=line.50></a>
+    <span class='keyword'>if</span>( ! Util.textHasContent(aText) ){<a name=line.51></a>
+      <span class='keyword'>throw</span> <span class='keyword'>new</span> IllegalArgumentException(<span class='literal'>"Text has no visible content"</span>);<a name=line.52></a>
+    }<a name=line.53></a>
+  }<a name=line.54></a>
+<a name=line.55></a>
+  <span class='comment'>/**<a name=line.56></a>
+   Throw an &lt;tt&gt;IllegalArgumentException&lt;/tt&gt; if {@link Util#isInRange}<a name=line.57></a>
+   returns &lt;tt&gt;false&lt;/tt&gt;.<a name=line.58></a>
+  <a name=line.59></a>
+   @param aLow is less than or equal to &lt;tt&gt;aHigh&lt;/tt&gt;.<a name=line.60></a>
+  */</span><a name=line.61></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> checkForRange( <span class='keyword'>int</span> aNumber, <span class='keyword'>int</span> aLow, <span class='keyword'>int</span> aHigh ) {<a name=line.62></a>
+    <span class='keyword'>if</span> ( ! Util.isInRange(aNumber, aLow, aHigh) ) {<a name=line.63></a>
+      <span class='keyword'>throw</span> <span class='keyword'>new</span> IllegalArgumentException(aNumber + <span class='literal'>" not in range "</span> + aLow + <span class='literal'>".."</span> + aHigh);<a name=line.64></a>
+    }<a name=line.65></a>
+  }<a name=line.66></a>
+<a name=line.67></a>
+  <span class='comment'>/**<a name=line.68></a>
+   Throw an &lt;tt&gt;IllegalArgumentException&lt;/tt&gt; only if &lt;tt&gt;aCollection.isEmpty&lt;/tt&gt; <a name=line.69></a>
+   returns &lt;tt&gt;true&lt;/tt&gt;.<a name=line.70></a>
+  */</span><a name=line.71></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> checkForEmpty(Collection aCollection){<a name=line.72></a>
+    <span class='keyword'>if</span> ( aCollection.isEmpty() ) {<a name=line.73></a>
+      <span class='keyword'>throw</span> <span class='keyword'>new</span> IllegalArgumentException(<span class='literal'>"Collection is empty."</span>);<a name=line.74></a>
+    }<a name=line.75></a>
+  }<a name=line.76></a>
+}<a name=line.77></a>
+ <a name=line.78></a>
+</PRE><a name=line.79></a>
+ </BODY><a name=line.80></a>
+<HTML><a name=line.81></a>

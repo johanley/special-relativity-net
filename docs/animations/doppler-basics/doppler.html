@@ -1,0 +1,120 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>How The Doppler Factor Changes With Beta</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='../../script/diagrams.js?v=12'></script>
+ <script type='text/javascript' src='doppler.js?v=12'></script>
+ <script type="text/javascript">   
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    applyRequestParams();
+    if(Boolean(reqParams.anim)){
+      animate();
+    }
+    else{
+      drawCanvas(ctx());
+    }
+    //handle mouse clicks on the canvas
+    var canvas = document.getElementById('doppler');
+    canvas.addEventListener("mousedown",function (event){
+      handleMouseClicks(event);
+    },false);
+  }
+  function ctx(){
+    var canvas = document.getElementById('doppler');
+    return canvas.getContext('2d');  
+  }
+  function clearCanvas(){
+    var canvas = document.getElementById('doppler');
+    ctx().clearRect(0,0,canvas.width,canvas.height); // clears the whole canvas
+  }
+  function applyRequestParams() {
+    applyUserInput(parseFloat(reqParams.beta),reqParams.anim,reqParams.power);
+  }
+  function populateFormControls(){
+    document.getElementById('betamax').value = reqParams.beta;
+    document.getElementById('anim').checked = reqParams.anim;
+    var powerControl = document.getElementById('power');
+    for(var idx=0; idx<powerControl.options.length; ++idx){
+      if (powerControl.options[idx].value == reqParams.power){
+        powerControl.options[idx].selected = true;
+        break;
+      }
+    }
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  var framecount=0; //every nth frame; default is 60 fps
+  function animate() {
+    framecount++;
+    if ((framecount % 3)==0){
+      clearCanvas();
+      drawCanvas(ctx());
+    }
+	window.requestAnimationFrame(animate);
+  }  
+  /** React to a user clicking on the canvas. This is not treated as a regular request param. */
+  function handleMouseClicks(event){
+    var canvas = document.getElementById('doppler');
+    var mousePos = mousePosition(canvas,event);
+    applyMousePosition(mousePos);
+  }
+ </script>
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='doppler' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+<P>
+<form method='GET' action='doppler.html' class='user-input-small'>
+ <table align='center'> 
+ <tr><td>&beta;<td><input id='betamax' name='beta' value='0.6' title='Where to end the animation.' size='5'>
+ <tr title='Raise D to this exponent'>
+  <td>Power
+  <td>
+   <select id='power' name='power'>
+    <option value='1' selected title='Energy, frequency, wave number, aberration'>1
+    <option value='2' title='Energy Density, Energy Flux Density (point sources), Solid Angle'>2
+    <option value='3'>3
+    <option value='4' title='Energy Flux Density (extended sources)'>4
+   </select>
+ <tr><td>Animate<td><input type='checkbox' id='anim' name='anim' checked title='Animate by increasing beta from 0 to the given value.'>
+ <tr><td>&nbsp;<td><input type='submit' value='Apply' title='Show the doppler factor graph'>
+ <tr><td>&nbsp;<td><input type='reset' value='Reset' title='Reset to default values'>
+ </table>
+</form>
+
+<p><a href='../../part2.html#DopplerFactor'>Back to Main</a>.
+
+<P>
+<h3>Doppler Factor</h3>
+How the Doppler factor depends on &beta; and angle &theta;.
+ 
+<P>
+<!-- If you click on the chart, the corresponding angle will be shown, along with the value of D. -->
+  
+
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+
+</body>
+</html>

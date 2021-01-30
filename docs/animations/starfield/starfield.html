@@ -1,0 +1,282 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Stars From a Travelling Spacecraft</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='starfield.js?v=12'></script>
+ <script type='text/javascript' src='yale_bright_star_catalog.js?v=12'></script>
+ <script type="text/javascript">   
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    applyRequestParams();
+    if(Boolean(reqParams.anim)){
+      animate();
+    }
+    else{
+      drawCanvas(ctx());
+    }
+  }
+  function ctx(){
+    var canvas = document.getElementById('starfield');
+    return canvas.getContext('2d');  
+  }
+  function clearCanvas(){
+    var canvas = document.getElementById('starfield');
+    ctx().clearRect(0,0,canvas.width,canvas.height); // clears the whole canvas
+  }
+  function applyRequestParams() {
+    applyUserInput(
+      parseFloat(reqParams.beta),
+      Boolean(reqParams.radii),
+      Boolean(reqParams.color),
+      Boolean(reqParams.circles),
+      parseFloat(reqParams.avgstellardensity),
+      parseFloat(reqParams.limitingMag),
+      reqParams.projection,
+      reqParams.starpopulation,
+      Boolean(reqParams.anim),
+      parseFloat(reqParams.runningTime)
+    );
+  }
+  function populateFormControls(){
+    document.getElementById('betamax').value = reqParams.beta;
+    document.getElementById('radii').checked = reqParams.radii;
+    document.getElementById('color').checked = reqParams.color;
+    document.getElementById('circles').checked = reqParams.circles;
+    document.getElementById('avgstellardensity').value = reqParams.avgstellardensity;
+    document.getElementById('limitingMag').value = reqParams.limitingMag;
+    document.getElementById('anim').checked = reqParams.anim;
+    document.getElementById('runningTime').value = reqParams.runningTime;
+    var projectionControl = document.getElementById('projection');
+    for(var idx=0; idx<projectionControl.options.length; ++idx){
+      if (projectionControl.options[idx].value == reqParams.projection){
+        projectionControl.options[idx].selected = true;
+        break;
+      }
+    }
+    var populationControl = document.getElementById('starpopulation');
+    for(var idx=0; idx<populationControl.options.length; ++idx){
+      if (populationControl.options[idx].value == reqParams.starpopulation){
+        populationControl.options[idx].selected = true;
+        break;
+      }
+    }
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  var framecount=0; //every nth frame; default is 60 fps
+  function animate() {
+    framecount++;
+    if ((framecount % 3)==0){
+      clearCanvas();
+      drawCanvas(ctx());
+    }
+	window.requestAnimationFrame(animate);
+  }  
+ </script>
+ <script type="text/javascript">
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-2633428-7']);
+   _gaq.push(['_trackPageview']);
+   (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+ </script> 
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='starfield' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+</p>
+
+
+<P style='clear:right;'>
+
+<P align='center'>
+<form method='GET' action='starfield.html'  class='user-input-small'>
+ <table  align="center">
+ <tr title='Boost to another grid, with this &beta; as the end of the animation.' ><td>Boost<td><input id='betamax' name='beta' value='0.6' size='10'>
+
+ <tr title='How the population of stars is created.'>
+  <td>Stars
+  <td>
+    <select id='starpopulation' name='starpopulation'>
+      <option selected value='yalebsc' title='Stars brighter than mag 6.5, as seen from Earth. Centered on Polaris.'>Yale Bright Stars
+      <option value='nearbyAndRandom' title='Within 10 parsecs, different spectral classes'>Nearby, random
+      <option value='nearbyAndRed' title='Bright red dwarfs, very close, with the same brightness and temperature.'>Nearby, red
+      <option value='nearbyAndBlue' title='Bright, spectral class A, close, with the same brightness and temperature.'>Nearby, blue
+     </select>
+     
+ <tr title='Show circles for the half-sky radius, and the neutral radius. Applies only to the half-sky views.'><td>Radii<td><input type='checkbox' id='radii' name='radii'>
+ <tr title='Show stars using color (corresponding to their blackbody temperature).'><td>Colors<td><input type='checkbox' id='color' name='color' checked>
+ <tr title='Showing the stars as circles (instead of rectangles) can be a lot slower. Remove this if you have performance problems.'><td>Circles<td><input type='checkbox' id='circles' name='circles' checked >
+     
+ <tr title='Average number of stars in a cubic parsec (default is 0.11, binaries count as 2).' ><td>Density<td><input id='avgstellardensity' name='avgstellardensity' value='0.11' size='10'>
+ <tr title='Magnitude of the dimmest displayed star. Larger magnitude means dimmer.' ><td>Limiting Mag<td><input id='limitingMag' name='limitingMag' value='5.0' size='10'>
+ 
+ <tr title='Projection to use when showing items on the flat screen.'>
+  <td>Projection
+  <td>
+    <select id='projection' name='projection'>
+      <option selected value='stereographic' title='Half sky, preserves angles'>Stereo
+      <option value='mckinley' title='Half sky, preserves area. Same projection as used by McKinley,Doherty 1979.'>Equal Area
+      <option value='equirectangular' title='Whole sky'>Equi-Rect
+      <option value='behrmann' title='Whole sky, equal area'>Behrmann
+      <option value='hammer' title='Whole sky, equal area'>Hammer
+     </select>
+     
+     
+ <tr title='Animate by increasing beta from 0 to the given boost value.'><td>Animate<td><input type='checkbox' id='anim' name='anim' checked >
+ <tr title='The running time for the animation in seconds.'><td>Running Time<td><input id='runningTime' name='runningTime' size='5'>
+ <tr title='Apply boost to the starfield'><td>&nbsp;<td><input type='submit' value='Boost'>
+ <tr title='Reset to default values'><td>&nbsp;<td><input type='reset' value='Reset'>
+ </table>
+</form>
+
+<p><a href='../../part2.html#Starfield'>Back to Main</a>.
+
+<h3>How Stars Appear From a Spacecraft</h3>
+ 
+<P style='clear:right;'>
+
+<p>Effects to look for:
+<ul>
+ <li>a large number of "new" dim stars appear in the direction of motion. 
+ Those stars were there all along, but were initially too dim to be seen. 
+ They are brightened by the boost.
+ <li>most stars in the direction <em>opposite</em> to the direction of motion disappear from view.
+ <li>in some cases, a star behind you can disappear at lower value of &beta;, 
+ and then <em>reappear</em> again later at higher &beta;
+ (<a href='starfield.html?beta=0.9&color=on&circles=on&avgstellardensity=0.11&limitingMag=5&starpopulation=nearbyAndRed&projection=hammer&anim=on&runningTime=8'>example</a>, 
+watch closely at the edges).
+<li>for high &beta;, the stars as a whole begin to resemble the appearance of a large
+<a href='http://en.wikipedia.org/wiki/Globular_cluster'>globular cluster</a>. 
+This thing is so big, beautiful, and glorious, it deserves a <em>name</em>.
+Let's call it the <b>relativistic supercluster</b>.
+<li>a core of bright, blue stars in the center, changing to white away from the center, and then generally 
+ redder and dimmer at the edges
+ (this <a href='starfield.html?beta=0.90&color=on&circles=on&avgstellardensity=0.5&limitingMag=5&starpopulation=nearbyAndRed&projection=mckinley&runningTime=8'>example</a> exaggerates the effect).
+ For the human eye, this effect would be visible, but perhaps a bit subtle, since human perception of 
+ the colour of stars is not strong. (Photographs would show it more plainly.) 
+<li>the change in brightness of a star depends on the doppler factor, and on its color/temperature/spectral class.
+See this <a href='../magnitude/mag.html?spectralClass1=M&spectralClass2=O'>diagram</a> for more details.
+</ul>
+
+<h3>Explanatory Notes</h3>
+
+<P>An excellent reference for this sort of calculation is the paper of  
+<a href='../../references.html#McKinleyDoherty1979'>McKinley and Doherty</a> (1979).
+
+<P><b>Stars</b><br>
+ The most realistic choice is the Yale Bright Stars, which is a catalog of stars brighter than 
+ magnitude 6.5, as seen from Earth. The view shown is towards Polaris, the North Star.
+ If you look closely, you will be able to see the Big Dipper just to the left of center (it's tiny).
+
+ <P>The other choices for stars:
+ 
+ <ul>
+  <li>Nearby, random: generate stars randomly within 10 parsecs of the Earth.
+ These stars are assigned colors and brightnesses according to typical relative frequencies.
+  <li>Nearby, red: generate a uniform field of spectral class M stars (3050&deg;, absolute magnitude 10.0, distance of 0.5 parsecs).
+  <li>Nearby, blue: generate a uniform field of spectral class A stars (8750&deg;, absolute magnitude 2.0, distance of 10 parsecs).
+ </ul>
+ 
+To generate more such stars, just increase the <em>density</em> setting.
+
+<P><b>Radii</b><br>
+Applies to the half-sky views only. 
+Turn this setting on to see the half-sky radius (contains 'half the sky') and the neutral radius (where the doppler factor D=1).
+ 
+<P><b>Colors</b><br>
+This simulation makes the rough approximation that the light from the stars is identical to 
+a <a href='http://en.wikipedia.org/wiki/Black-body_radiation'>black body spectrum</a>, 
+which is characterized by a single number - the black body surface temperature.
+Different surface temperatures have <a href='http://en.wikipedia.org/wiki/File:Blackbody-colours-vertical.svg'>different colors</a>, 
+from reddish-orange (coolest), to white, to bluish-white (hottest).
+<P>
+The perception of the colour of starlight by the human eye is weak. 
+The colors shown here are more like the colors you would see in a photograph of the stars, 
+instead of by the human eye. 
+
+<P>At the high density of stars you would see at high values of &beta;, there should be visible a graduated 
+color effect, with blue stars in the center, changing to white away from the center, 
+and then red stars towards the edge.
+
+<P><b>Circles</b><br>
+Turn this off if your browser slows down. 
+The animation does a lot of processing, and sometimes your computer may have trouble keeping up.
+Drawing stars as small squares instead of circles can sometimes help.
+
+<P><b>Density</b><br>
+The number of stars per cubic parsec.
+This is used only for the randomly generated sets of stars, and not for stars from the Yale Bright Star Catalog.
+Increase the density a bit if you want to see more stars.
+
+<P><b>Limiting Magnitude</b><br>
+The cut-off point for showing stars, according to brightness.
+A higher limiting magnitude means you will see more stars.
+
+<P>There can be many stars in these simulations, but you usually won't see them all.
+There's a good reason for having stars in the simulation that you can't see all the time. 
+Due to relativistic effects, stars can increase in brightness. 
+So, stars that are initially not visible (and are below the limiting magnitude), can often become visible later on.
+
+
+<P><b>Projection</b><br>
+Stars on the celestial sphere need to be <em>projected</em> onto the flat plane of the screen.
+Various star map projections are provided. 
+You can select the one that you prefer. 
+Some show half the sky, and some show the whole sky.
+In each case, the center corresponds to the direction of motion.
+
+<P>Note that with the whole-sky projections, some of the motions of stars along the <em>edge</em> of 
+the view are an artifact of the map projection being used.
+
+<P><b>Brightness Index</b><br>
+Roughly equivalent to the number of Vega-like stars that would produce the same amount of 
+apparent radiant energy produced by the visible stars.
+This is a measure of the total brightness of all the stars visible in the sky, as seen from the spacecraft.
+It includes only those stars that are brighter than the given limiting magnitude.
+It's calculated using a formula that relates differences in magnitude to differences in luminosity.
+Here, 1 unit of brightness is equivalent to 1 star of magnitude 0. 
+The bright star Vega has magnitude 0.03, so this is roughly the equivalent number of Vegas that would 
+produce the same apparent radiant energy. On the same scale, a 
+full Moon is about <span title='Magnitude -12.74'>125,000 units</span>.
+
+<h3>Limitations</h3>
+Some limitations of this simulation:
+<ul>
+ <li>the Milky Way is not included.
+ <li>stellar radiation is modeled as black-body radiation. For individual stars, this is 
+ only a rough approximation of their actual spectrum.
+ <li>the <a href='http://en.wikipedia.org/wiki/Extinction_%28astronomy%29#Interstellar_reddening'>reddening</a> of starlight by interstellar dust isn't included.
+ <li>only typical starlight radiation is included. At <em>extremely</em> high &beta;, the stars become dimmer, 
+ and eventually drop below the limiting magnitude for human vision.
+  Presumably other forms of radiation, such as that from interstellar dust
+  (infrared) or even the cosmic microwave background (microwaves) would eventually dominate the view.
+ <li>the stars are limited to those in the Yale Bright Star Catalog, brighter than magnitude 6.5. 
+ If this simulation used the Tycho-2 catalog, which goes to magnitude 11.0, then the 
+ effects you see here would be even more exaggerated. 
+ In terms of the number of stars seen, there's a peak at a speed of &beta;~0.993, where relativistic 
+ effects would make thousands more dim stars visible to the human eye, all concentrated into a 
+ central cluster of radius ~28&deg;.
+ That would be a glorious sight. (I wonder if we'll ever photograph it...)
+</ul>
+
+</body>
+</html>

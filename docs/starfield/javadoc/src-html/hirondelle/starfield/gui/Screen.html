@@ -1,0 +1,217 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+Screen.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.gui;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.catalog.parser.Catalog;<a name=line.3></a>
+<span class='keyword'>import</span> hirondelle.starfield.physics.InputParameterException;<a name=line.4></a>
+<span class='keyword'>import</span> hirondelle.starfield.physics.InputParameters;<a name=line.5></a>
+<span class='keyword'>import</span> hirondelle.starfield.physics.Starfield;<a name=line.6></a>
+<span class='keyword'>import</span> hirondelle.starfield.physics.StarfieldStats;<a name=line.7></a>
+<span class='keyword'>import</span> hirondelle.starfield.projection.Projector;<a name=line.8></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Consts;<a name=line.9></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.UiUtil;<a name=line.10></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Util;<a name=line.11></a>
+<a name=line.12></a>
+<span class='keyword'>import</span> java.awt.Cursor;<a name=line.13></a>
+<span class='keyword'>import</span> java.awt.Desktop;<a name=line.14></a>
+<span class='keyword'>import</span> java.awt.event.ActionEvent;<a name=line.15></a>
+<span class='keyword'>import</span> java.awt.event.ActionListener;<a name=line.16></a>
+<span class='keyword'>import</span> java.io.IOException;<a name=line.17></a>
+<span class='keyword'>import</span> java.io.OutputStream;<a name=line.18></a>
+<span class='keyword'>import</span> java.io.PrintStream;<a name=line.19></a>
+<a name=line.20></a>
+<span class='keyword'>import</span> javax.swing.JButton;<a name=line.21></a>
+<span class='keyword'>import</span> javax.swing.JCheckBox;<a name=line.22></a>
+<span class='keyword'>import</span> javax.swing.JComboBox;<a name=line.23></a>
+<span class='keyword'>import</span> javax.swing.JFrame;<a name=line.24></a>
+<span class='keyword'>import</span> javax.swing.JPanel;<a name=line.25></a>
+<span class='keyword'>import</span> javax.swing.JScrollPane;<a name=line.26></a>
+<span class='keyword'>import</span> javax.swing.JTextArea;<a name=line.27></a>
+<span class='keyword'>import</span> javax.swing.JTextField;<a name=line.28></a>
+<span class='keyword'>import</span> javax.swing.RootPaneContainer;<a name=line.29></a>
+<span class='keyword'>import</span> javax.swing.text.BadLocationException;<a name=line.30></a>
+<span class='keyword'>import</span> javax.swing.text.Document;<a name=line.31></a>
+<a name=line.32></a>
+<span class='keyword'>import</span> com.jgoodies.forms.builder.PanelBuilder;<a name=line.33></a>
+<span class='keyword'>import</span> com.jgoodies.forms.factories.CC;<a name=line.34></a>
+<span class='keyword'>import</span> com.jgoodies.forms.layout.FormLayout;<a name=line.35></a>
+<a name=line.36></a>
+<span class='comment'>/** <a name=line.37></a>
+ Screen containing the graphical interface for this application.<a name=line.38></a>
+ <a name=line.39></a>
+ &lt;P&gt;The screen is simple, and provides a convenient means to enter input parameters fairly quickly.<a name=line.40></a>
+ No import-export of input parameters is implemented. <a name=line.41></a>
+*/</span><a name=line.42></a>
+<span class='keyword'>final</span> <span class='keyword'>class</span> Screen {<a name=line.43></a>
+<a name=line.44></a>
+  <span class='comment'>/** Create the main screen, and then show it. */</span><a name=line.45></a>
+  <span class='keyword'>void</span> buildAndShow(){<a name=line.46></a>
+    fFrame = <span class='keyword'>new</span> JFrame(Consts.APP_NAME); <a name=line.47></a>
+    fFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);<a name=line.48></a>
+    fFrame.getContentPane().add(buildPanel());  <a name=line.49></a>
+    UiUtil.centerAndShow(fFrame);<a name=line.50></a>
+  }<a name=line.51></a>
+  <a name=line.52></a>
+  <span class='comment'>// PRIVATE<a name=line.53></a>
+</span>  <span class='keyword'>private</span> JFrame fFrame;  <a name=line.54></a>
+  <span class='keyword'>private</span> JTextField fBeta = <span class='keyword'>new</span> JTextField(<span class='literal'>"0.993"</span>);<a name=line.55></a>
+  <span class='keyword'>private</span> JTextField fLimitingMagnitude = <span class='keyword'>new</span> JTextField(<span class='literal'>"5.0"</span>);<a name=line.56></a>
+  <span class='keyword'>private</span> JComboBox&lt;Catalog&gt; fCatalog = <span class='keyword'>new</span> JComboBox&lt;Catalog&gt;(Catalog.values());<a name=line.57></a>
+  <span class='keyword'>private</span> JTextField fCatalogDir = <span class='keyword'>new</span> JTextField(<span class='literal'>"C:&#092;&#092;astro-cat&#092;&#092;yale-bright-star-cat"</span>);<a name=line.58></a>
+  <span class='keyword'>private</span> JComboBox&lt;Projector&gt; fProjection = <span class='keyword'>new</span> JComboBox&lt;Projector&gt;(Projector.values());<a name=line.59></a>
+  <span class='keyword'>private</span> JTextField fOutputFile = <span class='keyword'>new</span> JTextField(<span class='literal'>"C:&#092;&#092;TEMP&#092;&#092;starfield1.png"</span>);<a name=line.60></a>
+  <span class='keyword'>private</span> JTextArea fMessages = <span class='keyword'>new</span> JTextArea(<span class='literal'>10</span>, <span class='literal'>10</span>);<a name=line.61></a>
+  <span class='keyword'>private</span> JTextField fImageSize = <span class='keyword'>new</span> JTextField(<span class='literal'>"800"</span>);<a name=line.62></a>
+  <span class='keyword'>private</span> JTextField fMagnification = <span class='keyword'>new</span> JTextField(<span class='literal'>"1"</span>);<a name=line.63></a>
+  <span class='keyword'>private</span> JCheckBox fOpenFile = <span class='keyword'>new</span> JCheckBox();<a name=line.64></a>
+  <span class='keyword'>private</span> JTextField fDirectionRA = <span class='keyword'>new</span> JTextField(<span class='literal'>"0"</span>);<a name=line.65></a>
+  <span class='keyword'>private</span> JTextField fDirectionDec = <span class='keyword'>new</span> JTextField(<span class='literal'>"90"</span>);<a name=line.66></a>
+  <span class='keyword'>private</span> JTextField fDirectionPhi = <span class='keyword'>new</span> JTextField(<span class='literal'>"0"</span>);<a name=line.67></a>
+  <span class='keyword'>private</span> JButton fApply = <span class='keyword'>new</span> JButton(<span class='literal'>"Generate Image"</span>);<a name=line.68></a>
+  <a name=line.69></a>
+  <span class='keyword'>private</span> JPanel buildPanel(){<a name=line.70></a>
+    String COLUMNS = <span class='literal'>"left:pref, 3dlu, p:grow, 12dlu, p"</span>;<a name=line.71></a>
+    String ROWS = <span class='literal'>"p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 9dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 9dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p "</span>;<a name=line.72></a>
+    FormLayout layout = <span class='keyword'>new</span> FormLayout(COLUMNS, ROWS);<a name=line.73></a>
+    PanelBuilder builder = <span class='keyword'>new</span> PanelBuilder(layout);<a name=line.74></a>
+    builder.setDefaultDialogBorder();<a name=line.75></a>
+    fBeta.setToolTipText(<span class='literal'>"0..1: speed of the spacecraft, as a fraction of the speed limit"</span>);<a name=line.76></a>
+    builder.addLabel(<span class='literal'>"Lorentz Boost Beta:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>1</span>));<a name=line.77></a>
+    builder.add(fBeta, CC.xy(<span class='literal'>3</span>, <span class='literal'>1</span>));<a name=line.78></a>
+    builder.addLabel(<span class='literal'>"Limiting Magnitude:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>3</span>));<a name=line.79></a>
+    fLimitingMagnitude.setToolTipText(<span class='literal'>"The magnitude at which stars are taken to be invisible to the average human eye"</span>);<a name=line.80></a>
+    builder.add(fLimitingMagnitude, CC.xy(<span class='literal'>3</span>, <span class='literal'>3</span>));<a name=line.81></a>
+    builder.addLabel(<span class='literal'>"Catalog:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>5</span>));<a name=line.82></a>
+    fCatalog.setToolTipText(<span class='literal'>"The name of the star catalog"</span>);<a name=line.83></a>
+    builder.add(fCatalog, CC.xy(<span class='literal'>3</span>, <span class='literal'>5</span>));<a name=line.84></a>
+    builder.addLabel(<span class='literal'>"Catalog Directory:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>7</span>));<a name=line.85></a>
+    fCatalogDir.setToolTipText(<span class='literal'>"The directory (folder) containing the downloaded star catalog data (and only that data)"</span>);<a name=line.86></a>
+    builder.add(fCatalogDir, CC.xy(<span class='literal'>3</span>, <span class='literal'>7</span>));<a name=line.87></a>
+    builder.addLabel(<span class='literal'>"Projection:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>9</span>));<a name=line.88></a>
+    fProjection.setToolTipText(<span class='literal'>"'The projection formula for projecting stars onto the image plane"</span>);<a name=line.89></a>
+    builder.add(fProjection, CC.xy(<span class='literal'>3</span>, <span class='literal'>9</span>));<a name=line.90></a>
+    builder.addLabel(<span class='literal'>"Output File:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>11</span>));<a name=line.91></a>
+    fOutputFile.setToolTipText(<span class='literal'>"The location and name of the image file generated by this tool"</span>);<a name=line.92></a>
+    builder.add(fOutputFile, CC.xy(<span class='literal'>3</span>, <span class='literal'>11</span>));<a name=line.93></a>
+    fOpenFile.setSelected(<span class='keyword'>true</span>);<a name=line.94></a>
+    builder.addLabel(<span class='literal'>"Open Output File:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>13</span>));<a name=line.95></a>
+    fOpenFile.setToolTipText(<span class='literal'>"Open the generated image file when finished"</span>);<a name=line.96></a>
+    builder.add(fOpenFile, CC.xy(<span class='literal'>3</span>, <span class='literal'>13</span>));<a name=line.97></a>
+    builder.addLabel(<span class='literal'>"Image Size In Pixels:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>15</span>));<a name=line.98></a>
+    fImageSize.setToolTipText(<span class='literal'>"The width (and height) of the generated image"</span>);<a name=line.99></a>
+    builder.add(fImageSize, CC.xy(<span class='literal'>3</span>, <span class='literal'>15</span>));<a name=line.100></a>
+    builder.addLabel(<span class='literal'>"Magnification (half-sky only):"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>17</span>));<a name=line.101></a>
+    fMagnification.setToolTipText(<span class='literal'>"Zoom factor. Applies to the half-sky projections only."</span>);<a name=line.102></a>
+    builder.add(fMagnification, CC.xy(<span class='literal'>3</span>, <span class='literal'>17</span>));<a name=line.103></a>
+    <a name=line.104></a>
+    builder.addLabel(<span class='literal'>"Direction of Motion RA:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>19</span>));<a name=line.105></a>
+    fDirectionRA.setToolTipText(<span class='literal'>"Direction of motion of the spacecraft. Right ascension in degrees, 0..360."</span>);<a name=line.106></a>
+    builder.add(fDirectionRA, CC.xy(<span class='literal'>3</span>, <span class='literal'>19</span>));<a name=line.107></a>
+    builder.addLabel(<span class='literal'>"Direction of Motion Dec:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>21</span>));<a name=line.108></a>
+    builder.add(fDirectionDec, CC.xy(<span class='literal'>3</span>, <span class='literal'>21</span>));<a name=line.109></a>
+    fDirectionDec.setToolTipText(<span class='literal'>"Direction of motion of the spacecraft. Declination in degrees, -90..+90."</span>);<a name=line.110></a>
+    builder.addLabel(<span class='literal'>"Rotation:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>23</span>));<a name=line.111></a>
+    fDirectionPhi.setToolTipText(<span class='literal'>"Rotate the image around the center (the direction of motion). Degrees, 0..360."</span>);<a name=line.112></a>
+    builder.add(fDirectionPhi, CC.xy(<span class='literal'>3</span>, <span class='literal'>23</span>));<a name=line.113></a>
+    <a name=line.114></a>
+    fApply.addActionListener(<span class='keyword'>new</span> ApplyAction());<a name=line.115></a>
+    builder.add(fApply, CC.xy(<span class='literal'>5</span>,<span class='literal'>23</span>));<a name=line.116></a>
+    <a name=line.117></a>
+    builder.addLabel(<span class='literal'>"Messages:"</span>, CC.xy(<span class='literal'>1</span>, <span class='literal'>25</span>));<a name=line.118></a>
+    <span class='comment'>//redirect stdout to the messages area - stderr too?<a name=line.119></a>
+</span>    fMessages.setEditable(<span class='keyword'>false</span>);<a name=line.120></a>
+    Document document = fMessages.getDocument();<a name=line.121></a>
+    DocumentPrintStream documentPrintStream = <span class='keyword'>new</span> DocumentPrintStream(document, System.out);<a name=line.122></a>
+    System.setOut(documentPrintStream);    <a name=line.123></a>
+    builder.add(<span class='keyword'>new</span> JScrollPane(fMessages), CC.xywh(<span class='literal'>1</span>,<span class='literal'>27</span>,<span class='literal'>5</span>,<span class='literal'>1</span>));<a name=line.124></a>
+    <a name=line.125></a>
+    <span class='keyword'>return</span> builder.getPanel();    <a name=line.126></a>
+  }<a name=line.127></a>
+  <a name=line.128></a>
+  <span class='comment'>/** Apply the user input to the creation of a new image. */</span><a name=line.129></a>
+  <span class='keyword'>private</span> <span class='keyword'>final</span> <span class='keyword'>class</span> ApplyAction <span class='keyword'>implements</span> ActionListener {<a name=line.130></a>
+    <span class='keyword'>@Override</span> <span class='keyword'>public</span> <span class='keyword'>void</span> actionPerformed(ActionEvent aEvent) {<a name=line.131></a>
+      <span class='keyword'>long</span> start = System.currentTimeMillis();<a name=line.132></a>
+      <a name=line.133></a>
+      Util.log(<span class='literal'>"JRE total memory: "</span> + Runtime.getRuntime().totalMemory() + Consts.NL);<a name=line.134></a>
+      Util.log(<span class='literal'>"JRE free memory: "</span> + Runtime.getRuntime().freeMemory() + Consts.NL);<a name=line.135></a>
+      Util.log(<span class='literal'>""</span>+Consts.NL);<a name=line.136></a>
+      <a name=line.137></a>
+      InputParameters input = <span class='keyword'>null</span>;<a name=line.138></a>
+      <span class='keyword'>try</span> {<a name=line.139></a>
+        startWaitCursor();<a name=line.140></a>
+        input = <span class='keyword'>new</span> InputParameters(<a name=line.141></a>
+          fBeta.getText(), fLimitingMagnitude.getText(), fCatalogDir.getText(), <a name=line.142></a>
+          fCatalog.getSelectedItem().toString(), fOutputFile.getText(), fProjection.getSelectedItem().toString(),<a name=line.143></a>
+          fImageSize.getText(), fMagnification.getText(), fDirectionRA.getText(), fDirectionDec.getText(), fDirectionPhi.getText()<a name=line.144></a>
+        );<a name=line.145></a>
+        Util.log(input);<a name=line.146></a>
+        Util.log(<span class='literal'>""</span>+Consts.NL);<a name=line.147></a>
+        Starfield starfield = <span class='keyword'>new</span> Starfield(input);<a name=line.148></a>
+        <span class='comment'>//output of stats to the command line, PLUS generate an image of the stars<a name=line.149></a>
+</span>        StarfieldStats stats = starfield.calculate();<a name=line.150></a>
+        Util.log(stats.toString());<a name=line.151></a>
+        <span class='keyword'>long</span> end = System.currentTimeMillis();<a name=line.152></a>
+        Util.log(Consts.NL + <span class='literal'>"Done. Elapsed time: "</span> + (end-start)/<span class='literal'>1000.0D</span> + <span class='literal'>" seconds."</span> + Consts.NL);<a name=line.153></a>
+        Util.log(<span class='literal'>"--------------------------------------------------------"</span>+Consts.NL);<a name=line.154></a>
+        <span class='keyword'>if</span> (fOpenFile.isSelected()){<a name=line.155></a>
+          Desktop.getDesktop().open(input.getOutputFile());<a name=line.156></a>
+        }<a name=line.157></a>
+      }<a name=line.158></a>
+      <span class='keyword'>catch</span> (InputParameterException ex){<a name=line.159></a>
+        <span class='keyword'>for</span>(String error : ex.getErrors()){<a name=line.160></a>
+          Util.log(error + Consts.NL);<a name=line.161></a>
+        }<a name=line.162></a>
+        Util.log(<span class='literal'>"Error: Aborting, arguments not correct. Please see javadoc for more information."</span>);<a name=line.163></a>
+      }<a name=line.164></a>
+      <span class='keyword'>catch</span> (IOException ex) {<a name=line.165></a>
+        Util.log(<span class='literal'>"Unable to open output image file."</span>);<a name=line.166></a>
+      }<a name=line.167></a>
+      <span class='keyword'>finally</span> {<a name=line.168></a>
+        stopWaitCursor();<a name=line.169></a>
+      }<a name=line.170></a>
+    }<a name=line.171></a>
+  }<a name=line.172></a>
+<a name=line.173></a>
+  <span class='comment'>/** Used for redirecting stdout to the messages area. */</span><a name=line.174></a>
+  <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='keyword'>final</span>  <span class='keyword'>class</span> DocumentPrintStream <span class='keyword'>extends</span> PrintStream {<a name=line.175></a>
+    <span class='keyword'>public</span> DocumentPrintStream(Document document, OutputStream delegateStream) {<a name=line.176></a>
+        <span class='keyword'>super</span>(delegateStream);<a name=line.177></a>
+        fDocument = document;<a name=line.178></a>
+    }<a name=line.179></a>
+    <span class='keyword'>@Override</span> <span class='keyword'>public</span> <span class='keyword'>void</span> print(String string) {<a name=line.180></a>
+        <span class='keyword'>int</span> offset = fDocument.getLength();<a name=line.181></a>
+        <span class='keyword'>try</span> {<a name=line.182></a>
+          fDocument.insertString(offset, string, <span class='keyword'>null</span>);<a name=line.183></a>
+        } <a name=line.184></a>
+        <span class='keyword'>catch</span> (BadLocationException e) {<a name=line.185></a>
+          <span class='comment'>//ignore<a name=line.186></a>
+</span>        }<a name=line.187></a>
+        <span class='keyword'>super</span>.print(string); <span class='comment'>// write to the delegate stream<a name=line.188></a>
+</span>    }<a name=line.189></a>
+    <span class='keyword'>private</span> Document fDocument;<a name=line.190></a>
+  }<a name=line.191></a>
+  <a name=line.192></a>
+  <span class='keyword'>private</span> <span class='keyword'>void</span> startWaitCursor() {<a name=line.193></a>
+    RootPaneContainer root = (RootPaneContainer) fFrame.getRootPane().getTopLevelAncestor();<a name=line.194></a>
+    root.getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));<a name=line.195></a>
+    root.getGlassPane().setVisible(<span class='keyword'>true</span>);<a name=line.196></a>
+ }<a name=line.197></a>
+ <a name=line.198></a>
+  <span class='keyword'>private</span> <span class='keyword'>void</span> stopWaitCursor() {<a name=line.199></a>
+      RootPaneContainer root = (RootPaneContainer) fFrame.getRootPane().getTopLevelAncestor();<a name=line.200></a>
+      root.getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));<a name=line.201></a>
+      root.getGlassPane().setVisible(<span class='keyword'>false</span>);<a name=line.202></a>
+  }  <a name=line.203></a>
+}<a name=line.204></a>
+ <a name=line.205></a>
+</PRE><a name=line.206></a>
+ </BODY><a name=line.207></a>
+<HTML><a name=line.208></a>

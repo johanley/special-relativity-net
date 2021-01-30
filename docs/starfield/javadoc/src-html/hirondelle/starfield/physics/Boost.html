@@ -1,0 +1,60 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+Boost.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.physics;<a name=line.1></a>
+<a name=line.2></a>
+<span class='comment'>/** Apply the physics of a Lorentz Boost to a star. */</span><a name=line.3></a>
+<span class='keyword'>final</span> <span class='keyword'>class</span> Boost {<a name=line.4></a>
+  <a name=line.5></a>
+  <span class='comment'>/** <a name=line.6></a>
+   Account for changes the star's direction (aberration), brightness (magnitude), and surface temperature (color).<a name=line.7></a>
+   @param aBeta is the speed related to the Lorentz boost. <a name=line.8></a>
+  */</span><a name=line.9></a>
+  BoostedStar applyBoostTo(Star aStar, <span class='keyword'>double</span> aBeta){<a name=line.10></a>
+    BoostedStar result = <span class='keyword'>new</span> BoostedStar();<a name=line.11></a>
+    <span class='keyword'>double</span> theta = Math.PI/<span class='literal'>2</span> - aStar.Declination; <span class='comment'>// for motion towards the North Celestial Pole only<a name=line.12></a>
+</span>    <span class='keyword'>double</span> thetaPrime= aberrationDecr(theta, aBeta);<a name=line.13></a>
+    <span class='keyword'>double</span> dopplerFactor = doppler(aBeta, thetaPrime);<a name=line.14></a>
+    result.Magnitude = aStar.Magnitude + deltaMagnitude(dopplerFactor, aStar.Temperature);<a name=line.15></a>
+    result.ThetaPrime = thetaPrime;<a name=line.16></a>
+    result.Temperature = dopplerFactor * aStar.Temperature;<a name=line.17></a>
+    <span class='keyword'>return</span> result;<a name=line.18></a>
+  }<a name=line.19></a>
+<a name=line.20></a>
+  <span class='comment'>// PRIVATE<a name=line.21></a>
+</span>  <a name=line.22></a>
+  <span class='comment'>/** Aberration formula that decreases theta. Returns radians, 0..pi.  */</span><a name=line.23></a>
+  <span class='keyword'>private</span> <span class='keyword'>double</span> aberrationDecr(<span class='keyword'>double</span> aTheta, <span class='keyword'>double</span> aBeta){<a name=line.24></a>
+    <span class='keyword'>double</span> costhetaprime = (Math.cos(aTheta) + aBeta)/(<span class='literal'>1.0D</span>+aBeta*Math.cos(aTheta));<a name=line.25></a>
+    <span class='keyword'>return</span> Math.acos(costhetaprime);<a name=line.26></a>
+  }<a name=line.27></a>
+<a name=line.28></a>
+  <span class='comment'>/** Lorentz factor. */</span><a name=line.29></a>
+  <span class='keyword'>private</span> <span class='keyword'>double</span> gamma(<span class='keyword'>double</span> aBeta){<a name=line.30></a>
+    <span class='keyword'>double</span> radical = <span class='literal'>1</span> - aBeta*aBeta;<a name=line.31></a>
+    <span class='keyword'>return</span> <span class='literal'>1.0D</span>/Math.sqrt(radical);<a name=line.32></a>
+  }<a name=line.33></a>
+<a name=line.34></a>
+  <span class='comment'>/** The doppler factor at the given (aberrated) angle. */</span><a name=line.35></a>
+  <span class='keyword'>private</span> <span class='keyword'>double</span> doppler(<span class='keyword'>double</span> aBeta, <span class='keyword'>double</span> aTheta){<a name=line.36></a>
+    <span class='keyword'>double</span> gammaVal=gamma(aBeta);<a name=line.37></a>
+    <span class='keyword'>double</span>  denom=gammaVal*(<span class='literal'>1</span>-aBeta*Math.cos(aTheta));<a name=line.38></a>
+    <span class='keyword'>return</span> <span class='literal'>1.0D</span>/denom;<a name=line.39></a>
+  }<a name=line.40></a>
+<a name=line.41></a>
+  <span class='comment'>/** The McKinley-Doherty (1979) formula for the change in stellar magnitude. This is an approximation. */</span><a name=line.42></a>
+  <span class='keyword'>private</span> <span class='keyword'>double</span> deltaMagnitude(<span class='keyword'>double</span> aDoppler, <span class='keyword'>double</span> aTemperature){<a name=line.43></a>
+    <span class='keyword'>return</span> <span class='literal'>2.5</span>*Math.log10(aDoppler) - <span class='literal'>26000</span>*(<span class='literal'>1</span>/aTemperature - <span class='literal'>1</span>/(aDoppler*aTemperature));<a name=line.44></a>
+  }<a name=line.45></a>
+  <a name=line.46></a>
+}<a name=line.47></a>
+ <a name=line.48></a>
+</PRE><a name=line.49></a>
+ </BODY><a name=line.50></a>
+<HTML><a name=line.51></a>

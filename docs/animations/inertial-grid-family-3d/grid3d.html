@@ -1,0 +1,672 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Inertial Grid Family</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='grid3d.js?v=12'></script>
+ <script type="text/javascript">   
+  window.onload = function() {
+    postUserInput(); //push the default values over into js
+    animate(); //call the animate function, to actually start it running
+  }
+  function ctx(){
+    var canvas = document.getElementById('transformGrid');
+    return canvas.getContext('2d');  
+  }
+  /** Extract user input from the form, and pass the data to js; the data will be used in the next draw. */
+  function postUserInput() {
+    var translateX = document.getElementById('translatex').value;
+    var translateY = document.getElementById('translatey').value;
+    var translateZ = document.getElementById('translatez').value;
+    var translateT = document.getElementById('translatet').value;
+    var reverseX = document.getElementById('reversex').checked;
+    var reverseY = document.getElementById('reversey').checked
+    var reverseZ = document.getElementById('reversez').checked
+    var reverseT = document.getElementById('reverset').checked;
+    var boostX = document.getElementById('boostx').value;
+    var boostY = document.getElementById('boosty').value;
+    var boostZ = document.getElementById('boostz').value;
+    var rotation1 = document.getElementById('rotation1').value;
+    var rotation2= document.getElementById('rotation2').value;
+    var rotation3 = document.getElementById('rotation3').value;
+    applyUserInput(
+      translateX, translateY, translateZ, translateT, 
+      reverseX, reverseY, reverseZ, reverseT, 
+      rotation1, rotation2, rotation3,
+      boostX, boostY, boostZ
+    ); 
+  }
+  
+  /** Return to default settings seen upon load; the settings will be used in the next draw. */
+  function resetAll(){
+    applyUserInput(
+      0,0,0,0,
+      false,false,false,false,
+      45,45,-45,
+      0,0,0
+    );
+  }
+  function clearCanvas(){
+    var canvas = document.getElementById('transformGrid');
+    ctx().clearRect(0,0,canvas.width,canvas.height); // clears the whole canvas
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  function animate() {
+    clearCanvas();
+    drawCanvas(ctx());
+	window.requestAnimationFrame(animate);
+  }  
+ </script>
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='transformGrid' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+<form class='user-input-small'>
+ <table align='center'>
+ <tr>
+  <td>Displace x 
+  <td><select id='translatex'>
+      <option>-5
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+      <option>5
+     </select>
+  <td>Reverse x 
+  <td><input type='checkbox' id='reversex' value='true'>
+ <tr>
+  <td>Displace y
+  <td><select id='translatey'>
+      <option>-5
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+      <option>5
+     </select>
+  <td>Reverse y
+  <td><input type='checkbox' id='reversey'>
+ <tr>
+  <td>Displace z
+  <td><select id='translatez'>
+      <option>-5
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+      <option>5
+     </select>
+  <td>Reverse z
+  <td><input type='checkbox' id='reversez'>
+ <tr>
+  <td>Displace t
+  <td><select id='translatet'>
+      <option>-5
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+      <option>5
+     </select>
+  <td>Reverse t
+  <td><input type='checkbox' id='reverset' value='true'>
+ <tr>
+  <td>Rotation 1
+  <td>
+    <select id='rotation1' title='Degrees'>
+      <option>  0
+      <option>	5
+      <option>	10
+      <option>	15
+      <option>	20
+      <option>	25
+      <option>	30
+      <option>	35
+      <option>	40
+      <option selected>	45
+      <option>	50
+      <option>	55
+      <option>	60
+      <option>	65
+      <option>	70
+      <option>	75
+      <option>	80
+      <option>	85
+      <option>	90
+      <option>	95
+      <option>	100
+      <option>	105
+      <option>	110
+      <option>	115
+      <option>	120
+      <option>	125
+      <option>	130
+      <option>	135
+      <option>	140
+      <option>	145
+      <option>	150
+      <option>	155
+      <option>	160
+      <option>	165
+      <option>	170
+      <option>	175
+      <option>	180
+      <option>	185
+      <option>	190
+      <option>	195
+      <option>	200
+      <option>	205
+      <option>	210
+      <option>	215
+      <option>	220
+      <option>	225
+      <option>	230
+      <option>	235
+      <option>	240
+      <option>	245
+      <option>	250
+      <option>	255
+      <option>	260
+      <option>	265
+      <option>	270
+      <option>	275
+      <option>	280
+      <option>	285
+      <option>	290
+      <option>	295
+      <option>	300
+      <option>	305
+      <option>	310
+      <option>	315
+      <option>	320
+      <option>	325
+      <option>	330
+      <option>	335
+      <option>	340
+      <option>	345
+      <option>	350
+      <option>	355
+      <option>	-5
+      <option>	-10
+      <option>	-15
+      <option>	-20
+      <option>	-25
+      <option>	-30
+      <option>	-35
+      <option>	-40
+      <option>	-45
+      <option>	-50
+      <option>	-55
+      <option>	-60
+      <option>	-65
+      <option>	-70
+      <option>	-75
+      <option>	-80
+      <option>	-85
+      <option>	-90
+      <option>	-95
+      <option>	-100
+      <option>	-105
+      <option>	-110
+      <option>	-115
+      <option>	-120
+      <option>	-125
+      <option>	-130
+      <option>	-135
+      <option>	-140
+      <option>	-145
+      <option>	-150
+      <option>	-155
+      <option>	-160
+      <option>	-165
+      <option>	-170
+      <option>	-175
+      <option>	-180
+      <option>	-185
+      <option>	-190
+      <option>	-195
+      <option>	-200
+      <option>	-205
+      <option>	-210
+      <option>	-215
+      <option>	-220
+      <option>	-225
+      <option>	-230
+      <option>	-235
+      <option>	-240
+      <option>	-245
+      <option>	-250
+      <option>	-255
+      <option>	-260
+      <option>	-265
+      <option>	-270
+      <option>	-275
+      <option>	-280
+      <option>	-285
+      <option>	-290
+      <option>	-295
+      <option>	-300
+      <option>	-305
+      <option>	-310
+      <option>	-315
+      <option>	-320
+      <option>	-325
+      <option>	-330
+      <option>	-335
+      <option>	-340
+      <option>	-345
+      <option>	-350
+      <option>	-355
+   </select>
+  <td>Boost x
+  <td>
+    <select id='boostx'>
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+   </select>
+ <tr>
+  <td>Rotation 2
+  <td>
+    <select id='rotation2' title='Degrees'>
+      <option>  0
+      <option>	5
+      <option>	10
+      <option>	15
+      <option>	20
+      <option>	25
+      <option>	30
+      <option>	35
+      <option>	40
+      <option selected>	45
+      <option>	50
+      <option>	55
+      <option>	60
+      <option>	65
+      <option>	70
+      <option>	75
+      <option>	80
+      <option>	85
+      <option>	90
+      <option>	95
+      <option>	100
+      <option>	105
+      <option>	110
+      <option>	115
+      <option>	120
+      <option>	125
+      <option>	130
+      <option>	135
+      <option>	140
+      <option>	145
+      <option>	150
+      <option>	155
+      <option>	160
+      <option>	165
+      <option>	170
+      <option>	175
+      <option>	180
+      <option>	185
+      <option>	190
+      <option>	195
+      <option>	200
+      <option>	205
+      <option>	210
+      <option>	215
+      <option>	220
+      <option>	225
+      <option>	230
+      <option>	235
+      <option>	240
+      <option>	245
+      <option>	250
+      <option>	255
+      <option>	260
+      <option>	265
+      <option>	270
+      <option>	275
+      <option>	280
+      <option>	285
+      <option>	290
+      <option>	295
+      <option>	300
+      <option>	305
+      <option>	310
+      <option>	315
+      <option>	320
+      <option>	325
+      <option>	330
+      <option>	335
+      <option>	340
+      <option>	345
+      <option>	350
+      <option>	355
+      <option>	-5
+      <option>	-10
+      <option>	-15
+      <option>	-20
+      <option>	-25
+      <option>	-30
+      <option>	-35
+      <option>	-40
+      <option>	-45
+      <option>	-50
+      <option>	-55
+      <option>	-60
+      <option>	-65
+      <option>	-70
+      <option>	-75
+      <option>	-80
+      <option>	-85
+      <option>	-90
+      <option>	-95
+      <option>	-100
+      <option>	-105
+      <option>	-110
+      <option>	-115
+      <option>	-120
+      <option>	-125
+      <option>	-130
+      <option>	-135
+      <option>	-140
+      <option>	-145
+      <option>	-150
+      <option>	-155
+      <option>	-160
+      <option>	-165
+      <option>	-170
+      <option>	-175
+      <option>	-180
+      <option>	-185
+      <option>	-190
+      <option>	-195
+      <option>	-200
+      <option>	-205
+      <option>	-210
+      <option>	-215
+      <option>	-220
+      <option>	-225
+      <option>	-230
+      <option>	-235
+      <option>	-240
+      <option>	-245
+      <option>	-250
+      <option>	-255
+      <option>	-260
+      <option>	-265
+      <option>	-270
+      <option>	-275
+      <option>	-280
+      <option>	-285
+      <option>	-290
+      <option>	-295
+      <option>	-300
+      <option>	-305
+      <option>	-310
+      <option>	-315
+      <option>	-320
+      <option>	-325
+      <option>	-330
+      <option>	-335
+      <option>	-340
+      <option>	-345
+      <option>	-350
+      <option>	-355
+   </select>
+  <td>Boost y
+  <td>
+    <select id='boosty'>
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+   </select>
+   
+ <tr>
+  <td>Rotation 3
+  <td>
+    <select id='rotation3' title='Degrees'>
+      <option>  0
+      <option>	5
+      <option>	10
+      <option>	15
+      <option>	20
+      <option>	25
+      <option>	30
+      <option>	35
+      <option>	40
+      <option>	45
+      <option>	50
+      <option>	55
+      <option>	60
+      <option>	65
+      <option>	70
+      <option>	75
+      <option>	80
+      <option>	85
+      <option>	90
+      <option>	95
+      <option>	100
+      <option>	105
+      <option>	110
+      <option>	115
+      <option>	120
+      <option>	125
+      <option>	130
+      <option>	135
+      <option>	140
+      <option>	145
+      <option>	150
+      <option>	155
+      <option>	160
+      <option>	165
+      <option>	170
+      <option>	175
+      <option>	180
+      <option>	185
+      <option>	190
+      <option>	195
+      <option>	200
+      <option>	205
+      <option>	210
+      <option>	215
+      <option>	220
+      <option>	225
+      <option>	230
+      <option>	235
+      <option>	240
+      <option>	245
+      <option>	250
+      <option>	255
+      <option>	260
+      <option>	265
+      <option>	270
+      <option>	275
+      <option>	280
+      <option>	285
+      <option>	290
+      <option>	295
+      <option>	300
+      <option>	305
+      <option>	310
+      <option>	315
+      <option>	320
+      <option>	325
+      <option>	330
+      <option>	335
+      <option>	340
+      <option>	345
+      <option>	350
+      <option>	355
+      <option>	-5
+      <option>	-10
+      <option>	-15
+      <option>	-20
+      <option>	-25
+      <option>	-30
+      <option>	-35
+      <option>	-40
+      <option selected>	-45
+      <option>	-50
+      <option>	-55
+      <option>	-60
+      <option>	-65
+      <option>	-70
+      <option>	-75
+      <option>	-80
+      <option>	-85
+      <option>	-90
+      <option>	-95
+      <option>	-100
+      <option>	-105
+      <option>	-110
+      <option>	-115
+      <option>	-120
+      <option>	-125
+      <option>	-130
+      <option>	-135
+      <option>	-140
+      <option>	-145
+      <option>	-150
+      <option>	-155
+      <option>	-160
+      <option>	-165
+      <option>	-170
+      <option>	-175
+      <option>	-180
+      <option>	-185
+      <option>	-190
+      <option>	-195
+      <option>	-200
+      <option>	-205
+      <option>	-210
+      <option>	-215
+      <option>	-220
+      <option>	-225
+      <option>	-230
+      <option>	-235
+      <option>	-240
+      <option>	-245
+      <option>	-250
+      <option>	-255
+      <option>	-260
+      <option>	-265
+      <option>	-270
+      <option>	-275
+      <option>	-280
+      <option>	-285
+      <option>	-290
+      <option>	-295
+      <option>	-300
+      <option>	-305
+      <option>	-310
+      <option>	-315
+      <option>	-320
+      <option>	-325
+      <option>	-330
+      <option>	-335
+      <option>	-340
+      <option>	-345
+      <option>	-350
+      <option>	-355
+   </select>
+  <td>Boost z
+  <td>
+    <select id='boostz'>
+      <option>-4
+      <option>-3
+      <option>-2
+      <option>-1
+      <option selected>0
+      <option>1
+      <option>2
+      <option>3
+      <option>4
+   </select>
+ <tr>
+  <td><input type='button' value='Transform' onclick="postUserInput()" title='Apply the above transformations to the grid'>
+  <td><input type='reset' onclick="resetAll()" title='Go back to the start'>
+ </table>
+</form>
+
+<P><a href='../../index.html#InertialGridFamily'>Back to Main</a>
+
+<P><h3>Inertial Grid Family</h3>
+
+<P>
+Inertial grids form a family.
+Once you have one inertial grid, you can transform it into another inertial grid, with these
+kinds of changes (<em>transformations</em>):
+<ul>
+ <li>displacements
+ <li>reversals
+ <li>re-orientations
+ <li>boosts
+</ul>
+
+Any other kind of change, such as accelerations or spins, will result in a grid which is <em>no longer</em> inertial.
+<P>The time is indicated by the cycling colors:
+<ul>
+ <li>green
+ <li>orange
+ <li>red
+</ul>
+As a mnemonic, they cycle in alphabetical order by name; when the sensor clock is reversed,
+the colors cycle in reverse order. This doesn't represent time itself running backwards; it's just 
+the inertial grids clocks that are running backwards.
+
+
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+</body>
+</html>

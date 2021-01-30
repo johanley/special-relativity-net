@@ -1,0 +1,84 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Boost Transformation</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='../../script/diagrams.js?v=12'></script>
+ <script type='text/javascript' src='lt.js?v=12'></script>
+ <script type="text/javascript">   
+  //the ultimate source of the data is the map of request params
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    drawWithReqParams(); 
+  }
+  function ctx(){
+    var canvas = document.getElementById('lorentzTransform');
+    return canvas.getContext('2d');  
+  }
+  function populateFormControls(){
+    document.getElementById('x').value = reqParams.x;
+    document.getElementById('ct').value = reqParams.ct;
+    document.getElementById('beta').value = reqParams.beta;
+  }
+  /** No animation here, just a simple draw. */
+  function drawWithReqParams() {
+    var x = parseFloat(reqParams.x);
+    var ct = parseFloat(reqParams.ct);
+    var beta = parseFloat(reqParams.beta);
+    drawLorentzTransform(ctx(),x,ct,beta);
+  }
+ </script>
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='lorentzTransform' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+<P>
+<form method='GET' action='lt.html' class='user-input-small'>
+ <table align='center'>
+ <tr><td>x<td><input id='x' name='x' title='Enter a number' value='50' size='10'>
+ <tr><td>ct<td><input id='ct' name='ct' title='Enter a number' value='100'  size='10'>
+ <tr><td>&beta;<td><input id='beta'  name='beta' value='0.60' title='Velocity of G2 with respect to G1. Inside the range -1..+1'  size='10'>
+ <tr><td>&nbsp;<td><input type='submit' value='Boost' title='Show the event coordinates, as measured in both grids.'>
+ <tr><td>&nbsp;<td><input type='reset' value='Reset' title='Reset to default values.'>
+ </table>
+</form>
+<p><a href='../../index.html#Boosts'>Back to Main</a>
+
+<h3>Boost an Event</h3>
+
+<P>
+ Different inertial grids have different 
+ coordinates for events.
+ Here, two grids, Grid 1 and Grid 2, differ by a <em>boost</em>, in 
+ which Grid 2 is moving along the x-axis of Grid 1, 
+ at a speed &beta;, with -1<&beta;<1.
+ The sign of &beta; indicates if Grid 2 moves in the 
+ +x direction, or the -x direction.
+<P>
+Given the coordinates of an event as measured in Grid 1, you use the boost transformation 
+to find the coordinates for the same event, as measured in Grid 2.
+
+<P>The units used in this chart aren't specified. It shows values only within a certain range, 
+about +/- 225 or so.
+ 
+
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+</body>
+</html>

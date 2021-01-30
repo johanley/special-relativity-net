@@ -1,0 +1,38 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+RecordParser.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.catalog.parser;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.physics.Star;<a name=line.3></a>
+<a name=line.4></a>
+<span class='comment'>/** <a name=line.5></a>
+  &lt;b&gt;Create a Star object from a single record in a star catalog.&lt;/b&gt;<a name=line.6></a>
+  Assumes that a single line in the file corresponds to a single star. <a name=line.7></a>
+*/</span><a name=line.8></a>
+<span class='keyword'>public</span> <span class='keyword'>interface</span> RecordParser {<a name=line.9></a>
+<a name=line.10></a>
+  <span class='comment'>/** <a name=line.11></a>
+   Parse a single line from a star catalog into the parts needed for the starfield calculation.<a name=line.12></a>
+   In many cases the data will have to be massaged a bit to get the exact data needed by <a name=line.13></a>
+   the Star class.<a name=line.14></a>
+   <a name=line.15></a>
+   &lt;P&gt;&lt;b&gt;Parsers must return null if the line cannot be parsed into a Star object.&lt;/b&gt;<a name=line.16></a>
+   This can happen when the data is wonky for some reason. For example, the Yale Bright Star Catalog has a number of <a name=line.17></a>
+   entries that are essentially blank. <a name=line.18></a>
+   <a name=line.19></a>
+   &lt;P&gt;All angles must be converted to radians.<a name=line.20></a>
+   Be careful of the sign of the declination.  <a name=line.21></a>
+  */</span><a name=line.22></a>
+  Star parse(String aLine);<a name=line.23></a>
+  <a name=line.24></a>
+}<a name=line.25></a>
+ <a name=line.26></a>
+</PRE><a name=line.27></a>
+ </BODY><a name=line.28></a>
+<HTML><a name=line.29></a>

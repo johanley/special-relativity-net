@@ -1,0 +1,193 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+InputParameters.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+ <span class='keyword'>package</span> hirondelle.starfield.physics;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.catalog.parser.Catalog;<a name=line.3></a>
+<span class='keyword'>import</span> hirondelle.starfield.projection.Projector;<a name=line.4></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Util;<a name=line.5></a>
+<span class='keyword'>import</span> <span class='keyword'>static</span> hirondelle.starfield.util.Consts.NL;<a name=line.6></a>
+<a name=line.7></a>
+<span class='keyword'>import</span> java.io.File;<a name=line.8></a>
+<a name=line.9></a>
+<span class='comment'>/** <a name=line.10></a>
+ Model object for all items input by the user.<a name=line.11></a>
+ <a name=line.12></a>
+ &lt;P&gt;Converts text to objects, and performs validation. <a name=line.13></a>
+ If an error is detected, then the caller can report all errors. <a name=line.14></a>
+*/</span><a name=line.15></a>
+<span class='keyword'>public</span> <span class='keyword'>final</span> <span class='keyword'>class</span> InputParameters {<a name=line.16></a>
+<a name=line.17></a>
+  <span class='comment'>/**<a name=line.18></a>
+   Construct using text only.<a name=line.19></a>
+   <a name=line.20></a>
+   @param aBeta the Lorentz boost speed, 0 &lt;= beta &lt; 1.<a name=line.21></a>
+   @param aLimitingMag the brightness below which a star is taken as invisible to the human eye. Typical values are in the range 4.0 to 6.0. <a name=line.22></a>
+   @param aCatalog the star catalog being used as a data source<a name=line.23></a>
+   @param aCatalogDir the directory that contains the catalog data. Must be an existing directory, must contain only <a name=line.24></a>
+   the catalog's data files and nothing else. No subdirectories will be scanned by this tool.<a name=line.25></a>
+   @param aProjector the projection to use when mapping positions on the celestial sphere to the image plane. <a name=line.26></a>
+   @param aOutputFile the complete file name of the generated image. The directory must already exist; it won't be created for you.<a name=line.27></a>
+   @param aImageSize width of the image in pixels. The image is square, so this is also the height of the image.<a name=line.28></a>
+   @param aMagnification is applied only to the half-sky projections. When beta is high, increasing the <a name=line.29></a>
+   magnification can be used to resolve stars that are crowded together in the center.<a name=line.30></a>
+   @param aDirectionRA the right ascension of the direction of motion of the spacecraft, in degrees, 0..360. Defaults to the North Celestial Pole.<a name=line.31></a>
+   @param aDirectionDec the declination of the direction of motion of the spacecraft, in degrees, -90..+90. Defaults to the North Celestial Pole. <a name=line.32></a>
+   @param aRotation the angle to rotate the image about the center, in degrees, 0..360. Defaults to 0.<a name=line.33></a>
+   */</span><a name=line.34></a>
+  <span class='keyword'>public</span> InputParameters(<a name=line.35></a>
+    String aBeta, String aLimitingMag, String aCatalogDir, String aCatalog, String aOutputFile, String aProjector,<a name=line.36></a>
+    String aImageSize, String aMagnification, String aDirectionRA, String aDirectionDec, String aRotation<a name=line.37></a>
+  ) <span class='keyword'>throws</span> InputParameterException {<a name=line.38></a>
+    InputParameterException problem = <span class='keyword'>new</span> InputParameterException();<a name=line.39></a>
+    <span class='keyword'>try</span> {<a name=line.40></a>
+      fBeta = Double.valueOf(aBeta);<a name=line.41></a>
+      <span class='keyword'>if</span> (fBeta &lt; <span class='literal'>0.0D</span> || fBeta >= <span class='literal'>1.0D</span>){<a name=line.42></a>
+        problem.add(<span class='literal'>"Beta is not in the range [0..1): "</span> + aBeta);<a name=line.43></a>
+      }<a name=line.44></a>
+    }<a name=line.45></a>
+    <span class='keyword'>catch</span> (NumberFormatException ex){<a name=line.46></a>
+      problem.add(<span class='literal'>"Can't convert beta to a number: "</span> + aBeta);<a name=line.47></a>
+    }<a name=line.48></a>
+    <a name=line.49></a>
+    <span class='keyword'>try</span> {<a name=line.50></a>
+      fLimitingMagnitude = Double.valueOf(aLimitingMag);<a name=line.51></a>
+    }<a name=line.52></a>
+    <span class='keyword'>catch</span> (NumberFormatException ex){<a name=line.53></a>
+      problem.add(<span class='literal'>"Can't convert the limiting magnitude to a number: "</span> + aLimitingMag);<a name=line.54></a>
+    }<a name=line.55></a>
+    <a name=line.56></a>
+    <span class='keyword'>try</span> {<a name=line.57></a>
+      fCatalog = Catalog.valueOf(aCatalog);<a name=line.58></a>
+    }<a name=line.59></a>
+    <span class='keyword'>catch</span> (RuntimeException ex){<a name=line.60></a>
+      problem.add(<span class='literal'>"Unknown catalog: "</span> + aCatalog);<a name=line.61></a>
+    }<a name=line.62></a>
+    <a name=line.63></a>
+    <span class='keyword'>try</span> {<a name=line.64></a>
+      fProjector = Projector.valueOf(aProjector);<a name=line.65></a>
+    }<a name=line.66></a>
+    <span class='keyword'>catch</span> (RuntimeException ex){<a name=line.67></a>
+      problem.add(<span class='literal'>"Unknown projection: "</span> + aProjector);<a name=line.68></a>
+    }<a name=line.69></a>
+<a name=line.70></a>
+    fCatalogDir = <span class='keyword'>new</span> File(aCatalogDir);<a name=line.71></a>
+    <span class='keyword'>if</span> (! fCatalogDir.exists()){<a name=line.72></a>
+      problem.add(<span class='literal'>"Catalog directory doesn't exist: "</span> + aCatalogDir);<a name=line.73></a>
+    }<a name=line.74></a>
+    <span class='keyword'>else</span> <span class='keyword'>if</span> (fCatalogDir.isFile()){<a name=line.75></a>
+      problem.add(<span class='literal'>"Catalog directory isn't a directory: "</span> + aCatalogDir);<a name=line.76></a>
+    }<a name=line.77></a>
+    <a name=line.78></a>
+    fOutputFile = <span class='keyword'>new</span> File(aOutputFile); <span class='comment'>//no validation<a name=line.79></a>
+</span>    <a name=line.80></a>
+    <span class='keyword'>try</span> {<a name=line.81></a>
+      fImageSize = Integer.valueOf(aImageSize);<a name=line.82></a>
+      <span class='keyword'>if</span> (fImageSize <= <span class='literal'>0</span>){<a name=line.83></a>
+        problem.add(<span class='literal'>"Image size must be greater than 0: "</span> + aImageSize);<a name=line.84></a>
+      }<a name=line.85></a>
+    }<a name=line.86></a>
+    <span class='keyword'>catch</span> (NumberFormatException ex){<a name=line.87></a>
+      problem.add(<span class='literal'>"Can't convert Image Size to an integer: "</span> + aImageSize);<a name=line.88></a>
+    }<a name=line.89></a>
+<a name=line.90></a>
+    <span class='keyword'>try</span> {<a name=line.91></a>
+      fMagnification = Integer.valueOf(aMagnification);<a name=line.92></a>
+      <span class='keyword'>if</span> (fMagnification <= <span class='literal'>0</span>){<a name=line.93></a>
+        problem.add(<span class='literal'>"Magnification must be greater than 0: "</span> + aMagnification);<a name=line.94></a>
+      }<a name=line.95></a>
+    }<a name=line.96></a>
+    <span class='keyword'>catch</span> (NumberFormatException ex){<a name=line.97></a>
+      problem.add(<span class='literal'>"Can't convert Magnification to an integer: "</span> + aMagnification);<a name=line.98></a>
+    }<a name=line.99></a>
+<a name=line.100></a>
+    <span class='keyword'>try</span> {<a name=line.101></a>
+      fDirectionRA = Double.valueOf(aDirectionRA);<a name=line.102></a>
+      <span class='keyword'>if</span> (fDirectionRA &lt; <span class='literal'>0.0D</span> || fDirectionRA &gt; <span class='literal'>360.0D</span>){<a name=line.103></a>
+        problem.add(<span class='literal'>"Direction of motion RA is not in range [0..360]: "</span> + aDirectionRA);<a name=line.104></a>
+      }<a name=line.105></a>
+      fDirectionRA = Util.radians(fDirectionRA);<a name=line.106></a>
+    }<a name=line.107></a>
+    <span class='keyword'>catch</span> (NumberFormatException ex){<a name=line.108></a>
+      problem.add(<span class='literal'>"Can't convert Direction of Motion RA to a number: "</span> + aDirectionRA);<a name=line.109></a>
+    }<a name=line.110></a>
+    <a name=line.111></a>
+    <span class='keyword'>try</span> {<a name=line.112></a>
+      fDirectionDec = Double.valueOf(aDirectionDec);<a name=line.113></a>
+      <span class='keyword'>if</span> (fDirectionDec &lt; -<span class='literal'>90.0D</span> || fDirectionDec &gt; <span class='literal'>90.0D</span>){<a name=line.114></a>
+        problem.add(<span class='literal'>"Direction of motion Dec is not in Range [-90..+90]: "</span> + aDirectionDec);<a name=line.115></a>
+      }<a name=line.116></a>
+      fDirectionDec = Util.radians(fDirectionDec);<a name=line.117></a>
+    }<a name=line.118></a>
+    <span class='keyword'>catch</span> (NumberFormatException ex){<a name=line.119></a>
+      problem.add(<span class='literal'>"Can't convert Direction of Motion Dec to a number: "</span> + aDirectionDec);<a name=line.120></a>
+    }<a name=line.121></a>
+    <a name=line.122></a>
+    <span class='keyword'>try</span> {<a name=line.123></a>
+      fRotation = Double.valueOf(aRotation);<a name=line.124></a>
+      <span class='keyword'>if</span> (fRotation &lt; <span class='literal'>0.0D</span> || fRotation &gt; <span class='literal'>360.0D</span>){<a name=line.125></a>
+        problem.add(<span class='literal'>"Rotation is not in range [0..360]: "</span> + aRotation);<a name=line.126></a>
+      }<a name=line.127></a>
+      fRotation = Util.radians(fRotation);<a name=line.128></a>
+    }<a name=line.129></a>
+    <span class='keyword'>catch</span> (NumberFormatException ex){<a name=line.130></a>
+      problem.add(<span class='literal'>"Can't convert Rotation to a number: "</span> + aRotation);<a name=line.131></a>
+    }<a name=line.132></a>
+    <a name=line.133></a>
+    <span class='keyword'>if</span> (problem.hasError()){<a name=line.134></a>
+      <span class='keyword'>throw</span> problem;<a name=line.135></a>
+    }<a name=line.136></a>
+  }<a name=line.137></a>
+  <a name=line.138></a>
+  <span class='keyword'>public</span> <span class='keyword'>double</span> getBeta(){ <span class='keyword'>return</span> fBeta; }<a name=line.139></a>
+  <span class='keyword'>public</span> <span class='keyword'>double</span> getLimitingMagnitude(){ <span class='keyword'>return</span> fLimitingMagnitude; }<a name=line.140></a>
+  <span class='keyword'>public</span> Catalog getCatalog(){ <span class='keyword'>return</span> fCatalog; }<a name=line.141></a>
+  <span class='keyword'>public</span> File getCatalogDirectory(){ <span class='keyword'>return</span> fCatalogDir; }<a name=line.142></a>
+  <span class='keyword'>public</span> Projector getProjector(){ <span class='keyword'>return</span> fProjector; }<a name=line.143></a>
+  <span class='keyword'>public</span> File getOutputFile(){ <span class='keyword'>return</span> fOutputFile; }<a name=line.144></a>
+  <span class='keyword'>public</span> <span class='keyword'>int</span> getImageSize(){ <span class='keyword'>return</span> fImageSize; }<a name=line.145></a>
+  <span class='keyword'>public</span> <span class='keyword'>int</span> getMagnification(){ <span class='keyword'>return</span> fMagnification; }<a name=line.146></a>
+  <span class='keyword'>public</span> <span class='keyword'>double</span> getDirectionOfMotionRA(){ <span class='keyword'>return</span> fDirectionRA; }<a name=line.147></a>
+  <span class='keyword'>public</span> <span class='keyword'>double</span> getDirectionOfMotionDec(){ <span class='keyword'>return</span> fDirectionDec; }<a name=line.148></a>
+  <span class='keyword'>public</span> <span class='keyword'>double</span> getRotation(){ <span class='keyword'>return</span> fRotation; }<a name=line.149></a>
+  <a name=line.150></a>
+  <span class='comment'>/** Intended For debugging. */</span><a name=line.151></a>
+  <span class='keyword'>@Override</span> <span class='keyword'>public</span> String toString(){<a name=line.152></a>
+    StringBuilder result = <span class='keyword'>new</span> StringBuilder();<a name=line.153></a>
+    result.append(<span class='literal'>"Beta:"</span> + fBeta + NL);<a name=line.154></a>
+    result.append(<span class='literal'>"Limiting Mag:"</span> + fLimitingMagnitude + NL);<a name=line.155></a>
+    result.append(<span class='literal'>"Catalog:"</span> + fCatalog + NL);<a name=line.156></a>
+    result.append(<span class='literal'>"Catalog Dir:"</span> + fCatalogDir + NL);<a name=line.157></a>
+    result.append(<span class='literal'>"Projection:"</span> + fProjector + NL);<a name=line.158></a>
+    result.append(<span class='literal'>"Output File:"</span> + fOutputFile + NL);<a name=line.159></a>
+    result.append(<span class='literal'>"Image Size:"</span> + fImageSize + NL);<a name=line.160></a>
+    result.append(<span class='literal'>"Magnification:"</span> + fMagnification + NL);<a name=line.161></a>
+    result.append(<span class='literal'>"Direction of Motion RA:"</span> + fDirectionRA + NL);<a name=line.162></a>
+    result.append(<span class='literal'>"Direction of Motion Dec:"</span> + fDirectionDec + NL);<a name=line.163></a>
+    result.append(<span class='literal'>"Rotation:"</span> + fRotation + NL);<a name=line.164></a>
+    <span class='keyword'>return</span> result.toString();<a name=line.165></a>
+  }<a name=line.166></a>
+  <a name=line.167></a>
+  <span class='keyword'>private</span> <span class='keyword'>double</span> fBeta;<a name=line.168></a>
+  <span class='keyword'>private</span> <span class='keyword'>double</span> fLimitingMagnitude;<a name=line.169></a>
+  <span class='keyword'>private</span> Catalog fCatalog;<a name=line.170></a>
+  <span class='keyword'>private</span> File fCatalogDir;<a name=line.171></a>
+  <span class='keyword'>private</span> Projector fProjector;<a name=line.172></a>
+  <span class='keyword'>private</span> File fOutputFile;<a name=line.173></a>
+  <span class='keyword'>private</span> <span class='keyword'>int</span> fImageSize;<a name=line.174></a>
+  <span class='keyword'>private</span> <span class='keyword'>int</span> fMagnification;<a name=line.175></a>
+  <span class='keyword'>private</span> <span class='keyword'>double</span> fDirectionRA;<a name=line.176></a>
+  <span class='keyword'>private</span> <span class='keyword'>double</span> fDirectionDec;<a name=line.177></a>
+  <span class='keyword'>private</span> <span class='keyword'>double</span> fRotation;<a name=line.178></a>
+  <a name=line.179></a>
+}<a name=line.180></a>
+ <a name=line.181></a>
+</PRE><a name=line.182></a>
+ </BODY><a name=line.183></a>
+<HTML><a name=line.184></a>

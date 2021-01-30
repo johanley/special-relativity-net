@@ -1,0 +1,98 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+BoostTEST.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.physics;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Util;<a name=line.3></a>
+<span class='keyword'>import</span> junit.framework.TestCase;<a name=line.4></a>
+<a name=line.5></a>
+<span class='keyword'>public</span> <span class='keyword'>class</span> BoostTEST <span class='keyword'>extends</span> TestCase {<a name=line.6></a>
+<a name=line.7></a>
+  <span class='comment'>/** Run the test cases.  */</span><a name=line.8></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> main(String args[]) {<a name=line.9></a>
+    String[] testCaseName = { BoostTEST.<span class='keyword'>class</span>.getName() };<a name=line.10></a>
+    junit.textui.TestRunner.main(testCaseName);<a name=line.11></a>
+  }<a name=line.12></a>
+<a name=line.13></a>
+  <span class='keyword'>public</span> BoostTEST(String aName) {<a name=line.14></a>
+    <span class='keyword'>super</span>(aName);<a name=line.15></a>
+  }<a name=line.16></a>
+  <a name=line.17></a>
+  <span class='keyword'>public</span> <span class='keyword'>void</span> testAberration(){<a name=line.18></a>
+    <span class='comment'>//theta prime = (90 - declination)<a name=line.19></a>
+</span>    <a name=line.20></a>
+    <span class='comment'>//zero boost doesn't change the direction of any star<a name=line.21></a>
+</span>    testAbber(<span class='literal'>0</span>,<span class='literal'>90</span>,<span class='literal'>0</span>);<a name=line.22></a>
+    testAbber(<span class='literal'>0</span>,<span class='literal'>45</span>,<span class='literal'>45</span>);<a name=line.23></a>
+    testAbber(<span class='literal'>0</span>,<span class='literal'>0</span>,<span class='literal'>90</span>);<a name=line.24></a>
+    testAbber(<span class='literal'>0</span>,-<span class='literal'>45</span>,<span class='literal'>90</span>+<span class='literal'>45</span>);<a name=line.25></a>
+    <a name=line.26></a>
+    <span class='comment'>//for any boost, the direction of a star in the direction of motion remains the same<a name=line.27></a>
+</span>    testAbber(<span class='literal'>0.1</span>,<span class='literal'>90</span>,<span class='literal'>0</span>);<a name=line.28></a>
+    testAbber(<span class='literal'>0.5</span>,<span class='literal'>90</span>,<span class='literal'>0</span>);<a name=line.29></a>
+    testAbber(<span class='literal'>0.9</span>,<span class='literal'>90</span>,<span class='literal'>0</span>);<a name=line.30></a>
+    testAbber(<span class='literal'>0.9999</span>,<span class='literal'>90</span>,<span class='literal'>0</span>);<a name=line.31></a>
+    <a name=line.32></a>
+    <span class='comment'>//some typical boosts<a name=line.33></a>
+</span>    testAbber(<span class='literal'>0.5</span>,<span class='literal'>45</span>,<span class='literal'>26.8989511</span>);<a name=line.34></a>
+    testAbber(<span class='literal'>0.5</span>,<span class='literal'>30</span>,<span class='literal'>36.8698979</span>);<a name=line.35></a>
+    testAbber(<span class='literal'>0.5</span>,-<span class='literal'>30</span>,<span class='literal'>90</span>);<a name=line.36></a>
+  }<a name=line.37></a>
+  <a name=line.38></a>
+  <span class='keyword'>public</span> <span class='keyword'>void</span> testDoppler(){<a name=line.39></a>
+    testDopp(<span class='literal'>0</span>,<span class='literal'>90</span>,<span class='literal'>1</span>);<a name=line.40></a>
+    testDopp(<span class='literal'>0.6</span>,<span class='literal'>90</span>,<span class='literal'>2</span>);<a name=line.41></a>
+    testDopp(<span class='literal'>0.6</span>,<span class='literal'>90</span>,<span class='literal'>2</span>);<a name=line.42></a>
+    testDopp(<span class='literal'>0.6</span>,<span class='literal'>30</span>,<span class='literal'>1.625</span>); <span class='comment'>//theta 60deg, thetaprime 32.204deg<a name=line.43></a>
+</span>  }<a name=line.44></a>
+<a name=line.45></a>
+  <span class='keyword'>public</span> <span class='keyword'>void</span> testMagnitude(){<a name=line.46></a>
+    testMag(<span class='literal'>0.6</span>,<span class='literal'>30</span>,<span class='literal'>6</span>,<span class='literal'>3050</span>,<span class='literal'>6</span>-<span class='literal'>2.75127</span>); <span class='comment'>//doppler = 1.625<a name=line.47></a>
+</span>  }<a name=line.48></a>
+<a name=line.49></a>
+  <span class='keyword'>private</span> <span class='keyword'>void</span> testAbber(<span class='keyword'>double</span> aBeta, <span class='keyword'>double</span> aDeclination, <span class='keyword'>double</span> aExpectedThetaPrime){<a name=line.50></a>
+    Boost boost = <span class='keyword'>new</span> Boost();<a name=line.51></a>
+    Star star = <span class='keyword'>new</span> Star();<a name=line.52></a>
+    star.Declination = Util.radians(aDeclination);<a name=line.53></a>
+    star.RightAscension = <span class='literal'>0</span>;<a name=line.54></a>
+    star.Magnitude = <span class='literal'>0</span>;<a name=line.55></a>
+    star.Temperature = <span class='literal'>3050</span>;<a name=line.56></a>
+    BoostedStar boostedStar = boost.applyBoostTo(star, aBeta);<a name=line.57></a>
+    <span class='keyword'>double</span> expected = Util.radians(aExpectedThetaPrime);<a name=line.58></a>
+    assertTrue(Math.abs(boostedStar.ThetaPrime - expected) &lt; <span class='literal'>0.0000001</span>);<a name=line.59></a>
+  }<a name=line.60></a>
+  <a name=line.61></a>
+  <span class='keyword'>private</span> <span class='keyword'>void</span> testDopp(<span class='keyword'>double</span> aBeta, <span class='keyword'>double</span> aDeclination, <span class='keyword'>double</span> aExpectedDoppler){<a name=line.62></a>
+    Boost boost = <span class='keyword'>new</span> Boost();<a name=line.63></a>
+    Star star = <span class='keyword'>new</span> Star();<a name=line.64></a>
+    star.Declination = Util.radians(aDeclination);<a name=line.65></a>
+    star.RightAscension = <span class='literal'>0</span>;<a name=line.66></a>
+    star.Magnitude = <span class='literal'>0</span>;<a name=line.67></a>
+    star.Temperature = <span class='literal'>1000</span>;<a name=line.68></a>
+    BoostedStar boostedStar = boost.applyBoostTo(star, aBeta);<a name=line.69></a>
+    <span class='keyword'>double</span> expected = aExpectedDoppler * star.Temperature;<a name=line.70></a>
+    assertTrue(Math.abs(boostedStar.Temperature - expected) &lt; <span class='literal'>0.0000001</span>);<a name=line.71></a>
+  }<a name=line.72></a>
+  <a name=line.73></a>
+  <span class='keyword'>private</span> <span class='keyword'>void</span> testMag(<span class='keyword'>double</span> aBeta, <span class='keyword'>double</span> aDeclination, <span class='keyword'>double</span> aInitialMag, <span class='keyword'>double</span> aInitialTemp, <span class='keyword'>double</span> aExpectedMag){<a name=line.74></a>
+    Boost boost = <span class='keyword'>new</span> Boost();<a name=line.75></a>
+    Star star = <span class='keyword'>new</span> Star();<a name=line.76></a>
+    star.Declination = Util.radians(aDeclination);<a name=line.77></a>
+    star.RightAscension = <span class='literal'>0</span>;<a name=line.78></a>
+    star.Magnitude = aInitialMag;<a name=line.79></a>
+    star.Temperature = aInitialTemp;<a name=line.80></a>
+    BoostedStar boostedStar = boost.applyBoostTo(star, aBeta);<a name=line.81></a>
+    assertTrue(Math.abs(boostedStar.Magnitude - aExpectedMag) &lt; <span class='literal'>0.001</span>);<a name=line.82></a>
+  }<a name=line.83></a>
+  <a name=line.84></a>
+}<a name=line.85></a>
+ <a name=line.86></a>
+</PRE><a name=line.87></a>
+ </BODY><a name=line.88></a>
+<HTML><a name=line.89></a>

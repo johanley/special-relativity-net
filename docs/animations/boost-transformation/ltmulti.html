@@ -1,0 +1,128 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Boost Transformation - Histories</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='../../script/diagrams.js?v=12'></script>
+ <script type='text/javascript' src='ltmulti.js?v=12'></script>
+ <script type="text/javascript">   
+  //the ultimate source of the data is the map of request params
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    applyRequestParams();
+    if(Boolean(reqParams.anim)){
+      animate();
+    }
+    else{
+      drawLorentzTransformMulti(ctx());    
+    }
+  }
+  function ctx(){
+    var canvas = document.getElementById('lorentzTransformMulti');
+    return canvas.getContext('2d');  
+  }
+  function clearCanvas(){
+    var canvas = document.getElementById('lorentzTransformMulti');
+    ctx().clearRect(0,0,canvas.width,canvas.height); // clears the whole canvas
+  }
+  function applyRequestParams() {
+    var hist1 = reqParams.hist1;
+    var hist2 = reqParams.hist2;
+    var beta = parseFloat(reqParams.beta);
+    var anim = reqParams.anim;
+    applyUserInput(hist1,hist2,beta,anim);
+  }
+  function populateFormControls(){
+    document.getElementById('hist1').value = reqParams.hist1;
+    document.getElementById('hist2').value = reqParams.hist2;
+    document.getElementById('beta').value = reqParams.beta;
+    document.getElementById('anim').checked = reqParams.anim;
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  var framecount=0; //every nth frame; default is 60 fps
+  function animate() {
+    framecount++;
+    if ((framecount % 3)==0){
+      clearCanvas();
+      drawLorentzTransformMulti(ctx());
+    }
+	window.requestAnimationFrame(animate);
+  }  
+ </script>
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='lorentzTransformMulti' width='750' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+<P>
+<form method='GET' action='ltmulti.html' class='user-input-small'>
+ <table align='center'>
+ <tr><td>History1<td><input id='hist1' name='hist1' title='Enter N pairs of events, separated by a comma' value='-50,-80,-50,80' size='15'>
+ <tr><td>History2<td><input id='hist2' name='hist2' title='Enter N pairs of events, separated by a comma' value='50,-80,50,80' size='15'>
+ <tr><td>&beta;<td><input id='beta' name='beta' value='-0.6' title='Velocity of G2 with respect to G1. Inside the range -1..+1'  size='10'>
+ <tr><td>Animate<td><input id='anim' name='anim' type='checkbox' checked title='Turn off to show just the final beta value'>
+ <tr><td>&nbsp;<td><input type='submit' value='Boost' title='Show the histories, as measured in both grids.'>
+ <tr><td>&nbsp;<td><input type='reset' value='Reset' title='Reset to default values.'>
+ </table>
+</form>
+
+<p><a href='../../index.html#BoostDetails'>Back to Main</a>
+
+<P>
+<h3>Boost Histories</h3>
+
+Look for the <b>toothpaste effect</b>: events are stretched apart in some cases, and squeezed together in others.
+
+<P>
+ Different inertial grids have different 
+ coordinates for events.
+ Here, two grids, Grid 1 and Grid 2, differ by a <em>boost</em>, in 
+ which Grid 2 is moving along the x-axis of Grid 1, 
+ at a speed &beta;, with -1<&beta;<1.
+ The sign of &beta; indicates if Grid 2 moves in the 
+ +x direction, or the -x direction.
+<P>
+Given the coordinates of an event as measured in Grid 1, you use the boost transformation 
+to find the coordinates for the same event, as measured in Grid 2.
+
+<P>The form lets you input <b>multiple events</b> for each of the two separate histories. 
+For example, this input for a history:
+<pre>-100,-150,100,175</pre>
+generates these two events:
+<pre>
+(x,ct)=(-100,-150)
+
+(x,ct)=(100,175)
+</pre>
+These events are joined by a line to make a history.
+If you entered 3 events, then they would be joined to form a single history as well, and so on.
+Black dots represent the ticks of a wristwatch. The tick marks stretch out as &Gamma; increases.
+
+
+<P>
+<P>The units used in this chart aren't specified. It shows values only within a certain range, 
+about +/- 225 or so.
+ 
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+
+</body>
+</html>

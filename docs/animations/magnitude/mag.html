@@ -1,0 +1,114 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Apparent Magnitude</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='mag.js?v=12'></script>
+ <script type="text/javascript">   
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    applyRequestParams();
+    drawCanvas(ctx());
+  }
+  function ctx(){
+    var canvas = document.getElementById('mag');
+    return canvas.getContext('2d');  
+  }
+  function clearCanvas(){
+    var canvas = document.getElementById('mag');
+    ctx().clearRect(0,0,canvas.width,canvas.height); // clears the whole canvas
+  }
+  function applyRequestParams() {
+    applyUserInput(reqParams.spectralClass1,reqParams.spectralClass2);
+  }
+  function populateFormControls(){
+    var spectralClass1Control = document.getElementById('spectralClass1');
+    for(var idx=0; idx<spectralClass1Control.options.length; ++idx){
+      if (spectralClass1Control.options[idx].value == reqParams.spectralClass1){
+        spectralClass1Control.options[idx].selected = true;
+        break;
+      }
+    }
+    var spectralClass2Control = document.getElementById('spectralClass2');
+    for(var idx=0; idx<spectralClass2Control.options.length; ++idx){
+      if (spectralClass2Control.options[idx].value == reqParams.spectralClass2){
+        spectralClass2Control.options[idx].selected = true;
+        break;
+      }
+    }
+  }
+ </script>
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='mag' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+<P>
+<form method='GET' action='mag.html' class='user-input-small'>
+ <table align='center'>
+ <tr>
+   <td>Spectral Class 1
+   <td>
+    <select id='spectralClass1' name='spectralClass1' title='The spectral class of the star.'>
+      <option>O
+      <option>B
+      <option>A
+      <option>F
+      <option>G
+      <option>K
+      <option selected>M
+    </select>
+ <tr>
+   <td>Spectral Class 2
+   <td>
+    <select id='spectralClass2' name='spectralClass2' title='The spectral class of the star.'>
+      <option selected>O
+      <option>B
+      <option>A
+      <option>F
+      <option>G
+      <option>K
+      <option>M
+    </select>
+ <tr><td>&nbsp;<td><input type='submit' value='Apply' title='Show the graph'>
+ <tr><td>&nbsp;<td><input type='reset' value='Reset' title='Reset to default values'>
+ </table>
+</form>
+ 
+<p><a href='../../part2.html#Beaming'>Back to Main</a>.
+ 
+<P><h3>Apparent Magnitude</h3>
+The change in apparent magnitude of a star, according to its spectral class and doppler factor D.
+ 
+<P>
+Note that an <em>increase</em> in brightness corresponds to a <em>decrease</em> in stellar magnitude.
+
+<P>Here, each spectral class is mapped internally to a representative absolute temperature in degress Kelvin.
+
+<P>In general:
+<ul> 
+ <li>there's always a value of D for which the brightness has a peak.
+ <li>the cooler, redder stars have a greater increase in brightness for doppler factor D&gt;1.
+ <li>the hottest, bluest stars get dimmer for almost all values of D.
+</ul>
+
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+
+</body>
+</html>

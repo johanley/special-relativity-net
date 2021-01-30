@@ -1,0 +1,108 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Doppler Effect</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='../../script/diagrams.js?v=12'></script>
+ <script type='text/javascript' src='doppler2d.js?v=12'></script>
+ <script type="text/javascript">   
+  //the ultimate source of the data is the map of request params
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    applyRequestParams();
+    if(Boolean(reqParams.anim)){
+      animate();
+    }
+    else{
+      drawCanvas(ctx());
+    }
+  }
+  function ctx(){
+    var canvas = document.getElementById('doppler2d');
+    return canvas.getContext('2d');  
+  }
+  function clearCanvas(){
+    var canvas = document.getElementById('doppler2d');
+    ctx().clearRect(0,0,canvas.width,canvas.height); 
+  }
+  function applyRequestParams() {
+    var beta = parseFloat(reqParams.beta);
+    var anim = reqParams.anim;
+    applyUserInput(beta,anim);
+  }
+  function populateFormControls(){
+    document.getElementById('beta').value = reqParams.beta;
+    document.getElementById('anim').checked = reqParams.anim;
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  var framecount=0; //every nth frame; default is 60 fps
+  function animate() {
+    framecount++;
+    if ((framecount % 3)==0){
+      clearCanvas();
+      drawCanvas(ctx());
+    }
+	window.requestAnimationFrame(animate);
+  }  
+ </script>
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='doppler2d' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+<P>
+<form method='GET' action='doppler2d.html' class='user-input-small'>
+ <table align='center'>
+ <tr><td>&beta;<td><input id='beta' name='beta' value='-0.6' title='Velocity of G2 with respect to G1. Inside the range -1..+1'  size='5'>
+ <tr><td>Animate<td><input id='anim' name='anim' type='checkbox' checked title='Turn off to show just the final beta value'>
+ <tr><td>&nbsp;<td><input type='submit' value='Boost' title='Show the transmitted signals.'>
+ <tr><td>&nbsp;<td><input type='reset' value='Reset' title='Reset to default values.'>
+ </table>
+</form>
+<p><a href='../../part2.html#DopplerEffect'>Back to Main</a>
+
+<P><h3>Doppler Effect</h3>
+
+<P>
+The Doppler effect applies to any periodic phenomena - anything that happens at regular intervals.
+The Doppler effect is a result of two things:
+ <ul>
+  <li>changes in travel-time from the signal source to the signal detector
+  <li>time dilation for the moving signal source
+ </ul>
+ 
+ <P>Here, the two detectors receive an incoming periodic signal from the emitter, the source of signals.
+ The signals are emitted both to the right and left.
+ The white dots represent the ticking of wristwatch time along each history.
+ As the emitter increases its speed, you can see the effect of time dilation in the increasing spaces 
+ between the ticks.
+ 
+ <P>As you can see, the reception of signals:
+ <ul>
+ <li>gets piled up on Detector 2, which the source is <em>approaching</em>; that detector sees the signal frequency as <em>increasing</em>.
+ <li>gets spread out on Detector 1, which the source is <em>receding from</em>; that detector sees the signal 
+ frequency as <em>decreasing</em>.
+ </ul>
+
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+</body>
+</html>

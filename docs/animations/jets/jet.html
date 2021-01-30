@@ -1,0 +1,146 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Astrophysical Jets</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='jet.js?v=12'></script>
+ <script type="text/javascript">   
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    applyRequestParams();
+    if(Boolean(reqParams.anim)){
+      animate();
+    }
+    else{
+      drawCanvas(ctx());
+    }
+  }
+  function ctx(){
+    var canvas = document.getElementById('jet');
+    return canvas.getContext('2d');  
+  }
+  function clearCanvas(){
+    var canvas = document.getElementById('jet');
+    ctx().clearRect(0,0,canvas.width,canvas.height); // clears the whole canvas
+  }
+  function applyRequestParams() {
+    applyUserInput(
+      parseFloat(reqParams.beta),
+      parseFloat(reqParams.theta),
+      parseFloat(reqParams.brightness),
+      parseFloat(reqParams.brightnessLimit),
+      Boolean(reqParams.showInvisibles),
+      parseFloat(reqParams.brightnessExponent),
+      parseFloat(reqParams.distance),
+      Boolean(reqParams.anim)
+    );
+  }
+  function populateFormControls(){
+    document.getElementById('beta').value = reqParams.beta;
+    document.getElementById('theta').value = reqParams.theta;
+    document.getElementById('brightness').value = reqParams.brightness;
+    document.getElementById('brightnessLimit').value = reqParams.brightnessLimit;
+    document.getElementById('brightnessExponent').value = reqParams.brightnessExponent;
+    document.getElementById('distance').value = reqParams.distance;
+    
+    document.getElementById('showInvisibles').checked = reqParams.showInvisibles;
+    document.getElementById('anim').checked = reqParams.anim;
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  var framecount=0; //every nth frame; default is 60 fps
+  function animate() {
+    framecount++;
+    if ((framecount % 3)==0){
+      clearCanvas();
+      drawCanvas(ctx());
+    }
+	window.requestAnimationFrame(animate);
+  }  
+ </script>
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='jet' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+</p>
+
+
+<form method='GET' action='jet.html' class='user-input-small'>
+ <table align='center'>
+ <tr><td>&beta;<td><input id='beta'  name='beta' value='0.95' title='Speed of the jet with respect to the source'  size='10'>
+ <tr><td>&theta;<td><input id='theta'  name='theta' value='68' title='Angle of the jet with respect to the line of sight. 0 is approaching, 90 is transverse.'  size='10'>
+ <tr><td>Blob brightness<td><input id='brightness'  name='brightness' value='5.0' title='Brightness of the jet, as measured in rest grid of the jet. Source brightness=1.' size='10'>
+ <tr><td>Brightness limit<td><input id='brightnessLimit'  name='brightnessLimit' value='0.05' title='The level below which a blob is not detectable. Source brightness=1.' size='10'>
+ <tr><td>Show invisibles<td><input id='showInvisibles'  name='showInvisibles' type='checkbox' title='Switch on to see blobs that are below the limiting brightness.'>
+ <tr><td>Brightness exponent<td><input id='brightnessExponent'  name='brightnessExponent' value='3' title='The exponent by which D is raised, to find the relative change in brightness.' size='10'>
+ <tr><td>Distance<td><input id='distance'  name='distance' value='11000' title='The distance to the source, in parsecs.' size='10'>
+ <tr><td>Animate<td><input type='checkbox' id='anim' name='anim' checked title='Animate the motion of the blob.'>
+ <tr><td>&nbsp;<td><input type='submit' value='Run' title='Update.'>
+ <tr><td>&nbsp;<td><input type='reset' value='Reset' title='Reset to default values.'>
+ </table>
+</form>
+<p>
+<a href='../../part2.html#AstrophysicalJets'>Back to Main</a>
+
+<h3>Astrophysical Jets</h3>
+<P>
+Simulates the bulk motion of relativistic jets coming out of a microquasar.
+The jets are modeled here as a <em>pair</em> of jets moving away from a central source.
+The two jets always move in opposite directions.
+The size of the blobs here indicates the relative brightness. 
+
+<P>Interesting to note:
+<ul>
+ <li>the further the motion is from transverse, the greater the differences in the two jets.
+ <li>the increase in brightness for the approaching jet can be <em>very</em> high when the motion is nearly face-on.
+ <li>the decrease in brightness of the receding jet often makes it too dim to be detected (this sometimes called <em>Doppler favoritism</em> in favor of the approaching jet).
+ <li>for pure transverse motion, the brightness is not the same as the central source, even when the brightness is 
+ input as 1. This is because the doppler factor is 1/&Gamma; for transverse motion.
+</ul>
+
+<a href='jet.html?beta=0.98&theta=66&brightness=10&brightnessLimit=.05&brightnessExponent=2&distance=11000&anim=on'>Here</a> 
+is the above diagram for GRS1915+105, a black hole about 11,000 parsecs distant.  
+ Note that if the approaching jet were more face-on, it would be much brighter. (More info <a href='http://www.nrao.edu/pr/2000/vla20/background/superlum/'>here</a>).
+
+
+<h3>Explanatory Notes</h3>
+
+<P><b>Brightness Exponent</b><br>
+The change in brightness depends on the Doppler factor raised to a certain power (exponent) 
+That exponent takes different values, depending on the character of the emitter.
+
+<P><b>&theta;, sp, bri</b><br>
+The apparent angle, apparent speed, and relative apparent brightness of the blob.
+
+<!--
+<ul>
+ <li>2-&alpha;: continuous sources
+ <li>3-&alpha;: discrete, star-like sources
+</ul>
+Here, &alpha; is the <em>spectral index</em>, a measure of how the brightness changes with increasing frequency.
+The value of alpha 0..2 for thermal sources, -1? for synchrontron sources.
+
+-->
+
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+
+</body>
+</html>

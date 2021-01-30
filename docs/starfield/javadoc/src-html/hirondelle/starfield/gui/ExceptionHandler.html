@@ -1,0 +1,45 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+ExceptionHandler.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.gui;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.UiUtil;<a name=line.3></a>
+<a name=line.4></a>
+<span class='keyword'>import</span> javax.swing.JOptionPane;<a name=line.5></a>
+<a name=line.6></a>
+<span class='comment'>/**<a name=line.7></a>
+ Custom handler for any uncaught exceptions.<a name=line.8></a>
+ <a name=line.9></a>
+ &lt;P&gt;By default, a Swing app will handle uncaught exceptions simply by <a name=line.10></a>
+  printing a stack trace to {@link System#err}. However, the end user will <a name=line.11></a>
+  not usually see that, and if they do, they will not likely understand it. <a name=line.12></a>
+  This class addresses that problem, by showing the end user a <a name=line.13></a>
+  simple error message in a modal dialog. (The dialog's owner is the <a name=line.14></a>
+  currently active frame.)<a name=line.15></a>
+*/</span><a name=line.16></a>
+<span class='keyword'>public</span> <span class='keyword'>final</span> <span class='keyword'>class</span> ExceptionHandler <span class='keyword'>implements</span> Thread.UncaughtExceptionHandler {<a name=line.17></a>
+<a name=line.18></a>
+  <span class='comment'>/** <a name=line.19></a>
+  Custom handler for uncaught exceptions.<a name=line.20></a>
+  <a name=line.21></a>
+  &lt;P&gt;Displays a simple model dialog to the user, showing that an error has<a name=line.22></a>
+   occured. The text of the error includes {@link Throwable#toString()}. <a name=line.23></a>
+   The stack trace is logged at a SEVERE level.<a name=line.24></a>
+ */</span><a name=line.25></a>
+  <span class='keyword'>@Override</span>  <span class='keyword'>public</span> <span class='keyword'>void</span> uncaughtException(Thread aThread, Throwable aThrowable) {<a name=line.26></a>
+    JOptionPane.showMessageDialog(<a name=line.27></a>
+      UiUtil.getActiveFrame(), <span class='literal'>"Error: "</span> + aThrowable.toString(), <a name=line.28></a>
+      <span class='literal'>"Error"</span>, JOptionPane.ERROR_MESSAGE<a name=line.29></a>
+    );<a name=line.30></a>
+  }<a name=line.31></a>
+}<a name=line.32></a>
+ <a name=line.33></a>
+</PRE><a name=line.34></a>
+ </BODY><a name=line.35></a>
+<HTML><a name=line.36></a>

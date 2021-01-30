@@ -1,0 +1,86 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+Launch.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.gui;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Util;<a name=line.3></a>
+<a name=line.4></a>
+<span class='keyword'>import</span> java.awt.Font;<a name=line.5></a>
+<span class='keyword'>import</span> java.util.Enumeration;<a name=line.6></a>
+<a name=line.7></a>
+<span class='keyword'>import</span> javax.swing.UIManager;<a name=line.8></a>
+<span class='keyword'>import</span> javax.swing.plaf.FontUIResource;<a name=line.9></a>
+<a name=line.10></a>
+<span class='comment'>/** <a name=line.11></a>
+ &lt;b&gt;Launch point&lt;/b&gt; for the graphical (GUI) version of the application.<a name=line.12></a>
+*/</span> <a name=line.13></a>
+<span class='keyword'>public</span> <span class='keyword'>final</span> <span class='keyword'>class</span> Launch {<a name=line.14></a>
+  <a name=line.15></a>
+  <span class='comment'>/** <a name=line.16></a>
+   Run the graphical application.<a name=line.17></a>
+<a name=line.18></a>
+  &lt;P&gt;Performs the following :<a name=line.19></a>
+   &lt;ul&gt;<a name=line.20></a>
+    &lt;li&gt;configure a custom {@link ExceptionHandler} for uncaught exceptions<a name=line.21></a>
+    &lt;li&gt;use the native look and feel, natural to the runtime operating system<a name=line.22></a>
+    &lt;li&gt;sets the font for the application (12-point Verdana)<a name=line.23></a>
+   &lt;/ul&gt;<a name=line.24></a>
+ */</span><a name=line.25></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> main(String... aArgs) {<a name=line.26></a>
+    useCustomExceptionHandler();    <a name=line.27></a>
+    useNativeLookAndFeel();<a name=line.28></a>
+    setApplicationFont();<a name=line.29></a>
+    Screen screen = <span class='keyword'>new</span> Screen();<a name=line.30></a>
+    screen.buildAndShow();<a name=line.31></a>
+  }<a name=line.32></a>
+<a name=line.33></a>
+  <span class='comment'>// PRIVATE <a name=line.34></a>
+</span>  <a name=line.35></a>
+  <span class='comment'>/**   See {@link ExceptionHandler}.    */</span><a name=line.36></a>
+  <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='keyword'>void</span> useCustomExceptionHandler(){<a name=line.37></a>
+    Thread.setDefaultUncaughtExceptionHandler(<span class='keyword'>new</span> ExceptionHandler());<a name=line.38></a>
+  }<a name=line.39></a>
+<a name=line.40></a>
+  <span class='comment'>/**<a name=line.41></a>
+  Use the look which is usually used on the current operating system.<a name=line.42></a>
+  <a name=line.43></a>
+  &lt;P&gt;For example, on a Windows machine, use a Windows look and feel.<a name=line.44></a>
+  If you are using a non-default look and feel, then you should set it first thing.<a name=line.45></a>
+  For more info, see the <a name=line.46></a>
+  &lt;a href='http://java.sun.com/docs/books/tutorial/uiswing/lookandfeel/plaf.html#available'&gt;Swing Tutorial&lt;/a&gt;<a name=line.47></a>
+  <a name=line.48></a>
+  &lt;P&gt;Warning: on Windows, the native look & feel displays accelerator keys only when ALT key is held down. <a name=line.49></a>
+  Otherwise, they are not displayed!<a name=line.50></a>
+*/</span><a name=line.51></a>
+  <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='keyword'>void</span> useNativeLookAndFeel() {<a name=line.52></a>
+    <span class='keyword'>try</span> {<a name=line.53></a>
+      UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());<a name=line.54></a>
+    }<a name=line.55></a>
+    <span class='keyword'>catch</span>(Throwable ex){<a name=line.56></a>
+      Util.log(<span class='literal'>"Cannot set the look and feel."</span>);<a name=line.57></a>
+    }<a name=line.58></a>
+  }<a name=line.59></a>
+  <a name=line.60></a>
+  <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='keyword'>void</span> setApplicationFont() {<a name=line.61></a>
+    FontUIResource fontResource = <span class='keyword'>new</span> FontUIResource(<span class='literal'>"Verdana"</span>,Font.PLAIN,<span class='literal'>12</span>);<a name=line.62></a>
+    Enumeration keys = UIManager.getDefaults().keys();<a name=line.63></a>
+    <span class='keyword'>while</span> (keys.hasMoreElements()) {<a name=line.64></a>
+      Object key = keys.nextElement();<a name=line.65></a>
+      Object value = UIManager.get (key);<a name=line.66></a>
+      <span class='keyword'>if</span> (value <span class='keyword'>instanceof</span> FontUIResource) {<a name=line.67></a>
+        UIManager.put (key, fontResource);<a name=line.68></a>
+      }<a name=line.69></a>
+    }<a name=line.70></a>
+  }<a name=line.71></a>
+  <a name=line.72></a>
+}<a name=line.73></a>
+ <a name=line.74></a>
+</PRE><a name=line.75></a>
+ </BODY><a name=line.76></a>
+<HTML><a name=line.77></a>

@@ -1,0 +1,44 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+Projector.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.projection;<a name=line.1></a>
+<a name=line.2></a>
+<span class='comment'>/** Enumeration to indicate the desired {@link Projection} to be used in making the starfield image. */</span><a name=line.3></a>
+<span class='keyword'>public</span> <span class='keyword'>enum</span> Projector {<a name=line.4></a>
+  <a name=line.5></a>
+  STEREOSCOPIC(<span class='keyword'>true</span>, <span class='keyword'>new</span> StereoscopicProjection()),<a name=line.6></a>
+  MCKINLEY(<span class='keyword'>true</span>, <span class='keyword'>new</span> MckinleyProjection()),<a name=line.7></a>
+  EQUIRECTANGULAR(<span class='keyword'>false</span>, <span class='keyword'>new</span> EquiRectangularProjection()),<a name=line.8></a>
+  BEHRMANN(<span class='keyword'>false</span>, <span class='keyword'>new</span> BehrmannProjection()),<a name=line.9></a>
+  HAMMER(<span class='keyword'>false</span>, <span class='keyword'>new</span> HammerProjection());<a name=line.10></a>
+<a name=line.11></a>
+  <span class='comment'>/** <a name=line.12></a>
+   Return &lt;tt&gt;true&lt;/tt&gt; only if the projection will present a half-sky view, and not a whole-sky view.<a name=line.13></a>
+   Stereoscopic and McKinley are the half-sky views. <a name=line.14></a>
+  */</span><a name=line.15></a>
+  <span class='keyword'>public</span> <span class='keyword'>boolean</span> isHalfSky(){<a name=line.16></a>
+    <span class='keyword'>return</span> fIsHalfSky;<a name=line.17></a>
+  }<a name=line.18></a>
+  <a name=line.19></a>
+  <span class='comment'>/** Return the corresponding implementation of {@link Projection}. */</span><a name=line.20></a>
+  <span class='keyword'>public</span> Projection getProjection() { <span class='keyword'>return</span> fProjection; }<a name=line.21></a>
+  <a name=line.22></a>
+  <span class='keyword'>private</span> Projector(<span class='keyword'>boolean</span> aIsHalfSky, Projection aProjection){<a name=line.23></a>
+    fIsHalfSky = aIsHalfSky;<a name=line.24></a>
+    fProjection = aProjection;<a name=line.25></a>
+  }<a name=line.26></a>
+  <a name=line.27></a>
+  <span class='keyword'>private</span> <span class='keyword'>boolean</span> fIsHalfSky;<a name=line.28></a>
+  <span class='keyword'>private</span> Projection fProjection;<a name=line.29></a>
+  <a name=line.30></a>
+}<a name=line.31></a>
+ <a name=line.32></a>
+</PRE><a name=line.33></a>
+ </BODY><a name=line.34></a>
+<HTML><a name=line.35></a>

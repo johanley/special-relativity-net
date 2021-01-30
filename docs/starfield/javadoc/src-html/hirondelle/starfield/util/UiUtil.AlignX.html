@@ -1,0 +1,440 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>package hirondelle.starfield.util;<a name="line.1"></a><a name=line.1></a>
+<span class="sourceLineNo">002</span><a name="line.2"></a><a name=line.2></a>
+<span class="sourceLineNo">003</span>import java.util.*;<a name="line.3"></a><a name=line.3></a>
+<span class="sourceLineNo">004</span>import java.net.URL;<a name="line.4"></a><a name=line.4></a>
+<span class="sourceLineNo">005</span>import javax.swing.*;<a name="line.5"></a><a name=line.5></a>
+<span class="sourceLineNo">006</span>import javax.swing.border.Border;<a name="line.6"></a><a name=line.6></a>
+<span class="sourceLineNo">007</span>import java.awt.*;<a name="line.7"></a><a name=line.7></a>
+<span class="sourceLineNo">008</span><a name="line.8"></a><a name=line.8></a>
+<span class="sourceLineNo">009</span>/** <a name="line.9"></a><a name=line.9></a>
+<span class="sourceLineNo">010</span> Static convenience methods for GUIs which eliminate code duplication.<a name="line.10"></a><a name=line.10></a>
+<span class="sourceLineNo">011</span> <a name="line.11"></a><a name=line.11></a>
+<span class="sourceLineNo">012</span> &lt;P&gt;Your application will likely need to add to such a class. For example, <a name="line.12"></a><a name=line.12></a>
+<span class="sourceLineNo">013</span> using &lt;tt&gt;GrdiBagLayout&lt;/tt&gt; usually benefits from utility methods to <a name="line.13"></a><a name=line.13></a>
+<span class="sourceLineNo">014</span> reduce code repetition.<a name="line.14"></a><a name=line.14></a>
+<span class="sourceLineNo">015</span>*/<a name="line.15"></a><a name=line.15></a>
+<span class="sourceLineNo">016</span>public final class UiUtil {<a name="line.16"></a><a name=line.16></a>
+<span class="sourceLineNo">017</span><a name="line.17"></a><a name=line.17></a>
+<span class="sourceLineNo">018</span>  /**<a name="line.18"></a><a name=line.18></a>
+<span class="sourceLineNo">019</span>   &lt;tt&gt;pack&lt;/tt&gt;, center, and &lt;tt&gt;show&lt;/tt&gt; a window on the screen.<a name="line.19"></a><a name=line.19></a>
+<span class="sourceLineNo">020</span>  <a name="line.20"></a><a name=line.20></a>
+<span class="sourceLineNo">021</span>   &lt;P&gt;If the size of &lt;tt&gt;aWindow&lt;/tt&gt; exceeds that of the screen, <a name="line.21"></a><a name=line.21></a>
+<span class="sourceLineNo">022</span>   then the size of &lt;tt&gt;aWindow&lt;/tt&gt; is reset to the size of the screen.<a name="line.22"></a><a name=line.22></a>
+<span class="sourceLineNo">023</span>  */<a name="line.23"></a><a name=line.23></a>
+<span class="sourceLineNo">024</span>  public static void centerAndShow(Window aWindow){<a name="line.24"></a><a name=line.24></a>
+<span class="sourceLineNo">025</span>    //note that the order here is important<a name="line.25"></a><a name=line.25></a>
+<span class="sourceLineNo">026</span>    <a name="line.26"></a><a name=line.26></a>
+<span class="sourceLineNo">027</span>    aWindow.pack();<a name="line.27"></a><a name=line.27></a>
+<span class="sourceLineNo">028</span>    /*<a name="line.28"></a><a name=line.28></a>
+<span class="sourceLineNo">029</span>     * If called from outside the event dispatch thread (as is <a name="line.29"></a><a name=line.29></a>
+<span class="sourceLineNo">030</span>     * the case upon startup, in the launch thread), then <a name="line.30"></a><a name=line.30></a>
+<span class="sourceLineNo">031</span>     * in principle this code is not thread-safe: once pack has <a name="line.31"></a><a name=line.31></a>
+<span class="sourceLineNo">032</span>     * been called, the component is realized, and (most) further<a name="line.32"></a><a name=line.32></a>
+<span class="sourceLineNo">033</span>     * work on the component should take place in the event-dispatch <a name="line.33"></a><a name=line.33></a>
+<span class="sourceLineNo">034</span>     * thread. <a name="line.34"></a><a name=line.34></a>
+<span class="sourceLineNo">035</span>     *<a name="line.35"></a><a name=line.35></a>
+<span class="sourceLineNo">036</span>     * In practice, it is exceedingly unlikely that this will lead <a name="line.36"></a><a name=line.36></a>
+<span class="sourceLineNo">037</span>     * to an error, since invisible components cannot receive events.<a name="line.37"></a><a name=line.37></a>
+<span class="sourceLineNo">038</span>     */<a name="line.38"></a><a name=line.38></a>
+<span class="sourceLineNo">039</span>    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();<a name="line.39"></a><a name=line.39></a>
+<span class="sourceLineNo">040</span>    Dimension window = aWindow.getSize();<a name="line.40"></a><a name=line.40></a>
+<span class="sourceLineNo">041</span>    //ensure that no parts of aWindow will be off-screen<a name="line.41"></a><a name=line.41></a>
+<span class="sourceLineNo">042</span>    if (window.height &gt; screen.height) {<a name="line.42"></a><a name=line.42></a>
+<span class="sourceLineNo">043</span>      window.height = screen.height;<a name="line.43"></a><a name=line.43></a>
+<span class="sourceLineNo">044</span>    }<a name="line.44"></a><a name=line.44></a>
+<span class="sourceLineNo">045</span>    if (window.width &gt; screen.width) {<a name="line.45"></a><a name=line.45></a>
+<span class="sourceLineNo">046</span>      window.width = screen.width;<a name="line.46"></a><a name=line.46></a>
+<span class="sourceLineNo">047</span>    }<a name="line.47"></a><a name=line.47></a>
+<span class="sourceLineNo">048</span>    int xCoord = (screen.width/2 - window.width/2);<a name="line.48"></a><a name=line.48></a>
+<span class="sourceLineNo">049</span>    int yCoord = (screen.height/2 - window.height/2);<a name="line.49"></a><a name=line.49></a>
+<span class="sourceLineNo">050</span>    aWindow.setLocation( xCoord, yCoord );<a name="line.50"></a><a name=line.50></a>
+<span class="sourceLineNo">051</span>   <a name="line.51"></a><a name=line.51></a>
+<span class="sourceLineNo">052</span>    aWindow.setVisible(true);<a name="line.52"></a><a name=line.52></a>
+<span class="sourceLineNo">053</span>  }<a name="line.53"></a><a name=line.53></a>
+<span class="sourceLineNo">054</span>  <a name="line.54"></a><a name=line.54></a>
+<span class="sourceLineNo">055</span>  /**<a name="line.55"></a><a name=line.55></a>
+<span class="sourceLineNo">056</span>   A window is packed, centered with respect to a parent, and then shown.<a name="line.56"></a><a name=line.56></a>
+<span class="sourceLineNo">057</span>  <a name="line.57"></a><a name=line.57></a>
+<span class="sourceLineNo">058</span>   &lt;P&gt;This method is intended for dialogs only.<a name="line.58"></a><a name=line.58></a>
+<span class="sourceLineNo">059</span>  <a name="line.59"></a><a name=line.59></a>
+<span class="sourceLineNo">060</span>   &lt;P&gt;If centering with respect to a parent causes any part of the dialog <a name="line.60"></a><a name=line.60></a>
+<span class="sourceLineNo">061</span>   to be off screen, then the centering is overidden, such that all of the <a name="line.61"></a><a name=line.61></a>
+<span class="sourceLineNo">062</span>   dialog will always appear fully on screen, but it will still appear <a name="line.62"></a><a name=line.62></a>
+<span class="sourceLineNo">063</span>   near the parent.<a name="line.63"></a><a name=line.63></a>
+<span class="sourceLineNo">064</span>  <a name="line.64"></a><a name=line.64></a>
+<span class="sourceLineNo">065</span>   @param aWindow must have non-null result for &lt;tt&gt;aWindow.getParent&lt;/tt&gt;.<a name="line.65"></a><a name=line.65></a>
+<span class="sourceLineNo">066</span>  */<a name="line.66"></a><a name=line.66></a>
+<span class="sourceLineNo">067</span>  public static void centerOnParentAndShow(Window aWindow){<a name="line.67"></a><a name=line.67></a>
+<span class="sourceLineNo">068</span>    aWindow.pack();<a name="line.68"></a><a name=line.68></a>
+<span class="sourceLineNo">069</span>    <a name="line.69"></a><a name=line.69></a>
+<span class="sourceLineNo">070</span>    Dimension parent = aWindow.getParent().getSize();<a name="line.70"></a><a name=line.70></a>
+<span class="sourceLineNo">071</span>    Dimension window = aWindow.getSize();<a name="line.71"></a><a name=line.71></a>
+<span class="sourceLineNo">072</span>    int xCoord = <a name="line.72"></a><a name=line.72></a>
+<span class="sourceLineNo">073</span>      aWindow.getParent().getLocationOnScreen().x + <a name="line.73"></a><a name=line.73></a>
+<span class="sourceLineNo">074</span>     (parent.width/2 - window.width/2)<a name="line.74"></a><a name=line.74></a>
+<span class="sourceLineNo">075</span>    ;<a name="line.75"></a><a name=line.75></a>
+<span class="sourceLineNo">076</span>    int yCoord = <a name="line.76"></a><a name=line.76></a>
+<span class="sourceLineNo">077</span>      aWindow.getParent().getLocationOnScreen().y + <a name="line.77"></a><a name=line.77></a>
+<span class="sourceLineNo">078</span>      (parent.height/2 - window.height/2)<a name="line.78"></a><a name=line.78></a>
+<span class="sourceLineNo">079</span>    ;<a name="line.79"></a><a name=line.79></a>
+<span class="sourceLineNo">080</span>    <a name="line.80"></a><a name=line.80></a>
+<span class="sourceLineNo">081</span>    //Ensure that no part of aWindow will be off-screen<a name="line.81"></a><a name=line.81></a>
+<span class="sourceLineNo">082</span>    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();<a name="line.82"></a><a name=line.82></a>
+<span class="sourceLineNo">083</span>    int xOffScreenExcess = xCoord + window.width - screen.width;<a name="line.83"></a><a name=line.83></a>
+<span class="sourceLineNo">084</span>    if ( xOffScreenExcess &gt; 0 ) {<a name="line.84"></a><a name=line.84></a>
+<span class="sourceLineNo">085</span>      xCoord = xCoord - xOffScreenExcess;<a name="line.85"></a><a name=line.85></a>
+<span class="sourceLineNo">086</span>    }<a name="line.86"></a><a name=line.86></a>
+<span class="sourceLineNo">087</span>    if (xCoord &lt; 0 ) {<a name="line.87"></a><a name=line.87></a>
+<span class="sourceLineNo">088</span>      xCoord = 0;<a name="line.88"></a><a name=line.88></a>
+<span class="sourceLineNo">089</span>    }<a name="line.89"></a><a name=line.89></a>
+<span class="sourceLineNo">090</span>    int yOffScreenExcess = yCoord + window.height - screen.height;<a name="line.90"></a><a name=line.90></a>
+<span class="sourceLineNo">091</span>    if ( yOffScreenExcess &gt; 0 ) {<a name="line.91"></a><a name=line.91></a>
+<span class="sourceLineNo">092</span>      yCoord = yCoord - yOffScreenExcess;<a name="line.92"></a><a name=line.92></a>
+<span class="sourceLineNo">093</span>    }<a name="line.93"></a><a name=line.93></a>
+<span class="sourceLineNo">094</span>    if (yCoord &lt; 0) {<a name="line.94"></a><a name=line.94></a>
+<span class="sourceLineNo">095</span>      yCoord = 0;<a name="line.95"></a><a name=line.95></a>
+<span class="sourceLineNo">096</span>    }<a name="line.96"></a><a name=line.96></a>
+<span class="sourceLineNo">097</span>    <a name="line.97"></a><a name=line.97></a>
+<span class="sourceLineNo">098</span>    aWindow.setLocation( xCoord, yCoord );<a name="line.98"></a><a name=line.98></a>
+<span class="sourceLineNo">099</span>    aWindow.setVisible(true);<a name="line.99"></a><a name=line.99></a>
+<span class="sourceLineNo">100</span>  }<a name="line.100"></a><a name=line.100></a>
+<span class="sourceLineNo">101</span><a name="line.101"></a><a name=line.101></a>
+<span class="sourceLineNo">102</span>  /**<a name="line.102"></a><a name=line.102></a>
+<span class="sourceLineNo">103</span>   Return a border of dimensions recommended by the Java Look and Feel <a name="line.103"></a><a name=line.103></a>
+<span class="sourceLineNo">104</span>   Design Guidelines, suitable for many common cases.<a name="line.104"></a><a name=line.104></a>
+<span class="sourceLineNo">105</span>  <a name="line.105"></a><a name=line.105></a>
+<span class="sourceLineNo">106</span>  &lt;P&gt;Each side of the border has size {@link UiConsts#STANDARD_BORDER}.<a name="line.106"></a><a name=line.106></a>
+<span class="sourceLineNo">107</span>  */<a name="line.107"></a><a name=line.107></a>
+<span class="sourceLineNo">108</span>  public static Border getStandardBorder(){<a name="line.108"></a><a name=line.108></a>
+<span class="sourceLineNo">109</span>    return BorderFactory.createEmptyBorder(<a name="line.109"></a><a name=line.109></a>
+<span class="sourceLineNo">110</span>      UiConsts.STANDARD_BORDER, <a name="line.110"></a><a name=line.110></a>
+<span class="sourceLineNo">111</span>      UiConsts.STANDARD_BORDER, <a name="line.111"></a><a name=line.111></a>
+<span class="sourceLineNo">112</span>      UiConsts.STANDARD_BORDER, <a name="line.112"></a><a name=line.112></a>
+<span class="sourceLineNo">113</span>      UiConsts.STANDARD_BORDER<a name="line.113"></a><a name=line.113></a>
+<span class="sourceLineNo">114</span>    );<a name="line.114"></a><a name=line.114></a>
+<span class="sourceLineNo">115</span>  }<a name="line.115"></a><a name=line.115></a>
+<span class="sourceLineNo">116</span><a name="line.116"></a><a name=line.116></a>
+<span class="sourceLineNo">117</span>  /**<a name="line.117"></a><a name=line.117></a>
+<span class="sourceLineNo">118</span>   Return text which conforms to the Look and Feel Design Guidelines <a name="line.118"></a><a name=line.118></a>
+<span class="sourceLineNo">119</span>   for the title of a dialog : the application name, a colon, then <a name="line.119"></a><a name=line.119></a>
+<span class="sourceLineNo">120</span>   the name of the specific dialog.<a name="line.120"></a><a name=line.120></a>
+<span class="sourceLineNo">121</span>  <a name="line.121"></a><a name=line.121></a>
+<span class="sourceLineNo">122</span>  &lt;P&gt;Example return value: &lt;tt&gt;My Movies: Login&lt;/tt&gt;<a name="line.122"></a><a name=line.122></a>
+<span class="sourceLineNo">123</span>  <a name="line.123"></a><a name=line.123></a>
+<span class="sourceLineNo">124</span>   @param aSpecificDialogName must have visible content<a name="line.124"></a><a name=line.124></a>
+<span class="sourceLineNo">125</span>  */<a name="line.125"></a><a name=line.125></a>
+<span class="sourceLineNo">126</span>  public static String getDialogTitle(String aSpecificDialogName){<a name="line.126"></a><a name=line.126></a>
+<span class="sourceLineNo">127</span>    Args.checkForContent(aSpecificDialogName);<a name="line.127"></a><a name=line.127></a>
+<span class="sourceLineNo">128</span>    StringBuilder result = new StringBuilder(Consts.APP_NAME);<a name="line.128"></a><a name=line.128></a>
+<span class="sourceLineNo">129</span>    result.append(": ");<a name="line.129"></a><a name=line.129></a>
+<span class="sourceLineNo">130</span>    result.append(aSpecificDialogName);<a name="line.130"></a><a name=line.130></a>
+<span class="sourceLineNo">131</span>    return result.toString(); <a name="line.131"></a><a name=line.131></a>
+<span class="sourceLineNo">132</span>  }<a name="line.132"></a><a name=line.132></a>
+<span class="sourceLineNo">133</span>  <a name="line.133"></a><a name=line.133></a>
+<span class="sourceLineNo">134</span>  /**<a name="line.134"></a><a name=line.134></a>
+<span class="sourceLineNo">135</span>   Make a horizontal row of buttons of equal size, whch are equally spaced, <a name="line.135"></a><a name=line.135></a>
+<span class="sourceLineNo">136</span>   and aligned on the right.<a name="line.136"></a><a name=line.136></a>
+<span class="sourceLineNo">137</span>  <a name="line.137"></a><a name=line.137></a>
+<span class="sourceLineNo">138</span>   &lt;P&gt;The returned component has border spacing only on the top (of the size <a name="line.138"></a><a name=line.138></a>
+<span class="sourceLineNo">139</span>   recommended by the Look and Feel Design Guidelines).<a name="line.139"></a><a name=line.139></a>
+<span class="sourceLineNo">140</span>   All other spacing must be applied elsewhere ; usually, this will only mean <a name="line.140"></a><a name=line.140></a>
+<span class="sourceLineNo">141</span>   that the dialog's top-level panel should use {@link #getStandardBorder}.<a name="line.141"></a><a name=line.141></a>
+<span class="sourceLineNo">142</span>   <a name="line.142"></a><a name=line.142></a>
+<span class="sourceLineNo">143</span>   @param aButtons contains the buttons to be placed in a row.<a name="line.143"></a><a name=line.143></a>
+<span class="sourceLineNo">144</span>  */<a name="line.144"></a><a name=line.144></a>
+<span class="sourceLineNo">145</span>  public static JComponent getCommandRow(java.util.List&lt;JComponent&gt; aButtons){<a name="line.145"></a><a name=line.145></a>
+<span class="sourceLineNo">146</span>    equalizeSizes( aButtons );<a name="line.146"></a><a name=line.146></a>
+<span class="sourceLineNo">147</span>    JPanel panel = new JPanel();<a name="line.147"></a><a name=line.147></a>
+<span class="sourceLineNo">148</span>    LayoutManager layout = new BoxLayout(panel, BoxLayout.X_AXIS);<a name="line.148"></a><a name=line.148></a>
+<span class="sourceLineNo">149</span>    panel.setLayout(layout);<a name="line.149"></a><a name=line.149></a>
+<span class="sourceLineNo">150</span>    panel.setBorder(BorderFactory.createEmptyBorder(UiConsts.THREE_SPACES, 0, 0, 0));<a name="line.150"></a><a name=line.150></a>
+<span class="sourceLineNo">151</span>    panel.add(Box.createHorizontalGlue());<a name="line.151"></a><a name=line.151></a>
+<span class="sourceLineNo">152</span>    Iterator&lt;JComponent&gt; buttonsIter = aButtons.iterator();<a name="line.152"></a><a name=line.152></a>
+<span class="sourceLineNo">153</span>    while (buttonsIter.hasNext()) {<a name="line.153"></a><a name=line.153></a>
+<span class="sourceLineNo">154</span>      panel.add( buttonsIter.next() );<a name="line.154"></a><a name=line.154></a>
+<span class="sourceLineNo">155</span>      if (buttonsIter.hasNext()) {<a name="line.155"></a><a name=line.155></a>
+<span class="sourceLineNo">156</span>        panel.add(Box.createHorizontalStrut(UiConsts.ONE_SPACE));<a name="line.156"></a><a name=line.156></a>
+<span class="sourceLineNo">157</span>      }<a name="line.157"></a><a name=line.157></a>
+<span class="sourceLineNo">158</span>    }<a name="line.158"></a><a name=line.158></a>
+<span class="sourceLineNo">159</span>    return panel;<a name="line.159"></a><a name=line.159></a>
+<span class="sourceLineNo">160</span>  }<a name="line.160"></a><a name=line.160></a>
+<span class="sourceLineNo">161</span>  <a name="line.161"></a><a name=line.161></a>
+<span class="sourceLineNo">162</span>  /**<a name="line.162"></a><a name=line.162></a>
+<span class="sourceLineNo">163</span>   Make a vertical row of buttons of equal size, whch are equally spaced, <a name="line.163"></a><a name=line.163></a>
+<span class="sourceLineNo">164</span>   and aligned on the right.<a name="line.164"></a><a name=line.164></a>
+<span class="sourceLineNo">165</span>  <a name="line.165"></a><a name=line.165></a>
+<span class="sourceLineNo">166</span>   &lt;P&gt;The returned component has border spacing only on the left (of the size <a name="line.166"></a><a name=line.166></a>
+<span class="sourceLineNo">167</span>   recommended by the Look and Feel Design Guidelines).<a name="line.167"></a><a name=line.167></a>
+<span class="sourceLineNo">168</span>   All other spacing must be applied elsewhere ; usually, this will only mean <a name="line.168"></a><a name=line.168></a>
+<span class="sourceLineNo">169</span>   that the dialog's top-level panel should use {@link #getStandardBorder}.<a name="line.169"></a><a name=line.169></a>
+<span class="sourceLineNo">170</span>   <a name="line.170"></a><a name=line.170></a>
+<span class="sourceLineNo">171</span>   @param aButtons contains the buttons to be placed in a column<a name="line.171"></a><a name=line.171></a>
+<span class="sourceLineNo">172</span>  */<a name="line.172"></a><a name=line.172></a>
+<span class="sourceLineNo">173</span>  public static JComponent getCommandColumn( java.util.List&lt;JComponent&gt; aButtons ){<a name="line.173"></a><a name=line.173></a>
+<span class="sourceLineNo">174</span>    equalizeSizes( aButtons );<a name="line.174"></a><a name=line.174></a>
+<span class="sourceLineNo">175</span>    JPanel panel = new JPanel();<a name="line.175"></a><a name=line.175></a>
+<span class="sourceLineNo">176</span>    LayoutManager layout = new BoxLayout(panel, BoxLayout.Y_AXIS);<a name="line.176"></a><a name=line.176></a>
+<span class="sourceLineNo">177</span>    panel.setLayout( layout );<a name="line.177"></a><a name=line.177></a>
+<span class="sourceLineNo">178</span>    panel.setBorder(<a name="line.178"></a><a name=line.178></a>
+<span class="sourceLineNo">179</span>      BorderFactory.createEmptyBorder(0,UiConsts.THREE_SPACES, 0,0)<a name="line.179"></a><a name=line.179></a>
+<span class="sourceLineNo">180</span>    );<a name="line.180"></a><a name=line.180></a>
+<span class="sourceLineNo">181</span>    //(no for-each is used here, because of the 'not-yet-last' check)<a name="line.181"></a><a name=line.181></a>
+<span class="sourceLineNo">182</span>    Iterator&lt;JComponent&gt; buttonsIter = aButtons.iterator();<a name="line.182"></a><a name=line.182></a>
+<span class="sourceLineNo">183</span>    while ( buttonsIter.hasNext() ) {<a name="line.183"></a><a name=line.183></a>
+<span class="sourceLineNo">184</span>      panel.add(buttonsIter.next());<a name="line.184"></a><a name=line.184></a>
+<span class="sourceLineNo">185</span>      if ( buttonsIter.hasNext() ) {<a name="line.185"></a><a name=line.185></a>
+<span class="sourceLineNo">186</span>        panel.add( Box.createVerticalStrut(UiConsts.ONE_SPACE) );<a name="line.186"></a><a name=line.186></a>
+<span class="sourceLineNo">187</span>      }<a name="line.187"></a><a name=line.187></a>
+<span class="sourceLineNo">188</span>    }<a name="line.188"></a><a name=line.188></a>
+<span class="sourceLineNo">189</span>    panel.add( Box.createVerticalGlue() );<a name="line.189"></a><a name=line.189></a>
+<span class="sourceLineNo">190</span>    return panel;<a name="line.190"></a><a name=line.190></a>
+<span class="sourceLineNo">191</span>  }<a name="line.191"></a><a name=line.191></a>
+<span class="sourceLineNo">192</span><a name="line.192"></a><a name=line.192></a>
+<span class="sourceLineNo">193</span>  /** Return the currently active frame. */<a name="line.193"></a><a name=line.193></a>
+<span class="sourceLineNo">194</span>  public static Frame getActiveFrame() {<a name="line.194"></a><a name=line.194></a>
+<span class="sourceLineNo">195</span>    Frame result = null;<a name="line.195"></a><a name=line.195></a>
+<span class="sourceLineNo">196</span>    Frame[] frames = Frame.getFrames();<a name="line.196"></a><a name=line.196></a>
+<span class="sourceLineNo">197</span>    for (int i = 0; i &lt; frames.length; i++) {<a name="line.197"></a><a name=line.197></a>
+<span class="sourceLineNo">198</span>      Frame frame = frames[i];<a name="line.198"></a><a name=line.198></a>
+<span class="sourceLineNo">199</span>      if (frame.isVisible()) { //Component method<a name="line.199"></a><a name=line.199></a>
+<span class="sourceLineNo">200</span>        result = frame;<a name="line.200"></a><a name=line.200></a>
+<span class="sourceLineNo">201</span>        break;<a name="line.201"></a><a name=line.201></a>
+<span class="sourceLineNo">202</span>      }<a name="line.202"></a><a name=line.202></a>
+<span class="sourceLineNo">203</span>    }<a name="line.203"></a><a name=line.203></a>
+<span class="sourceLineNo">204</span>    return result;<a name="line.204"></a><a name=line.204></a>
+<span class="sourceLineNo">205</span>  }<a name="line.205"></a><a name=line.205></a>
+<span class="sourceLineNo">206</span>  <a name="line.206"></a><a name=line.206></a>
+<span class="sourceLineNo">207</span>  /**<a name="line.207"></a><a name=line.207></a>
+<span class="sourceLineNo">208</span>   Return a &lt;tt&gt;Dimension&lt;/tt&gt; whose size is defined not in terms of pixels, <a name="line.208"></a><a name=line.208></a>
+<span class="sourceLineNo">209</span>   but in terms of a given percent of the screen's width and height. <a name="line.209"></a><a name=line.209></a>
+<span class="sourceLineNo">210</span>  <a name="line.210"></a><a name=line.210></a>
+<span class="sourceLineNo">211</span>  &lt;P&gt; Use to set the preferred size of a component to a certain <a name="line.211"></a><a name=line.211></a>
+<span class="sourceLineNo">212</span>   percentage of the screen.  <a name="line.212"></a><a name=line.212></a>
+<span class="sourceLineNo">213</span>  <a name="line.213"></a><a name=line.213></a>
+<span class="sourceLineNo">214</span>   @param aPercentWidth percentage width of the screen, in range &lt;tt&gt;1..100&lt;/tt&gt;.<a name="line.214"></a><a name=line.214></a>
+<span class="sourceLineNo">215</span>   @param aPercentHeight percentage height of the screen, in range &lt;tt&gt;1..100&lt;/tt&gt;.<a name="line.215"></a><a name=line.215></a>
+<span class="sourceLineNo">216</span>  */<a name="line.216"></a><a name=line.216></a>
+<span class="sourceLineNo">217</span>  public static final Dimension getDimensionFromPercent(int aPercentWidth, int aPercentHeight){<a name="line.217"></a><a name=line.217></a>
+<span class="sourceLineNo">218</span>    int low = 1;<a name="line.218"></a><a name=line.218></a>
+<span class="sourceLineNo">219</span>    int high = 100;<a name="line.219"></a><a name=line.219></a>
+<span class="sourceLineNo">220</span>    Args.checkForRange(aPercentWidth, low, high);<a name="line.220"></a><a name=line.220></a>
+<span class="sourceLineNo">221</span>    Args.checkForRange(aPercentHeight, low, high);<a name="line.221"></a><a name=line.221></a>
+<span class="sourceLineNo">222</span>    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();<a name="line.222"></a><a name=line.222></a>
+<span class="sourceLineNo">223</span>    return calcDimensionFromPercent(screenSize, aPercentWidth, aPercentHeight);<a name="line.223"></a><a name=line.223></a>
+<span class="sourceLineNo">224</span>  }<a name="line.224"></a><a name=line.224></a>
+<span class="sourceLineNo">225</span><a name="line.225"></a><a name=line.225></a>
+<span class="sourceLineNo">226</span>  /**<a name="line.226"></a><a name=line.226></a>
+<span class="sourceLineNo">227</span>    Sets the items in &lt;tt&gt;aComponents&lt;/tt&gt; to the same size.<a name="line.227"></a><a name=line.227></a>
+<span class="sourceLineNo">228</span>   <a name="line.228"></a><a name=line.228></a>
+<span class="sourceLineNo">229</span>    &lt;P&gt;Sets each component's preferred and maximum sizes. <a name="line.229"></a><a name=line.229></a>
+<span class="sourceLineNo">230</span>    The actual size is determined by the layout manager, whcih adjusts <a name="line.230"></a><a name=line.230></a>
+<span class="sourceLineNo">231</span>    for locale-specific strings and customized fonts. (See this <a name="line.231"></a><a name=line.231></a>
+<span class="sourceLineNo">232</span>    &lt;a href="http://java.sun.com/products/jlf/ed2/samcode/prefere.html"&gt;Sun doc&lt;/a&gt; <a name="line.232"></a><a name=line.232></a>
+<span class="sourceLineNo">233</span>    for more information.)<a name="line.233"></a><a name=line.233></a>
+<span class="sourceLineNo">234</span>   <a name="line.234"></a><a name=line.234></a>
+<span class="sourceLineNo">235</span>    @param aComponents items whose sizes are to be equalized<a name="line.235"></a><a name=line.235></a>
+<span class="sourceLineNo">236</span>   */<a name="line.236"></a><a name=line.236></a>
+<span class="sourceLineNo">237</span>  public static void equalizeSizes(java.util.List&lt;JComponent&gt; aComponents) {<a name="line.237"></a><a name=line.237></a>
+<span class="sourceLineNo">238</span>    Dimension targetSize = new Dimension(0,0);<a name="line.238"></a><a name=line.238></a>
+<span class="sourceLineNo">239</span>    for(JComponent comp: aComponents ) {<a name="line.239"></a><a name=line.239></a>
+<span class="sourceLineNo">240</span>      Dimension compSize = comp.getPreferredSize();<a name="line.240"></a><a name=line.240></a>
+<span class="sourceLineNo">241</span>      double width = Math.max(targetSize.getWidth(), compSize.getWidth());<a name="line.241"></a><a name=line.241></a>
+<span class="sourceLineNo">242</span>      double height = Math.max(targetSize.getHeight(), compSize.getHeight());<a name="line.242"></a><a name=line.242></a>
+<span class="sourceLineNo">243</span>      targetSize.setSize(width, height);<a name="line.243"></a><a name=line.243></a>
+<span class="sourceLineNo">244</span>    }<a name="line.244"></a><a name=line.244></a>
+<span class="sourceLineNo">245</span>    setSizes(aComponents, targetSize);<a name="line.245"></a><a name=line.245></a>
+<span class="sourceLineNo">246</span>  }<a name="line.246"></a><a name=line.246></a>
+<span class="sourceLineNo">247</span><a name="line.247"></a><a name=line.247></a>
+<span class="sourceLineNo">248</span>  /**<a name="line.248"></a><a name=line.248></a>
+<span class="sourceLineNo">249</span>   Make the system emit a beep.<a name="line.249"></a><a name=line.249></a>
+<span class="sourceLineNo">250</span>  <a name="line.250"></a><a name=line.250></a>
+<span class="sourceLineNo">251</span>   &lt;P&gt;May not beep unless the speakers are turned on, so this cannot <a name="line.251"></a><a name=line.251></a>
+<span class="sourceLineNo">252</span>   be guaranteed to work.<a name="line.252"></a><a name=line.252></a>
+<span class="sourceLineNo">253</span>  */<a name="line.253"></a><a name=line.253></a>
+<span class="sourceLineNo">254</span>  public static void beep(){<a name="line.254"></a><a name=line.254></a>
+<span class="sourceLineNo">255</span>    Toolkit.getDefaultToolkit().beep();<a name="line.255"></a><a name=line.255></a>
+<span class="sourceLineNo">256</span>  }<a name="line.256"></a><a name=line.256></a>
+<span class="sourceLineNo">257</span>  <a name="line.257"></a><a name=line.257></a>
+<span class="sourceLineNo">258</span>  /**<a name="line.258"></a><a name=line.258></a>
+<span class="sourceLineNo">259</span>   Imposes a uniform horizontal alignment on all items in a container.<a name="line.259"></a><a name=line.259></a>
+<span class="sourceLineNo">260</span>  <a name="line.260"></a><a name=line.260></a>
+<span class="sourceLineNo">261</span>  &lt;P&gt; Intended especially for &lt;tt&gt;BoxLayout&lt;/tt&gt;, where all components need <a name="line.261"></a><a name=line.261></a>
+<span class="sourceLineNo">262</span>   to share the same alignment in order for display to be reasonable. <a name="line.262"></a><a name=line.262></a>
+<span class="sourceLineNo">263</span>   (Indeed, this method may only work for &lt;tt&gt;BoxLayout&lt;/tt&gt;, since apparently <a name="line.263"></a><a name=line.263></a>
+<span class="sourceLineNo">264</span>   it is the only layout to use &lt;tt&gt;setAlignmentX, setAlignmentY&lt;/tt&gt;.)<a name="line.264"></a><a name=line.264></a>
+<span class="sourceLineNo">265</span>  <a name="line.265"></a><a name=line.265></a>
+<span class="sourceLineNo">266</span>   @param aContainer contains only &lt;tt&gt;JComponent&lt;/tt&gt; objects.<a name="line.266"></a><a name=line.266></a>
+<span class="sourceLineNo">267</span>  */<a name="line.267"></a><a name=line.267></a>
+<span class="sourceLineNo">268</span>  public static void alignAllX(Container aContainer, UiUtil.AlignX aAlignment){<a name="line.268"></a><a name=line.268></a>
+<span class="sourceLineNo">269</span>    java.util.List&lt;Component&gt; components = Arrays.asList( aContainer.getComponents() );<a name="line.269"></a><a name=line.269></a>
+<span class="sourceLineNo">270</span>    for(Component comp: components){<a name="line.270"></a><a name=line.270></a>
+<span class="sourceLineNo">271</span>      JComponent jcomp = (JComponent)comp;<a name="line.271"></a><a name=line.271></a>
+<span class="sourceLineNo">272</span>      jcomp.setAlignmentX( aAlignment.getValue() );<a name="line.272"></a><a name=line.272></a>
+<span class="sourceLineNo">273</span>    }<a name="line.273"></a><a name=line.273></a>
+<span class="sourceLineNo">274</span>  }<a name="line.274"></a><a name=line.274></a>
+<span class="sourceLineNo">275</span>  <a name="line.275"></a><a name=line.275></a>
+<span class="sourceLineNo">276</span>  /** Enumeration for horizontal alignment. */<a name="line.276"></a><a name=line.276></a>
+<span class="sourceLineNo">277</span>  public enum AlignX {<a name="line.277"></a><a name=line.277></a>
+<span class="sourceLineNo">278</span>    LEFT(Component.LEFT_ALIGNMENT),<a name="line.278"></a><a name=line.278></a>
+<span class="sourceLineNo">279</span>    CENTER(Component.CENTER_ALIGNMENT),<a name="line.279"></a><a name=line.279></a>
+<span class="sourceLineNo">280</span>    RIGHT(Component.RIGHT_ALIGNMENT);<a name="line.280"></a><a name=line.280></a>
+<span class="sourceLineNo">281</span>    public float getValue(){<a name="line.281"></a><a name=line.281></a>
+<span class="sourceLineNo">282</span>      return fValue;<a name="line.282"></a><a name=line.282></a>
+<span class="sourceLineNo">283</span>    }<a name="line.283"></a><a name=line.283></a>
+<span class="sourceLineNo">284</span>    private final float fValue;<a name="line.284"></a><a name=line.284></a>
+<span class="sourceLineNo">285</span>    private AlignX(float aValue){<a name="line.285"></a><a name=line.285></a>
+<span class="sourceLineNo">286</span>      fValue = aValue;<a name="line.286"></a><a name=line.286></a>
+<span class="sourceLineNo">287</span>    }<a name="line.287"></a><a name=line.287></a>
+<span class="sourceLineNo">288</span>  }<a name="line.288"></a><a name=line.288></a>
+<span class="sourceLineNo">289</span>  <a name="line.289"></a><a name=line.289></a>
+<span class="sourceLineNo">290</span>  /**<a name="line.290"></a><a name=line.290></a>
+<span class="sourceLineNo">291</span>   Imposes a uniform vertical alignment on all items in a container.<a name="line.291"></a><a name=line.291></a>
+<span class="sourceLineNo">292</span>  <a name="line.292"></a><a name=line.292></a>
+<span class="sourceLineNo">293</span>  &lt;P&gt; Intended especially for &lt;tt&gt;BoxLayout&lt;/tt&gt;, where all components need <a name="line.293"></a><a name=line.293></a>
+<span class="sourceLineNo">294</span>   to share the same alignment in order for display to be reasonable.<a name="line.294"></a><a name=line.294></a>
+<span class="sourceLineNo">295</span>   (Indeed, this method may only work for &lt;tt&gt;BoxLayout&lt;/tt&gt;, since apparently <a name="line.295"></a><a name=line.295></a>
+<span class="sourceLineNo">296</span>   it is the only layout to use &lt;tt&gt;setAlignmentX, setAlignmentY&lt;/tt&gt;.)<a name="line.296"></a><a name=line.296></a>
+<span class="sourceLineNo">297</span>  <a name="line.297"></a><a name=line.297></a>
+<span class="sourceLineNo">298</span>   @param aContainer contains only &lt;tt&gt;JComponent&lt;/tt&gt; objects.<a name="line.298"></a><a name=line.298></a>
+<span class="sourceLineNo">299</span>  */<a name="line.299"></a><a name=line.299></a>
+<span class="sourceLineNo">300</span>  public static void alignAllY(Container aContainer, UiUtil.AlignY aAlignment){<a name="line.300"></a><a name=line.300></a>
+<span class="sourceLineNo">301</span>    java.util.List components = Arrays.asList( aContainer.getComponents() );<a name="line.301"></a><a name=line.301></a>
+<span class="sourceLineNo">302</span>    Iterator compsIter = components.iterator();<a name="line.302"></a><a name=line.302></a>
+<span class="sourceLineNo">303</span>    while ( compsIter.hasNext() ) {<a name="line.303"></a><a name=line.303></a>
+<span class="sourceLineNo">304</span>      JComponent comp = (JComponent)compsIter.next();<a name="line.304"></a><a name=line.304></a>
+<span class="sourceLineNo">305</span>      comp.setAlignmentY( aAlignment.getValue() );<a name="line.305"></a><a name=line.305></a>
+<span class="sourceLineNo">306</span>    }<a name="line.306"></a><a name=line.306></a>
+<span class="sourceLineNo">307</span>  }<a name="line.307"></a><a name=line.307></a>
+<span class="sourceLineNo">308</span><a name="line.308"></a><a name=line.308></a>
+<span class="sourceLineNo">309</span>  /** Type-safe enumeration vertical alignment. */<a name="line.309"></a><a name=line.309></a>
+<span class="sourceLineNo">310</span>  public enum AlignY {<a name="line.310"></a><a name=line.310></a>
+<span class="sourceLineNo">311</span>    TOP(Component.TOP_ALIGNMENT),<a name="line.311"></a><a name=line.311></a>
+<span class="sourceLineNo">312</span>    CENTER(Component.CENTER_ALIGNMENT),<a name="line.312"></a><a name=line.312></a>
+<span class="sourceLineNo">313</span>    BOTTOM(Component.BOTTOM_ALIGNMENT);<a name="line.313"></a><a name=line.313></a>
+<span class="sourceLineNo">314</span>    float getValue(){<a name="line.314"></a><a name=line.314></a>
+<span class="sourceLineNo">315</span>      return fValue;<a name="line.315"></a><a name=line.315></a>
+<span class="sourceLineNo">316</span>    }<a name="line.316"></a><a name=line.316></a>
+<span class="sourceLineNo">317</span>    private final float fValue;<a name="line.317"></a><a name=line.317></a>
+<span class="sourceLineNo">318</span>    private AlignY( float aValue){<a name="line.318"></a><a name=line.318></a>
+<span class="sourceLineNo">319</span>      fValue = aValue;<a name="line.319"></a><a name=line.319></a>
+<span class="sourceLineNo">320</span>    }<a name="line.320"></a><a name=line.320></a>
+<span class="sourceLineNo">321</span>  }<a name="line.321"></a><a name=line.321></a>
+<span class="sourceLineNo">322</span>  <a name="line.322"></a><a name=line.322></a>
+<span class="sourceLineNo">323</span>  /**<a name="line.323"></a><a name=line.323></a>
+<span class="sourceLineNo">324</span>   Ensure that &lt;tt&gt;aRootPane&lt;/tt&gt; has no default button associated with it.<a name="line.324"></a><a name=line.324></a>
+<span class="sourceLineNo">325</span>  <a name="line.325"></a><a name=line.325></a>
+<span class="sourceLineNo">326</span>   &lt;P&gt;Intended mainly for dialogs where the user is confirming a delete action.<a name="line.326"></a><a name=line.326></a>
+<span class="sourceLineNo">327</span>   In this case, an explicit Yes or No is preferred, with no default action being <a name="line.327"></a><a name=line.327></a>
+<span class="sourceLineNo">328</span>   taken when the user hits the Enter key. <a name="line.328"></a><a name=line.328></a>
+<span class="sourceLineNo">329</span>  */<a name="line.329"></a><a name=line.329></a>
+<span class="sourceLineNo">330</span>  public static void noDefaultButton(JRootPane aRootPane){<a name="line.330"></a><a name=line.330></a>
+<span class="sourceLineNo">331</span>    aRootPane.setDefaultButton(null);<a name="line.331"></a><a name=line.331></a>
+<span class="sourceLineNo">332</span>  }<a name="line.332"></a><a name=line.332></a>
+<span class="sourceLineNo">333</span>  <a name="line.333"></a><a name=line.333></a>
+<span class="sourceLineNo">334</span>  /**<a name="line.334"></a><a name=line.334></a>
+<span class="sourceLineNo">335</span>  Create an icon for use by a given class.<a name="line.335"></a><a name=line.335></a>
+<span class="sourceLineNo">336</span>  <a name="line.336"></a><a name=line.336></a>
+<span class="sourceLineNo">337</span>  Returns &lt;tt&gt;null&lt;/tt&gt; if the icon cannot be found.<a name="line.337"></a><a name=line.337></a>
+<span class="sourceLineNo">338</span>  <a name="line.338"></a><a name=line.338></a>
+<span class="sourceLineNo">339</span>  @param aPath path to the file, relative to the calling class, as in '../images/blah.png'<a name="line.339"></a><a name=line.339></a>
+<span class="sourceLineNo">340</span>  @param aDescription description of the image<a name="line.340"></a><a name=line.340></a>
+<span class="sourceLineNo">341</span>  @param aClass class that needs to use the image<a name="line.341"></a><a name=line.341></a>
+<span class="sourceLineNo">342</span>  */<a name="line.342"></a><a name=line.342></a>
+<span class="sourceLineNo">343</span>  public static ImageIcon createImageIcon(String aPath, String aDescription, Class aClass) {<a name="line.343"></a><a name=line.343></a>
+<span class="sourceLineNo">344</span>    ImageIcon result = null;<a name="line.344"></a><a name=line.344></a>
+<span class="sourceLineNo">345</span>    URL imageURL = aClass.getResource(aPath); //resolves to an absolute path<a name="line.345"></a><a name=line.345></a>
+<span class="sourceLineNo">346</span>    if (imageURL != null) {<a name="line.346"></a><a name=line.346></a>
+<span class="sourceLineNo">347</span>      result = new ImageIcon(imageURL, aDescription);<a name="line.347"></a><a name=line.347></a>
+<span class="sourceLineNo">348</span>    } <a name="line.348"></a><a name=line.348></a>
+<span class="sourceLineNo">349</span>    return result;<a name="line.349"></a><a name=line.349></a>
+<span class="sourceLineNo">350</span>  }<a name="line.350"></a><a name=line.350></a>
+<span class="sourceLineNo">351</span><a name="line.351"></a><a name=line.351></a>
+<span class="sourceLineNo">352</span>  // PRIVATE<a name="line.352"></a><a name=line.352></a>
+<span class="sourceLineNo">353</span>  <a name="line.353"></a><a name=line.353></a>
+<span class="sourceLineNo">354</span>  private static void setSizes(java.util.List aComponents, Dimension aDimension){<a name="line.354"></a><a name=line.354></a>
+<span class="sourceLineNo">355</span>    Iterator compsIter = aComponents.iterator();      <a name="line.355"></a><a name=line.355></a>
+<span class="sourceLineNo">356</span>    while ( compsIter.hasNext() ) {<a name="line.356"></a><a name=line.356></a>
+<span class="sourceLineNo">357</span>      JComponent comp = (JComponent) compsIter.next();<a name="line.357"></a><a name=line.357></a>
+<span class="sourceLineNo">358</span>      comp.setPreferredSize( (Dimension)aDimension.clone() );<a name="line.358"></a><a name=line.358></a>
+<span class="sourceLineNo">359</span>      comp.setMaximumSize( (Dimension)aDimension.clone() );<a name="line.359"></a><a name=line.359></a>
+<span class="sourceLineNo">360</span>    }<a name="line.360"></a><a name=line.360></a>
+<span class="sourceLineNo">361</span>  }<a name="line.361"></a><a name=line.361></a>
+<span class="sourceLineNo">362</span><a name="line.362"></a><a name=line.362></a>
+<span class="sourceLineNo">363</span>  private static Dimension calcDimensionFromPercent(Dimension aSourceDimension, int aPercentWidth, int aPercentHeight){<a name="line.363"></a><a name=line.363></a>
+<span class="sourceLineNo">364</span>    int width = aSourceDimension.width * aPercentWidth/100;<a name="line.364"></a><a name=line.364></a>
+<span class="sourceLineNo">365</span>    int height = aSourceDimension.height * aPercentHeight/100;<a name="line.365"></a><a name=line.365></a>
+<span class="sourceLineNo">366</span>    return new Dimension(width, height);<a name="line.366"></a><a name=line.366></a>
+<span class="sourceLineNo">367</span>  }<a name="line.367"></a><a name=line.367></a>
+<span class="sourceLineNo">368</span>}<a name="line.368"></a><a name=line.368></a>
+<a name=line.369></a>
+<a name=line.370></a>
+<a name=line.371></a>
+<a name=line.372></a>
+<a name=line.373></a>
+<a name=line.374></a>
+<a name=line.375></a>
+<a name=line.376></a>
+<a name=line.377></a>
+<a name=line.378></a>
+<a name=line.379></a>
+<a name=line.380></a>
+<a name=line.381></a>
+<a name=line.382></a>
+<a name=line.383></a>
+<a name=line.384></a>
+<a name=line.385></a>
+<a name=line.386></a>
+<a name=line.387></a>
+<a name=line.388></a>
+<a name=line.389></a>
+<a name=line.390></a>
+<a name=line.391></a>
+<a name=line.392></a>
+<a name=line.393></a>
+<a name=line.394></a>
+<a name=line.395></a>
+<a name=line.396></a>
+<a name=line.397></a>
+<a name=line.398></a>
+<a name=line.399></a>
+<a name=line.400></a>
+<a name=line.401></a>
+<a name=line.402></a>
+<a name=line.403></a>
+<a name=line.404></a>
+<a name=line.405></a>
+<a name=line.406></a>
+<a name=line.407></a>
+<a name=line.408></a>
+<a name=line.409></a>
+<a name=line.410></a>
+<a name=line.411></a>
+<a name=line.412></a>
+<a name=line.413></a>
+<a name=line.414></a>
+<a name=line.415></a>
+<a name=line.416></a>
+<a name=line.417></a>
+<a name=line.418></a>
+<a name=line.419></a>
+<a name=line.420></a>
+<a name=line.421></a>
+<a name=line.422></a>
+<a name=line.423></a>
+<a name=line.424></a>
+<a name=line.425></a>
+<a name=line.426></a>
+<a name=line.427></a>
+<a name=line.428></a>
+</pre><a name=line.429></a>
+</div><a name=line.430></a>
+</body><a name=line.431></a>
+</html><a name=line.432></a>

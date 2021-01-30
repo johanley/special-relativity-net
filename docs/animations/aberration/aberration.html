@@ -1,0 +1,119 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Aberration and Doppler Effect</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='../../script/diagrams-part-2.js?v=12'></script>
+ <script type='text/javascript' src='aberration.js?v=12'></script>
+ <script type="text/javascript">   
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    applyRequestParams();
+    if(Boolean(reqParams.anim)){
+      animate();
+    }
+    else{
+      drawCanvas(ctx());
+    }
+  }
+  function ctx(){
+    var canvas = document.getElementById('aberration');
+    return canvas.getContext('2d');  
+  }
+  function clearCanvas(){
+    var canvas = document.getElementById('aberration');
+    ctx().clearRect(0,0,canvas.width,canvas.height); // clears the whole canvas
+  }
+  function applyRequestParams() {
+    applyUserInput(
+      parseFloat(reqParams.beta),
+      reqParams.numRadialLines,
+      reqParams.sizeRadialLines,
+      reqParams.dots,
+      reqParams.anim
+    );
+  }
+  function populateFormControls(){
+    document.getElementById('betamax').value = reqParams.beta;
+    document.getElementById('sizeRadialLines').value = reqParams.sizeRadialLines;
+    document.getElementById('dots').checked = reqParams.dots;
+    document.getElementById('anim').checked = reqParams.anim;
+    var numRadialLinesControl = document.getElementById('numRadialLines');
+    for(var idx=0; idx<numRadialLinesControl.options.length; ++idx){
+      if (numRadialLinesControl.options[idx].value == reqParams.numRadialLines){
+        numRadialLinesControl.options[idx].selected = true;
+        break;
+      }
+    }
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  var framecount=0; //every nth frame; default is 60 fps
+  function animate() {
+    framecount++;
+    if ((framecount % 3)==0){
+      clearCanvas();
+      drawCanvas(ctx());
+    }
+	window.requestAnimationFrame(animate);
+  }  
+ </script>
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='aberration' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+<P>
+<form method='GET' action='aberration.html' class='user-input-small'>
+ <table align='center'>
+ <tr title='Where to end the animation.' ><td>&beta;<td><input id='betamax' name='beta' value='0.6' size='5'>
+ <tr title='Number of radial lines to use'>
+  <td>Lines
+  <td><select id='numRadialLines' name='numRadialLines'>
+      <option selected value='8'>8 
+      <option value='16'>16
+      <option value='32'>32
+      <option value='64'>64
+     </select>
+     
+ <tr title='Divide the base size of radial lines by this number.' ><td>Line-Size<td><input id='sizeRadialLines' name='sizeRadialLines' value='1' size='5'>
+ <tr title='Show small dots on the lines to indicate units of the Doppler factor.'><td>Dots<td><input type='checkbox' id='dots' name='dots'>
+ <tr title='Animate by increasing beta from 0 to the given value.'><td>Animate<td><input type='checkbox' id='anim' name='anim' checked >
+ <tr title='Apply aberration formula'><td>&nbsp;<td><input type='submit' value='Boost'>
+ <tr title='Reset to default values'><td>&nbsp;<td><input type='reset' value='Reset'>
+ </table>
+</form>
+
+<p><a href='../../part2.html#DopplerFactor'>Back to Main</a>.
+
+<P>
+<h3>Aberration and the Doppler effect combined</h3>
+Aberration of light, combined with the Doppler effect. 
+The calculation for aberration is done first, and the resulting 
+angle is passed to the formula for the Doppler factor.
+
+<P>Look for the  
+<a href='aberration.html?beta=0.88&numRadialLines=32&sizeRadialLines=1'>Doppler's heart</a>
+shape, at around &beta;=0.88. 
+
+
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+</body>
+</html>

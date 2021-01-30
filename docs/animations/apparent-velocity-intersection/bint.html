@@ -1,0 +1,85 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Apparent Velocity as Intersection Point</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='bint.js?v=12'></script>
+ <script type="text/javascript">   
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    applyRequestParams();
+    animate(); 
+  }
+  function ctx(){
+    var canvas = document.getElementById('apparentVelocityInt');
+    return canvas.getContext('2d');  
+  }
+  function applyRequestParams() {
+    var beta = parseFloat(reqParams.beta);
+    applyUserInput(beta);
+  }
+  function populateFormControls(){
+    document.getElementById('beta').value = reqParams.beta;
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  function animate() {
+    drawCanvas(ctx());
+	window.requestAnimationFrame(animate);
+  }  
+ </script>
+</head>
+
+<body style='anim'>
+
+<p align='center'>
+<canvas id='apparentVelocityInt' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+<form method='GET' action='bint.html' class='user-input-small'>
+ <table align='center'>
+ <tr><td>&beta;<td><input id='beta' name='beta' value='0.6' title='Velocity of the object. Inside the range -1..+1'  size='5'>
+ <tr><td>&nbsp;<td><input type='submit' value='Show' title='Show the diagram.'>
+ <tr><td>&nbsp;<td><input type='reset' value='Reset' title='Reset to default values.'>
+ </table>
+</form>
+
+<p><a href='../../part2.html#ApparentVelocity'>Back to Main</a>
+
+<P><h3>Apparent Velocity</h3>
+
+<P>
+The apparent velocity depends on a geometrical point: the intersection between the detector's 
+past light cone and the history of the emitter object.
+
+<P>The horizontal purple line shows the apparent distance, as seen by the detector. 
+The rate of change of the apparent distance gives the apparent speed.
+
+Things to look for:
+<ul> 
+ <li>the <b>scissors effect</b>: the apparent speed of an <em>approaching</em> object 
+ is very high when the angle between the emitter's history 
+ and the detector's past light cone is small. That is, when the object's speed is near 1, and is moving 
+ directly towards the detector.
+ <li>for &beta; near 1, the apparent speed of a <em>receding</em> object approaches a limit of 0.5, not 1.0.
+<ul>
+
+ 
+ <div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+</body>
+</html>

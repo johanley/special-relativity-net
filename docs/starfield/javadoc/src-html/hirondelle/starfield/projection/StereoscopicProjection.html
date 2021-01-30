@@ -1,0 +1,35 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+StereoscopicProjection.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.projection;<a name=line.1></a>
+<a name=line.2></a>
+<span class='comment'>/** <a name=line.3></a>
+ Half-sky projection, preserves small circles on the celestial sphere.<a name=line.4></a>
+*/</span><a name=line.5></a>
+<span class='keyword'>final</span> <span class='keyword'>class</span> StereoscopicProjection <span class='keyword'>implements</span> Projection {<a name=line.6></a>
+  <a name=line.7></a>
+  <span class='keyword'>@Override</span> <span class='keyword'>public</span> Coords project(<span class='keyword'>double</span> aThetaprime, <span class='keyword'>double</span> aPhi, <span class='keyword'>double</span> aScale, Coords aCenter) {<a name=line.8></a>
+    Coords result = <span class='keyword'>new</span> Coords();<a name=line.9></a>
+    <span class='keyword'>double</span> r = <span class='literal'>0</span>;<a name=line.10></a>
+    <span class='keyword'>if</span> (aThetaprime &gt; <span class='literal'>0</span>){<a name=line.11></a>
+      <span class='comment'>//avoid division by 0 when thetaprime is 0<a name=line.12></a>
+</span>      r = (<span class='literal'>1</span>-Math.cos(aThetaprime))/Math.sin(aThetaprime);<a name=line.13></a>
+    }<a name=line.14></a>
+    <span class='keyword'>double</span> deltax = aScale * r * Math.cos(aPhi);<a name=line.15></a>
+    <span class='keyword'>double</span> deltay = aScale * r * Math.sin(aPhi);<a name=line.16></a>
+    result.X = aCenter.X + deltax;<a name=line.17></a>
+    result.Y = aCenter.Y + deltay;<a name=line.18></a>
+    <span class='keyword'>return</span> result;<a name=line.19></a>
+  }<a name=line.20></a>
+<a name=line.21></a>
+}<a name=line.22></a>
+ <a name=line.23></a>
+</PRE><a name=line.24></a>
+ </BODY><a name=line.25></a>
+<HTML><a name=line.26></a>

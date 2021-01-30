@@ -1,0 +1,45 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+StarfieldStats.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.physics;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> <span class='keyword'>static</span> hirondelle.starfield.util.Consts.NL;<a name=line.3></a>
+<a name=line.4></a>
+<span class='comment'>/** <a name=line.5></a>
+ Struct for high-level statistics regarding the starfield.<a name=line.6></a>
+*/</span><a name=line.7></a>
+<span class='keyword'>public</span> <span class='keyword'>final</span> <span class='keyword'>class</span> StarfieldStats {<a name=line.8></a>
+  <a name=line.9></a>
+  <span class='comment'>/** The total number of stars extracted successfully from the star catalog, both above and below the limiting magnitude. */</span><a name=line.10></a>
+  <span class='keyword'>public</span> <span class='keyword'>int</span> NumStarsInSimulation;<a name=line.11></a>
+  <a name=line.12></a>
+  <span class='comment'>/** Occasionally, some catalog records can't be used, for various reasons. */</span><a name=line.13></a>
+  <span class='keyword'>public</span> <span class='keyword'>int</span> NumRecordsRejected;<a name=line.14></a>
+  <a name=line.15></a>
+  <span class='comment'>/** Number of stars that are brighter than the limiting magnitude. */</span><a name=line.16></a>
+  <span class='keyword'>public</span> <span class='keyword'>int</span> NumStarsVisible;<a name=line.17></a>
+  <a name=line.18></a>
+  <span class='comment'>/** The brightness index of all the visible stars; a 0-magnitude star contributes a brightness value of 1. */</span><a name=line.19></a>
+  <span class='keyword'>public</span> <span class='keyword'>double</span> BrightnessIndex;<a name=line.20></a>
+<a name=line.21></a>
+  <span class='comment'>/** Return the basic stats as a single string. */</span><a name=line.22></a>
+  <span class='keyword'>@Override</span> <span class='keyword'>public</span> String toString(){<a name=line.23></a>
+    StringBuilder result = <span class='keyword'>new</span> StringBuilder();<a name=line.24></a>
+    result.append(<span class='literal'>"Number of rejected catalog records: "</span> + NumRecordsRejected + NL);<a name=line.25></a>
+    result.append(<span class='literal'>"Number of stars in simulation: "</span> + NumStarsInSimulation + NL);<a name=line.26></a>
+    result.append(<span class='literal'>"Number of visible stars: "</span> + NumStarsVisible + NL);<a name=line.27></a>
+    result.append(<span class='literal'>"Brightness index: "</span> + BrightnessIndex + NL);<a name=line.28></a>
+    <span class='keyword'>return</span> result.toString();<a name=line.29></a>
+  }<a name=line.30></a>
+  <a name=line.31></a>
+}<a name=line.32></a>
+ <a name=line.33></a>
+</PRE><a name=line.34></a>
+ </BODY><a name=line.35></a>
+<HTML><a name=line.36></a>

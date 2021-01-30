@@ -1,0 +1,115 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+Starfield.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.physics;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Util;<a name=line.3></a>
+<a name=line.4></a>
+<span class='keyword'>import</span> java.io.File;<a name=line.5></a>
+<span class='keyword'>import</span> java.io.FileNotFoundException;<a name=line.6></a>
+<span class='keyword'>import</span> java.util.Scanner;<a name=line.7></a>
+<a name=line.8></a>
+<span class='comment'>/** <a name=line.9></a>
+ &lt;b&gt;Perform the desired calculation&lt;/b&gt; and generate an image. <a name=line.10></a>
+<a name=line.11></a>
+ &lt;P&gt;Scans the star catalog, parses each line into a {@link Star}, applies a boost to get a {@link BoostedStar},<a name=line.12></a>
+ which is then added to the result. Any files in the star catalog directory whose name ends in '.ignore' are ignored. <a name=line.13></a>
+ (This is intended as a convenience when testing.)<a name=line.14></a>
+*/</span><a name=line.15></a>
+<span class='keyword'>public</span> <span class='keyword'>final</span> <span class='keyword'>class</span> Starfield {<a name=line.16></a>
+<a name=line.17></a>
+  <span class='comment'>/**  Constructor.  */</span><a name=line.18></a>
+  <span class='keyword'>public</span> Starfield(InputParameters aInput){<a name=line.19></a>
+    fInput = aInput;<a name=line.20></a>
+    fDirOfMotion = <span class='keyword'>new</span> DirectionOfMotion(aInput.getDirectionOfMotionRA(), aInput.getDirectionOfMotionDec(), aInput.getRotation());<a name=line.21></a>
+  }<a name=line.22></a>
+<a name=line.23></a>
+  <span class='comment'>/** <a name=line.24></a>
+   Calculate high-level statistics for the starfield using the given input parameters, and output an image.<a name=line.25></a>
+   <a name=line.26></a>
+   &lt;P&gt;The statistics returned are:<a name=line.27></a>
+   &lt;ul&gt;<a name=line.28></a>
+    &lt;li&gt;the number of stars in the calculation (visible and invisible)<a name=line.29></a>
+    &lt;li&gt;the number of visible stars for the current boost, above the given limiting magnitude<a name=line.30></a>
+    &lt;li&gt;the total brightness index of all the visible stars. <a name=line.31></a>
+    Here, each 0-magnitude star contributes a value of 1 to the brightness index, for example. <a name=line.32></a>
+   &lt;/ul&gt;<a name=line.33></a>
+   <a name=line.34></a>
+   &lt;P&gt;If the output file is null, then no image file will be created.   <a name=line.35></a>
+  */</span><a name=line.36></a>
+  <span class='keyword'>public</span> StarfieldStats calculate() {<a name=line.37></a>
+    StarfieldStats result = <span class='keyword'>new</span> StarfieldStats();<a name=line.38></a>
+    StarfieldImage image = <span class='keyword'>null</span>;<a name=line.39></a>
+    <span class='keyword'>if</span> (fInput.getOutputFile() != <span class='keyword'>null</span>){<a name=line.40></a>
+      image = <span class='keyword'>new</span> StarfieldImage(fInput.getProjector(), fInput.getOutputFile(), fInput.getImageSize(), fInput.getMagnification());<a name=line.41></a>
+    }<a name=line.42></a>
+    <span class='keyword'>boolean</span> didFirstLine = <span class='keyword'>false</span>;<a name=line.43></a>
+    <span class='keyword'>for</span>(File catalogFile : fInput.getCatalogDirectory().listFiles()){<a name=line.44></a>
+      <span class='keyword'>if</span> (catalogFile.isFile()){<a name=line.45></a>
+        <span class='keyword'>if</span> (catalogFile.getName().endsWith(<span class='literal'>".ignore"</span>)) <span class='keyword'>continue</span>;<a name=line.46></a>
+        <span class='comment'>//open the file, process each line, one at a time<a name=line.47></a>
+</span>        Util.logVerbose(<span class='literal'>"Scanning catalog file. Name: "</span> + catalogFile.getName());<a name=line.48></a>
+        <span class='keyword'>try</span> (Scanner scanner =  <span class='keyword'>new</span> Scanner(catalogFile) ){<a name=line.49></a>
+          <span class='keyword'>while</span> (scanner.hasNextLine()){<a name=line.50></a>
+            String starRecord = scanner.nextLine();<a name=line.51></a>
+            Star star = fInput.getCatalog().getRecordParser().parse(starRecord);<a name=line.52></a>
+            process(star, result, image);<a name=line.53></a>
+            <span class='keyword'>if</span>(!didFirstLine){<a name=line.54></a>
+              Util.logVerbose(<span class='literal'>"First Record: "</span> + starRecord);<a name=line.55></a>
+              Util.logVerbose(<span class='literal'>"Parsed as "</span> + star);<a name=line.56></a>
+              didFirstLine = <span class='keyword'>true</span>;<a name=line.57></a>
+            }<a name=line.58></a>
+          }      <a name=line.59></a>
+        }<a name=line.60></a>
+        <span class='keyword'>catch</span> (FileNotFoundException ex) {<a name=line.61></a>
+          <span class='comment'>//this won't happen because of explicit checking performed earlier<a name=line.62></a>
+</span>          ex.printStackTrace();<a name=line.63></a>
+        }        <a name=line.64></a>
+      }<a name=line.65></a>
+    }<a name=line.66></a>
+    <a name=line.67></a>
+    <span class='keyword'>if</span> (image != <span class='keyword'>null</span>){<a name=line.68></a>
+      image.generateFile();<a name=line.69></a>
+    }<a name=line.70></a>
+    <span class='keyword'>return</span> result;<a name=line.71></a>
+  }<a name=line.72></a>
+  <a name=line.73></a>
+  <span class='keyword'>public</span> InputParameters getInputParams(){ <span class='keyword'>return</span> fInput; }<a name=line.74></a>
+  <a name=line.75></a>
+  <span class='comment'>// PRIVATE<a name=line.76></a>
+</span><a name=line.77></a>
+  <span class='keyword'>private</span> InputParameters fInput;<a name=line.78></a>
+  <span class='keyword'>private</span> Boost fBoost = <span class='keyword'>new</span> Boost();<a name=line.79></a>
+  <span class='keyword'>private</span> DirectionOfMotion fDirOfMotion;<a name=line.80></a>
+  <a name=line.81></a>
+  <span class='keyword'>private</span> <span class='keyword'>void</span> process(Star aStar, StarfieldStats aStats, StarfieldImage aImage){<a name=line.82></a>
+    <span class='keyword'>if</span> (aStar != <span class='keyword'>null</span>){<a name=line.83></a>
+      <span class='comment'>//Util.log(aStar);<a name=line.84></a>
+</span>      ++aStats.NumStarsInSimulation;<a name=line.85></a>
+      <span class='keyword'>if</span> (fDirOfMotion.isNotDefault()){<a name=line.86></a>
+        <span class='comment'>//Util.log("Direction of motion is non-default");<a name=line.87></a>
+</span>        fDirOfMotion.changeCoordsOfThe(aStar);<a name=line.88></a>
+      }<a name=line.89></a>
+      BoostedStar boostedStar = fBoost.applyBoostTo(aStar, fInput.getBeta());<a name=line.90></a>
+      <span class='comment'>//Util.log(boostedStar);<a name=line.91></a>
+</span>      <span class='keyword'>if</span> (boostedStar.Magnitude <= fInput.getLimitingMagnitude()){<a name=line.92></a>
+        ++aStats.NumStarsVisible;<a name=line.93></a>
+        aStats.BrightnessIndex = aStats.BrightnessIndex + Math.pow(<span class='literal'>2.512</span>,<span class='literal'>0</span>-boostedStar.Magnitude); <span class='comment'>//luminosity relative to a mag-0 star<a name=line.94></a>
+</span>        aImage.add(boostedStar, aStar.RightAscension);<a name=line.95></a>
+      }<a name=line.96></a>
+    }<a name=line.97></a>
+    <span class='keyword'>else</span> {<a name=line.98></a>
+      ++aStats.NumRecordsRejected;<a name=line.99></a>
+    }<a name=line.100></a>
+  }<a name=line.101></a>
+}<a name=line.102></a>
+ <a name=line.103></a>
+</PRE><a name=line.104></a>
+ </BODY><a name=line.105></a>
+<HTML><a name=line.106></a>

@@ -1,0 +1,64 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+DirectionOfMotionTEST.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.physics;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.util.Util;<a name=line.3></a>
+<span class='keyword'>import</span> junit.framework.TestCase;<a name=line.4></a>
+<a name=line.5></a>
+<span class='keyword'>public</span> <span class='keyword'>final</span> <span class='keyword'>class</span> DirectionOfMotionTEST <span class='keyword'>extends</span> TestCase {<a name=line.6></a>
+  <a name=line.7></a>
+  <span class='comment'>/** Run the test cases.  */</span><a name=line.8></a>
+  <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='keyword'>void</span> main(String args[]) {<a name=line.9></a>
+    String[] testCaseName = { DirectionOfMotionTEST.<span class='keyword'>class</span>.getName() };<a name=line.10></a>
+    junit.textui.TestRunner.main(testCaseName);<a name=line.11></a>
+  }<a name=line.12></a>
+<a name=line.13></a>
+  <span class='keyword'>public</span> DirectionOfMotionTEST(String aName) {<a name=line.14></a>
+    <span class='keyword'>super</span>(aName);<a name=line.15></a>
+  }<a name=line.16></a>
+  <a name=line.17></a>
+  <span class='comment'>// TEST CASES<a name=line.18></a>
+</span><a name=line.19></a>
+  <span class='keyword'>public</span> <span class='keyword'>void</span> testIsDefault(){<a name=line.20></a>
+    testIsDef(<span class='literal'>0</span>, <span class='literal'>90</span>, <span class='literal'>0</span>);<a name=line.21></a>
+    testIsDef(<span class='literal'>0</span>, <span class='literal'>90.000001</span>, <span class='literal'>0</span>);<a name=line.22></a>
+    testIsDef(<span class='literal'>0.0</span>, <span class='literal'>90</span>, <span class='literal'>0</span>);<a name=line.23></a>
+    testIsDef(<span class='literal'>0.0</span>, <span class='literal'>90</span>, <span class='literal'>0.0</span>);<a name=line.24></a>
+    <span class='comment'>//this fails<a name=line.25></a>
+</span>    <span class='comment'>//testIsDef(0, 90.00001, 0);<a name=line.26></a>
+</span>  }<a name=line.27></a>
+<a name=line.28></a>
+  <span class='keyword'>public</span> <span class='keyword'>void</span> testIsNotDefault(){<a name=line.29></a>
+    testIsNotDef(<span class='literal'>0</span>, <span class='literal'>89</span>, <span class='literal'>0</span>);<a name=line.30></a>
+    testIsNotDef(<span class='literal'>0.00001</span>, <span class='literal'>90</span>, <span class='literal'>0</span>);<a name=line.31></a>
+    testIsNotDef(<span class='literal'>0</span>, <span class='literal'>90</span>, <span class='literal'>0.00001</span>);<a name=line.32></a>
+    testIsNotDef(<span class='literal'>0</span>, <span class='literal'>90.00001</span>, <span class='literal'>0</span>);<a name=line.33></a>
+    <span class='comment'>//this fails:<a name=line.34></a>
+</span>    <span class='comment'>//testIsNotDef(0, 90.000001, 0);<a name=line.35></a>
+</span>  }<a name=line.36></a>
+  <a name=line.37></a>
+  <span class='comment'>//  PRIVATE <a name=line.38></a>
+</span>  <span class='keyword'>private</span> <span class='keyword'>void</span> testIsDef(<span class='keyword'>double</span> aRA, <span class='keyword'>double</span> aDec, <span class='keyword'>double</span> aPhi){<a name=line.39></a>
+    DirectionOfMotion motion = <span class='keyword'>new</span> DirectionOfMotion(Util.radians(aRA), Util.radians(aDec), Util.radians(aPhi));<a name=line.40></a>
+    <span class='keyword'>boolean</span> isNotDef = motion.isNotDefault();<a name=line.41></a>
+    assertTrue(!isNotDef);<a name=line.42></a>
+  }<a name=line.43></a>
+  <a name=line.44></a>
+  <span class='keyword'>private</span> <span class='keyword'>void</span> testIsNotDef(<span class='keyword'>double</span> aRA, <span class='keyword'>double</span> aDec, <span class='keyword'>double</span> aPhi){<a name=line.45></a>
+    DirectionOfMotion motion = <span class='keyword'>new</span> DirectionOfMotion(Util.radians(aRA), Util.radians(aDec), Util.radians(aPhi));<a name=line.46></a>
+    <span class='keyword'>boolean</span> isNotDef = motion.isNotDefault();<a name=line.47></a>
+    assertTrue(isNotDef);<a name=line.48></a>
+  }<a name=line.49></a>
+  <a name=line.50></a>
+}<a name=line.51></a>
+ <a name=line.52></a>
+</PRE><a name=line.53></a>
+ </BODY><a name=line.54></a>
+<HTML><a name=line.55></a>

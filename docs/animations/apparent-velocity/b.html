@@ -1,0 +1,106 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Apparent Velocity</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='b.js?v=12'></script>
+ <script type="text/javascript">   
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    applyRequestParams();
+    if(Boolean(reqParams.anim)){
+      animate();
+    }
+    else{
+      drawCanvas(ctx());
+    }
+  }
+  function ctx(){
+    var canvas = document.getElementById('apparentvelocity');
+    return canvas.getContext('2d');  
+  }
+  function clearCanvas(){
+    var canvas = document.getElementById('apparentvelocity');
+    ctx().clearRect(0,0,canvas.width,canvas.height); // clears the whole canvas
+  }
+  function applyRequestParams() {
+    applyUserInput(parseFloat(reqParams.beta),reqParams.anim);
+  }
+  function populateFormControls(){
+    document.getElementById('betamax').value = reqParams.beta;
+    document.getElementById('anim').checked = reqParams.anim;
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  var framecount=0; //every nth frame; default is 60 fps
+  function animate() {
+    framecount++;
+    if ((framecount % 3)==0){
+      clearCanvas();
+      drawCanvas(ctx());
+    }
+	window.requestAnimationFrame(animate);
+  }  
+ </script>
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='apparentvelocity' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+
+<P>
+<form method='GET' action='b.html' class='user-input-small'>
+ <table align='center'>
+ <tr><td>&beta;<td><input id='betamax' name='beta' value='0.6' title='Where to end the animation.' size='5'>
+ <tr><td>Animate<td><input type='checkbox' id='anim' name='anim' checked title='Animate by increasing beta from 0 to the given value.'>
+ <tr><td>&nbsp;<td><input type='submit' value='Boost' title='Show the graph'>
+ <tr><td>&nbsp;<td><input type='reset' value='Reset' title='Reset to default values'>
+ </table>
+</form>
+ 
+<p><a href='../../part2.html#ApparentVelocity'>Back to Main</a>.
+ 
+<P><h3>Apparent Velocity</h3>
+Shows how the apparent velocity b depends on &beta; and angle &theta;.
+ 
+<P>
+Here:
+<ul>
+ <li><em>radial speed</em> is the speed along the line of sight between the object and the detector; positive for approaching, negative for receding.
+ <li><em>transverse speed</em> is the speed at 90&deg; (perpendicular) to the line of sight.
+</ul>
+
+<P>Interesting to note:
+<ul>
+ <li>green curve: an <em>approaching</em> object's apparent <em>radial</em> speed has no upper limit
+ <li>green curve: a <em>receding</em> object's apparent <em>radial</em> speed is never less than -0.5c
+ <li>white curve: at 90&deg;, the apparent <em>transverse</em> speed is simply the value of &beta;
+ <li>white curve: an <em>approaching</em> object has a maximum apparent <em>transverse</em> speed, as shown by the peak of the white curve.
+ Curiously, for very high speeds, the value of &theta; for which the maximum transvere motion occurs is not that large. 
+ That is, the maximum <em>transverse</em> motion occurs when the direction of motion is not far from being 
+ directly <em>toward</em> the detector.
+</ul>
+
+
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+
+</body>
+</html>

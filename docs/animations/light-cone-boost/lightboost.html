@@ -1,0 +1,132 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="shortcut icon" href="../../images/favicon.ico" type="image/vnd.microsoft.icon">
+ <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css?v=12" media="all"> 
+ <title>Boost Transformation of the Light Cone</title>
+ <script type='text/javascript' src='../../script/general-graphics.js?v=12'></script>
+ <script type='text/javascript' src='../../script/physics-and-math.js?v=12'></script>
+ <script type='text/javascript' src='../../script/diagrams.js?v=12'></script>
+ <script type='text/javascript' src='lightboost.js?v=12'></script>
+ <script type="text/javascript">   
+  var reqParams = requestParams(window);
+  window.onload = function() {
+    populateFormControls();
+    applyRequestParams();
+    if(Boolean(reqParams.anim)){
+      animate();
+    }
+    else{
+      drawCanvas(ctx());
+    }
+  }
+  function ctx(){
+    var canvas = document.getElementById('lightboost');
+    return canvas.getContext('2d');  
+  }
+  function clearCanvas(){
+    var canvas = document.getElementById('lightboost');
+    ctx().clearRect(0,0,canvas.width,canvas.height); 
+  }
+  function applyRequestParams() {
+    applyUserInput(parseFloat(reqParams.beta),reqParams.numRadialLines,reqParams.anim);
+  }
+  function populateFormControls(){
+    document.getElementById('betamax').value = reqParams.beta;
+    document.getElementById('anim').checked = reqParams.anim;
+    var numRadialLinesControl = document.getElementById('numRadialLines');
+    for(var idx=0; idx<numRadialLinesControl.options.length; ++idx){
+      if (numRadialLinesControl.options[idx].value == reqParams.numRadialLines){
+        numRadialLinesControl.options[idx].selected = true;
+        break;
+      }
+    }
+  }
+  /** 
+   Continuously clear and redraw the canvas, at a rate determined by the environment. 
+   The canvas is drawn using the current values of various settings (as occasionally changed be the user).
+  */
+  var framecount=0; //every nth frame; default is 60 fps
+  function animate() {
+    framecount++;
+    if ((framecount % 3)==0){
+      clearCanvas();
+      drawCanvas(ctx());
+    }
+	window.requestAnimationFrame(animate);
+  }  
+ </script>
+</head>
+
+<body class='anim'>
+
+<p align='center'>
+<canvas id='lightboost' width='800' height='600' class='animation'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+
+
+<P>
+<form method='GET' action='lightboost.html' class='user-input-small'>
+ <table align='center'>
+ <tr><td>&beta;<td><input id='betamax' name='beta' value='0.6' title='Where to end the animation.' size='5'>
+ <tr title='Number of radial lines to use'>
+  <td>Lines
+  <td><select id='numRadialLines' name='numRadialLines'>
+      <option selected value='8'>8 
+      <option value='16'>16
+      <option value='32'>32
+      <option value='64'>64
+     </select>
+ <tr><td>Animate<td><input type='checkbox' id='anim' name='anim' checked title='Animate by increasing beta from 0 to the given value.'>
+ <tr><td>&nbsp;<td><input type='submit' value='Boost' title='Boost transformation for light cone'>
+ <tr><td>&nbsp;<td><input type='reset' value='Reset' title='Reset to default values'>
+ </table>
+</form>
+
+<p><a href='../../part2.html#BoostEventsOnTheLightCone'>Back to Main</a>.
+ 
+<P>
+<h3>Light Cone Boost</h3>
+Boost transformation for events on the light cone of a given event, with constant ct.
+ 
+ 
+<P>
+The events on the light cone with constant ct form a <em>circle</em> centered on the ct axis.
+The animation shows two views:
+<ul>
+ <li>the lower diagram shows a 3D view of the circle of events, as seen from the side.
+ <li>the upper diagram is from a point of view <em>above</em>, looking <em>down</em> into the future light cone 
+ (and projected onto the xy plane).
+</ul>
+
+<P>The boost transformation for photon vectors has the same behavior as shown here.
+That is, the upper ellipse correctly shows:
+<ul>
+ <li>the doppler effect, through the change in the <em>length</em> of the radial lines
+ <li>aberration, through the change in <em>direction</em> of the radial lines
+</ul>
+
+<P>For the ellipse in the top view, the ratio of the width to the height is just &Gamma;.
+
+<!-- 
+
+http://iopscience.iop.org/1367-2630/12/12/123027/fulltext/ 
+
+More on the ellipse: William Moreau, "Wave front relativity" American Journal of Physics 62 426-639 (1994) 
+http://scitation.aip.org/content/aapt/journal/ajp/62/5/10.1119/1.17543
+
+http://erkdemon.blogspot.ca/2009/11/relativistic-ellipse.html
+-->
+
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+</body>
+</html>

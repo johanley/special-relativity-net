@@ -1,0 +1,61 @@
+<HTML>
+ <HEAD>
+  <TITLE>
+TestParser.java
+  </TITLE>
+  <LINK REL ='stylesheet' TYPE='text/css' HREF='../../../../../highlight.css' TITLE='Style'>
+ </HEAD>
+ <BODY>
+<PRE>
+<span class='keyword'>package</span> hirondelle.starfield.catalog.parser;<a name=line.1></a>
+<a name=line.2></a>
+<span class='keyword'>import</span> hirondelle.starfield.physics.Star;<a name=line.3></a>
+<a name=line.4></a>
+<span class='comment'>/** <a name=line.5></a>
+Parse an artificial test record. Intended for testing only.<a name=line.6></a>
+The idea is that you create simple data sets by hand to test with.<a name=line.7></a>
+<a name=line.8></a>
+&lt;P&gt;This class uses the following &lt;em&gt;ad hoc&lt;/em&gt; format for each line of test data: <a name=line.9></a>
+&lt;pre&gt;<a name=line.10></a>
+Byte 1..2: RA-H<a name=line.11></a>
+Byte 3     space<a name=line.12></a>
+Byte 4..5: RA-M<a name=line.13></a>
+Byte 6     space<a name=line.14></a>
+Byte 7..8: RA-S, no fraction <a name=line.15></a>
+Byte 9     space<a name=line.16></a>
+Byte 10..12: Deg, with leading minus sign <a name=line.17></a>
+Byte 13     space<a name=line.18></a>
+Byte 14..15: Deg-min <a name=line.19></a>
+Byte 16     space<a name=line.20></a>
+Byte 17..18: Deg-sec, no fraction<a name=line.21></a>
+Byte 19     space<a name=line.22></a>
+Byte 20..24: Magnitude; example: '-6.70'<a name=line.23></a>
+Byte 25     space<a name=line.24></a>
+Byte 26: Spectral Type <a name=line.25></a>
+&lt;/pre&gt;<a name=line.26></a>
+<a name=line.27></a>
+&lt;P&gt;Comments: any lines starting with '-' are ignored. This lets you insert comment lines directly in the data, <a name=line.28></a>
+if desired.<a name=line.29></a>
+*/</span><a name=line.30></a>
+<span class='keyword'>final</span> <span class='keyword'>class</span> TestParser  <span class='keyword'>implements</span> RecordParser  {<a name=line.31></a>
+<a name=line.32></a>
+  <span class='comment'>/** See class comment.  */</span><a name=line.33></a>
+  <span class='keyword'>@Override</span> <span class='keyword'>public</span> Star parse(String aLine) {<a name=line.34></a>
+    Star result = <span class='keyword'>null</span>;<a name=line.35></a>
+    <span class='keyword'>if</span> (! aLine.startsWith(<span class='literal'>"-"</span>)){<a name=line.36></a>
+      result = <span class='keyword'>new</span> Star();<a name=line.37></a>
+      Chomper chomper = <span class='keyword'>new</span> Chomper(aLine);<a name=line.38></a>
+      String spectralClass = chomper.forText(<span class='literal'>26</span>);<a name=line.39></a>
+      result.Temperature = Star.spectralTypeToTemperature(spectralClass); <a name=line.40></a>
+      result.RightAscension = chomper.forRightAscension(<span class='literal'>1</span>,<span class='literal'>2</span>,<span class='literal'>4</span>,<span class='literal'>5</span>,<span class='literal'>7</span>,<span class='literal'>8</span>);<a name=line.41></a>
+      result.Declination = chomper.forDeclination(<span class='literal'>10</span>,<span class='literal'>11</span>,<span class='literal'>12</span>,<span class='literal'>14</span>,<span class='literal'>15</span>,<span class='literal'>17</span>,<span class='literal'>18</span>);<a name=line.42></a>
+      result.Magnitude = chomper.forMagnitude(<span class='literal'>20</span>,<span class='literal'>24</span>);<a name=line.43></a>
+    }<a name=line.44></a>
+    <span class='keyword'>return</span> result;<a name=line.45></a>
+  }<a name=line.46></a>
+<a name=line.47></a>
+}<a name=line.48></a>
+ <a name=line.49></a>
+</PRE><a name=line.50></a>
+ </BODY><a name=line.51></a>
+<HTML><a name=line.52></a>

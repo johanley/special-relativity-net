@@ -1,0 +1,57 @@
+http://rogercortesi.com/eqn/index.php
+
+Resolution of 130 seems good.
+
+Lorentz factor
+\Gamma = \frac{1}{\sqrt{1-\beta^2}}
+
+s^2 = c^2(\Delta t)^2 - (\Delta d)^2
+
+\beta = \frac{v}{c}
+
+Lorentz
+x' = \Gamma x - \Gamma\beta ct
+ct' = -\Gamma\beta x + \Gamma ct
+
+\begin{cases}
+    x' = \Gamma x -\Gamma \beta ct \qquad \\
+    ct' = -\Gamma \beta x + \Gamma ct \\
+\end{cases}
+
+
+1:52 PM 10/12/2013
+
+\begin{cases}
+    ct' = \Gamma ct -\Gamma \beta x   \\
+    x' = -\Gamma \beta ct + \Gamma x   \\
+    y' = y \\
+    z' = z \\
+\end{cases}
+
+  x' = \Gamma x -\Gamma \beta ct \\
+  ct' = -\Gamma \beta x + \Gamma ct \\
+
+
+
+D = \Gamma(1 -\beta cos \theta)
+
+D = \frac{1}{\Gamma(1 -\beta cos \theta)}
+
+critical angle
+cos\theta = \frac{\Gamma - 1}{\Gamma\beta}
+
+action integral, particle in a field:
+S = \int_a^b (-mcds - \frac{e}{c}A_idx^i)
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+
+
+theta in range 0..180:7:13 PM 11/12/2013
+0^{\circ}\mathrm\le\theta\le180^{\circ}\mathrm
+
+
+aberration
+cos \theta' = \frac{cos \theta - \beta}{1 - \beta cos\theta}
+
+change in stellar magnitude
+\Delta m = 2.5 log_1_0D - 26000 [1/T - 1/DT]
