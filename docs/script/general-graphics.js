@@ -42,6 +42,17 @@ function line(ctx, fromx, fromy, tox, toy){
   ctx.closePath();
 }
 
+function coloredLine(ctx, fromx, fromy, tox, toy, color){
+  ctx.save();
+  ctx.strokeStyle=color;
+  ctx.beginPath();
+  ctx.moveTo(fromx,fromy);
+  ctx.lineTo(tox,toy);
+  ctx.stroke();
+  ctx.closePath();
+  ctx.restore();
+}
+
 /** Single line segment, thicker than usual. */
 function thickLine(ctx, fromx, fromy, tox, toy){
   ctx.save();
@@ -54,6 +65,18 @@ function thickLine(ctx, fromx, fromy, tox, toy){
   ctx.restore();
 }
 
+/** Single line segment, dashed style. */
+function dashedLine(ctx, fromx, fromy, tox, toy){
+  ctx.save();
+  ctx.lineWidth = ctx.lineWidth * 2;
+  ctx.setLineDash([2, 2]);
+  ctx.beginPath();
+  ctx.moveTo(fromx,fromy);
+  ctx.lineTo(tox,toy);
+  ctx.stroke();
+  ctx.closePath();
+  ctx.restore();
+}
 
 /** Arrow-head up, with the point on the given xy. */
 function arrowUp(ctx, x, y){

@@ -5,7 +5,7 @@
  <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
  <meta name="description" content="Introduction to special relativity.">
  <meta name="viewport" content="width=device-width"> 
- <link rel="stylesheet" type="text/css" href="css/stylesheet.css?v=12" media="all"> 
+ <link rel="stylesheet" type="text/css" href="css/stylesheet.css?v=13" media="all"> 
  <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
  <title>Special Relativity - Version History and Errata</title>
 </head>
@@ -18,15 +18,69 @@
 
 Please forward any corrections or criticisms to <a href='mailto:johnohanley85@gmail.com'>John O'Hanley</a>.
 
+<h3>October 2022  (v=13)</h3>
+<ul>
+ <li>Replace the word <em>parochial</em> with <em>specific to</em> or <em>relative</em>.
+ <li>Use the term <em>wristwatch-time</em> whenever possible.
+ <li>Use the term <em>pancake effect</em> whenever possible.
+ The term <em>length contraction</em> seems inadequate to describe all of the geometrical distortions. 
+ The term <em>pancake effect</em> seems to have better connotations.
+ <li>Note that s<sup>2</sup> (as the square of something) is an artifact of trying to match spatial metrics. 
+ <li>Stop calling the concept of <em>relativistic mass</em> an outright error. That's going too far. It shouldn't be so strongly worded.
+ <li>Add a section called <a href='index.html#WhatDoesRelativeMean'>What does relative mean?</a> Add a table showing relative/invariant items.
+ <li>Emphasize that the pancake effect flattens out angles as well.
+ <li>Suggest that it's useful to think of the Doppler effect and aberration as <a href='part2.html#PrototypeEffects'>prototype effects</a>, to better understand time dilation and the pancake effect, 
+ and to put them all in the same category of phenomena.
+ <li>Mention the radar station model for measurements in a frame of reference. 
+ <li>Mention that grids aren't rigid objects. SR disallows strictly rigid bodies, because they require instantaneous interactions.  
+ <li>Mention that the boosted versions of the events (1,0) and (0,1) are just the columns of the boost matrix. 
+ <li>State that the clocks in a grid are identical, and the meter sticks are identical.
+ <li>Remove the part about using your hands to infer the direction of "event flow".
+ <li>For a boost, use G and G' as standard names of the grids.
+ <li>Note the distinction between the <em>active</em> and <em>passive</em> ways of looking at a boost transformations.
+ <li>Clarify the remarks on aberration.
+ <li>Add a small section on <em>light-slice</em> and <em>time-slice</em>.
+ <li>Change capital gamma &Gamma; to small gamma <span class='greek'>&gamma;</span>, to match the conventional name. 
+ This was an issue because the letter renders poorly when a sans-serif font is used. 
+ A custom CSS class is now used to render that letter in an improved manner.
+ <li>Add the coefficients of the boost transformation to the list of dimensionless items.   
+ <li>Re-do all formulas with a new <a href='https://products.aspose.app/tex/en/equation-editor/png'>latex image generator</a>. (Use resolution 150, scale 100%.)
+ <li>Left as is: there's an angle &theta; in both the aberration formula and the Doppler effect formula. 
+ At present, the definitions of &theta; in those two formulas don't match. 
+ One formula uses the complement of the other, 180 - &theta;. 
+ I'm going to keep that as is, because in each case I'm using the angle that seems most natural to me.
+ <li>Link to the <a href='https://github.com/johanley/special-relativity-net'>github repository</a> for this site.
+ <li>Explain variations in formulas coming from variations in how an angle &theta; is defined: &theta; versus (180 - &theta;). 
+ <li>Add more remarks on the relativity of simultaneity.
+ <li>Add remark on using a flash of light for synchronizing clocks.
+ <li>Add the matrix form of the boost transformation, as an aside.
+ <li>Add a chart of how SR relates to to the other parts of physics.
+ <li>Remove the section on Dilation Versus Contraction. It had an error for the pancake effect, and is better illustrated elsewhere.
+ <li>Use a space-time diagram to explain <a href='index.html#WhySizeDecreases'>why the pancake effect decreases the size</a>.
+ <li>Add graphs of the aberration formula.
+ <li>Various small edits, meant to increase the clarity of the text.
+ 
+ <!-- 
+ <li>to-do: the problem of matching a diagram with equations. To be crystal clear, you often need both. 
+ <li>to-do: Replace the word <em>grid</em> with <em>frame</em>? That's a big change. Frame might be better, because of the radar station alternative.
+ <li>to-do: Can I demonstrate that aberration and the Doppler effect are 'entangled' somehow, like the pancake effect and time dilation? The aberration formula for sin theta varies as D.
+ <li>to-do: Good question: does a bare charge radiate when stationary in the lab, ie when it's in that accelerated frame? https://www.youtube.com/watch?v=XRr1kaXKBsU
+ The answer should be 'yes'.
+  -->
+  
+</ul>
+
+
 <h3>May 22, 2020</h3>
 Added the <a href='index.html#ReallySlowContracted'>does-it-really</a> questions.
+
 
 <h3>May 15, 2020</h3>
 Some editing and rewriting of Part I.
 Add a summary of important results, near the beginning.
 Add a list of pitfalls, near the end.
 Expand and improve the explanation as to why time dilation doesn't lead to a contradiction.
-Add a section showing why time dilation multiplies by &Gamma;, while length contraction divides by &Gamma;.
+Add a section showing why time dilation multiplies by <span class='greek'>&gamma;</span>, while length contraction divides by <span class='greek'>&gamma;</span>.
 Correct sloppy language for s versus s<sup>2</sup>.
 
 
@@ -35,6 +89,7 @@ Some editing and rewriting of Part I.
 The beginning was made more concise. 
 Motivations for learning about the subject were added. 
 
+
 <h3>February 27, 2014</h3>
 Added a download for a <a href='starfield/overview.html'>small Java tool</a>, 
 for generating relativistic starfield images. 
@@ -42,11 +97,11 @@ The tool was created mostly for generating images with a large number of stars, 
 as found in the Tycho-2 database.
 
 
-
 <h3>January 28, 2014</h3>
 <a href='part2.html#Starfield'>Appearance of a sky full of stars</a>: the diagrams showing the number of visible stars and their 
 brightness have been updated to use the much larger Tycho-2 catalog, instead of the Yale Bright Star Catalog.
 Thus, these diagrams are now much closer to what a human eye would actually see.
+
 
 <h3>January 25, 2014</h3>
 The site was first posted to the web on this date.

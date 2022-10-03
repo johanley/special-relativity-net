@@ -1,11 +1,15 @@
-http://rogercortesi.com/eqn/index.php
+https://products.aspose.app/tex/en/equation-editor/png  - use 150 as the resolution.
 
-Resolution of 130 seems good.
+http://rogercortesi.com/eqn/index.php - broken? Resolution of 130 seems good.
+
+Interval (most items use the equation clause)
+\begin{equation*}
+ s^2 = c^2(\Delta t)^2 - (\Delta d)^2
+\end{equation*}
 
 Lorentz factor
 \Gamma = \frac{1}{\sqrt{1-\beta^2}}
 
-s^2 = c^2(\Delta t)^2 - (\Delta d)^2
 
 \beta = \frac{v}{c}
 
@@ -14,19 +18,24 @@ x' = \Gamma x - \Gamma\beta ct
 ct' = -\Gamma\beta x + \Gamma ct
 
 \begin{cases}
-    x' = \Gamma x -\Gamma \beta ct \qquad \\
+    x' = \gamma x -\gamma \beta ct \qquad \\
     ct' = -\Gamma \beta x + \Gamma ct \\
 \end{cases}
 
 
-1:52 PM 10/12/2013
-
+Using cases means the equations are grouped together
 \begin{cases}
-    ct' = \Gamma ct -\Gamma \beta x   \\
-    x' = -\Gamma \beta ct + \Gamma x   \\
+    ct' = \gamma ct -\gamma \beta x   \\
+    x' = -\gamma \beta ct + \gamma x   \\
     y' = y \\
     z' = z \\
 \end{cases}
+
+\begin{cases}
+    ct' = \gamma ct -\gamma \beta x   \\
+    x' = -\gamma \beta ct + \gamma x   \\
+\end{cases}
+
 
   x' = \Gamma x -\Gamma \beta ct \\
   ct' = -\Gamma \beta x + \Gamma ct \\
@@ -35,23 +44,55 @@ ct' = -\Gamma\beta x + \Gamma ct
 
 D = \Gamma(1 -\beta cos \theta)
 
-D = \frac{1}{\Gamma(1 -\beta cos \theta)}
+Doppler
+D = \frac{1}{\gamma(1 -\beta cos \theta)}
+D = \frac{1}{\gamma(1 +\beta cos \theta)}
 
 critical angle
-cos\theta = \frac{\Gamma - 1}{\Gamma\beta}
+cos\theta = \frac{\gamma - 1}{\gamma\beta}
+
+action integral, free particle
+S = \int_a^b (-mcds)
 
 action integral, particle in a field:
 S = \int_a^b (-mcds - \frac{e}{c}A_idx^i)
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+boost velocity
+v_x = \frac{\Delta x}{\Delta t}
 
-
-theta in range 0..180:7:13 PM 11/12/2013
+theta in range 0..180:
 0^{\circ}\mathrm\le\theta\le180^{\circ}\mathrm
 
 
 aberration
 cos \theta' = \frac{cos \theta - \beta}{1 - \beta cos\theta}
+cos \theta' = \frac{cos \theta + \beta}{1 + \beta cos\theta}
+
+aberration - sine (Classical Theory of Fields)
+sin \theta = \frac{sin \theta'}{\gamma (1 + \beta cos \theta')}
 
 change in stellar magnitude
 \Delta m = 2.5 log_1_0D - 26000 [1/T - 1/DT]
+
+apparent velocity transverse
+b_t = \frac{\beta sin \theta}{1 - \beta cos \theta}
+
+apparent velocity radial
+b_r = \frac{\beta cos \theta}{1 - \beta cos \theta}
+
+apparent velocity transverse hubble
+b_t = \frac{D \beta sin \theta}{1 - \beta cos \theta}
+
+
+boost velocity fraction
+\beta_x' = \frac{\beta_x - \beta}{1 - \beta_x \beta}  
+\beta_y' = \frac{\beta_y}{\gamma(1 - \beta_x \beta)}  
+\beta_z' = \frac{\beta_z}{\gamma(1 - \beta_x \beta)}  
+
+complement of theta
+
+\begin{cases}
+cos(\pi - \theta) = - cos(\theta) \\
+sin(\pi - \theta) = sin(\theta)
+\end{cases}
+

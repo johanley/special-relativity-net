@@ -119,10 +119,14 @@ function headsUpDisplay(ctx){
   var SPACING=20;
   var dmax=currentBetaVal<0?Math.PI:0;
   var dmin=currentBetaVal<0?0:Math.PI;
-  text(ctx,"\u03B2="+round(currentBetaVal,2),headsUpX,headsUpY+SPACING*0);
-  text(ctx,"\u0393="+round(gamma(currentBetaVal),2),headsUpX,headsUpY+SPACING*1);
-  text(ctx,"D max="+round(doppler1(dmax),2),headsUpX,headsUpY+SPACING*2);
-  text(ctx,"D min="+round(doppler1(dmin),2),headsUpX,headsUpY+SPACING*3);
+
+  ctx.save();
+  ctx.font = "20px Times New Roman";
+  text(ctx,"\u03B2 = "+round(currentBetaVal,2),headsUpX,headsUpY+SPACING*0);
+  text(ctx,"\u03B3 = "+round(gamma(currentBetaVal),2),headsUpX,headsUpY+SPACING*1);
+  text(ctx,"D max = "+round(doppler1(dmax),2),headsUpX,headsUpY+SPACING*2);
+  text(ctx,"D min = "+round(doppler1(dmin),2),headsUpX,headsUpY+SPACING*3);
+  ctx.restore();
 }
 
 function doppler1(theta){

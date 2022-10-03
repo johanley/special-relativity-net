@@ -115,16 +115,19 @@ function background(ctx){
 }
 
 function drawStaticParts(ctx){
+  ctx.save();
+  ctx.font = "15px Times New Roman";
   text(ctx,"\u03B2 "+beta,10,10);
   text(ctx,"\u03B8 "+round(degrees(theta),2) + "\u00B0",60,10);
   var btpeak=apparentVelocityTransverseMax(beta);
   text(ctx,"Peak apparent speed",10,30);
   text(ctx,round(btpeak.b,2) + "c at "+round(degrees(btpeak.theta),2) + "\u00B0",10,50);
     
-  text(ctx,"\u0393 "+round(gamma(beta),2),630,10);
+  text(ctx,"\u03B3 "+round(gamma(beta),2),630,10);
   text(ctx,"Neutral-D "+round(degrees(dopplerNeutralAngle(beta)),1) + "\u00B0",630,30);
   
   text(ctx,"Astrophysical Jets",WIDTH/2-55,10);
+  ctx.restore();
   
   var ypos=Y_START-ROW_HEIGHT;
   text(ctx,"\u03B8",COL_LEFT,ypos);

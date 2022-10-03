@@ -279,12 +279,17 @@ function headsUpDisplay(ctx){
   var SPACING=20;
   var dmax=currentBetaVal<0?Math.PI:0;
   var dmin=currentBetaVal<0?0:Math.PI;
-  text(ctx,"\u03B2="+round(currentBetaVal,2),headsUpX,headsUpY+SPACING*2);
-  text(ctx,"D max="+round(doppler1(dmax),2),headsUpX,headsUpY+SPACING*3);
-  text(ctx,"D min="+round(doppler1(dmin),2),headsUpX,headsUpY+SPACING*4);
-  text(ctx,"Neutral Radius=" + round(degrees(dopplerNeutralAngle(Math.abs(currentBetaVal))),2) + "\u00B0",headsUpX,headsUpY+SPACING*5);
-  text(ctx,"Half-Sky Radius="+round(degrees(aberrationHalfSky(currentBetaVal)),2) + "\u00B0",headsUpX,headsUpY+SPACING*6);
-  text(ctx,"\u0393="+round(gamma(currentBetaVal),2),headsUpX,headsUpY+SPACING*7);
+  
+  
+  ctx.save();
+  ctx.font = "20px Times New Roman";
+  text(ctx,"\u03B2 = "+round(currentBetaVal,2),headsUpX,headsUpY+SPACING*2);
+  text(ctx,"D max = "+round(doppler1(dmax),2),headsUpX,headsUpY+SPACING*3);
+  text(ctx,"D min = "+round(doppler1(dmin),2),headsUpX,headsUpY+SPACING*4);
+  text(ctx,"Neutral Radius = " + round(degrees(dopplerNeutralAngle(Math.abs(currentBetaVal))),2) + "\u00B0",headsUpX,headsUpY+SPACING*5);
+  text(ctx,"Half-Sky Radius = "+round(degrees(aberrationHalfSky(currentBetaVal)),2) + "\u00B0",headsUpX,headsUpY+SPACING*6);
+  text(ctx,"\u03B3 = "+round(gamma(currentBetaVal),2),headsUpX,headsUpY+SPACING*7);
+  ctx.restore();
 }
 
 function currentBeta(){

@@ -48,7 +48,10 @@ function drawStaticParts(ctx){
     tickMarkVertical(ctx,30+6*idx,20,tickSize);
   }
   //tick marks for finding gamma
-  text(ctx,'\u0393', 14, 82, TEXT_COLOR); 
+  ctx.save();
+  ctx.font = "15px Times New Roman";
+  text(ctx,'\u03B3', 14, 82, TEXT_COLOR);
+  ctx.restore();
   for(idx=0;idx<=40;++idx){
     var tickSize = idx % 10 ? 2 : 4;
     tickMarkHorizontal(ctx,30,20+idx*3,tickSize);
@@ -88,9 +91,14 @@ function drawChangingLines(ctx){
   //text(ctx,"beta:" + beta,10,5, TEXT_COLOR);
   //text(ctx,"intersect.x:" + intersect.x,10,30, TEXT_COLOR);
   //text(ctx,"intersect.y:" + intersect.y,10,40, TEXT_COLOR);
-  ctx.font = '10px sans-serif';
+  
+  ctx.save();
+  ctx.font = "12px Times New Roman";
   text(ctx,'\u03B2 = ' + round(beta,2),100,100,TEXT_COLOR);
-  text(ctx,'\u0393 = ' + round(gamma(beta),2),100,113,TEXT_COLOR);
+  text(ctx,'\u03B3 = ' + round(gamma(beta),2),100,113,TEXT_COLOR);
+  ctx.restore();
+
+  
   ctx.restore();
 }
 

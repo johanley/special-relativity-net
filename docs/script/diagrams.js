@@ -826,8 +826,9 @@ function gammaWarpFactor(ctx /*160x160*/){
   ctx.closePath();
   arrowUp(ctx,137,39);
   ctx.font = '14px sans-serif';
-  ctx.fillText('\u03B2',150,145); 
-  ctx.fillText('\u0393',18,10); 
+  ctx.fillText('\u03B2',150,145);
+  greekGamma(15,18,10);
+  //ctx.fillText('\u0393',18,10); 
 }
 
 /* 
@@ -851,7 +852,7 @@ function betaIntervalGamma(ctx, zoom){
     tickMarkVertical(ctx,30+6*idx,20,tickSize);
   }
   //tick marks for finding gamma
-  ctx.fillText('\u0393', 14, 67); 
+  greekGamma(15, 14, 67);
   for(idx=0;idx<=30;++idx){
     var tickSize = idx % 10 ? 2 : 4;
     tickMarkHorizontal(ctx,30,20+idx*3,tickSize);
@@ -860,13 +861,29 @@ function betaIntervalGamma(ctx, zoom){
   graphHyperbolaUp(ctx,30,140,0,117,900); //
 }
 
+/* Small gamma renders poorly in sans-serif fonts. */
+function greekGamma(size, x, y){
+  ctx.save();
+  ctx.font = size + "px Times New Roman";
+  ctx.fillText('\u03B3', x, y); 
+  ctx.restore();
+}
+function greek(size, x, y, letters){
+  ctx.save();
+  ctx.font = size + "px Times New Roman";
+  ctx.fillText(letters, x, y); 
+  ctx.restore();
+}
+
 function betaIntervalGammaExample(ctx, zoom){
   betaIntervalGamma(ctx, zoom);
   ctx.lineWidth=2;
   line(ctx,30,140,120,20);
   line(ctx,30,95,64,95);
   ctx.fillText('\u03B2=0.75', 100,100); 
-  ctx.fillText('\u0393=1.50', 100,120); 
+  greekGamma(15,100,120);
+  //ctx.fillText('\u0393=1.50', 100,120);
+  ctx.fillText('=1.50', 107,120);
 }
 
 function timeDilationCompareTwoGrids(ctx){
@@ -1012,12 +1029,14 @@ function transformGrid(ctx /*160x160*/){
 function lorentzGrids1(ctx){
   myFont(ctx);
   text(ctx,"Time not 0", 10,10);
+  text(ctx,"G",30,75);
   
   moveableAxes(ctx,20,140,100,"ct","x");
   var primeGridColor = "rgb(255,0,0)";
   
   ctx.fillStyle = primeGridColor;
   ctx.strokeStyle = primeGridColor;
+  text(ctx,"G'",150,75);
   moveableAxes(ctx,140,140,80,"ct'","x'");
   
   line(ctx,120,100,160,100);
@@ -1065,14 +1084,14 @@ function dilateVersusContract1(ctx){
   var size=65;
   var squaredInterval=1600;
   bigMoveableAxesWithLightCone(ctx,cx,cy,size,'ct','x');
-  textCtr(ctx,"Clock ticks",cx,cy*1.87);
-  textCtr(ctx,"Lab",1.40*cx,22);
-  textCtr(ctx,"Rest",cx-15, cy-24);
+  textCtr(ctx,"Two clock ticks",cx,cy*1.87);
+  textCtr(ctx,"G'",cx-36,22);
+  textCtr(ctx,"G",cx+8, cy-20);
   spot(ctx,cx,cy,3);
   spot(ctx,cx,cy-0.61*size,3);
-  spot(ctx,cx+0.61*size,cy-0.86*size,3);
+  spot(ctx,cx-0.61*size,cy-0.86*size,3);
   thickLine(ctx, cx, cy, cx, cy-0.61*size);
-  thickLine(ctx, cx, cy, cx+0.61*size,cy-0.86*size);
+  thickLine(ctx, cx, cy, cx-0.61*size,cy-0.86*size);
   
   ctx.strokeStyle = 'rgb(0,0,255)';
   graphHyperbolaUp(ctx, cx, cy, -size, +size, squaredInterval);
@@ -1154,8 +1173,8 @@ function boostAxes1(ctx){
   addDotsToXLine(ctx,5,1,15,cx,cy,-1);
 
   ctx.save();
-  ctx.strokeStyle="rgb(0,0,255)";
-  ctx.fillStyle="rgb(0,0,255)";
+  ctx.strokeStyle="rgb(255,0,0)";
+  ctx.fillStyle="rgb(255,0,0)";
   movingGridCtLine(ctx,beta,cx,cy,size);
   movingGridXLine(ctx,beta,cx,cy,size);
   text(ctx,"ct'",135,10);
@@ -1198,8 +1217,8 @@ function boostAxes2(ctx){
   addDotsToXLine(ctx,5,1,15,cx,cy,-1);
 
   ctx.save();
-  ctx.strokeStyle="rgb(0,0,255)";
-  ctx.fillStyle="rgb(0,0,255)";
+  ctx.strokeStyle="rgb(255,0,0)";
+  ctx.fillStyle="rgb(255,0,0)";
   movingGridCtLine(ctx,beta,cx,cy,size);
   movingGridXLine(ctx,beta,cx,cy,size);
   text(ctx,"ct'",50,10);
@@ -1331,3 +1350,164 @@ function spaceTimeVolume2(ctx /*160x160*/){
   ctx.restore();
 }
 
+function physicsMap(ctx /*160x160*/){
+  ctx.scale(2,2);
+  var black = "rgb(0,0,0)";
+  var left = 15;
+  var height = 20;
+  //var bottom = 130;
+  var bottom = 85;
+  var width = 245;
+  var textDelta = 15;
+  //function rectUnfilled(ctx,x,y,width,height,color){
+
+  rectUnfilled(ctx,left,bottom,width/2,height,black);
+  ctx.fillText('SR', 60, bottom + textDelta); 
+  
+  rectUnfilled(ctx,left+width/2,bottom,width/2,height,black);
+  ctx.fillText('CM', 185, bottom + textDelta); 
+
+  rectUnfilled(ctx,left,bottom - height,width/2,height,black);
+  ctx.fillText('RM', 60, bottom - height + textDelta); 
+
+  rectUnfilled(ctx,left+width/2,bottom - height,width/4,height,black);
+  ctx.fillText('QM', 155, bottom - height + textDelta);
+
+  rectUnfilled(ctx,left+3*width/4,bottom - height,width/4,height,black);
+  ctx.fillText('SP', 220, bottom - height + textDelta);
+  
+  rectUnfilled(ctx,left,bottom - 2*height,width/6,height,black);
+  ctx.fillText('GR', 25, bottom - 2*height + textDelta); 
+
+  rectUnfilled(ctx,left+width/6,bottom - 2*height,width/6,height,black);
+  ctx.fillText('EM', 68, bottom - 2*height + textDelta); 
+
+  rectUnfilled(ctx,left+width/3,bottom - 2*height,width/3,height,black);
+  ctx.fillText('QFT', 120, bottom - 2*height + textDelta); 
+
+  rectUnfilled(ctx,left+width/6,bottom - 3*height,width/4,height,black);
+  ctx.fillText('QED', 77, bottom - 3*height + textDelta); 
+
+  rectUnfilled(ctx,left+width/6+width/4,bottom - 3*height,width/8,height,black);
+  ctx.fillText('QFD', 122, bottom - 3*height + textDelta); 
+  
+  rectUnfilled(ctx,left+width/6+width/4+width/8,bottom - 3*height,width/8,height,black);
+  ctx.fillText('QCD', 152, bottom - 3*height + textDelta);
+
+  rectUnfilled(ctx,left+width/6,bottom - 4*height,width/4+width/8,height,black);
+  ctx.fillText('QEW', 92, bottom - 4*height + textDelta); 
+
+  arrowUp(ctx, 5, 40);
+  line(ctx, 5, 40, 5, 80);
+
+  arrowRight(ctx, 210, bottom-height+textDelta/1.5);
+  line(ctx, 190, bottom-height+textDelta/1.5, 210, bottom-height+textDelta/1.5);
+
+  rectUnfilled(ctx,left+width/2,bottom - height,width/4,height,black);
+  ctx.fillText('QM', 155, bottom - height + textDelta);
+
+  for(idx=1; idx<30; ++idx){
+    tickMarkVertical(ctx,left+width/2+2*idx,bottom,2);
+  }
+}
+
+function passiveBoost(ctx){
+  myFont(ctx);
+  var cx=100;
+  var cy=100;
+  var size=85;
+  var squaredInterval=1600;
+  var beta=0.50;
+  bigMoveableAxesWithLightCone(ctx,cx,cy,size,'ct','x');
+
+  ctx.save();
+  ctx.strokeStyle="rgb(255,0,0)";
+  ctx.fillStyle="rgb(255,0,0)";
+  movingGridCtLine(ctx,beta,cx,cy,size);
+  movingGridXLine(ctx,beta,cx,cy,size);
+  text(ctx,"ct'",135,10);
+  text(ctx,"x'",188,60);
+  
+  var spotx=cx;
+  var spoty=cy-50;
+  var deltax = 32;
+  var deltay = 64;
+  dashedLine(ctx,spotx,spoty,spotx+deltax,spoty-deltax*beta);
+  dashedLine(ctx,spotx,spoty,spotx-deltay*beta,spoty+deltay);
+  
+  greek(14, spotx+8,spoty-16, "-\u03B2\u03B3");
+  greek(14, spotx-18,spoty+20, "\u03B3");
+  
+  ctx.restore();
+  text(ctx,"Passive",80,195);
+  text(ctx,"(1,0)",spotx-35,spoty);
+  
+  spot(ctx,spotx,spoty,2);
+}
+
+/** Show the diff between dilation and contraction. */
+function activeBoost(ctx){
+  myFont(ctx);
+  var cx=100;
+  var cy=100;
+  var size=85;
+  var squaredInterval=2700;
+  bigMoveableAxesWithLightCone(ctx,cx,cy,size,'ct','x');
+  text(ctx,"Active",80,197);
+  spot(ctx,cx,cy-0.61*size,2);
+  /*
+  var spotx = cx-0.61*size;
+  var spoty = cy-0.86*size;
+  */
+  var spotx = cx-0.35*size;
+  var spoty = cy-0.70*size;
+  text(ctx,"(1,0)",cx+5,cy-40);
+  coloredLine(ctx, cx, cy, spotx, spoty, 'rgb(255,0,0)');
+  
+  ctx.save();
+  ctx.strokeStyle="rgb(255,0,0)";
+  ctx.fillStyle="rgb(255,0,0)";
+  dashedLine(ctx,spotx,spoty,cx,spoty);
+  dashedLine(ctx,spotx,spoty,spotx,cy);
+  
+  greek(14, spotx+4,spoty-8, "-\u03B2\u03B3");
+  greek(14, spotx-10,spoty+40, "\u03B3");
+  ctx.restore();
+  
+  spot(ctx,spotx, spoty,2);
+
+  ctx.strokeStyle = 'rgb(0,0,255)';
+  graphHyperbolaUp(ctx, cx, cy, -size, +size, squaredInterval);
+}
+
+function pancakeFlattens(ctx){
+  myFont(ctx);
+  spacetime2dSmallAxesNoCone(ctx);
+  
+  var width=120;
+  var height=100;
+  var left=20;
+  var right = left + width;
+  var top=20;
+  var bottom = top + height;
+  var bottomHistory = bottom + 20;
+  var bottomPrime = top + 0.65*height;
+  var spotsize = 2;
+  
+  rect(ctx,left,top,width,height+20,'rgb(200,200,200)');
+  line(ctx,left,bottomHistory,left,top);
+  line(ctx,right,bottomHistory,right,top);
+  
+  line(ctx,left,bottom,right,bottom);
+  spot(ctx, left, bottom,spotsize);
+  spot(ctx, right, bottom,spotsize);
+  text(ctx,"A",left+2,bottom+10);
+  text(ctx,"B",right+2,bottom+10);
+
+  spot(ctx, right, bottomPrime,spotsize);
+  line(ctx,left,bottom,right,bottomPrime);
+  text(ctx,"C",right+2,bottomPrime+7);
+
+  text(ctx,"History of a stick",(left+right)*0.20,top+12);
+  text(ctx,"stationary in G",(left+right)*0.25,top+26);
+}

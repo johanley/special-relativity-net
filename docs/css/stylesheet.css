@@ -67,7 +67,7 @@ canvas.animation {
 body {
   margin: 1.0em; 
   padding: 1.0em;
-  font: 1.0em Verdana, Arial, Helvetica, sans-serif;
+  font: 1.0em Verdana, Arial, Helvetica, sans-serif; 
 }
 
 body.anim {
@@ -333,6 +333,10 @@ div.author {
  padding-top: 0em;
  margin-top: 0.25em;
  text-align: right;
+}
+
+.greek {
+  font: 1.2em Times New Roman; 
 }
 
 .sidebar{

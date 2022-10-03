@@ -150,15 +150,19 @@ function headsUpDisplay(ctx){
   var headsUpY=YSTART+200;
   var headsUpX=XEND-240;
   var SPACING=20;
-  text(ctx,"\u03B2="+round(currentBetaVal,2),headsUpX,headsUpY+SPACING*2);
-  text(ctx,"0\u00B0 val="+round(doppler1(0),2),headsUpX,headsUpY+SPACING*3);
-  text(ctx,"90\u00B0 val="+round(doppler1(Math.PI/2),2),headsUpX,headsUpY+SPACING*4);
-  text(ctx,"180\u00B0 val="+round(doppler1(Math.PI),2),headsUpX,headsUpY+SPACING*5);
-  text(ctx,"Neutral Angle=" + round(degrees(dopplerNeutralAngle(Math.abs(currentBetaVal))),2) + "\u00B0",headsUpX,headsUpY+SPACING*6);
-  text(ctx,"\u0393="+round(gamma(currentBetaVal),2),headsUpX,headsUpY+SPACING*7);
+
+  ctx.save();
+  ctx.font = "20px Times New Roman";
+  text(ctx,"\u03B2 = "+round(currentBetaVal,2),headsUpX,headsUpY+SPACING*2);
+  text(ctx,"0\u00B0 val = "+round(doppler1(0),2),headsUpX,headsUpY+SPACING*3);
+  text(ctx,"90\u00B0 val = "+round(doppler1(Math.PI/2),2),headsUpX,headsUpY+SPACING*4);
+  text(ctx,"180\u00B0 val = "+round(doppler1(Math.PI),2),headsUpX,headsUpY+SPACING*5);
+  text(ctx,"Neutral Angle = " + round(degrees(dopplerNeutralAngle(Math.abs(currentBetaVal))),2) + "\u00B0",headsUpX,headsUpY+SPACING*6);
+  text(ctx,"\u03B3 = "+round(gamma(currentBetaVal),2),headsUpX,headsUpY+SPACING*7);
   if(!anim && specialAngle>0){
-    text(ctx,round(degrees(specialAngle),2)+"\u00B0 val=" + round(doppler1(specialAngle),2),headsUpX,headsUpY+SPACING*8);
+    text(ctx,round(degrees(specialAngle),2)+"\u00B0 val = " + round(doppler1(specialAngle),2),headsUpX,headsUpY+SPACING*8);
   }
+  ctx.restore();
   ctx.restore();
 }
 

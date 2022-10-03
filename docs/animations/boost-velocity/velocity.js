@@ -268,8 +268,11 @@ function headsUpDisplay(ctx){
   var headsUpY=0.10*HEIGHT;
   var headsUpX=0.05*WIDTH;
   var SPACING=20;
-  text(ctx,"\u03B2="+round(currentBetaVal,2),headsUpX,headsUpY);
-  text(ctx,"\u0393="+round(gamma(currentBetaVal),2),headsUpX,headsUpY+SPACING*1);
+  ctx.save();
+  ctx.font = "20px Times New Roman";
+  text(ctx,"\u03B2 = "+round(currentBetaVal,2),headsUpX,headsUpY);
+  text(ctx,"\u03B3 = "+round(gamma(currentBetaVal),2),headsUpX,headsUpY+SPACING*1);
+  ctx.restore();
 }
 
 function currentBeta(){

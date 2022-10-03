@@ -5,13 +5,13 @@
  <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
  <meta name="description" content="Introduction to special relativity.">
  <meta name="viewport" content="width=device-width"> 
- <link rel="stylesheet" type="text/css" href="css/stylesheet.css?v=12" media="all"> 
+ <link rel="stylesheet" type="text/css" href="css/stylesheet.css?v=13" media="all"> 
  <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
  <title>Special Relativity - Optics and Signals</title>
- <script type='text/javascript' src='script/general-graphics.js?v=12'></script>
- <script type='text/javascript' src='script/physics-and-math.js?v=12'></script>
- <script type='text/javascript' src='script/diagrams-part-2.js?v=12'></script>
- <script type='text/javascript' src='animations/light-cone-boost/lightboost.js?v=12'></script>
+ <script type='text/javascript' src='script/general-graphics.js?v=13'></script>
+ <script type='text/javascript' src='script/physics-and-math.js?v=13'></script>
+ <script type='text/javascript' src='script/diagrams-part-2.js?v=13'></script>
+ <script type='text/javascript' src='animations/light-cone-boost/lightboost.js?v=13'></script>
  <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -32,19 +32,19 @@
 <a name='GridsVersusSensors'></a>
 <h2>Grids, Sensors, and Signals</h2>
 The idea of a <a href='index.html#Grids'>sensor grid</a> was introduced earlier as a way of making measurements on moving objects, 
-and recording their histories as they pass.
-Sensors make only <em>local</em> measurements on <em>local</em> events.
+and recording their histories as they pass the sensors.
+Here, sensors make only <em>local</em> measurements on <em>local</em> events.
 That's the simplest way of making measurements of position and time.
 In this way, it's possible to simply express the fundamental ideas of relativity.
 
-<p>Earlier, we defined a <a href='index.html#SpeedLimit'>signal</a> as any physical object (matter, radiation) that moves from one place to another.
+<p>Earlier, we defined a <a href='index.html#SpeedLimit'>signal</a> as physical object (matter, radiation) that moves energy from one place to another.
 This section focuses on <b>radiant signals</b> only (or just <em>signals</em> for short).
-The most common radiant signal is light (electromagnetic radiation).
+The most common radiant signal is light (photons of electromagnetic radiation).
 In addition to making measurements on passing objects, sensors can also 
 make measurements by detecting radiant signals.
-The best examples of this come from astronomy.
+The best example of this is an astronomical telescope.
 It's usually not possible to travel to distant astronomical objects, 
-so astronomers are left with the only source of data left to them: incoming signals hitting their detectors. 
+so astronomers are left with the only source of data left to them: the incoming signals hitting their detectors. 
 It's true that the ultimate <em>source</em> of the signal is distant, but the detection event itself is a 
 <em>local</em> measurement on the signal as it arrives at the <em>local</em> sensor.
 The only difference is that the signal usually <em>refers back to</em> a distant, non-local object.
@@ -68,20 +68,19 @@ The only difference is that the signal usually <em>refers back to</em> a distant
  basicSignal2(ctx);
 </script>
 
-<P>Astronomers make use of all the incoming radiant signals they can get their eager astronomer hands on:
+<P>Astronomers make use of all the incoming radiant signals they can get their eager hands on:
 <ul>
- <li>light, with &beta;=1 (electromagnetic radiation of different frequencies). This is by 
+ <li>photons, with &beta;=1 (electromagnetic radiation of different frequencies; light waves, radio waves, and so on). This is by 
  far the most common kind of signal detected by astronomers.
- <li>cosmic rays, with &beta; usually close to 1
- <li>massless neutrinos, with &beta;=1
- <li>gravitational waves, with &beta;=1. These haven't been detected yet, but astronomers are actively looking for them. 
- (If you want a Nobel Prize, then go find them.)
+ <li>cosmic rays, with &beta; usually close to 1.
+ <li>massless neutrinos, with &beta;=1. (If neutrinos do in fact have a small mass, then their &beta; must be less than 1.)
+ <li>gravitational waves, with &beta;=1. These were first detected in September 2015.
 </ul>
 These signals:
 <ul>
  <li>usually travel at the speed limit.
  <li>are either <em>on</em> the past light cone of the sensor (signal &beta;=1), or <em>within</em> the past light cone (signal &beta;&lt;1).
- <li>are <b>often detected by a single sensor</b>, but sometimes <em>arrays</em> of multiple sensors are used (<a href='http://www.almaobservatory.org/'>ALMA</a> is an example of an array).
+ <li>are <b>often detected by a single sensor</b>, but sometimes by an <em>array</em> of multiple sensors (<a href='http://www.almaobservatory.org/'>ALMA</a> is an example of an array).
 </ul>
 
 
@@ -92,25 +91,20 @@ They can be divided into two categories.
 
 <P>First, quantities related to the <b>energy</b> carried by the signal:
  <ul>
- <li>apparent frequency (proportional to the energy)
- <li>apparent brightness (how much energy the sensor receives per second)
+ <li>frequency (proportional to the energy)
+ <li>brightness (how much energy the sensor receives per second)
  <li>degree of polarization (how brightness varies with the direction of vibration of the energy)
 </ul>
 
 Second, quantities related to the <b>direction</b> of the signal:
  <ul>
- <li>apparent direction
- <li>apparent angular size
- <li>apparent geometric outline
- <li>apparent orientation of an object
- <li>apparent velocity (needs distance information, obtained through other means)
- <li>apparent linear size (needs distance information, obtained through other means)
+ <li>angular size of an object
+ <li>geometric outline of an object
+ <li>angular velocity of an object
 </ul>
 
-<P>Most of these quantities are here listed as <em>apparent</em> quantities.
-This is to emphasize that they are <em>parochial</em>, not invariant, and change from one grid to another during a boost.
-Using the word <em>apparent</em> has one goal: 
-to help you avoid slipping back into non-relativistic ways of thinking when reasoning about high-speed objects.
+<P>The quantities listed here are all <em>relative</em> to a given grid. 
+They aren't invariant.
 
 <a name='intersection'></a>
 <p>Signals travelling at the speed limit (such as light) must arrive at the detector by travelling 
@@ -150,10 +144,34 @@ parts of the object.
 <P>
 When the object isn't moving with respect to the detector, the differences in travel-time
 don't make much difference. 
-When the object is moving, <em>and</em> when the differences in travel-time are significant, 
+When the object is moving with respect to the detector, <em>and</em> when the differences in travel-time are significant, 
 then the differences show up as distortions in the detected image. 
 The larger the differences in travel-time, the greater the distortions.
 
+<P>When the object is sufficiently distant from the detector, then the light cone can be approximated as a plane instead of a cone, 
+over the region where it intersects with the object's history. 
+
+
+<a name='Slices'></a>
+<h2>Light-Slice and Time-Slice</h2>
+
+<P> A surface in space-time can intersect the history of a given object.
+ Let's call the intersection of a surface with the history of an object a <em>slice</em> of the history.
+ There are two important ways to slice an object's history:
+ 
+<P>
+<table class='report'>
+  <tr><th>Name<th>Intersect History With<th>Defines
+  <tr><td>Time-slice<td>a surface <em>ct=constant</em> <td>the spatial geometry of an object with respect to a given grid
+  <tr><td>Light-slice<td>the past light cone of a detector<td>the optical properties of an object in a given detector
+</table>
+
+<P>Sometimes a light-slice of an object's history in spacetime can be approximated using a plane instead of a cone, 
+with the plane oriented at 45 degrees with respect to the ct axis (and oriented in the right direction).
+This only works if the object subtends a small angle at the detector.
+In that case, the curvature of the past light cone is very small in the region of the object's history. 
+ 
+ 
 <a name='LightDirectionAndFrequency'></a>
 <h2>Photon Signals</h2>
 The remainder of Part II is specific to the most common kind of radiant signal: 
@@ -179,7 +197,7 @@ In order from the lowest to the highest energy/frequency, these chunks are:
  <li>gamma-ray
 </ul>
 
-It's important to note that <span class='highlight'><b>the energy and the direction of motion of a photon are both parochial</b></span>, 
+It's important to note that <span class='highlight'><b>the energy and the direction of motion of a photon are both specific to a grid</b></span>, 
 and change from one grid to another.
 A photon appearing as a <em>gamma-ray</em> photon in one grid can appear, say, as a <em>microwave</em> photon in a 
 second grid, which is boosted with respect to the first grid.
@@ -244,7 +262,7 @@ Here, we make use of <a href='http://en.wikipedia.org/wiki/Visible_spectrum#Spec
 
 <a name='BoostEventsOnTheLightCone'></a>
 <h2>Events On The Light Cone With Constant ct</h2>
-Both the frequency and direction of motion of a photon are parochial items.
+Both the frequency and direction of motion of a photon are specific to a grid.
 How do they change during a boost?
 Well, let's go back to space-time events for a moment.
 If you apply the <a href='index.html#Boosts'>boost transformation</a> to events that:
@@ -299,49 +317,35 @@ shows two important effects:
 
 
 <a name='Aberration'></a>
-<h2>Apparent Direction: Aberration</h2>
-The sensors in a grid can detect and measure the direction of photons coming from a distant object (such as a star).
-The direction is measured relative to some standard direction.
-How is a photon's direction affected by a boost transformation?
+<h2>Direction: Aberration</h2>
+The sensors in a grid can detect and measure the direction of photons coming from an object (such as a distant star).
+<b>How is a photon's direction affected by a boost transformation?</b>
 
-<P>There are 3 angles in this situation:
+<P>There are 3 directions to be aware of:
 <ul>
- <li> the <em>photon-direction</em>: the direction of the photon's motion
+ <li> the <em>photon-direction</em>: the direction of motion of the photon
  <li> the <em>detector-direction</em>: the direction in which the detector is pointed, in order to catch the photon
- <li> the <em>boost-direction</em>
+ <li> the <em>boost-direction</em>: the direction in which a boosted grid is moving with respect to a given grid
 </ul>
 
-The detector-direction is of course exactly opposite the photon-direction.
+<P>The detector-direction is exactly opposite the photon-direction.
 
-<P>In a boosted grid, <b>the photon-direction is deflected <em>away from</em> the boost-direction</b>.
+<P>Both the photon-direction and the detector-direction make a certain angle with the boost-direction.
+In a boosted grid, <b>the photon-direction is deflected <em>away from</em> the boost-direction</b>.
 Equivalently, <b>the detector-direction is deflected <em>towards</em> the boost-direction</b>.
-This effect is called <b>the aberration of light.</b>
-In the ultra-relativistic case, the stars are seen to be bunched up towards the direction of motion of the detector.
-The aberration of light was <a href='http://en.wikipedia.org/wiki/Aberration_of_light'>discovered by accident</a> 
-by James Bradley in 1729. Aberration is an interesting example of an effect that could have easily been predicted before 
-being observed, but wasn't.
+These are illustrated in the diagrams below.
 
-<P>There are two versions of the aberration formula, one for the photon-direction, and one 
-for the detector-direction.
-In the formulas below, the prime denotes the boosted grid.
+<P>This effect is called <b>the aberration of light.</b>
+Like the <a href='index.html#DistanceCompression'>the pancake effect</a>, aberration is highly directional in nature.
 
-<P>For the photon-direction:
+<P>When travelling in a spacecraft at relativistic speeds in interstellar space, the stars would be seen as bunched up towards the direction of motion of the spacecraft.
+The aberration of light was <a href='http://en.wikipedia.org/wiki/Aberration_of_light'>discovered by accident</a> by James Bradley in 1729. 
+
+<P>There are two versions of the aberration formula, one for the photon-direction, and one for the detector-direction.
+In the formulas below, the prime denotes the boosted grid, and the angles are with respect to the boost-direction.
+
+<P>A boost deflects the detector-direction <em>toward</em> the boost-direction, from D to D':
 <P>
-<img src='formulas/aberration.png' class='equation' style='margin-left:2.0em;vertical-align:top;'>
-<canvas id='aberrationTheta1' width='210' height='200' style='margin:1.0em;'>
- Canvas not supported. Please upgrade your browser. 
-</canvas>
-<script>
- var canvas = document.getElementById('aberrationTheta1');
- var ctx = canvas.getContext('2d');
- aberrationTheta1(ctx);
-</script>
-
-
-<P>For the detector-direction:
-
-<P>
-<img src='formulas/aberration2.png' class='equation' style='margin-left:2.0em;vertical-align:top;'>
 <canvas id='aberrationTheta2' width='210' height='200' style='margin:1.0em;'>
  Canvas not supported. Please upgrade your browser. 
 </canvas>
@@ -350,6 +354,38 @@ In the formulas below, the prime denotes the boosted grid.
  var ctx = canvas.getContext('2d');
  aberrationTheta2(ctx);
 </script>
+<canvas id='aberrationGraphDetectorDir' width='300' height='300'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('aberrationGraphDetectorDir');
+ var ctx = canvas.getContext('2d');
+ aberrationGraphDetectorDir(ctx);
+</script>
+<img src='formulas/aberration2.png' class='equation' style='margin-left:2.0em;vertical-align:top;'>
+
+
+
+<P>A boost deflects the photon-direction <em>away from</em> the boost-direction, from P to P':
+<P>
+<canvas id='aberrationTheta1' width='210' height='200' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('aberrationTheta1');
+ var ctx = canvas.getContext('2d');
+ aberrationTheta1(ctx);
+</script>
+<canvas id='aberrationGraphPhotonDir' width='300' height='300'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('aberrationGraphPhotonDir');
+ var ctx = canvas.getContext('2d');
+ aberrationGraphPhotonDir(ctx);
+</script>
+<img src='formulas/aberration.png' class='equation' style='margin-left:2.0em;vertical-align:top;'>
+
 
 <P>
 The effect of aberration can be equivalently seen as:
@@ -367,8 +403,10 @@ meaning the angular radius from the direction of motion that encloses
 what would be half the sky in an unboosted grid.
 
 
+
+
 <a name='DopplerEffect'></a>
-<h2>Apparent Frequency: Doppler Effect</h2>
+<h2>Frequency: Doppler Effect</h2>
 Any process that repeats itself is called <em>periodic</em>.
 Some examples:
 <ul>
@@ -404,13 +442,15 @@ and counts of things are pure numbers, without any physical unit.
 The signal is usually electromagnetic radiation moving at the speed limit.
 These signals can be detected by the sensors in a grid.
 In this way, each sensor can measure the frequency of the signals received at its own location.
-There are two cases, depending on whether the signal source is <em>moving</em> with respect to the sensor grid:
+There are two cases, depending on whether the signal source and the detector are <em>moving with respect to each other</em>:
 <ul>
- <li>if the signal source <em>is not</em> moving, then all sensors measure the same frequency for detected signals.
- <li>if the signal source <em>is</em> moving, then in general different sensors will measure different frequencies for detected signals.
- The detected frequency will depend on both how fast the signal source is moving, and on its direction of motion.
+ <li>if the signal source <em>is not</em> moving with respect to a detector, then the detector sees no change in the frequency.
+ <li>if the signal source <em>is</em> moving with respect to a detector, then the detected frequency will depend on both the speed and direction of the relative motion.
 </ul>
 
+<P>Examples using light signals (in green).
+
+<P>Here the signal source and the two detectors are not moving with respect to each other:
 <P>
 <canvas id='dopplerEffect1' width='200' height='200' style='margin:1.0em;'>
  Canvas not supported. Please upgrade your browser. 
@@ -421,7 +461,8 @@ There are two cases, depending on whether the signal source is <em>moving</em> w
  dopplerEffect(ctx,0);
 </script>
 
-<canvas id='dopplerEffect2' width='200' height='200' style='margin:1.0em;'>
+<P>Here the signal source is moving directly away from detector D1 and directly toward detector D2:
+<P><canvas id='dopplerEffect2' width='200' height='200' style='margin:1.0em;'>
  Canvas not supported. Please upgrade your browser. 
 </canvas>
 <script>
@@ -430,7 +471,7 @@ There are two cases, depending on whether the signal source is <em>moving</em> w
  dopplerEffect(ctx,0.5);
 </script>
 
-<P><b>The change in frequency for the detected signal from a moving signal source is called the Doppler effect.</b>
+<P><b>The change in frequency of a signal from a source moving relative to a detector is called the Doppler effect.</b>
 Here's an <a href='animations/doppler2d/doppler2d.html?beta=0.6&anim=true'>animation</a> showing the effect 
 for motion along the x axis.
 The Doppler effect has two underlying causes, which can work in opposing ways:
@@ -440,7 +481,7 @@ The Doppler effect has two underlying causes, which can work in opposing ways:
  When the source moves <em>towards</em> the sensor, the signals arrive more often, serving to <em>increase</em> the frequency.
  <li>time dilation - the faster the object, the slower the physics. So, the frequency of <em>emission</em> 
  of signals from the signal source always slows down. 
- That is, time dilation always <em>reduces</em> a frequency.
+ That is, time dilation always <em>reduces</em> a frequency. In the diagram above, the spacing of the dots for the moving source is larger than for the stationary source.
 </ul>
 
 A change in frequency is often described as:
@@ -450,12 +491,14 @@ A change in frequency is often described as:
 </ul>
 
 
+ 
+
 
 <a name='DopplerFactor'></a>
 <h2>Doppler Factor</h2>
 The change in frequency seen in the  Doppler effect is given by a number called the <b>Doppler factor</b>.
 The Doppler factor is usually given the symbol <em>D</em>.
-Here's the formula for D (note that D is dimensionless, just like &beta; and &Gamma;):
+Here's the formula for D (note that D is dimensionless, just like &beta; and <span class='greek'>&gamma;</span>):
 
 
 <P>
@@ -478,7 +521,7 @@ Here's the formula for D (note that D is dimensionless, just like &beta; and &Ga
  dopplerGeometry(ctx);
 </script>
 
-<P>The Doppler factor D is a bit trickier than &beta; and &Gamma;, since it depends on two things, not just one:
+<P>The Doppler factor D is a bit trickier than &beta; and <span class='greek'>&gamma;</span>, since it depends on two things, not just one:
 <ul>
  <li>the speed &beta; of a signal source, in the range 0&lt;&equals;&beta;&lt;1. In this formula, it's easiest to think of &beta; as
  a speed, not a velocity. 
@@ -487,7 +530,7 @@ Here's the formula for D (note that D is dimensionless, just like &beta; and &Ga
  observed path of the signal towards the detector.
  It's important to note that this angle is the observed angle, and <em>it includes aberration</em>.
 </ul>
-Of course, &Gamma; also appears in the formula for D, but &Gamma; depends only on &beta;, so it's not independent.
+
 <P>For each &beta;, there's always a &theta; for which D=1, and the effect passes from blueshift to redshift 
 (or vice versa).
 Here, the angle (from the direction of motion) for which D=1 is called the <b>neutral angle</b>.
@@ -496,7 +539,7 @@ Objects at the neutral angle have D=1, and are neither blueshifted nor redshifte
 
 <P>This <a href='animations/doppler-basics/doppler.html?beta=0.6&power=1&anim=true'>animation</a> 
 is an excellent way to explore how D changes with &beta; and &theta;.
-Note that for the case of &theta;=90&deg; (the case of transverse motion), D is just the inverse of the warp factor &Gamma;.
+Note that for the case of &theta;=90&deg; (the case of transverse motion), D is just the inverse of the warp factor <span class='greek'>&gamma;</span>.
 Here's a second 
 <a href='animations/aberration/aberration.html?beta=0.6&numRadialLines=8&sizeRadialLines=1&anim=true'>animation</a>
 that combines aberration and the Doppler effect in a single diagram.
@@ -514,7 +557,7 @@ Some examples:
  <tr><td>Photon Wave Number<td>D<td>Solid angle<td>D<sup>-2</sup>
  <tr><td>Photon Wavelength<td>D<sup>-1</sup><td>Angular size<td>D<sup>-1</sup>
  <tr><td>Plane Wave E,H field intensities<td>D<td><em>Detected</em> energy per sec per sterad<td>D<sup>4</sup>
- <tr><td>Aberration sin &theta;<td>D<sup>-1</sup><td><em>Emitted</em> energy per sec per sterad<td>D<sup>3</sup>/&Gamma;
+ <tr><td>Aberration sin &theta;<td>D<sup>-1</sup><td><em>Emitted</em> energy per sec per sterad<td>D<sup>3</sup>/<span class='greek'>&gamma;</span>
  <!--
  <tr><td>?Spectral intensity(Energ. Flux Dens. per wavelength) (McKinley)<td>D<sup>3</sup>
  <tr><td>?Energy Flux Density (extended sources)<td>D<sup>4</sup>
@@ -522,10 +565,73 @@ Some examples:
  -->
 </table>
 
+<a name='TwoVariationsForTheta'></a>
+<h2>Two Variations for the &theta; Angle</h2>
+An angle <span class='greek'>&theta;</span> appears in the formulas for the Doppler effect and for aberration.
+It's an angle made with the boost-direction.
+There are two ways to define the <span class='greek'>&theta;</span> angle. 
+Simply put, you can use either <span class='greek'>&theta;</span> or <span class='greek'>&pi;</span> - <span class='greek'>&theta;</span>.
+Because of the identities:   
+
+<P><img src='formulas/trigidentity.png' class='equation'>
+
+<P>this can change signs in formulas that use a cos(<span class='greek'>&theta;</span>).
+For example, here are two variations of the formula for the Doppler effect, which reflect the two ways of defining <span class='greek'>&theta;</span>:
+ 
+<P><img src='formulas/doppler.png' class='equation'> 
+<img src='formulas/doppler2.png' class='equation'> 
+
+<P>The returned value of D is the same in both cases, but the formula is different simply because of a different convention for defining <span class='greek'>&theta;</span>.
+
+
+<a name='PrototypeEffects'></a>
+<h2>Optical Effects as Non-Mysterious Prototypes</h2>
+To most people, the Doppler effect and aberration are fairly easy to understand. They don't seem particularly strange or contrary to common experience.
+On the other hand, time dilation and the pancake effect are usually seen as being very unusual, mysterious, and counter to most people's intuition.
+
+<P><span class='highlight'><b>There's a point of view, however, in which time dilation and the pancake effect can be seen as non-mysterious as the Doppler effect and aberration.</b></span>
+The idea is that these effects are all tied together by the same mathematics: the boost transformation. 
+All of these effects are consequences of how the boost transformation alters its input 4-vectors. 
+In the case of time dilation and the pancake effect, the input 4-vectors are certain events.
+In the case of the Doppler effect and aberration, the input 4-vectors are the photon vectors (energy and direction of motion of the photon). 
+But in all cases it's just the boost transformation, and only the boost transformation, that controls the physics.
+
+<P>The boost transformation changes an input 4-vector into an output 4-vector.
+For photons, the end-point of the photon vector stays on the light cone. It moves up and down the light cone (Doppler effect), 
+and it changes its direction on the light cone (aberration).
+For the events involved with time dilation and the pancake effect, the end-point of the 4-vector (an event) also moves around on a surface, but the surface isn't 
+a light cone, it's a hyperboloid corresponding to a given value of the squared-interval.
+
+<P>A cone and a hyperboloid don't have the same shape (or topology). 
+But that difference shouldn't prevent us from viewing the two cases as being, at a high level, essentially the same kind of operation: 
+a boost transformation mapping an input 4-vector to an output 4-vector, subject to the constraint of staying on a surface 
+(either a light cone, or a hyperboloid with constant squared-interval).
+
+<P>From this point of view, it doesn't seem logically consistent to think of time dilation and the pancake effect as mysterious, while simultaneously thinking of the  
+Doppler effect and aberration as non-mysterious. 
+
+<div class='aside-remarks'>
+From <em>Introduction to Special Relativity</em>, by Robert Resnick:
+   
+<P>Is the length contraction "real" or "apparent"? We might answer this by posing a similar question. 
+Is the frequency, or wavelength, shift in the Doppler effect real or apparent? 
+</div>
+
+<div class='aside-remarks'>
+
+<p>If you define <em>relativistic</em> as meaning any physics that involves &beta;, the ratio of a speed of something to the speed limit, 
+then the first measurements of relativistic effects were made long before the creation of the theory of special relativity in 1905.
+The Doppler effect for light was predicted and measured in the 1840s.
+In 1729, the first measurement of stellar aberration was published by James Bradley. 
+Stellar aberration is essentially a measurement of the ratio of the speed of the Earth in its orbit (relative to the center of mass of the solar system) to the speed of light.
+
+<P>In these early years, the formulas for stellar aberration and the Doppler effect were approximations to the full relativistic formulas, and were valid only for low values of &beta;.
+</div>
+
 
 
 <a name='Beaming'></a>
-<h2>Apparent Brightness: Beaming</h2>
+<h2>Brightness: Beaming Effect</h2>
 There are different ways of measuring how bright an object is.
 One fundamental measure is the total amount of energy received per unit area on a detector, per unit time, 
 over all frequencies.
@@ -543,8 +649,7 @@ This is called <b>relativistic beaming</b>.
 The section on <a href='#AstrophysicalJets'>astrophysical jets</a> contains more about relativistic beaming.
 
 
-<P>For the brightness of stars, 
-astronomers usually measure brightness using a logarithmic scale called <em>stellar magnitude</em>. 
+<P>For the brightness of stars, astronomers usually measure brightness using a logarithmic scale called <em>stellar magnitude</em>. 
 A bright star may have magnitude 1.0, while a dim star, barely visible to the human eye, might be of magnitude 6.0.
 The magnitude depends on the <em>logarithm</em> of the energy flux density (per hertz).
 For example, a difference of 5 magnitudes means a brightness difference of 100 times.
@@ -559,7 +664,7 @@ The temperature also corresponds to the <em>color</em> of the star: cooler stars
 hotter stars are blue-white.
 During a boost, the temperature T is multiplied by the Doppler factor D, and the color also changes to match the new temperature.
 
-<P>For a star of surface temperature T, here's an <em>approximate</em> formula (McKinley, Doherty, 1979) for 
+<P>For a star of surface temperature T, here's an <em>approximate</em> formula <a href='references.html'>(McKinley, Doherty, 1979)</a> for 
 the change in a star's brightness during a boost, expressed in stellar magnitudes,
  which depends on both D and T (expressed in Kelvins): 
 <br><img class='equation' src='formulas/magnitude.png' title='McKinley, Doherty, 1979'>
@@ -670,7 +775,7 @@ brightness of the point-like stars shown here.
 
 
 <a name='AngularSize'></a>
-<h2>Apparent Angular Size</h2>
+<h2>Angular Size</h2>
 Extended sources of light, such as a galaxy or a star cluster, have 
 an <em>angular size</em>, the number of degrees it appears to extend across the sky.
 Point-like sources of light, such as a star, don't have a measurable apparent angular size.
@@ -703,7 +808,7 @@ Conversely, items in the rearward view will appear <em>magnified</em>, and appar
 But in this case, the distortions are pretty small.)
 
 <a name='ApparentOutline'></a>
-<h2>Apparent Outline</h2>
+<h2>Geometric Outline</h2>
 A sensor can take an image of an object, using the incoming light.
 That image will have an outline. Does that outline change during a boost?
 In general, yes. 

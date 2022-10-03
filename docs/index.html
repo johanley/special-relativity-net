@@ -5,12 +5,12 @@
  <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference">
  <meta name="description" content="Introduction to special relativity.">
  <meta name="viewport" content="width=device-width"> 
- <link rel="stylesheet" type="text/css" href="css/stylesheet.css?v=12" media="all"> 
+ <link rel="stylesheet" type="text/css" href="css/stylesheet.css?v=13" media="all"> 
  <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
  <title>Special Relativity - Speed Limits and Geometry</title>
- <script type='text/javascript' src='script/general-graphics.js?v=12'></script>
- <script type='text/javascript' src='script/physics-and-math.js?v=12'></script>
- <script type='text/javascript' src='script/diagrams.js?v=12'></script>
+ <script type='text/javascript' src='script/general-graphics.js?v=13'></script>
+ <script type='text/javascript' src='script/physics-and-math.js?v=13'></script>
+ <script type='text/javascript' src='script/diagrams.js?v=13'></script>
  <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -44,7 +44,8 @@ Time machines going into the future <em>are</em> permitted, and use high speeds 
 <b>SR has a Rule Zero: a rule for making all the other rules.</b>
 This Rule Zero is interesting because it's a set of handcuffs: it's very tightly constraining.
 Being tightly constrained is a good thing for a scientific theory, because it's easier to falsify.
-SR is a cornerstone of modern physics mostly because of Rule Zero. 
+The handcuffs come from ideas about symmetry groups and invariance.
+With SR, fundamental physics starts to be guided by these important ideas.
 
 
 <P><b>SR is mathematically simple. 
@@ -52,13 +53,13 @@ If you know what a square root is, then you can understand the core of SR.</b>
 For bonus points, if you're not afraid of a cosine, then you can understand what SR says about optics (photons and light rays).  
 
 <P><b>SR is a reboot of physics. It goes back to the beginning, and fixes an important mistake</b>.
-When physics began in the 1600s, they had certain ideas about space and time.
+When modern physics began in the 1600s, they had certain ideas about space and time.
 We now know that some of those ideas were mistaken.
 (Those mistakes were completely natural, since they had no data for objects moving at really high speeds.)
 Albert Einstein was the first person to figure this out. 
 He pointed out the mistake, which has to do with time.
 In short, the mistake was assuming that time is absolute.
-<b>Instead of absolute time, you have an absolute speed limit, and an absolute 'space-time interval'</b> (see below). 
+<b>Instead of absolute time, you have an absolute speed limit, and an absolute <em>space-time interval</em></b> (see below). 
 
 <P>When you learn SR, you get to <b>understand how time dilation works</b>.
 The discovery of time dilation is one of the most important discoveries in all of science.
@@ -83,57 +84,57 @@ Here's a quick summary of some important results in SR. More details are found b
 
 <P>Speeds: 
 <ul>
- <li>there's a <em>speed limit</em> c for all signals (matter, photons)
- <li>there's <em>no</em> speed limit for things that <em>aren't</em> signals (geometrical ideas, not matter or photons)
- <li>v &lt; c when the signal has <em>mass</em> (matter)
+ <li>there's a <em>speed limit</em> c for all signals (signals transfer packets of energy - matter, photons)
  <li>v = c when the signal has <em>no mass</em> (photons)
+ <li>v &lt; c when the signal has <em>mass</em> (matter)
+ <li>there's <em>no</em> speed limit for things that <em>aren't</em> signals (geometrical ideas, not matter or photons)
 </ul>
 
 Time:
 <ul>
- <li>moving clocks run slowly with respect to stationary clocks
+ <li>a moving clock runs slowly compared to two stationary clocks
  <li>high speed one-way trips are <em>wormholes</em>
  <li>high speed return-trips are <em>time machines into the future</em>
  <li>time machines can go to the future, but not to the past
- <li>there's no minimal travel-time for any trip between any two places in the Universe
+ <li>there's no minimal wristwatch-time for any trip between any two places in the Universe
 </ul>
 
-Length:
+Geometry:
 <ul>
- <li>moving objects are smaller in size (in the direction of their motion), with respect to stationary identical objects
+ <li>moving objects are flattened in the direction of their motion, with respect to stationary identical objects
 </ul>
 
 
 Pairs of events:
 <ul>
+ <li>for any two events, the quantity c<sup>2</sup>(<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>d)<sup>2</sup> is invariant 
  <li>the time interval between the events is <em>not</em> invariant (absolute)
  <li>sometimes the time-order of the pair is invariant, sometimes it's not
  <li>a pair that's simultaneous in one grid, may not be simultaneous in another
- <li>the interval-squared s<sup>2</sup> = c<sup>2</sup>t<sup>2</sup> - d<sup>2</sup> between the events is invariant 
 </ul>
 
 
 Optics:
 <ul>
- <li>high-speed travel changes the apparent color, brightness, and direction of stars, moving them towards the direction of travel
- <li>high-speed jets of matter have <em>beaming</em> effects that change their apparent brightness
- <li>high-speed jets of matter moving towards you can appear to move faster than c, but this is only a geometrical effect
+ <li>high-speed travel changes the measured color, brightness, and direction of stars, moving them towards the direction of travel
+ <li>high-speed jets of matter have <em>beaming</em> effects that change their measured brightness
+ <li>high-speed jets of matter moving towards you can superficially appear to move faster than c, but this is only a geometrical effect
 </ul>
 
 Other:
 <ul>
  <li>space-time is an <em>idea</em>, not something you can point to
  <li>there's a <em>rule zero</em>, a rule for making all the other rules
- <li>principles are most effective (and beautiful) when they strongly <em>limit</em> the number of possible theories
+ <li>principles are most effective (and beautiful) when they put <em>strong limitations</em> on possible theories
 </ul>
 
 
 
 <a name='SpaceTime'></a>
 <h2>The Idea of Space-Time is Pretty Simple</h2>
-A ball rolls across the floor in a path, in a straight line from A to B. 
-It starts by moving quickly, slows down, and then stops.
-You can draw a picture of the ball's motion in 3 ways:
+A ball rolls across the floor in a straight line from A to B. 
+It starts by moving quickly, then it slows down and eventually stops.
+You can draw a picture of the ball's motion in different ways:
 
 <P>1. Draw a straight line from A to B. 
 <P><canvas id='simplePath1' width='200' height='40'></canvas>
@@ -144,7 +145,7 @@ You can draw a picture of the ball's motion in 3 ways:
 </script>
 <p>This isn't very good, because there's no information about the <em>speed</em> of the ball. So this picture is incomplete. 
 
-<P> 2. Draw a straight line from A to B, but also add tick marks to the the line, indicating its position, once per second.
+<P> 2. Draw a straight line from A to B, but also add tick marks to the the line, indicating its position once per second.
 <P><canvas id='simplePath2' width='200' height='40'></canvas>
 <script>
  var canvas = document.getElementById('simplePath2');
@@ -200,7 +201,7 @@ Indeed, it's not an exaggeration to say that <b>the geometry of space-time is at
 <h2>Example Histories</h2>
 
 When an object is moving along a straight line, you can draw its history in a space-time diagram having 
-two <em>axes</em> at 90&deg; to each other, one for the time (t), and one for the distance (x). 
+two <em>axes</em> at 90&deg; to each other (by convention), one for the time (t), and one for the distance (x). 
 These are the simplest kinds of space-time diagrams, and sometimes they're all you need. 
 Some examples are shown below:
 <ul>
@@ -371,7 +372,8 @@ So let's examine these ideas in sequence.
 The motion of an object is always relative to something else.
 <b><span class='highlight'>A <em>grid</em> (or a <em>frame of reference</em>) is used to measure positions and times.</span></b>
 A grid is most easily pictured as a cubic lattice.
-The lattice is constructed out of meter sticks (or whatever you prefer).
+The lattice is constructed out of identical meter sticks (or whatever you prefer).
+The objects in the grid are simply placed into position, and aren't rigidly attached to each other.
 Here are some pictures to illustrate (these are diagrams of <em>space</em>, not <em>space-time</em>):
 <P><canvas id='measuringGrid' width='160' height='160' style='margin:1.0em;'>
  Canvas not supported. Please upgrade your browser. 
@@ -408,8 +410,9 @@ Next we'll look at measuring time with a grid.
 <h2>Grids Measure Time With Many Sensors, Not One</h2>
 
 To measure time, you might think that only a single master clock would be needed for a grid.
-But that's hard, because you need to figure out how to measure the time of distant events.
-It's simpler to use <span class='highlight'><b>multiple, synchronized clocks, that are spread out over the entire grid</b></span>.
+But that's a bit more work, because you need to figure out how to measure the time of events that occur at some distance from the clock.
+It's simpler to use <span class='highlight'><b>multiple synchronized clocks, that are spread out over the entire grid</b></span>.
+The clocks are all identical.
 (You can picture these clocks as being placed at the intersection points of the meter sticks.) 
 When you measure the position of an object, you can measure the time as well, just by using the clock at the same location.
 When you simultaneously measure both the position and the time, then you measure the <b>coordinates of an event</b>, a <em>where</em> and a <em>when</em>.
@@ -437,12 +440,26 @@ Any other way of looking at measurements is more complicated.
 <ul>
 <li>a cubic grid of sensors spread out over an area or volume (either 2D or 3D)
 <li>the sensors are separated by meter sticks
-<li>the grid can have any orientation, location, or speed, but it's <em>not allowed to be spinning or accelerating</em> (more on acceleration below)
-<li>the sensors don't move with respect to each other
+<li>the sensors and the meter sticks don't move with respect to each other
 <li>sensors record local events only, and not distant ones
 <li>the sensors have a clock, and record the time of each event
 <li>the sensor clocks are synchronized with each other
+<li>the grid can have any orientation, location, or speed, but it's <em>not allowed to be spinning or accelerating</em> (more on acceleration below)
+<li>the measurements can be sent to a central computer where you can analyze them
 </ul>
+
+<div class='aside-remarks'>
+ Some authors use an alternative scheme  modeled on a <em>radar station</em> instead of a grid.
+ In that scheme, light signals are emitted from a base station, bounce off a target event, and then return back to the base station.
+ Such schemes actually represent a more practical method for measuring co-ordinates than the grids described above.
+  
+ <P>However, in the radar base scheme:
+ <ul>
+  <li>measurements are never local
+  <li>small calculations are needed to deduce the space and time co-ordinates from the radar data 
+  <li>as a mental model, they aren't as simple as the grid scheme
+ </ul> 
+</div>
 
 <a name='GridsVersusCameras'></a>
 <h2>A Camera Is Not A Grid</h2>
@@ -483,7 +500,8 @@ To see the simplest motion of all, you need to go to interstellar (or intergalac
 which is far, far away from everything else (except for your idealized grid, of course).
 Such an object is called a <b>freely moving object</b> - it doesn't interact with anything; no forces, no friction, nothing.
 How does it move? It drifts perfectly and serenely, in a straight line, at constant speed.
-By definition, this straight line motion is only true in an <em>inertial</em> grid (this is Newton's first rule of motion):
+By definition, this straight line motion is only true in an <em>inertial</em> grid (an <em>inertial frame of reference</em>). 
+This is Newton's first rule of motion:
 <P><b class='highlight'>
 In an inertial grid, the speed and direction of motion of a freely moving object doesn't change.</b>
  
@@ -500,14 +518,13 @@ You can test a grid to see if it's inertial by observing a freely moving object;
 if it accelerates at any time, then the grid isn't inertial.
 
 <P>In principle, there are an infinite number of possible inertial grids. 
-<b>Each inertial grid is parochial</b> (<em>"confined to a narrow area"</em>), in the sense that the 
-raw measurements of event coordinates made in each grid are specific to that grid, and only that grid.
+The raw measurements of event coordinates made in each grid are specific to that grid, and only that grid.
 <b>The event coordinates don't match between grids.</b>
 
 
 <a name='InertialGridFamily'></a>
 <h2>Inertial Grid Family</h2>
-Inertial grids form a <em>family</em>.
+It's very important than inertial grids form a <em>family</em>.
 If you have one inertial grid, then you can make another one by applying one or more of the 
 <span title='The full Lorentz group'><b>four allowable grid transformations</b></span>:
 <ul>
@@ -566,11 +583,11 @@ for the <em>where</em> and <em>when</em> coordinates of each event.
 <ul>
  <li><b>what can all members of the inertial grid family agree on? </b>
  <li>how do we move from the raw data of measurements, specific to each sensor grid, to the rules of physics?</b>
- <li>in summary, <b>how do we go from the <em>parochial</em> to the <em>universal</em></b>?
+ <li>in summary, <b>how do we go from the <em>specific</em> to the <em>universal</em></b>?
 </ul>
 <P>
 
-One way of moving from the parochial to the universal is to look for special combinations of quantities, 
+One way of moving from the specific to the universal is to look for special combinations of quantities, 
 calculated (<em>derived</em>) from the raw data, that happen to have <em>the same value</em> for all members of the inertial grid family. 
 If you find such a combination, then you'll likely be able to make a new rule of physics with it.
 This leads to an important definition:
@@ -585,18 +602,38 @@ Here are some examples of the many invariant quantities that have been found:
  <li>action integrals, which are related to forces and fields (discussed below)
  <li>the volume of a region in space-time (discussed below)
  <li>the electric charge and rest-mass of any particle
- <li>E<sup>2</sup> - H<sup>2</sup>, the difference in the squared sizes of electric and magnetic fields 
+ <li>E<sup>2</sup> - H<sup>2</sup>, the difference in the squared sizes of electric and magnetic fields at a given place and time 
  <li>...and many others...
 </ul>
 
 <div class='aside-remarks'>
-A better name for <em>theory of relativity</em> would be <em>the theory of invariance</em>, or something similar. 
-The phrase <em>theory of relativity</em> is a mediocre term: it's ambiguous, leads to misunderstandings, 
+A better name for <em>theory of relativity</em> might be <em>the theory of invariance</em>, 
+<em>the theory of space-time</em>, or something similar. 
+The name <em>theory of relativity</em> is mediocre: it's ambiguous, leads to confusion, 
 and doesn't emphasize the most important idea.
 According to <a href='http://en.wikipedia.org/wiki/Criticism_of_the_theory_of_relativity#Philosophical_criticism'>wikipedia</a>,
 this dissactisfaction with the word <em>relativity</em> was even held by the theory's inventor, Albert Einstein.
 The term should really be abandoned, but it's difficult to change the inertia of long-standing tradition (if you'll pardon the pun).
 </div>
+
+<a name='WhatDoesRelativeMean'></a>
+<h2>What Does Relative Mean?</h2>
+Something is <em>relative</em> when it's not invariant.
+Items that change according to which grid is being used are said to be <em>relative</em> to that grid.
+<P>One of the main points of SR is that it changes the list of items that are invariant versus relative.
+Here's a list of some items of note (the list is incomplete): 
+
+<table class='report' style='border:1px;'  style='float:left;'>
+ <th>Item<th>Before SR (Newton)<th>SR (Einstein)<th>Comment
+ <tr><td>Simultaneous events<td>invariant<td>relative<td>Newton's time was absolute
+ <tr><td>Time between events<td>invariant<td>relative<td>Newton's time was absolute
+ <tr><td>Rate of a moving clock<td>invariant<td>relative<td>Newton's time was absolute
+ <tr><td>Length of a moving stick<td>invariant<td>relative<td>SR has the pancake effect
+ <tr><td>Spatial geometry of an object<td>invariant<td>relative<td>SR has the pancake effect
+ <tr><td>Distance between events<td>relative<td>relative<td>Was always relative, even before SR
+ <tr><td>Frequency of light<td>relative<td>relative<td>Doppler effect was known before SR
+ <tr><td>Direction of light<td>relative<td>relative<td>Aberration of light was known before SR
+</table>
 
 
 <a name='RuleAboutRules'></a>
@@ -606,7 +643,7 @@ It's a strange one, since it's really <b>a rule about all the other rules</b>:
 
 <P><b class='highlight'>Rules must be expressible using only invariants.</b>
 
-<P>In a sense, relativity <em>is</em> the search for invariants - the search for what we can all agree on.
+<P>In a sense, relativity is the search for invariants - the search for what we can all agree on.
 This is a kind of <em>mission statement</em>, which starts a quest to find out what these invariants are, and what are their consequences.
 <em>The most beautiful thing about this rule is that it's so deeply constraining.</em>
 Constraints don't hurt a scientific theory, they actually help it, by making it easier to falsify.
@@ -623,8 +660,7 @@ It's too complicated.
 The fundamental covariant differential equations can be derived from a corresponding action integral.
 Action integrals are scalar invariants - quantities that are the same for all inertial grids.
 Hence, the principle of relativity can (and should) be stated in a simple form which speaks only of invariants - 
-concrete numbers that can be derived from <em>measurements</em> - as opposed to more abstract ideas about the form of covariant 
-differential equations.
+concrete numbers that can be derived from <em>measurements</em> - as opposed to more abstract ideas about the form of covariant equations.
 
 </div>
 
@@ -634,7 +670,7 @@ The first and mightiest of all invariants is this:
 
 <P><b class='highlight'>There's an invariant universal speed limit for all signals.</b>
 
-<P>What's a signal? Any physical object (matter, radiation) that moves from one place to another.
+<P>What's a signal? A physical object (matter, radiation) that moves a packet of energy from one place to another.
 So, the above rule says that no signal is instantaneous, and that the speed of any signal, anywhere in the Universe, 
 at any time in the history of the Universe, can only be between 0 and a fixed  
 maximum speed, as measured in any inertial grid. 
@@ -674,6 +710,17 @@ The light has travelled undisturbed for even billions of years, until, at last, 
 to be, it offers up its quantum of energy, perfectly preserved for aeons, into the waiting bucket of a telescope, pointed 
 by a curious human towards the night sky.
 
+<div class='aside-remarks'>
+ Here's one way to <b>synchronize all of the clocks in a grid.</b> 
+ Choose a reference clock. 
+ The reference clock sends out a flash of light, say at time 0.
+ When the flash of light reaches another clock, the flash is detected and it triggers the clock to start it running.
+ 
+ <P>The trick is to preset the start-time of each clock to a certain value.
+ That value is calculated using the known distance <span class='greek'>&Delta;</span>d of the clock from the reference clock, and the formula 
+ c<span class='greek'>&Delta;</span>t = <span class='greek'>&Delta;</span>d.
+</div>
+
 <P>Here's where the fun begins. 
 <b>You can combine the speed-limit rule with the rule-about-rules, 
 and that's when weird things start to happen.</b>
@@ -691,9 +738,6 @@ measurements of space and time gets weird. This is the crux of the matter: if yo
 insist that the speed-limit rule and the rule-about-rules are both valid, then you are 
 forced into a serious re-examination
 of the basic facts regarding measurements of distance and time.
-
-
-
 
 
 <a name='ExampleSpeeds'></a>
@@ -753,7 +797,7 @@ treated as a speed or a velocity:
 
 <a name='GeometricPoints'></a>
 <h2>Geometric Points Have No Speed Limit</h2>
-The speed limit rule applies to signals - to physical objects moving through space, like a spacecraft, a banana,  
+The speed limit rule applies to signals - to physical objects carrying energy through space, like a spacecraft, a banana,  
 or a photon. These are physical objects. 
 <b>A geometric point isn't a physical object, and doesn't obey the speed limit rule.</b>
 Here are some examples of such geometric points:
@@ -764,7 +808,7 @@ Here are some examples of such geometric points:
  <li>oscilloscope: the moving spot on the screen of a cathode-ray oscilloscope
  (very similar to the example of the laser on the Moon)
 </ul>
-What's moving in these cases is not a single object.
+What's moving in these cases is not a single physical object.
 Over time, the moving point is made up of <em>different</em> objects.
 For the laser lighthouse, the photons emitted by the laser all travel at the speed limit.
 What's moving on the Moon is a collection of different events, represented by <em>different</em> photons
@@ -851,7 +895,7 @@ time interval and space interval (the distance)
 between them, combined in a special way.
 This number is simply called the <b>space-time interval</b> (or just <b>interval</b> for short). 
 The <em>square</em> of the interval (and thus the interval itself) is calculated like this:
-<P><img src='formulas/interval2.png' class='equation'>
+<P><img src='formulas/interval2.png' class='equation highlight'>
 <!-- <pre><b><span class='highlight'>s<sup>2</sup> = c<sup>2</sup> * &#916;t<sup>2</sup> - &#916;d<sup>2</sup></span></b></pre> -->
 
 <P> <canvas id='interval' width='200' height='150' style='float:left;'>
@@ -867,8 +911,8 @@ The <em>square</em> of the interval (and thus the interval itself) is calculated
  <tr><th>Symbol<th>Means
  <tr><td>s<sup>2</sup><td>the square of space-time interval between the 2 events
  <tr><td>c<td>the speed limit
- <tr><td>&#916;t<td> the time interval between the 2 events
- <tr><td>&#916;d<td> the distance between the 2 events
+ <tr><td><span class='greek'>&Delta;</span>t<td> the time interval between the 2 events
+ <tr><td><span class='greek'>&Delta;</span>d<td> the distance between the 2 events
 </table>
 
 <P style='clear:left;'>Each pair of events has a value for s<sup>2</sup>.
@@ -880,18 +924,17 @@ To state it explicitly, the rule is this:
 <P><b class='highlight'>The value of <em>s<sup>2</sup></em> for any two events is invariant.</b>
 
 <P>
-The <em>space</em>-interval &#916;d  has always been parochial: 
-when one grid is moving with respect to another, then the distance &#916;d between 2 events will, in general, vary between the 2 grids.
+The <em>space</em>-interval <span class='greek'>&Delta;</span>d  has always been specific to a grid: 
+when one grid is moving with respect to another, then the distance <span class='greek'>&Delta;</span>d between 2 events will, in general, vary between the 2 grids.
 That's not new. 
-What <em>is</em> new is that the same applies to the <em>time</em>-interval &#916;t as well. 
-That's new, because when physics began in the 1600s, the time-interval was assumed to be universal.
+What <em>is</em> new is that the same applies to the <em>time</em>-interval <span class='greek'>&Delta;</span>t as well. 
+That's new, because when modern physics began in the 1600s, the time-interval was assumed to be universal.
 But that was a fundamental mistake.
-<b>Instead, it's the <em>space-time</em> interval s, constructed from the space-interval &#916;d and the time-interval &#916;t, that's really universal, and neither of its parts.</b>
-That is, <b><span class='highlight'>time is parochial, not universal</span></b>.   
+<b>Instead, it's the <em>space-time</em> interval s, constructed from the space-interval <span class='greek'>&Delta;</span>d and the time-interval <span class='greek'>&Delta;</span>t, that's 
+really universal, and neither of its parts.</b>
+That is, <b><span class='highlight'>time is specific to a grid, not universal</span></b>.   
 
-<P>Roughly speaking, sometimes time and space can be converted into each other.
-You can trade one for the other.
-Time intervals can be converted into space-intervals, and vice versa, as long as s<sup>2</sup> stays the same.
+<P>Roughly speaking, time and space can be converted into each other, but only as long as s<sup>2</sup> stays the same.
  
 <div class='aside-remarks'>
 "The discovery that time is relative brought about a profound revolution in our picture of nature. It represents
@@ -907,8 +950,8 @@ Earth is a sphere."  <br>- <em>What Is Relativity?</em>, L. D. Landau
 <div class='aside-remarks'>
  General relativity (also called <em>geometrodynamics</em>) is a theory of gravity.
  Like special relativity, it also centers on the idea of the interval as defining the geometry of space-time. 
- The rules of geometrodynamics (rather complicated) describe how the presence of mass or energy changes the formula for s<sup>2</sup>, 
- and thus how mass or energy <em>warps</em> the normal geometry of space-time seen in special relativity.
+ The rules of geometrodynamics (rather complicated) describe how the presence of energy changes the formula for s<sup>2</sup>, 
+ and thus how energy <em>warps</em> the normal (or <em>flat</em>) geometry of space-time seen in special relativity.
 </div>
 
 <P>Here's a <b>summary</b> of the logical progression so far:
@@ -924,6 +967,26 @@ Earth is a sphere."  <br>- <em>What Is Relativity?</em>, L. D. Landau
 All of the space-time diagrams and ideas presented below are essentially ways of helping you think correctly 
 about the consequences of these rules.
 
+<div class='aside-remarks'>
+ <b>Notation alert #1.</b> s<sup>2</sup> is really a habit brought over from the geometry of <em>space</em>.
+ It may not really be appropriate to the geometry of <em>space-time</em>. 
+ The problem is the sign: in the geometry of space, the distance is always greater than or equal to 0. 
+ In space-time, s<sup>2</sup> can be of either sign (or zero).
+ If you take the square root of s<sup>2</sup>, you can end up with an imaginary number.
+ 
+ <P>It's not actually necessary to define 
+ <P>c<sup>2</sup>(<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>d)<sup>2</sup> 
+ <P>as being the <em>square</em> 
+ of something (for example, see J. Synge, <em>Relativity: The Special Theory</em>). 
+</div>
+
+<div class='aside-remarks'>
+ <b>Notation alert #2.</b> The expression for s<sup>2</sup> is usually written without parentheses as:
+ 
+ <P>s<sup>2</sup> = c<sup>2</sup><span class='greek'>&Delta;</span>t<sup>2</sup> - <span class='greek'>&Delta;</span>d<sup>2</sup>
+ <P>Instead of the more correct:
+ <P>s<sup>2</sup> = c<sup>2</sup>(<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>d)<sup>2</sup>
+</div>
 
 <a name='LightCone'></a>
 <h2>Light-like, Time-like, and Space-like</h2>
@@ -999,7 +1062,6 @@ For example, if an event is in the past of event <em>A</em> according to one ine
 then it must be in the past of event <em>A</em> for all inertial grids.
 
 
-
 <a name='CauseAndEffect'></a>
 <h2>Cause And Effect</h2>
 In space-time diagrams having <em>ct</em> as the time axis, 
@@ -1034,16 +1096,25 @@ able to receive a signal from <em>A</em>; in other words, <em>B</em> must be in 
 Again, because of the limiting nature of the speed limit, <b>the entire history will always 
 remain inside the light cone</b>.
 
+<div class='aside-remarks'>
+ One can imagine the term <em>light cone</em> being replaced with something less specific to light:
+ <ul>
+  <li><em>null cone</em> (which is actually used by some authors)
+  <li><em>causality cone</em>
+  <li><em>speed limit cone</em>
+  <li><em>limit cone</em>
+ </ul>
+</div>
 
 
 <a name='SurfacesWithConstantInterval'></a>
 <h2>Surfaces With Constant s<sup>2</sup></h2>
-As shown above, the sign <em>s<sup>2</sup></em> defines the basic structure of space-time - the light cone, 
+As shown above, the sign of <em>s<sup>2</sup></em> defines the basic structure of space-time - the light cone, 
 the past, the future, and the elsewhere.
 But instead of looking at just the <em>sign</em> of <em>s<sup>2</sup></em>, let's go a step further and look its <em>value</em>.
 What do you get if you insist that <em>s<sup>2</sup></em> is constant with respect to an event <em>A</em>?
 Mathematically, this is expressed by the formula:
-<pre>c<sup>2</sup>&#916;t<sup>2</sup> - &#916;d<sup>2</sup> = constant</pre>
+<pre>c<sup>2</sup>(<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>d)<sup>2</sup> = constant</pre>
 
 Geometrically, this equation defines a <em>hyperbola</em> in space-time near the event <em>A</em>.
 For different values of the constant, you get different hyperbolas.
@@ -1112,6 +1183,17 @@ For example, a moving object can <a href='#ExampleSpeeds'>approach the speed lim
 Instead of calling them "hyperbolas of constant s<sup>2</sup>", 
 this site uses the more concise term <b>interval shell</b> (or simply <b>shell</b> for short).
 
+<div class='aside-remarks'>
+From <em>The Special Theory of Relativity</em>, by David Mermin: 
+
+ <P>So although space and time can, to some extent, be transformed into each other in a change of reference frame, there are certain 
+   limits on this transformation, in the sense that an interval inside the light cone cannot be transformed into one outside the light cone,
+   or on the light cone.
+   
+ <P>So a certain subtle kind of difference between space and time is preserved (in the sense of a lack of <em>complete</em> interchangeability 
+   under transformation)....
+</div>
+
 <P>These space-time diagrams, showing constant <em>s<sup>2</sup></em> with respect to an event, 
 can actually be viewed or interpreted in two different ways:
 <ul>
@@ -1160,16 +1242,16 @@ The answer is <em>no</em>.
 <P>It's helpful to write it as a ratio, where the numerator is the difference in readings on 
 the 2 <em>stationary</em> clocks (A and B), and the denominator is the difference in readings on the 1 <em>moving</em> clock (X).
 <P>
-(B - A) / &Delta;X 
+(B - A) / <span class='greek'>&Delta;</span>X 
 
 <P>Experimentally, what you find is that the ratio is not 1.0, but <em>greater</em> than 1.0: 
-<P>(B - A) / &Delta;X  > 1.0
+<P>(B - A) / <span class='greek'>&Delta;</span>X  > 1.0
 
 <P>
 <b><span class='highlight'>The strangest part of special relativity is this effect, called time dilation</b></span>.
 At low speeds, the ratio is very close to 1.0, and the effect is hard to detect.
 But as the moving clock moves faster and faster, the ratio gets larger and larger.
-<span class='highlight'><b>Moving clocks run slowly with respect to stationary clocks.</b></span>
+<span class='highlight'><b>A moving clock runs slowly with respect to two stationary clocks.</b></span>
 
 
 
@@ -1236,7 +1318,7 @@ at the same place.
 A typical value for the time between <em>A</em> and <em>B</em> would be about 0.5 seconds, for skipping rope.
 
 The value of the squared interval, for this grid, depends only on the time interval, since the space interval (the distance) is 0: 
-<pre>s<sup>2</sup> = c<sup>2</sup> * (&Delta;t)<sup>2</sup> - (&Delta;x)<sup>2</sup></pre>
+<pre>s<sup>2</sup> = c<sup>2</sup> * (<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>x)<sup>2</sup></pre>
 <pre>s<sup>2</sup> = (300,000)<sup>2</sup> * (0.5)<sup>2</sup> - 0 km<sup>2</sup></pre>
 The interval shell corresponding to this value is shown in the third diagram above. 
 <b>It must necessarily connect the two <em>B</em>'s</b> on the diagram, because of the 
@@ -1281,12 +1363,12 @@ the time intervals is very small when &beta; is small, and gets increasingly lar
 <p>We can draw this stunning conclusion: 
 <p><span class='highlight'><b>The faster the object, the slower the physics.</b></span>
 
-<P>To restate what we've seen earlier, <b>measurements of time intervals are parochial, not universal.</b>
+<P>To restate what we've seen earlier, <b>measurements of time intervals are specific to a grid, not universal.</b>
 That is, it's only <em>s<sup>2</sup></em> between two events which is invariant.
 The time-interval between events can take different values, according to the grid used to make 
 the measurements. 
 
-<P>Here's a good way to describe time dilation: <span class='highlight'><b>moving clocks run slowly with respect to stationary clocks.</b></span> 
+<P>Here's a good way to describe time dilation: <span class='highlight'><b>a moving clock runs slowly with respect to two stationary clocks.</b></span> 
 
 <P>Does an astronaut on the <em>Zoomer</em> feel anything strange in their experience of time?
 No, the astronaut experiences no change at all in their experience. 
@@ -1366,14 +1448,14 @@ Schematically, you can write it like this, where the numerator is the difference
 the difference in readings on 1 <em>moving</em> clock.
 The main point is that both of these ratios are greater than 1.0:
 <P>
-(B - A) / &Delta;X  > 1.0
+(B - A) / <span class='greek'>&Delta;</span>X  > 1.0
 <P>
-(Y - X ) / &Delta;A > 1.0
+(Y - X ) / <span class='greek'>&Delta;</span>A > 1.0
 
 <P>(In the first case, we choose to ignore Y, in the second we choose to ignore B.)
 SR simply says that these two ratios are equal. 
 <P>
-(B - A) / &Delta;X  = (Y - X) / &Delta;A
+(B - A) / <span class='greek'>&Delta;</span>X  = (Y - X) / <span class='greek'>&Delta;</span>A
 
 <P>But note that <em>the two sides come from different measurements</em>.
 That's why there's no contradiction between the two perspectives.
@@ -1385,19 +1467,17 @@ That's why there's no contradiction between the two perspectives.
 The above ratio of time intervals is officially called the <b>Lorentz factor</b>, 
 but here we'll simply call it the <b>warp factor</b>.
 It relates to the distortion of times and distances when high speeds are involved.
-The traditional symbol for the warp factor is the Greek letter gamma &Gamma;.
-(The small gamma '&gamma;' renders poorly in many browsers, so this site will use a capital gamma 
-'&Gamma;' instead.)
-Like &beta;, you will see the warp factor &Gamma; appearing repeatedly.
+The traditional symbol for the warp factor is the Greek letter <span class='greek'>&gamma;</span>.
+Like &beta;, you will see the warp factor <span class='greek'>&gamma;</span> appearing repeatedly.
 
 
-<P>The warp factor &Gamma; depends only on &beta;. 
+<P>The warp factor <span class='greek'>&gamma;</span> depends only on &beta;. 
 It increases slowly from 1, and then increases very rapidly as &beta; approaches 1.
 <em>It has no upper limit, and increases without bound.</em>
 <P>
 
 <table class='report' style='float:right;'>
- <tr><th>&beta;<th>&Gamma;
+ <tr><th><span class='greek'>&beta;</span><th><span class='greek'>&gamma;</span>
  <tr><td>0.00<td>1.0
  <tr><td>0.75<td>1.5
  <tr><td>0.87<td>2.0
@@ -1425,13 +1505,13 @@ It increases slowly from 1, and then increases very rapidly as &beta; approaches
 </script>
 
 <P>The diagram on the left is interesting, since it combines three important things 
-all in one picture: the speed &beta;, the interval shell, and the warp factor &Gamma;.
+all in one picture: the speed &beta;, the interval shell, and the warp factor <span class='greek'>&gamma;</span>.
 Here's a <a href='betaIntervalGamma.html'>larger version</a> of the same diagram, suitable for printing.
 There's also an <a href='animations/beta-interval-gamma/bgs.html'>animated version</a>.
 You can use that diagram to find the warp factor corresponding to each value of &beta;, simply by 
 drawing two lines: one for the speed &beta;, to find its intersection with the hyperbola; then a second line, 
-going horizontally over to the left, to find the corresponding value of &Gamma;.
-Here's an example, using &beta;=0.75, showing that &Gamma; is 1.5:
+going horizontally over to the left, to find the corresponding value of <span class='greek'>&gamma;</span>.
+Here's an example, using &beta;=0.75, showing that <span class='greek'>&gamma;</span> is 1.5:
 <P>
 <canvas id='betaIntervalGammaExample' width='320' height='320'>
  Canvas not supported. Please upgrade your browser. 
@@ -1469,9 +1549,9 @@ on the <em>Zoomer</em> looked like this:
 In the <em>Zoomer</em> grid, the interval was measured just with 
 a single sensor clock in the <em>Zoomer</em> spacecraft, because there was no distance between the 
 two events A and B:
-<pre>s<sup>2</sup> = c<sup>2</sup> * (&Delta;t)<sup>2</sup> - (&Delta;x)<sup>2</sup>
-s<sup>2</sup> = c<sup>2</sup> * (&Delta;t)<sup>2</sup> - 0
-s = c * (&Delta;t)</pre>
+<pre>s<sup>2</sup> = c<sup>2</sup> * (<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>x)<sup>2</sup>
+s<sup>2</sup> = c<sup>2</sup> * (<span class='greek'>&Delta;</span>t)<sup>2</sup> - 0
+s = c * (<span class='greek'>&Delta;</span>t)</pre>
 
 This is true in the <em>Zoomer</em> grid. 
 But for any grid which is <em>moving</em> with respect to the <em>Zoomer</em> grid, 
@@ -1550,9 +1630,9 @@ That is, <b>moving bananas take longer to turn brown</b>.
 
 <a name='NoMininmumTravelTime'></a>
 <h2>Three Weeks To The Pleiades</h2>
-As &beta; gets closer to the speed limit of 1, the value of the warp factor &Gamma; increases <em>without limit</em>.
+As &beta; gets closer to the speed limit of 1, the value of the warp factor <span class='greek'>&gamma;</span> increases <em>without limit</em>.
 The warp factor keeps going up, and up, and up, the closer &beta; gets to 1.
-The warp factor &Gamma; gives the size of the time dilation effect.
+The warp factor <span class='greek'>&gamma;</span> gives the size of the time dilation effect.
 For the <em>Zoomer</em> spacecraft moving with respect to <em>Home Base</em>, 
  <span class='highlight'><b>there's no limit to the amount of time dilation</b></span> seen by <em>Home Base</em>.
 For a traveller in <em>Zoomer</em>, the travel-time from one place to another, from their point of view, is 
@@ -1569,10 +1649,10 @@ a cluster of stars about 385 light-years from Earth.
 If you were able to attach a wristwatch to this proton, what would it record as the 
 travel-time of the proton to the Pleiades?
 
-<P>The answer is given by our friend, the warp factor &Gamma;. Here are the numbers:
+<P>The answer is given by our friend, the warp factor <span class='greek'>&gamma;</span>. Here are the numbers:
 <pre>
 &beta; = 0.99999998958
-&Gamma; = 6928
+<span class='greek'>&gamma;</span> = 6928
 travel-time on the proton's wristwatch:
   = 385 years / 6928
   = 20 days, 7 hours
@@ -1584,7 +1664,7 @@ of an actual traveller, this <b>does <em>not limit the travel-time</em> seen by 
 In principle, a traveller's travel-time from any place in the Universe to any other place in the Universe 
 can be made as small as desired, by getting closer to the speed limit. <em>Zounds!</em> 
 
-<P>As &beta; approaches 1 and &Gamma; climbs higher and higher,
+<P>As &beta; approaches 1 and <span class='greek'>&gamma;</span> climbs higher and higher,
 <span class='highlight'><b>the geometry of space-time lets you travel quickly to the stars</b></span>.
 
 
@@ -1608,9 +1688,9 @@ What do they see? Well, they see two things:
  <li>the elapsed time for the children varies, but is always less than the parent 
 </ul>
 
-This is just the effect of time dilation, of course. Moving clocks run slowly with respect to stationary clocks.
+This is just the effect of time dilation, of course. A moving clock runs slowly with respect to two stationary clocks.
 Here's a strange fact to chew on: <b>each child's watch reflects how much exercise the child had</b>.
-The more running done by the child (either for longer times, or at greater speeds), the greater the warp factor &Gamma;, and the greater 
+The more running done by the child (either for longer times, or at greater speeds), the greater the warp factor <span class='greek'>&gamma;</span>, and the greater 
 the time difference between the parent's watch and the child's watch.
 
 <P>You can also look an it this way: when you take a trip, the distance travelled is shown 
@@ -1620,7 +1700,7 @@ But a similar sort of thing can also be said of the elapsed time on your wristwa
 If two people leave from event A, separate, and then arrive later simultaneously at event B, 
 then the elapsed time on their watches won't agree, and will depend on the details of how 
 they made the trip.
-Again, <b>time is parochial</b>.
+Again, <b>time is specific to grid</b>, not universal.
 
 <a name='MaximumAging'></a>
 <h2>Rule For Uniform Motion</h2>
@@ -1776,15 +1856,15 @@ where one grid is moving with respect to another, at a fixed speed, and in a fix
  lorentzGrids2(ctx);
 </script>
 
+<P>We use two grids, grid G with unprimed coordinates (ct,x), and grid G' with primed coordinates (ct',x').
 
 <P>These two grids are almost the same.
-Their spatial axes (xyz) all point in the same directions, and they share the same event for the origin:
-<pre>(ct,x,y,z)=(0,0,0,0)</pre>
-The only difference is that grid 2 (in red) moves along the x-axis, in 
-either the positive or negative direction, with respect to grid 1 (in black).
+Their spatial axes all point in the same directions, and they share the same event for the origin:
+<pre>(ct,x,y,z)=(ct',x',y',z')=(0,0,0,0)</pre>
+The only difference is that grid G' (in red) moves along the x-axis, in either the positive or negative direction, with respect to grid G (in black).
 Here, &beta; is a <em>velocity</em> - it has both a size (the speed) <em>and</em> a direction (along the + or - x-axis, as indicated by the sign of &beta;).
-Given the event coordinates in grid 1, the task is to find the coordinates for the same event
-in grid 2, which is moving in this specific way with respect to grid 1.
+Given the event coordinates in grid G, the task is to find the coordinates for the same event
+in grid G' (the <em>boosted</em> grid), which is moving in this specific way with respect to grid G.
 
 <P>As always, each event must keep the same interval squared s<sup>2</sup> with respect to the origin event. 
 In each boosted grid, each event will 'flow' along its interval shell.
@@ -1816,37 +1896,26 @@ different grids. The general direction of the flow looks like this:
  <li>the flow is symmetric with respect to the light cone
  <li>when &beta; changes sign, the flow reverses 
 </ul>
-You can <b>remember the direction of flow by using your hands</b>. Here's an example for &beta;>0:
-<ul>
- <li>put your left hand in front of you, with the palm facing you.
- <li>point your fingers to the right. This indicates the direction of motion of grid 2 (with &beta;>0).
- <li>point your fingers up 45&deg;, to imitate the 'X' of the light cone. (Coincidentally, this is 
- the most comfortable position when holding your hand in front of your face.)
- <li>imagine squeezing a tube of toothpaste with your hand in that position; this will indicate the direction of the flow of events.
-</ul>
-
-For &beta;<0, you do the same thing, but with your right hand instead of your left.
-That's the general picture of how event coordinates change from grid to grid, during a boost.
 
 <a name='BoostDetails'></a>
 <h2>Boost Transformation - Details</h2>
 
-Here are some tools for exploring boost transformations in more detail:
+Here are some animations for exploring boost transformations in more detail:
 <ul>
  <li>transform a <a href='animations/boost-transformation/lt.html?x=50&ct=100&beta=0.60'>single event</a>.
  <li>transform <a href='animations/boost-transformation/ltmulti.html?hist1=-50%2C-80%2C-50%2C80&hist2=50%2C-80%2C50%2C80&beta=-0.6&anim=on'>multiple events</a> that define a history.  
  <span class='highlight'><b>This is an important animation, and you should experiment with it.</b></span>
 </ul>
 
-<p>There are two ways of finding out the event coordinates in the boosted grid:
+<p>There are two ways of finding out the event coordinates in the boosted grid G':
 <ul>
  <li>use a geometrical construction
  <li>use a formula
 </ul>
 
-<P>Both of these ways depend on just two numbers, our old friends &beta; and &Gamma;.
+<P>Both of these ways depend on just two numbers, our old friends &beta; and <span class='greek'>&gamma;</span>.
 Let's start with the geometrical construction.
-Here are two examples, for &beta;=+0.5 (grid 2 moving to the <em>right</em>), and &beta;=-0.5 (grid 2 moving to the <em>left</em>):
+Here are two examples, for &beta;=+0.5 (grid G' moving to the <em>right</em>, in the +x direction), and &beta;=-0.5 (grid G' moving to the <em>left</em>, in the -x direction):
 
 <P><canvas id='boostAxes1' width='200' height='200' style='margin:1.0em;'>
  Canvas not supported. Please upgrade your browser. 
@@ -1867,10 +1936,10 @@ Here are two examples, for &beta;=+0.5 (grid 2 moving to the <em>right</em>), an
 
 
 <P>These space-time diagrams are a bit unusual, since they have two sets of axes.
-The blue set of axes (for grid 2) is at an angle with respect to the black set of axes (for grid 1). 
-Don't attach too much importance to the distorted appearance of grid 2.
-The distortion isn't "real", it's just how grid 2 looks <em>with respect to</em> grid 1.
-From grid 2's point of view, grid 1 looks distorted, in a similar but reciprocal way (with &beta; having the opposite sign).
+The red set of axes for G' is at an oblique angle with respect to the black set of axes for G. 
+Don't attach too much importance to the distorted appearance of the axes for the G' grid.
+The distortion isn't "real", it's just how the G' grid looks <em>with respect to</em> the G grid.
+From the G' grid's point of view, the G grid looks distorted, in a similar but reciprocal way (with &beta; having the opposite sign).
 
 <P>The geometrical construction combines two things you've already seen before:
 <ol>
@@ -1879,35 +1948,101 @@ From grid 2's point of view, grid 1 looks distorted, in a similar but reciprocal
  horizontal scale, from the ct axis to the light cone.
  The sign of &beta; controls which way the angle goes - to the left or the right of the ct axis.
  The angle between the ct and ct' axes is the same as the angle between the x and x' axes.
- <li><b>Find the <em>scale</em> of the axes, using &Gamma;.</b> 
+ <li><b>Find the <em>scale</em> of the axes, using <span class='greek'>&gamma;</span>.</b> 
  Above, the scale of each axis is shown by regularly spaced dots.
- If you look closely, you'll see that the blue dots have a slightly larger spacing, controlled by the value 
- of &Gamma;. In our case &beta;=0.5, and &Gamma;=1.15. So, the spacing of the blue dots is 1.15 times the spacing 
- of the black dots. As we've seen already, you can find the value of &Gamma; by construction 
- using <a href='betaIntervalGamma.html'>this graph</a>. (Or, you can just use the <a href='formulas/formulas.html#gamma'>formula</a> for &Gamma;.)
- <li>From the event whose coordinates you want to find in grid 2, draw lines parallel to the new axes, and 
+ If you look closely, you'll see that the red dots have a slightly larger spacing, controlled by the value 
+ of <span class='greek'>&gamma;</span>. In our case &beta;=0.5, and <span class='greek'>&gamma;</span>=1.15. So, the spacing of the red dots, <b>as projected on the ct axis</b>, is 1.15 times the spacing 
+ of the black dots. As we've seen already, you can find the value of <span class='greek'>&gamma;</span> by construction 
+ using <a href='betaIntervalGamma.html'>this graph</a>. (Or, you can just use the <a href='formulas/formulas.html#gamma'>formula</a> for <span class='greek'>&gamma;</span>.)
+ <li>From the event whose coordinates you want to find in the G' grid, draw lines parallel to the new axes, and 
  read off the corresponding numbers on the ct' axis and the x' axis.
 </ol>
 
-It's interesting that this geometrical construction exists.
-But because the axes are bent, it's not possible to get a good feel for how histories really appear in 
-the second grid, with perpendicular axes.
-Instead of this geometric construction, you can also easily calculate the event coordinates in grid 2.
+<P>It's interesting that this geometrical construction exists.
+But because the axes are bent, it's not possible to get a good feel for how histories really appear in the G' grid, since it doesn't have perpendicular axes.
+
+<P>Instead of this geometric construction, you can also easily calculate the event coordinates in the G' grid.
 This will give you a better picture of how histories appear in a boosted grid.
-As you would expect from the above, the formulas depend only on c, &beta;, and &Gamma; :
+As you would expect from the above, the formulas depend only on c, &beta;, and <span class='greek'>&gamma;</span>:
 
 <P>
 <img src='formulas/boosttransformation.png' class='equation'> 
 
-<P>Here, the primed grid moves with velocity &beta; along the x-axis with respect to the unprimed grid. 
-The inverse transformation is found simply by switching the sign of &beta;.
+
+<P>Let's call these equations the <b>boost transformation</b> (also called the <b>Lorentz transformation</b>).
+These equations describe how an event changes coordinates during a boost from one inertial grid to another. 
 
 <P>Remember that -1<&beta;<1. That is, &beta; is the <em>velocity</em> along the x axis, not just the speed.
-It can be either positive (grid 2 moving in the +x direction) or negative (grid 2 moving in the -x direction).
-These equations describe how an event changes coordinates during a boost from 
-one inertial grid to another. Let's call these equations the <b>boost transformation</b>
-(also called the <b>Lorentz transformation</b>).
+It can be either positive (G' grid moving in the +x direction) or negative (G' grid moving in the -x direction).
 
+<div class='aside-remarks'>
+  If you know about matrices, then you can view the boost transformation as a matrix equation:
+  
+  <P><img src='formulas/boosttransformation-matrix.png' class='equation'>
+   
+  <P>When a square matrix multiplies a basis vector like (1,0), the result is simply one of the columns of the matrix itself.
+  In our case, the event co-ordinates (1,0) and (0,1) are mapped to the two columns of the boost transformation.
+  This provides another way of finding the axes of a boosted grid.
+  
+  <table class='report' style='border:1px;'>
+   <th>(ct,x) in K<th>(ct',x') in K'
+   <tr><td>(1,0)<td>(<span class='greek'>&gamma;</span>, -<span class='greek'>&gamma;</span>&beta;)
+   <tr><td>(0,1)<td>(-<span class='greek'>&gamma;</span>&beta;, <span class='greek'>&gamma;</span>)
+  </table>
+</div>
+
+
+<a name='ActiveVersusPassive'></a>
+<h2>Active Versus Passive Boosts</h2>
+ A space-time diagram can show the effect of a boost transformation in two different ways, called <em>active</em> and <em>passive</em>:
+ 
+<P><table class='report' style='border:1px;'>
+ <th>Name<th>Description<th>Num Events<th>Num Sets of Axes
+ <tr><td>Active<td>The boost "moves" the <em>event</em><td>2<td>1
+ <tr><td>Passive<td>The boost "moves" the <em>axes</em><td>1<td>2
+</table>
+
+<P>This web site usually uses the <em>active</em> style.
+
+<P>These two kinds of diagrams are simply different ways of describing the same physics.
+Both styles have their uses. 
+Use whichever style makes sense to you in a given case.
+The names <em>active</em> and <em>passive</em> shouldn't be taken too literally. 
+They are just convenient names for distinguishing the two styles. 
+
+<P>The following examples show how a boost transforms the event <em>(ct,x)=(1,0)</em> from the unprimed grid (in black) to the primed grid (in red).
+The primed grid G' moves with respect to the unprimed grid G along the positive x-axis.
+The example shows both the active and passive styles of space-time diagram.
+
+<P>
+<canvas id='activeBoost' width='200' height='200' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('activeBoost');
+ var ctx = canvas.getContext('2d');
+ activeBoost(ctx);   
+</script>
+
+<canvas id='passiveBoost' width='200' height='200' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('passiveBoost');
+ var ctx = canvas.getContext('2d');
+ passiveBoost(ctx);
+</script>
+
+<P>This example illustrates the effect of time dilation, and the source of its <span class='greek'>&gamma;</span> factor.
+
+<P>In the unprimed grid G (black), two ticks of a clock are represented by: 
+<ul>
+ <li>tick #1: <em>(ct,x)=(0,0)</em>, the origin event
+ <li>tick #2: <em>(ct,x)=(1,0)</em>
+</ul>
+
+<P>The important point is that in the primed grid G' (red), the second tick has <em>ct'</em> = <span class='greek'>&gamma;</span>.
+  
 
 
 <a name='TimeOrder'></a>
@@ -1942,9 +2077,44 @@ Notice that event B can come <em>before</em> A (appears lower than A in the diag
 (appears higher than A in the diagram). It can also come at the same time as A (simultaneous).
 In other words, <span class='highlight'><b>the time order of events having a space-like interval is not invariant</b></span>. 
 It can change between different grids.
-Also, if two events with a space-like interval are simultaneous in one grid, then they will not be 
-simultaneous in a boosted grid. 
 
+<P>If two events with a space-like interval are simultaneous in one grid, then they will not be simultaneous in a boosted grid. 
+That is, the idea of two events being simultaneous is relative, not invariant.
+In other words, <span class='highlight'><b>there is no universal <em>now</em></b></span>.
+
+<P>In a given grid, you can consider the events having <em>ct=constant</em>. 
+Let's call that a <b>time-slice</b>.
+Those events are simultaneous <em>in that grid</em>.
+But time is relative, and a time-slice in one grid G is not a time-slice in a boosted grid G'.
+That is, events that are simultaneous in grid G will not be simultaneous in a boosted grid G'.
+
+<P>Remember that in a boost, the axes of the boosted grid are at an angle with respect to the unboosted grid:
+
+<P><canvas id='simultaneity' width='200' height='200' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('simultaneity');
+ var ctx = canvas.getContext('2d');
+ boostAxes1(ctx);
+</script>
+
+<P>In grid G, a time-slice has <em>ct=constant</em>, parallel to the x axis.
+In grid G', a time-slice has <em>ct'=constant</em>, parallel to the x' axis.
+The time-slices in the two grids are never parallel, and can never represent the same set of events.
+
+<div class='aside-remarks'>
+From <em>It's About Time</em>, by David Mermin:
+
+ <P>That no inherent meaning can be assigned to the simultaneity of distant events is the single most important lesson to be learned from relativity.
+</div>
+
+<div class='aside-remarks'>
+From <em>General Relativity</em>, by Robert Wald:
+
+  <P>The notion that there is absolute simultaneity is a deeply ingrained one. The fact that there is no such notion is one of the most 
+  difficult ideas to adjust to in the theory of special relativity.
+</div>
 
 <P>Earlier, we made some remarks above about <a href='#CauseAndEffect'>cause and effect</a>.
 Events that might be related by cause and effect must be in each other's light cone.
@@ -1960,103 +2130,167 @@ With space-like intervals, the opposite is the case. In summary:
 
 
 <a name='DistanceCompression'></a>
-<h2>Length Contraction</h2>
+<h2>Pancake Effect (Length Contraction)</h2>
 
-A grid measures the coordinates of events, and it can easily measure the distance between two events.
+<P>Here, it's important to distinguish between these two ideas:
+<ul> 
+ <li>the distance between <em>two events</em> in a given grid (always relative, for both Newton and Einstein)
+ <li>the distance between <em>two histories at a given time</em> in a given grid (invariant for Newton, but relative for Einstein)
+</ul>
+
+<P>A grid measures the coordinates of events, and it can easily measure the distance between two events.
 But how does it measure the distance between two <em>objects</em>, when they may be moving around?
-To measure the distance between two objects, you first need their histories.
-Then you pick a time, and draw a corresponding <b>horizontal line ct=constant in space-time</b>.
-The horizontal line will connect the two histories, and the distance between the 
-two objects <em>at that time</em> is then just the &Delta;x along that horizontal line.
 
+<P>To measure the distance between two objects, you first need their space-time histories.
+Then you pick a time, and draw a corresponding <b>line (or flat surface) <em>ct=constant</em> in space-time</b>.
+This line (or surface) will cut across the two histories.
+Let's call this a <b>time-slice</b>.
+The distance between the two objects <em>at that time</em>, and <em>in that grid</em>, is then just the <span class='greek'>&Delta;</span>x along that line (or surface).
+
+<P>More generally, <b>a time-slice is used to define the spatial geometry of an object at a given time, in a given grid.</b>
+Since time runs differently in different grids, the geometry of an object is relative to a grid, and not invariant. 
 
 <P>Let's return to the <em>Zoomer</em> and <em>Home Base</em> spacecraft, 
-and look at the <em>spatial dimensions</em> (the size) of the <em>Zoomer</em> spacecraft.
+and look at the <em>spatial geometry</em> (especially the size) of the <em>Zoomer</em> spacecraft according to a grid attached to the <em>Home Base</em> spacecraft.
 
 
-<P>In the <em>Zoomer</em> grid, the dimensions of the <em>Zoomer</em> spacecraft have some fixed values.
-If we take the direction of motion of the <em>Zoomer</em> spacecraft as the x-direction, then 
+<P>In the <em>Zoomer</em> grid the spacecraft is at rest, and the dimensions of the <em>Zoomer</em> spacecraft have some fixed values.
+If we take the direction of motion of the <em>Zoomer</em> spacecraft as the <em>x'</em>-direction, then 
 we might say, for example, that it has these dimensions:
 <ul>
- <li>&Delta;x=20 meters long (in the direction of motion)
- <li>&Delta;y=8 meters wide
- <li>&Delta;z=5 meters high
+ <li><span class='greek'>&Delta;</span>x'=20 meters long (in the direction of motion)
+ <li><span class='greek'>&Delta;</span>y'=8 meters wide
+ <li><span class='greek'>&Delta;</span>z'=5 meters high
 </ul>
 
-Does the <em>Home Base</em> grid measure the same dimensions in its grid, for the 
-moving <em>Zoomer</em> spacecraft? Nope. It measures these dimensions:
+Does the <em>Home Base</em> grid measure the same dimensions for the moving <em>Zoomer</em> spacecraft? 
+No. It measures these dimensions:
 <ul>
- <li>&Delta;x=20/&Gamma; meters long (in the direction of motion)
- <li>&Delta;y=8 meters wide
- <li>&Delta;z=5 meters high
+ <li><span class='greek'>&Delta;</span>x=20/<span class='greek'>&gamma;</span> meters long (in the direction of motion)
+ <li><span class='greek'>&Delta;</span>y=8 meters wide
+ <li><span class='greek'>&Delta;</span>z=5 meters high
 </ul>
 
-For y and z, the dimensions are the same. 
-For the dimension <em>in the direction of motion</em>,
-<b>the size is divided by &Gamma;</b> (with &Gamma; calculated using the speed of <em>Zoomer</em>), and is smaller,
-since &Gamma; is greater than or equal to 1.
-The same can be said of the <em>volume</em> of the <em>Zoomer</em> spacecraft 
-as well: the volume is also divided by the same number &Gamma;.
+In summary, the dimensions of the <em>Zoomer</em> spacecraft are:
+<P><table class='report'>
+ <tr><th>Dimension <th>Zoomer Grid<th>Home Base Grid
+ <tr><td>length <td>20 m <td>(20/<span class='greek'>&gamma;) m
+ <tr><td>width <td>8 m <td>8 m
+ <tr><td>height <td>5 m <td>5 m
+</table>
+
+ 
+<P>For y and z, the dimensions are the same. 
+<b>The dimension of an object in the direction of motion is divided by <span class='greek'>&gamma;</span></b> (with <span class='greek'>&gamma;</span> calculated using the speed of <em>Zoomer</em> with respect to <em>Home Base</em>).
+Since <span class='greek'>&gamma;</span> is greater than or equal to 1, that dimension is smaller (contracted).
+The same can be said of the <em>volume</em> of the moving object as well, with the volume also divided by the same number <span class='greek'>&gamma;</span>.
 
 <P>
-This effect is called <span class='highlight'><b>length contraction</b></span>.
-Note that it takes place in a specific direction, the direction of motion.
-Both time dilation and length contraction have the same underlying cause: the geometry of space-time. 
+Let's call this <span class='highlight'><b>the pancake effect</b></span>.
+It is highly directional.
+It takes place only in the direction of relative motion.
+The more usual name given to this effect is the <em>Lorentz-Fitgerald length contraction</em>.
+
+
+<P>An ultra-relativistic ball is <b>flattened into a pancake shape</b>. 
+When measured in the lab, its size along its direction of motion will be <em>less than</em> that of an identical, stationary ball.
+Of course, in the rest frame of the ball, the ball remains round.
+The effect comes from the geometry of space-time, not from physical changes in the objects themselves.
+This means that the geometry of an object is relative, not invariant. 
+The geometry of an object depends on the grid that's measuring it.
+
+<P>In general, <b>the pancake effect distorts the geometry of objects in their direction of motion</b>.
+An object's spatial geometry, defined as the intersection of a <em>ct=constant</em> time-slice with its history, is relative to the grid that's measuring it.
+
+<P><b>The pancake effect flattens out angles.</b> 
+Take for example a grid in which a stick moves rapidly, and the stick is oriented at an angle to its direction of motion.
+The faster the stick moves, the more transverse it becomes to its direction of motion.
+
+<div class='aside-remarks'>
+ A quote from <em>Relativistic Mechanics</em>, by R. D. Sard:
+ 
+   <P><em>If the rod's orientation is neither longitudinal nor transverse to the direction of relative motion, both the length and the 
+   inclination are different in the rod's rest frame and the laboratory frame.
+   
+   <P>The inequality of [the angles of a stick with its direction of relative motion, in two different grids] is as much of an affront to pre-Einsteinian habit 
+   as is the length contraction and the slowing down of clocks. A weathervane pointing northeast on a house flying east with speed such 
+   that <span class='greek'>&gamma;</span>=2.4, points north-northeast in the ground frame!</em>
+</div>
+  
+<P>Both time dilation and length contraction have the same underlying cause: the geometry of space-time. 
 You can think of both of these effects as being two aspects of the same thing.
 
-<P>An ultra-relativistic ball appears like a pancake: when measured in the lab, its size along its 
-direction of motion will be <em>less than</em> that of an identical, stationary ball, by a factor of &Gamma;.
-Of course, in the rest frame of the ball, the ball remains round.
-The effects of time dilation and length contraction are real, but they come from the geometry of space-time, not 
-from physical changes in the objects themselves.
 
-<P>Both time intervals &Delta;t and space intervals (distances) &Delta;x are parochial. 
+<P>Both time intervals <span class='greek'>&Delta;</span>t and space intervals <span class='greek'>&Delta;</span>x are specific to a grid. 
 They change values from one grid to another. 
-The values of &Delta;t and &Delta;x in any one grid have no special status.
-For example, <b>the assertion that the Pleiades has a specific distance of 385 light years from the Earth 
-is a parochial statement attached to a specific 
-grid</b>, a grid comoving with the Earth.
-In other grids, moving with high &Gamma; with respect to 
-the Earth, and in the direction of the Pleiades, it's a different story: 
-the effect of length contraction changes the distance to the Pleiades,
-and divides it by the value of &Gamma;.
+The values of <span class='greek'>&Delta;</span>t and <span class='greek'>&Delta;</span>x in any one grid have no special status.
+For example, <b>the assertion that the Pleiades has a distance of 385 light years from the Earth 
+is a statement attached to a specific grid</b> comoving with the center of mass of the solar system.
+In other grids, moving with high <span class='greek'>&gamma;</span> with respect to 
+the solar system along the line joining the solar system to the Pleiades, it's a different story: 
+the pancake effect changes the distance to the Pleiades, and divides it by the value of <span class='greek'>&gamma;</span>.
 
-<a name='DilationVersusContraction'></a>
-<h2>Dilation Versus Contraction</h2>
-Dilation means getting bigger, and contraction means getting smaller.
+
+<a name='WhySizeDecreases'></a>
+<h2>Why Size Decreases</h2>
+
+<P>The following space-time diagram shows why the pancake effect makes the object <em>smaller</em> and not larger in the direction of relative motion.
+
+<P>The diagram shows the history of a stick, as the shaded area in grey. 
 <ul>
- <li>time <em>dilation</em>: the time it takes for a clock to tick gets <em>bigger</em> (multiply by &Gamma;) when it's moving 
- <li>length <em>contraction</em>: the length of a moving stick gets <em>smaller</em> (divide by &Gamma;) in the direction it's moving 
-</ul>
-
-It's useful to look at space-time diagrams to see why times and lengths change in opposite ways.
+ <li>in grid G, the stick is stationary and parallel to the <em>x</em> axis.
+ <li>grid G measures the length of the stick using a time-slice <em>AB</em> having <em>ct=constant</em>, parallel to the <em>x</em> axis.
+ <li>grid G' is moving to the right with respect to G, along the <em>x</em> axis.
+ <li>grid G' measures the length of the stick using a time-slice <em>AC</em> having <em>ct'=constant</em>, parallel to the <em>x'</em> axis.
+ From above, we know that <b>the <em>x'</em> axis is at an angle with respect to the <em>x</em> axis</b> in the space-time diagram.
+ So, <em>AC</em> makes an angle with <em>AB</em>.
+ <li>the two time-slices across the history of the stick use different events for measuring the length of the stick.
+ In the diagram below, the events A and B are used in grid G, and the events A and C are used in grid G'.  
+</ul> 
+<P><canvas id='pancakeFlattens' width='160' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('pancakeFlattens');
+ var ctx = canvas.getContext('2d');
+ pancakeFlattens(ctx);
+</script>
+<table class='report'>
+ <tr><th><th>Grid G<th> Grid G'
+ <tr>
+   <td>Stick is:
+   <td>stationary
+   <td>moving
+ <tr>
+   <td>Time slice:
+   <td>AB (<span class='greek'>&Delta;</span>t<sub>AB</sub> = 0)
+   <td>AC (<span class='greek'>&Delta;</span>t'<sub>AC</sub> = 0)
+ <tr>
+   <td>Stick length:
+   <td>L = <span class='greek'>&Delta;</span>x<sub>AB</sub>
+   <td>L' = <span class='greek'>&Delta;</span>x'<sub>AC</sub>
+ <tr>
+   <td>-s<sup>2</sup><sub>AC</sub>:
+   <td>L<sup>2</sup> - c<sup>2</sup>(<span class='greek'>&Delta;</span>t<sub>BC</sub>)<sup>2</sup>
+   <td>L'<sup>2</sup> - 0 
+</table>
 <P>
-<canvas id='dilateVersusContract1' width='170' height='170' style='margin:1.0em;'>
- Canvas not supported. Please upgrade your browser. 
-</canvas>
-<script>
- var canvas = document.getElementById('dilateVersusContract1');
- var ctx = canvas.getContext('2d');
- dilateVersusContract1(ctx);   
-</script>
-<canvas id='dilateVersusContract2' width='170' height='170' style='margin:1.0em;'>
- Canvas not supported. Please upgrade your browser. 
-</canvas>
-<script>
- var canvas = document.getElementById('dilateVersusContract2');
- var ctx = canvas.getContext('2d');
- dilateVersusContract2(ctx);   
-</script>
+The last row has the squared-interval between events A and C <b>as measured in both grids</b>. 
+Since the value of the squared-interval is invariant, those two values must be equal:
 
-<P>The diagrams show the events for the Lab grid (in which the clock/stick is moving), and the Rest grid (in which the clock/stick is not moving).
-You can see there is asymmetry. 
-
-<P>In the first diagram, the apex of the hyperbola is for the Rest grid. 
-The value of c&Delta;t is bigger (multiply by &Gamma;) in the Lab grid than in the Rest grid.
-
-<P>In the second diagram, the apex of the hyperbola is for the Lab grid.
-The value of &Delta;x is smaller (divide by &Gamma;) in the Lab grid than the Rest grid.
-
+<P><code>
+L'<sup>2</sup>
+ = 
+L<sup>2</sup> - c<sup>2</sup>(<span class='greek'>&Delta;</span>t<sub>BC</sub>)<sup>2</sup>
+</code> 
+<P>Which means the stick length in grid G' is smaller than the stick length in grid G: 
+<P><code> 
+L'<sup>2</sup>
+ &lt; 
+L<sup>2</sup>
+<P> 
+L' &lt; L 
+</code> 
 
 
 <a name='ReallySlowContracted'></a>
@@ -2093,7 +2327,8 @@ As seen above, the boost transformation makes events flow like toothpaste in spa
 Some pairs of events are stretched out, while others are squeezed together.
 When you consider <em>volumes</em> of space-time, then these two effects actually cancel each other out. 
 
-<P><span class='highlight'><b>The volume of a region of space-time is invariant.</b></span>
+<P><span class='highlight'><b>The volume of a region of space-time is invariant.</b></span> 
+This invariant is not as important as the other invariants described above, but it's useful to be aware of it.
 
 <P>
 <canvas id='spaceTimeVolume1' width='160' height='160' style='margin:1.0em;'>
@@ -2138,18 +2373,18 @@ the flow of an <a href='http://en.wikipedia.org/wiki/Fluid_parcel'>incompressibl
 
 <a name='HighGammaTravel'></a>
 <h2>Time Machines and Wormholes</h2>
-If a civilization can engineer spacecraft that can travel at very high speeds, where &Gamma; takes a 
+If a civilization can engineer spacecraft that can travel at very high speeds, where <span class='greek'>&gamma;</span> takes a 
 large value, then the effects of time dilation and length contraction will significantly 
 affect the experience of travellers. 
-As a threshold for high-&Gamma; travel, you might take the value &Gamma;=2, corresponding to &beta;=0.87.
+As a threshold for high-<span class='greek'>&gamma;</span> travel, you might take the value <span class='greek'>&gamma;</span>=2, corresponding to &beta;=0.87.
 
-<P><span class='highlight'><b>To the traveller, high-&Gamma; travel is experienced as a combination of wormhole 
+<P><span class='highlight'><b>To the traveller, high-<span class='greek'>&gamma;</span> travel is experienced as a combination of wormhole 
 and time machine.</b></span>
 
-<P>When you travel from the Earth to another star with high &Gamma;, your travel time will be shrunken by time 
+<P>When you travel from the Earth to another star with high <span class='greek'>&gamma;</span>, your travel time will be shrunken by time 
 dilation. 
 Alternatively, you could say that the distance to the star is changed by length contraction, in the direction of travel.
-Either way, when &Gamma; is sufficiently high, the result is that you arrive at the destination much more quickly
+Either way, when <span class='greek'>&gamma;</span> is sufficiently high, the result is that you arrive at the destination much more quickly
 than you would have without these effects. 
 In the language of science-fiction, the trip feels as if you've passed through a
 wormhole - a weird short-cut through space. 
@@ -2171,8 +2406,8 @@ they will finally experience the time-machine aspects of high-speed travel.
 
 <table class='report' style='border:1px;'>
  <tr><th>Machine <th>How To Build It
- <tr><td>Wormhole <td>high-&Gamma; travel, one-way trip
- <tr><td>Time machine into the <em>future</em> <td>high-&Gamma; travel, return trip (also: return trip to a black hole)
+ <tr><td>Wormhole <td>high-<span class='greek'>&gamma;</span> travel, one-way trip
+ <tr><td>Time machine into the <em>future</em> <td>high-<span class='greek'>&gamma;</span> travel, return trip (also: return trip to a black hole)
  <tr><td>Time machine into the <em>past</em> <td>strictly forbidden, reverses cause-and-effect
 </table>
 
@@ -2190,7 +2425,7 @@ The event A is, roughly speaking, "nearby" these other events, and those other e
 are stretched out across the Universe.
 
 <P>Of course, to take advantange of the "closeness" of the events on the future light cone,
-travellers need to have a high value of &Gamma;.
+travellers need to have a high value of <span class='greek'>&gamma;</span>.
 If you take seriously the idea that no one member of the inertial grid family has special status, 
 then the fact that high speeds are needed is seen as a detail.
 
@@ -2211,7 +2446,7 @@ But there's nothing deep or strange about that.
  The time is not treated as just another space coordinate. 
 </ul>
 
-Because of this, many people refer to space-time as having a <b>3+1 structure</b>, to emphasize the difference.
+Because of this, many people refer to space-time as having a <b>1+3 structure</b> (or 3+1), to emphasize the difference.
 <P>
 
 <a name='GeometryConstrainsPhyics'></a>
@@ -2227,7 +2462,7 @@ need to <a href='#RuleAboutRules'>express them using invariants</a>.
 <ul>
  <li>it transforms one set of 4 numbers  (ct,x,y,z) to another set of 4 numbers (ct',x',y',z').
  <li>the 4 numbers (ct,x,y,z) share the same units
- <li>it uses only &beta; and &Gamma;, which are both <em>dimensionless</em> - they have no unit, and are pure numbers.
+ <li>it uses only &beta; and <span class='greek'>&gamma;</span>, which are both <em>dimensionless</em> - they have no unit, and are pure numbers.
  <li>mathematically, it guarantees the invariance of this quantity, built out of the 4 parts: c<sup>2</sup>t<sup>2</sup> - (x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup>). This is
   just the squared interval with respect to the origin event (0,0,0,0).
 </ul>
@@ -2244,6 +2479,17 @@ These 4-packs are called <b>4-vectors</b>.
 <P>The game played by physicists is to make guesses about new rules, with new 4-vectors, and their corresponding invariants.
 They then see if those guesses are in agreement with experiment.
 <span class='highlight'><b>It's stunning that the geometry of space-time so tightly constrains the creation of new rules.</b></span>
+ 
+<div class='aside-remarks'>
+From <em>Einstein Gravity in a Nutshell</em>, by Anthony Zee: 
+  <P>I regard Einstein's understanding of how symmetry dictates design as one of the truly profound insights in the history of physics.
+  Fundamental physics is now conducted largely according to Einstein's schema rather than that of 19th century physics.
+  
+  <P>Einstein taught us to deduce physics from symmetry, instead of symmetry from physics.... Instead of laboriously distilling 
+   this theory from a motley collection of experimental facts and then extracting a symmetry, he formulated a symmetry empowering 
+   him to to write down his theory of gravity in one fell swoop.
+</div>
+
  
 <a name='ElectrodynamicsFallsOutOfSpecialRelativity'></a>
 <h2>Electrodynamics Pops Out Of Special Relativity</h2>
@@ -2290,7 +2536,7 @@ because these constraints may point the way to the one true theory."
 
 
 <a name='BoostVelocity'></a>
-<h2>Boost Velocity</h2>
+<h2>Boosted Velocity</h2>
 Velocity is a vector, and has both direction and speed.
 <br>
 <img src='formulas/velocityx.png' class='equation'>
@@ -2312,20 +2558,23 @@ the transformation of velocity leads to the aberration of light.
 </ul>
 
 <a name='CoreItemsDimensionless'></a>
-<h2>Three Core Items Are Dimensionless</h2>
-There are 3 core numbers in SR, and they're all dimensionless (they have no units).
+<h2>Several Core Items Are Dimensionless</h2>
+These core items in SR are all dimensionless (they have no units):
 
 <P>
 <img src='formulas/beta.png' class='equation' style='margin-left:1.0em;margin-bottom:1.0em;' >
 <img src='formulas/gamma.png' class='equation' style='margin-left:1.0em;margin-bottom:1.0em;' >
 <img src='formulas/doppler.png' class='equation' style='margin-left:1.0em;margin-bottom:1.0em;' >
 
+<P>D is the Doppler factor, discussed in <a href='part2.html'>Part II</a>.
+<P>The coefficients in the boost transformation (<span class='greek'>&gamma;</span> and -<span class='greek'>&gamma;</span><span class='greek'>&beta;</span>) are also dimensionless, 
+and define the transformation of all 4-vectors:
+<P><img src='formulas/boosttransformationfull.png' class='equation' >
+ 
+
 <P>Dimensionless quantities are infrequent in physics, so perhaps this fact is noteworthy.
 
-<P>&beta; is dimensionless simply because it's defined as a ratio of speeds.
-&Gamma; and D are also dimensionless, but they aren't simple ratios.
 
-<P>D is the Doppler factor, discussed in <a href='part2.html'>Part II</a>.
 
 <a name='AvoidCommonPitfalls'></a>
 <h2>Avoid Common Pitfalls</h2>
@@ -2344,32 +2593,75 @@ The word <em>observer</em> does not push you toward that image.
 It pushes you in the exact opposite direction, toward a camera, not a grid. 
 That's not good.
 
-<P><b><em>Relativistic mass</em> is a mistake</b>
-<br>The term <em>relativistic mass</em> is <a href='https://www.youtube.com/watch?v=LTJauaefTZM'>an error</a>.
-The mass of an object is an invariant. 
-The mass of an object doesn't change according to which grid it's measured in.
-When an object is moving at 0.99c in some grid, it's also moving at speed 0 in its own rest-frame. 
-In that rest frame, its mass is just the same as it has always been.
-The fact that an object becomes harder to accelerate at high speeds doesn't reflect a change in the object's mass.
-It reflects the structure of space-time.
-
+<P><b>The term <em>relativistic mass</em> is usually deprecated</b>
+<br>Many authors are uncomfortable with the term <em>relativistic mass</em>, since it can lead to confusion.
+Instead, they suggest that the mass of an object should be defined as its invariant rest mass.
+In this way, the mass also corresponds to the length of the object's energy-momentum 4-vector.
+ 
 <P><b>The minimal travel-time isn't limited by c</b>
 <br>Many people have gone through the ideas of SR, but without fully internalizing what it means. 
-The best example of this are remarks like the following: "The Pleiades are 400 light-years away. 
-So, travelling at the speed limit, it will take a minimum of 400 years to get there."
-This is wrong (at least in its unqualified form). According the traveller's clock (which is what the traveller cares about), 
+The best example of this are remarks like the following: <em>"The Pleiades are 400 light-years away. 
+So, travelling at the speed limit, it will take a minimum of 400 years to get there."</em>
+This is wrong, at least in its unqualified form. 
+According the traveller's wristwatch time (which is what the traveller cares about), 
 the time will be less than 400 years, if they are travelling at ultra-relativistic speeds, because of time dilation.
-Indeed, there's <em>no lower limit</em> to the travel-time, according to the traveller's clock.
+Indeed, there's <em>no lower limit</em> to the travel-time, according to the traveller's wristwatch.
 
-<P><b>s<sup>2</sup> isn't the same as s</b>
-<br>The interval s is the square root of s<sup>2</sup>.
-In most contexts, it's s<sup>2</sup> that's significant.
-It's easy to refer to s<sup>2</sup> as <em>the interval</em>.
-But that's sloppy language, because s<sup>2</sup> is the square-interval, not the interval.
-(This is a bit pedantic, but it's still worth noting.)
+<a name='WhereSRFitsIn'></a>
+<h2>How Special Relativity Relates to Other Parts of Physics</h2>
+The diagram below shows how you might relate the core subjects in physics to each other.
+Each part depends on the items directly beneath it.
+Some parts are left out, such as Fluid Mechanics and Nuclear Physics.
+Classical Mechanics (CM) is based on ideas about space and time used in the time of Galileo and Newton (absolute time, no speed limit for signals, and so on), 
+so you could say that CM in turn depends on those ideas.
+
+<P>You can see that a lot is based on Special Relativity (SR), and that it acts as a cornerstone.
+
+ 
+<P>
+<canvas id='physicsMap' width='540' height='240' style='margin:1.0em;float:left;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('physicsMap');
+ var ctx = canvas.getContext('2d');
+ physicsMap(ctx);
+</script>
 
 
+<table class='report'>
+ <tr><td>SR<td>Special Relativity
+ <tr><td>CM<td>Classical Mechanics
+ <tr><td>RM<td>Relativistic Mechanics
+ <tr><td>QM<td>Quantum Mechanics (non-relativistic)
+ <tr><td>SP<td>Statistical Physics (and Thermodynamics)
+ <tr><td>GR<td>General Relativity 
+ <tr><td>EM<td>Electrodynamics
+ <tr><td>QFT<td>Quantum Field Theory
+ <tr><td>QED<td>Quantum Electrodynamics
+ <tr><td>QFD<td>Quantum Flavordynamics
+ <tr><td>QCD<td>Quantum Chromodynamics
+ <tr><td>QEW<td>Electroweak Interaction
+</table>
 
+<P>The hash marks between CM (classical mechanics) and QM (quantum mechanics) symbolize the drastic differences in the core ideas of those subjects.
+The transition from the deterministic world of classical mechanics to the probabilistic world of quantum mechanics is a deep conceptual schism in physics.
+
+<P>The arrow from Quantum Mechanics to Statistical Physics symbolizes that SP depends a bit on QM. 
+Statistical Physics was invented before the creation of Quantum Mechanics.
+But Statistical Physics is simpler when it uses ideas from the quantum world, such as the enumeration of discrete quantum energy states. 
+ 
+<P><div class='aside-remarks'>
+ In this context, it's interesting to note this quotation from <em>Quantum Mechanics</em> (Non-relativistic Theory), by Landau and Lifshitz:
+ 
+ <P>"Thus quantum mechanics occupies a very unusual place among physical theories: it contains classical mechanics as a limiting case,
+ yet at the same time it requires this limiting case for its own formulation."
+ 
+ <P>A quotation from <em>Statistical Physics</em>, also by Landau and Lifshitz:
+ 
+ <P>"Only the concept of the number of discrete quantum states, which necessarily involves a non-zero quantum constant [Planck's constant <em>h</em>], enables 
+ us to define a dimensionless statistical weight and so to give an unambiguous definition of the entropy."
+</div> 
 
 
 <h2>End of Part I</h2>

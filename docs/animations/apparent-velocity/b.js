@@ -148,8 +148,12 @@ function headsUpDisplay(ctx){
   var headsUpX=XEND-240;
   var SPACING=20;
   var max=apparentVelocityTransverseMax(currentBetaVal);
+  ctx.save();
+  ctx.font = "20px Times New Roman";
   text(ctx,"\u03B2 "+round(currentBetaVal,2),headsUpX,headsUpY+SPACING*1);
-  text(ctx,"\u0393 "+round(gamma(currentBetaVal),2),headsUpX,headsUpY+SPACING*2);
+  text(ctx,"\u03B3 "+round(gamma(currentBetaVal),2),headsUpX,headsUpY+SPACING*2);
+  ctx.restore();
+  
   ctx.save();
   ctx.fillStyle=TRANSVERSE_COLOR;
   text(ctx,"Transverse Velocity",headsUpX,headsUpY+SPACING*4);

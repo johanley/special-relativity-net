@@ -118,8 +118,11 @@ function drawHistory(ctx,rawhistory/*raw string of events*/,beta){
   var events=parseHistoryStringIntoEvents(rawhistory);
   plotHistory(ctx,events,BASE_COLOR);
   var betaFraction = currentBeta(beta);
+  ctx.save();
+  ctx.font = "20px Times New Roman";
   text(ctx,"\u03B2:   " + round(betaFraction,2),TEXT_OUTPUT,20);
-  text(ctx,"\u0393:   " + round(gamma(betaFraction),2),TEXT_OUTPUT,50);
+  text(ctx,"\u03B3:   " + round(gamma(betaFraction),2),TEXT_OUTPUT,50);
+  ctx.restore();
   plotHistory(ctx,transformAll(events,betaFraction),GRID2_COLOR); 
 }
 

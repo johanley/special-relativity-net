@@ -399,8 +399,8 @@ function aberrationTheta(ctx/*200x200*/){
 
   text(ctx,"P",63,185);
   text(ctx,"P'",37,173);
-  text(ctx,"S",130,25);
-  text(ctx,"S'",155,40);
+  text(ctx,"D",130,25);
+  text(ctx,"D'",155,40);
 }
 
 function aberrationAngles1(ctx/*200x200*/,CTRX,CTRY){
@@ -646,4 +646,102 @@ function starfieldStats(ctx/*300x300*/,data,ymax){
 function addDataPoint(data,xval,yval){
   var point={x:xval,y:yval};
   return data.push(point);
+}
+
+/** Graphs of the aberration formula. */
+function aberrationGraphDetectorDir(ctx/*300x300*/){
+  var originx=40;
+  var originy=280;
+  aberrationGraph(ctx, aberrationFormulaDetectorDirection, originx, originy);
+  text(ctx,"\u03B2=0.0",originx+95,originy-140);
+  text(ctx,"\u03B2=0.5",originx+135,originy-80);
+  text(ctx,"\u03B2=0.9",originx+165,originy-45);
+}
+function aberrationGraphPhotonDir(ctx/*300x300*/){
+  var originx=40;
+  var originy=280;
+  aberrationGraph(ctx, aberrationFormulaPhotonDirection, originx, originy);
+  text(ctx,"\u03B2=0.0",originx+160,originy-140);
+  text(ctx,"\u03B2=0.5",originx+75,originy-160);
+  text(ctx,"\u03B2=0.9",originx+35,originy-190);
+}
+function aberrationGraph(ctx/*300x300*/, formula, originx, originy){
+  var size=250;
+  var scale = size / Math.PI;
+  myFont(ctx);
+  aberrationGraphAxes(ctx, originx, originy, size);
+  aberrationThetaGraphPoints(0.5, originx, originy, size, formula);
+  aberrationThetaGraphPoints(0.9, originx, originy, size, formula);
+}
+function aberrationThetaGraphPoints(beta, originx, originy, size, formula){
+  var data=new Array();
+  var num_divisions = 18;
+  var increment = Math.PI/num_divisions;
+  for(var idx = 0; idx <= num_divisions; ++idx){
+    var theta = idx*increment;
+    var thetaPrime = formula(theta, beta);
+    addDataPoint(data,theta,thetaPrime);
+  }
+  aberrationGraphDataPoints(ctx, data, size, originx, originy);
+}
+/** Returns 0..pi */
+function aberrationFormulaDetectorDirection(theta, beta){
+  var numerator = Math.cos(theta) + beta;
+  var denominator = 1 + beta * (Math.cos(theta));
+  return Math.acos(numerator / denominator); //0..pi
+}
+/** Returns 0..pi */
+function aberrationFormulaPhotonDirection(theta, beta){
+  var numerator = Math.cos(theta) - beta;
+  var denominator = 1 - beta * (Math.cos(theta));
+  return Math.acos(numerator / denominator); //0..pi
+}
+function aberrationGraphAxes(ctx/*300x300*/, originx, originy, size){
+  var tickSize=size/18;
+  //x axis 0..pi
+  line(ctx,originx,originy,originx+size,originy);
+  for(var idx=0; idx<=18; ++idx){
+    tickMarkVertical(ctx,originx+idx*tickSize,originy,2);
+  }
+  greek(18, 160, originy+18, "\u03B8");
+  text(ctx,"0",originx-3,originy+18);
+  greek(18,originx+size-3,originy+18, "\u03C0");
+  
+  //y axis 0..pi
+  line(ctx,originx,originy,originx,originy-size);
+  for(var idx=0; idx<=18; ++idx){
+    tickMarkHorizontal(ctx,originx,originy-idx*tickSize,2);
+  }
+  greek(18, originx-18,originy-size/2+10, "\u03B8'");
+  text(ctx,"0",originx-14,originy+5);
+  //text(ctx,"\u03C0",originx-14,originy-size+3);
+  greek(18, originx-14,originy-size+3,"\u03C0");
+  
+  //line for no deviation at all
+  dashedLine(ctx,originx,originy,originx+size,originy-size);
+}
+function aberrationGraphDataPoints(ctx, data, size, originx, originy){
+  //data points as dots
+  var scale = size / Math.PI;
+  for(var idx=0; idx<data.length; ++idx){
+    var xpos=originx+(scale*data[idx].x);
+    var ypos=originy-(scale*data[idx].y);
+    spot(ctx,xpos,ypos,1);
+  }
+  //join the dots; begin at the first data point
+  ctx.beginPath();
+  ctx.moveTo(originx+(scale*data[0].x) , originy-(scale*data[0].y));
+  for(var idx=1; idx<data.length; ++idx){
+    var xpos=originx+(scale*data[idx].x);
+    var ypos=originy-(scale*data[idx].y);
+    ctx.lineTo(xpos,ypos);
+  }
+  ctx.stroke();
+  ctx.closePath();
+}
+function greek(size, x, y, letters){
+  ctx.save();
+  ctx.font = size + "px Times New Roman";
+  ctx.fillText(letters, x, y); 
+  ctx.restore();
 }

@@ -219,7 +219,7 @@ function drawChangingLines(ctx){
 function headsUpDisplay(ctx,starSummary){
   var betaRounding = (currentBetaVal > 0.99 ? 9 : 2);
   text(ctx,"\u03B2 "+round(currentBetaVal,betaRounding),HEADS_UP_X,HEADS_UP_Y);
-  text(ctx,"\u0393 "+round(gamma(currentBetaVal),2),HEADS_UP_X,HEADS_UP_Y+HEADS_UP_SPACING*1);
+  text(ctx,"\u03B3 "+round(gamma(currentBetaVal),2),HEADS_UP_X,HEADS_UP_Y+HEADS_UP_SPACING*1);
   text(ctx,"Half-Sky Radius "+round(degrees(aberrationHalfSky(currentBetaVal)),2) + "\u00B0",HEADS_UP_X,HEADS_UP_Y+HEADS_UP_SPACING*2);
   text(ctx,"Neutral Radius " + round(degrees(dopplerNeutralAngle(Math.abs(currentBetaVal))),2) + "\u00B0",HEADS_UP_X,HEADS_UP_Y+HEADS_UP_SPACING*3);
   text(ctx,"D max "+round(dopplerMax(currentBetaVal),2),HEADS_UP_X,HEADS_UP_Y+HEADS_UP_SPACING*4);
