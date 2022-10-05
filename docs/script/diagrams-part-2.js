@@ -1,5 +1,4 @@
-﻿
-/** Diagrams for Part II. */
+﻿/** Diagrams for Part II. */
 
 /** What is a signal. Emit and detect, speed c.*/
 function basicSignal(ctx/*160x160*/){
@@ -194,9 +193,9 @@ function photon2d(ctx /*200x200*/){
   ctx.textBaseline = 'middle';
   ctx.lineWidth=1;
   //both t,x axes
-  ctx.fillText('x', 192, 100); //axis labels
-  ctx.fillText('direction',120,110); 
-  ctx.fillText('energy', 80, 4);
+  //ctx.fillText('x', 192, 100); //axis labels
+  //ctx.fillText('direction',120,110); 
+  //ctx.fillText('energy', 80, 4);
   ctx.fillText('light',160,50); 
   ctx.fillText('cone',160,60); 
   ctx.fillText('Different energies,',45,170); 
@@ -228,10 +227,12 @@ function photonVector(ctx/*200x200*/){
   ctx.textBaseline = 'middle';
   ctx.fillText('light cone',130,85); 
   ctx.fillText('Same energy,',60,150); 
-  ctx.fillText('different directions',60,165); 
+  ctx.fillText('different directions',60,165);
+  /*
   ctx.fillText('energy',80,4); 
   ctx.fillText('y',20,137); 
-  ctx.fillText('x',177,137); 
+  ctx.fillText('x',177,137);
+  */ 
   
   //t,x, and y axes
   line(ctx,113,112,30,135);

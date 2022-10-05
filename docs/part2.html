@@ -205,9 +205,7 @@ second grid, which is boosted with respect to the first grid.
 We investigate below how the energy and direction of motion change during a boost.
 
 <P>
-A photon is represented in a diagram much like an event on the light cone.
-The only difference is that <em>axes are relabelled to represent energy and direction</em>, not the usual ct and x,y,z:
-
+The energy and direction of motion of a photon with respect to a grid are represented in a diagram like this:
 
 <P>
 <canvas id='photon2d' width='200' height='200'>
@@ -229,33 +227,29 @@ The only difference is that <em>axes are relabelled to represent energy and dire
  photonVector(ctx);
 </script>
 
-<P>
-Since (ct,x,y,z) isn't being displayed here, it's not correct to say that this is a <em>space-time</em> diagram.
-However, the diagram has <em>the exact same geometry</em> as a space-time diagram, with a light cone,
-boost transformations, and so on. 
-The only difference is that the axes are labelled differently. That's all. 
-
-<P>Photons are represented by a line from the origin to a spot somewhere on the future light cone.
-Let's call this line the <b>photon vector</b>.
-(The official name is <b>propagation vector</b>, or <b>wave vector</b>.)
-The energy of a photon corresponds to how high up the light cone the photon vector climbs.
-<span class='highlight'><b>The higher it climbs up the light cone, the higher the energy.</b></span>
-The photon vector is a <a href='index.html#GeometryConstrainsPhyics'>4-vector</a>.
-Just like event coordinates, the photon vector has 3 space parts and 1 time part. 
-The space parts define the <em>direction</em> in which the photon is moving, while the time part defines 
-the <em>energy</em> of the photon.
-For the photon vector, the higher the photon energy:
+<P>These diagrams are similar in structure to space-time, but:
 <ul>
- <li>the larger the part along the vertical energy axis
- <li>the higher it goes up the future light cone
- <li>the longer its overall length
+ <li>different units are used on the axes
+ <li>the photon is restricted to the light cone
 </ul>
-<P>In the diagram above on the left, the blue arrow indicates a photon with higher energy than the green arrow,
-since it climbs higher up the light cone.
-Here, we make use of <a href='http://en.wikipedia.org/wiki/Visible_spectrum#Spectral_colors'>various colors</a> for photon vectors, to show their <em>relative energy differences</em>:
+
+<P>The diagrams are a bit different because they show photons as a <b>wave vector</b> (or <b>propagation vector</b>):
 <ul>
- <li>red - lower energy
+ <li>the wave vector is a <a href='index.html#GeometryConstrainsPhyics'>4-vector</a>, different from an event 4-vector <em>(ct,x,y,z)</em>.
+ <li><b>the time-part and space-part of the wave vector have the same size</b> <span class='greek'>&omega;</span>/c, where <span class='greek'>&omega;</span> is the 
+    <a href='https://en.wikipedia.org/wiki/Angular_frequency'>angular frequency</a> of the photon.
+     This quantity is <b>proportional to the energy</b> of the photon.
+ <li>the parts of the wave vector have the dimensions of <em>1/meter</em>, corresponding to the <a href='https://en.wikipedia.org/wiki/Spatial_frequency'>spatial frequency</a> of the wave.
+ <li><b>the space-part of the wave vector points in the direction of motion of the photon.</b>
+ <li>a boost transformation changes the wave vector in exactly the same way it changes an event. 
+ <li>for boost transformations, you can treat the above diagrams much like ordinary space-time diagrams.
+</ul>
+
+<P>In the diagram above on the left, the blue arrow indicates a photon with higher energy than the green arrow, since it has a greater length.
+We're making use of various colors for wave vectors, to show their <em>relative energy differences</em>:
+<ul>
  <li>green - middle energy
+ <li>red - lower energy
  <li>blue - higher energy
 </ul>
 
@@ -279,17 +273,17 @@ As you can see, the usual toothpaste effect still applies: some events are squee
 while others are stretched away from it.
 
 <P>The important point here is that <b>the boost transformation for these <em>events</em> on the 
-light cone can be interpreted as applying to <em>photon vectors</em> as well.</b> 
+light cone can be interpreted as applying to <em>wave vectors</em> as well.</b> 
 
 The reason this works is because, as mentioned above, the photon 
 vector is a <a href='index.html#GeometryConstrainsPhyics'>4-vector</a>.
 So, the boost transformation for events also defines how the 4 parts 
-of the photon vector change during a boost, in the same way it does for events.
+of the wave vector change during a boost, in the same way it does for events.
 It's the exact same math, and the exact same geometry.
 So, the boost transformation for these events shows how to calculate the change in frequency and direction of photons.
 
-<P>The circle around the ct axis corresponds to photon vectors having the same energy, but different directions.
-The generated ellipse corresponds to how these photon vectors appear in the boosted grid.
+<P>The circle around the ct axis corresponds to wave vectors having the same energy, but different directions.
+The generated ellipse corresponds to how these wave vectors appear in the boosted grid.
 
 
 <P>
@@ -593,11 +587,11 @@ On the other hand, time dilation and the pancake effect are usually seen as bein
 The idea is that these effects are all tied together by the same mathematics: the boost transformation. 
 All of these effects are consequences of how the boost transformation alters its input 4-vectors. 
 In the case of time dilation and the pancake effect, the input 4-vectors are certain events.
-In the case of the Doppler effect and aberration, the input 4-vectors are the photon vectors (energy and direction of motion of the photon). 
+In the case of the Doppler effect and aberration, the input 4-vectors are the wave vectors (energy and direction of motion of the photon). 
 But in all cases it's just the boost transformation, and only the boost transformation, that controls the physics.
 
 <P>The boost transformation changes an input 4-vector into an output 4-vector.
-For photons, the end-point of the photon vector stays on the light cone. It moves up and down the light cone (Doppler effect), 
+For photons, the end-point of the wave vector stays on the light cone. It moves up and down the light cone (Doppler effect), 
 and it changes its direction on the light cone (aberration).
 For the events involved with time dilation and the pancake effect, the end-point of the 4-vector (an event) also moves around on a surface, but the surface isn't 
 a light cone, it's a hyperboloid corresponding to a given value of the squared-interval.
