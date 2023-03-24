@@ -16,7 +16,7 @@
  <meta name="viewport" content="width=device-width"> 
  <link rel="stylesheet" type="text/css" href="css/stylesheet.css?v=13" media="all"> 
  <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
- <title>Special Relativity - Speed Limits and Geometry</title>
+ <title>Special Relativity - Space-time Geometry</title>
  <script type='text/javascript' src='script/general-graphics.js?v=13'></script>
  <script type='text/javascript' src='script/physics-and-math.js?v=13'></script>
  <script type='text/javascript' src='script/diagrams.js?v=13'></script>
@@ -26,14 +26,57 @@
 <a href='contents.html'>Contents</a>
 
 
-<div id="header"><h1>Special Relativity Part I - Speed Limits and Geometry</h1></div>
+<div id="header"><h1>Special Relativity Part I - Space-time Geometry</h1></div>
+
+
+<a name='Introduction'></a>
+<h2>Introduction</h2>
+<canvas id='introLightCone' width='200' height='200' style='float:right;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('introLightCone');
+ var ctx = canvas.getContext('2d');
+ lightCone(ctx);
+</script>
+
+<P>Special Relativity (SR) is the theory of space and time discovered by Albert Einstein in 1905.
+
+<P>SR is an extraordinary theory:
+<ul>
+ <li>it's mathematically simple, conceptually rich, and of fundamental importance to modern physics.
+ <li>it corrects false ideas that humans have had about space and time for millenia.
+ <li>it's a pair of <em>handcuffs</em>: it deeply constrains any theories based upon it.
+</ul> 
+
+
+<P>The mathematical simplicity of SR allows it to be taught to young people.
+Because its core mathematics is no more complicated than a simple square root, there's no significant mathematical barrier to learning the subject.
+SR is also very <em>graphical</em>: space-time diagrams usually help to illustrate ideas and guide your thinking.
+
+<P>That's quite unusual. 
+Most subjects in physics require university-level mathematics for a deep understanding. 
+Not so with special relativity.
+You can acquire a deep understanding of the subject without advanced math.     
+
+<P>It's remarkable that more than 100 years after its discovery, this extraordinary theory, 
+with its mathematical simplicity and strange ideas about space and time,
+is not taught more widely.
+
+
 
 <a name='Motivation'></a>
 <h2>Why Special Relativity Is Interesting</h2>
-Special Relativity (SR) is one of the main cornerstones of modern physics.
+<b>SR is a fundamental cornerstone of modern physics.</b>
 If SR is wrong, then everything based on it will crumble too, like a house of cards. 
-(For example, quantum field theories and the standard model of particle physics are based on SR.)
-<b>If you can falsify SR, you get <em>10</em> Nobel Prizes, not just 1, <em>and</em> you get a gold star from your grade 3 teacher.</b>
+For example, quantum field theories and the standard model of particle physics are based on SR.
+
+<P><b>SR shows that our ideas about space and time are wrong.</b>
+Our puny human experience with space and time is limited to a restricted domain - the domain of low speeds. 
+This hobbles our understanding. 
+When we gain experience with high speeds (approaching the speed of light), we see clearly that
+our ideas about space and time, ideas which we humans have carried around as a mental model of the world since the dawn of time, are completely inapplicable 
+in the domain of high speeds.
 
 <P><b>SR lets you understand the rules for time machines.</b>
 Time machines into the <em>past</em> are strongly forbidden.
@@ -89,6 +132,16 @@ Here's a quick summary of some important results in SR. More details are found b
  <li>there's <em>no</em> speed limit for things that <em>aren't</em> signals (geometrical ideas, not matter or photons)
 </ul>
 
+
+<P>Inertial Grids: 
+<ul>
+ <li>the set of all inertial grids form a family (or group)
+ <li>there are four ways to transform a grid, and still remain within the family
+ <li>items that are the same for all inertial grids are called <em>invariant</em>; otherwise, they're called <em>relative</em> (or relational)
+ <li>most items are relative, but the invariant ones are more important, since they usually point to a new rule of physics
+</ul>
+
+
 Time:
 <ul>
  <li>a moving clock runs slowly compared to two stationary clocks
@@ -101,15 +154,19 @@ Time:
 Geometry:
 <ul>
  <li>moving objects are flattened in the direction of their motion, with respect to stationary identical objects
+ <li>this flattening changes the measured geometry of moving objects (both lengths and directions, not just lengths)
 </ul>
 
 
 Pairs of events:
 <ul>
- <li>for any two events, the quantity c<sup>2</sup>(<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>d)<sup>2</sup> is invariant 
+ <li>for any two events, the quantity c<sup>2</sup>(<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>d)<sup>2</sup> is invariant; it defines the geometry of space-time
+ <li>the sign of c<sup>2</sup>(<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>d)<sup>2</sup> is used to define time-like, space-like, and light-light relations 
  <li>the time interval between the events is <em>not</em> invariant (absolute)
- <li>sometimes the time-order of the pair is invariant, sometimes it's not
- <li>a pair that's simultaneous in one grid, may not be simultaneous in another
+ <li>a cause must always come before an effect
+ <li>if a signal can possibly go from one event to the other, then the <em>time-order</em> of that pair of events is <em>invariant</em>
+ <li>if no signal can possibly go from one event to the other, then the <em>time-order</em> of that pair of events is <em>relative</em>
+ <li>a pair of events that are simultaneous in one grid may not be simultaneous in another
 </ul>
 
 
@@ -117,7 +174,7 @@ Optics:
 <ul>
  <li>high-speed travel changes the measured color, brightness, and direction of stars, moving them towards the direction of travel
  <li>high-speed jets of matter have <em>beaming</em> effects that change their measured brightness
- <li>high-speed jets of matter moving towards you can superficially appear to move faster than c, but this is only a geometrical effect
+ <li>high-speed jets of matter moving towards you can superficially appear to move faster than <em>c</em>, but this is only a geometrical effect
 </ul>
 
 Other:
@@ -125,6 +182,12 @@ Other:
  <li>space-time is an <em>idea</em>, not something you can point to
  <li>there's a <em>rule zero</em>, a rule for making all the other rules
  <li>principles are most effective (and beautiful) when they put <em>strong limitations</em> on possible theories
+ <li>special relativity is poorly named; a better name would have been <em>the theory of invariance</em>, or simply <em>space-time physics</em>
+ <li>the geometry of space-time is hyperbolic
+ <li>objects moving in a straight line at constant speed can be described with a <em>maximum ageing rule</em>
+ <li>time-slices define spatial geometry
+ <li>electrodynamics more or less pops out of special relativity
+ <li>the core items in special relativity (<span class='greek'>&beta;</span>, <span class='greek'>&gamma;</span>, D) are dimensionless (have no units) 
 </ul>
 
 
@@ -449,6 +512,18 @@ Any other way of looking at measurements is more complicated.
 </ul>
 
 <div class='aside-remarks'>
+ Here's one way to <b>synchronize all of the clocks in a grid.</b> 
+ Choose a reference clock. 
+ The reference clock sends out a flash of light, say at time 0.
+ When the flash of light reaches another clock, the flash is detected and it triggers the clock to start it running.
+ 
+ <P>The trick is to preset the start-time of each clock to a certain value.
+ That value is calculated using the known distance <span class='greek'>&Delta;</span>d of the clock from the reference clock, and the formula 
+ c<span class='greek'>&Delta;</span>t = <span class='greek'>&Delta;</span>d.
+</div>
+
+
+<div class='aside-remarks'>
  Some authors use an alternative scheme  modeled on a <em>radar station</em> instead of a grid.
  In that scheme, light signals are emitted from a base station, bounce off a target event, and then return back to the base station.
  Such schemes actually represent a more practical method for measuring co-ordinates than the grids described above.
@@ -460,6 +535,7 @@ Any other way of looking at measurements is more complicated.
   <li>as a mental model, they aren't as simple as the grid scheme
  </ul> 
 </div>
+
 
 <a name='GridsVersusCameras'></a>
 <h2>A Camera Is Not A Grid</h2>
@@ -614,6 +690,11 @@ and doesn't emphasize the most important idea.
 According to <a href='http://en.wikipedia.org/wiki/Criticism_of_the_theory_of_relativity#Philosophical_criticism'>wikipedia</a>,
 this dissactisfaction with the word <em>relativity</em> was even held by the theory's inventor, Albert Einstein.
 The term should really be abandoned, but it's difficult to change the inertia of long-standing tradition (if you'll pardon the pun).
+
+<P>"Invariants...play a more important role in our understanding of the world than quantities that vary from one frame of reference to another.
+The theory of relativity identifies such invariant quantities, and in this sense 'theory of relativity' is a terrible name. 'Theory of invariance' would 
+have been better, since the most important content of the theory is its identification of quantities that do not change from frame to frame."
+<br>- David Mermin, <em>It's About Time</em>
 </div>
 
 <a name='WhatDoesRelativeMean'></a>
@@ -636,6 +717,7 @@ Here's a list of some items of note (the list is incomplete):
 </table>
 
 
+
 <a name='RuleAboutRules'></a>
 <h2>Rule Zero: The Rule About All The Other Rules</h2>
 Invariants lead directly to an important rule.
@@ -650,7 +732,7 @@ Constraints don't hurt a scientific theory, they actually help it, by making it 
 
 <div class='aside-remarks'>
 [<em>An aside for experts</em>] The rule-about-rules is often stated like this: 
-<em>The rules of physics have the same form in all inertial grids.</em>
+<em>The rules of physics have the same form in all inertial frames of reference.</em>
 But what exactly does it mean to say that a <em>rule has the same form</em>? 
 What exactly is the same? The 'same-ness' of differential equations can be precisely 
 expressed only with 4-vectors and covariance. But that language isn't appropriate for beginners. 
@@ -660,7 +742,7 @@ It's too complicated.
 The fundamental covariant differential equations can be derived from a corresponding action integral.
 Action integrals are scalar invariants - quantities that are the same for all inertial grids.
 Hence, the principle of relativity can (and should) be stated in a simple form which speaks only of invariants - 
-concrete numbers that can be derived from <em>measurements</em> - as opposed to more abstract ideas about the form of covariant equations.
+physical quantities that can be derived from <em>measurements</em> - as opposed to more abstract ideas about the form of covariant equations.
 
 </div>
 
@@ -710,16 +792,6 @@ The light has travelled undisturbed for even billions of years, until, at last, 
 to be, it offers up its quantum of energy, perfectly preserved for aeons, into the waiting bucket of a telescope, pointed 
 by a curious human towards the night sky.
 
-<div class='aside-remarks'>
- Here's one way to <b>synchronize all of the clocks in a grid.</b> 
- Choose a reference clock. 
- The reference clock sends out a flash of light, say at time 0.
- When the flash of light reaches another clock, the flash is detected and it triggers the clock to start it running.
- 
- <P>The trick is to preset the start-time of each clock to a certain value.
- That value is calculated using the known distance <span class='greek'>&Delta;</span>d of the clock from the reference clock, and the formula 
- c<span class='greek'>&Delta;</span>t = <span class='greek'>&Delta;</span>d.
-</div>
 
 <P>Here's where the fun begins. 
 <b>You can combine the speed limit rule with the rule-about-rules, 
@@ -804,7 +876,6 @@ Here are some examples of such geometric points:
 <ul>
  <li>lighthouse: a moving spot from a spinning laser, as projected on a distant object like the Moon
  <li>scissors: the moving intersection point of two scissor blades, as the scissors close
- <li>beach: the place where a wave is breaking, as it moves laterally along the shoreline
  <li>oscilloscope: the moving spot on the screen of a cathode-ray oscilloscope
  (very similar to the example of the laser on the Moon)
 </ul>
@@ -1125,7 +1196,7 @@ If you add another space dimension, the hyperbola is a surface (called a <a href
 <P>There are two cases, according to the sign of the constant:
 <ul>
 <li>for positive (time-like) values, the hyperbolas 'open up' along the time axis.
-<li>for negative (space-like) values, the hyperbolas 'open up' along the space axis.
+<li>for negative (space-like) values, the hyperbolas 'open up' perpendicularly to the time axis.
 </ul>
 
 
@@ -1254,22 +1325,55 @@ But as the moving clock moves faster and faster, the ratio gets larger and large
 <span class='highlight'><b>A moving clock runs slowly with respect to two stationary clocks.</b></span>
 
 
+<a name='StandardConfigurationOfTwoGrids'></a>
+<h2>Standard Configuration Of Two Grids</h2>
+It's helpful to use a <b>standard configuration of two grids</b>, moving in a simple way with respect to each other:
+
+
+<P>
+<canvas id='standardConfig2' width='180' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('standardConfig2');
+ var ctx = canvas.getContext('2d');
+ lorentzGrids2(ctx);
+</script>
+<canvas id='standardConfig1' width='300' height='160' style='margin:1.0em;'>
+ Canvas not supported. Please upgrade your browser. 
+</canvas>
+<script>
+ var canvas = document.getElementById('standardConfig1');
+ var ctx = canvas.getContext('2d');
+ lorentzGrids1(ctx);
+</script>
+
+<P>Here we have the <b>unboosted grid</b> G (in black) with unprimed coordinates <em>(ct,x)</em>, and the <b>boosted grid</b> G' (in red) with primed coordinates <em>(ct',x')</em>.
+These two grids are almost the same.
+Their spatial axes all point in the same directions, and the two grids completely coincide at time <em>ct = ct' = 0</em>.
+(The terms <em>boosted</em> and <em>unboosted</em> are just conventional names. Of course, labeling one as stationary and one as moving is entirely relative.) 
+
+<P>The only difference is that the boosted grid (in red) moves along the x-axis, in either the positive or negative direction, with respect to unboosted grid (in black).
+Here, &beta; is a <em>velocity</em> - it has both a size (the speed) <em>and</em> a direction (along the + or - x-axis, as indicated by the sign of &beta;).
+
+<P>If desired, you can add <em>y</em>- and <em>z</em>-axes to this picture, with <em>y</em> parallel to <em>y'</em>, and <em>z</em> parallel to <em>z'</em>.
 
 
 <a name='MovingClocksGoSlow'></a>
-<h2>The Faster The Object, The Slower The Physics</h2>
+<h2>Time Intervals Are Relative, Not Invariant</h2>
 Let's look at time dilation using space-time and intervals.
 The effect is this: take any pair of events having a time-like relation.
 Then, the <em>time</em> interval between these events can increase <em>without limit</em>, 
 simply by choosing a different grid.
 
-<P>Pretend you're an astronaut in a spacecraft named <em>Zoomer</em>, moving through space at a speed of &beta;=0.87 
-with respect to a second spacecraft, named <em>Home Base</em>.
+<P>Let's use two grids in the <a href='#StandardConfigurationOfTwoGrids'>standard configuration</a>.
+<P>Pretend you're an astronaut in a spacecraft <em>attached to the boosted grid</em>, moving through space at a speed of &beta;=0.87 
+with respect to a second spacecraft attached to the unboosted grid.
 You need to stay in good physical condition, so you exercise every day.
-You always start by skipping rope. 
-(In the weightlessness of space, you are held down by springs, or some other mechanism, as you do this.)
+You always start by skipping rope.
+(In the weightlessness of space, you are perhaps standing on the rim of a rotating wheel.)
 When you skip rope, you count the number of skips you've taken, and your movements are very regular.
-In effect, <em>you're acting like a human clock</em>, repeating the same motions with a regular beat. 
+In effect, you're acting like a human clock, repeating the same motions with a regular beat. 
 Let's look at one full skip, and how it appears in space-time diagrams.
 There will be two events defining a skip:
 <ul>
@@ -1277,9 +1381,8 @@ There will be two events defining a skip:
  <li>event <em>B</em>: the end of the skip, the next time the rope hits the floor
 </ul>
 Let's measure the coordinates of <em>B</em> with respect to <em>A</em>.
-In fact, we'll measure them in two sensor grids, one attached to the <em>Zoomer</em> spacecraft, 
-and a second attached to the <em>Home Base</em> spacecraft.
-Here's what you'll see:
+In fact, we'll measure them in both the boosted grid and the unboosted grid.
+Here's what we see:
 
 <P><canvas id='skippingRopeSpacecraft' width='120' height='160' style='margin:1.0em;'>
  Canvas not supported. Please upgrade your browser. 
@@ -1313,20 +1416,18 @@ Note that the event <em>B</em> appears twice in the last diagram, once for each 
 This is intentional, since it's the exact same event, as measured in the two different grids.
 Let's review what these diagrams are saying.
 
-<P>In the <em>Zoomer</em> grid, the events are separated by a time, but not by a distance, since they happen
+<P>In the boosted grid, the events are separated by a time, but not by a distance, since they happen
 at the same place. 
 A typical value for the time between <em>A</em> and <em>B</em> would be about 0.5 seconds, for skipping rope.
 
 The value of the squared interval, for this grid, depends only on the time interval, since the space interval (the distance) is 0: 
 <pre>s<sup>2</sup> = c<sup>2</sup> * (<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>x)<sup>2</sup></pre>
-<pre>s<sup>2</sup> = (300,000)<sup>2</sup> * (0.5)<sup>2</sup> - 0 km<sup>2</sup></pre>
+<pre>s<sup>2</sup> = (300,000)<sup>2</sup> * (0.5)<sup>2</sup> - 0 m<sup>2</sup></pre>
 The interval shell corresponding to this value is shown in the third diagram above. 
 <b>It must necessarily connect the two <em>B</em>'s</b> on the diagram, because of the 
 basic rule that says that the square-interval between two events is invariant for all inertial grids.
 
-<P>In the <em>Home Base</em> grid, the events are separated by both a time and a distance, since the 
-<em>Zoomer</em> spacecraft is 
-moving swiftly with respect to it. 
+<P>In the unboosted grid, the events are separated by both a time and a distance, since the boosted spacecraft is moving swiftly with respect to it. 
 And, of course, the event <em>B</em> must be on the interval shell.
  
 <P>
@@ -1351,37 +1452,34 @@ And, of course, the event <em>B</em> must be on the interval shell.
 <P>Next, if you compare just the <em>time</em> interval between <em>A</em> and <em>B</em>, 
 along the vertical <em>ct</em> axis only, 
 as measured in the two grids, you can see <b>there's a large disagreement</b>.
-If you actually measure it on the screen, you'll see that the <em>Home Base</em> 
-time interval is twice the <em>Zoomer</em> time interval.
-If the <em>Zoomer</em> time interval for skipping the rope is 0.5s, then the <em>Home Base</em> time interval is 1.0s.
-(The value of &beta;=0.87 was chosen specifically to get this doubling. For other values of  &beta;, 
-the factor is different.) 
+If you actually measure it on the screen, you'll see that the unboosted time interval is twice the boosted time interval.
+If the boosted time interval for skipping the rope is 0.5s, then the unboosted time interval is 1.0s.
+(The value of &beta;=0.87 was chosen specifically to get this doubling. For other values of  &beta;, the factor is different.) 
 You can also see from the shape of the interval shell that the disagreement in 
 the time intervals is very small when &beta; is small, and gets increasingly large as &beta; increases.
 
 
 <p>We can draw this stunning conclusion: 
-<p><span class='highlight'><b>The faster the object, the slower the physics.</b></span>
+<p><span class='highlight'><b>Time intervals are relative, not invariant. Time is not absolute.</b></span>
 
-<P>To restate what we've seen earlier, <b>measurements of time intervals are specific to a grid, not universal.</b>
+<P>That is, <b>measurements of time intervals are specific to a grid, not universal.</b>
 That is, it's only <em>s<sup>2</sup></em> between two events which is invariant.
 The time-interval between events can take different values, according to the grid used to make 
 the measurements. 
 
 <P>Here's a good way to describe time dilation: <span class='highlight'><b>a moving clock runs slowly with respect to two stationary clocks.</b></span> 
 
-<P>Does an astronaut on the <em>Zoomer</em> feel anything strange in their experience of time?
-No, the astronaut experiences no change at all in their experience. 
-The fact that the <em>Zoomer</em> is moving with respect to the <em>Home Base</em> 
-makes no difference at all to the astronauts on the <em>Zoomer</em>. 
-It's only the measurement of time <em>as seen from the Home Base</em> that slows down.
-But, from the point of view of <em>Home Base</em>, those measurements are completely real.
-From the perspective of the <em>Home Base</em>, absolutely <em>everything</em> sloooooows doooooown on the <em>Zoomer</em>,
-including, for example:
+<P>Does an astronaut on the boosted spacecraft feel anything strange in their experience of time?
+No. 
+The astronaut experiences no change at all in their experience. 
+The fact that the boosted spacecraft is moving with respect to the unboosted one makes no difference at all to the astronauts on the boosted spacecraft. 
+It's only the measurement of time <em>as seen from unboosted grid</em> that slows down.
+But, from the point of view of the unboosted grid, those measurements are completely real.
+From the perspective of the unboosted grid absolutely <em>everything</em> sloooooows doooooown on the boosted spacecraft, including, for example:
 <ul>
  <li>the motions of the exercising astronaut
  <li>the astronaut's heart rate
- <li>how long it takes a banana in the kitchen to turn brown
+ <li>how long it takes a banana in the ship's kitchen to turn brown
  <li>the half-life of radioactive material on board the ship
 </ul>
 
@@ -1392,19 +1490,15 @@ will sound different from the original in two ways:
  <li>the tempo (the beat) will be slower by some factor 
  <li>the frequencies of the sounds will all be lowered, also by the same factor
 </ul>
-For example, if the playback-speed is exactly half the recording-speed, a high C note becomes a low C note, 
-played for twice as long. 
-(The song <em>Strawberry Fields Forever</em> by the <em>Beatles</em> uses such 
-effects, with different parts of the recording made at slightly different speeds.)
+For example, if the playback-speed is exactly half the recording-speed, a high-C note becomes a low-C note, played for twice as long. 
 
 
 <P>It's important to recall here something mentioned earlier: a grid is a grid of 
 sensors having synchronized clocks, each of which records only the nearby events.
 That is, there are many sensors in a grid, not just one. 
-So, for our astronaut skipping rope on the <em>Zoomer</em> spacecraft, 
-<em>the times recorded for the two events A and B in the Home Base grid are recorded by two different sensors</em>.
-In fact, the various measurements shown above involve 3 different sensors - one in the <em>Zoomer</em> grid, 
-and two in the <em>Home Base</em> grid. 
+So, for our astronaut skipping rope on the boosted spacecraft, 
+<em>the times recorded for the two events A and B in the boosted and unboosted grids are recorded by different sensors</em>.
+In fact, the various measurements shown above involve 3 different sensors - one in the boosted grid, and two in the unboosted grid. 
 
 
 
@@ -1412,12 +1506,9 @@ and two in the <em>Home Base</em> grid.
 <a name='ReverseThePerspective'></a>
 <h2>Reverse The Perspective</h2>
 
-<P>What happens when you <b>reverse the perspective</b>, and
- take the <em>Home Base</em> spacecraft as moving at &beta;=0.87 with 
-respect to the <em>Zoomer</em> spacecraft instead? 
+<P>What happens when you <b>reverse the perspective</b>, and switch the boosted and unboosted grids?
 You see the same effect -  the physics on the moving object goes slowly with respect to stationary clocks.
-On the surface, this seems to be a contradiction: how can the physics be slowed down on <em>both</em> 
-spacecraft at the same time?
+On the surface, this seems to be a contradiction: how can the physics be slowed down on <em>both</em> spacecraft at the same time?
 
 <P>It's actually not a contradiction, because there are two things wrong:
 <ul>
@@ -1428,7 +1519,7 @@ Each case uses 2 pairs of measurements taken from 3 sensor clocks.
 There's no contradiction because the measurements that show the slowing-down are completely different.
 </ul>
 
-<P>To see this, just look at it carefully from both perspectives, and think about how the measurements are made.
+<P>To see this, just slow down and look at it carefully from both perspectives, and think about how the measurements are made.
 <P>
 In the following diagram, first we have clocks X,Y moving past clocks A,B.
 Then we have the opposite perspective on the same situation: clocks A,B moving past clocks X,Y (in the opposite direction, of course).
@@ -1474,6 +1565,10 @@ Like &beta;, you will see the warp factor <span class='greek'>&gamma;</span> app
 <P>The warp factor <span class='greek'>&gamma;</span> depends only on &beta;. 
 It increases slowly from 1, and then increases very rapidly as &beta; approaches 1.
 <em>It has no upper limit, and increases without bound.</em>
+
+<P>Our direct human experience is confined to the region where <span class='greek'>&gamma;</span> is very close to 1.
+This is why we grow up with <em>Newtonian</em> ideas of space and time, and not <em>Einsteinian</em> ones. 
+ 
 <P>
 
 <table class='report' style='float:right;'>
@@ -1532,9 +1627,9 @@ In general, space-time intervals are measured with both sensor clocks and meter 
 It's also possible to measure any <em>time-like</em> space-time interval with just a single sensor, 
 but you have to choose the correct grid.
 We've already seen an example of this in our skipping rope experiment with the 
-astronauts on the <em>Zoomer</em> and <em>Home Base</em> spacecraft.
+astronauts on the boosted and unboosted spacecraft.
 The consolidated space-time diagram for the two events A and B for the astronaut skipping rope 
-on the <em>Zoomer</em> looked like this:
+in the boosted spacecraft looked like this:
 
 <P>
 <canvas id='skippingRopeBoth2' width='160' height='160' style='margin:1.0em;'>
@@ -1548,16 +1643,14 @@ on the <em>Zoomer</em> looked like this:
 
 
 <P>
-In the <em>Zoomer</em> grid, the interval was measured just with 
-a single sensor clock in the <em>Zoomer</em> spacecraft, because there was no distance between the 
+In the boosted grid, the interval was measured just with 
+a single sensor clock in the boosted spacecraft, because there was no distance between the 
 two events A and B:
 <pre>s<sup>2</sup> = c<sup>2</sup> * (<span class='greek'>&Delta;</span>t)<sup>2</sup> - (<span class='greek'>&Delta;</span>x)<sup>2</sup>
 s<sup>2</sup> = c<sup>2</sup> * (<span class='greek'>&Delta;</span>t)<sup>2</sup> - 0
 s = c * (<span class='greek'>&Delta;</span>t)</pre>
 
-This is true in the <em>Zoomer</em> grid. 
-But for any grid which is <em>moving</em> with respect to the <em>Zoomer</em> grid, 
-it's no longer true.
+This is true in the boosted grid, but for any grid which is <em>moving</em> with respect to it.
 
 
 <P>In general: 
@@ -1566,7 +1659,7 @@ the the spatial distance between A and B is 0.
 This just corresponds to the 'lowest point' of the interval shell.
 In such a grid, the interval is measured 
 just <b>by a single sensor clock</b> in that grid, located at the same position as A and B.
-The time interval measured by such a sensor clock is called <b>proper time</b>, but it's important 
+The time interval measured by such a sensor clock is called <b>proper time (wristwatch-time)</b>, but it's important 
 to remember that the proper time is just the same old space-time interval, measured in a certain way.
 
 <a name='WristwatchesShowInterval'></a>
@@ -1589,11 +1682,10 @@ You can remember this like so:
 <a name='TimeDilationRevisited'></a>
 <h2>Time Dilation Revisited</h2>
 
-<P>Let's return to the example of the two spacecraft, <em>Zoomer</em> and <em>Home Base</em>.
-Let's focus on the history of a single sensor, a sensor belonging to the <em>Zoomer</em>'s grid, but let's 
-record that history in <em>both</em> the <em>Zoomer</em> grid <em>and</em> the <em>Home Base</em> grid.
-This is almost the same space-time diagram as before, but now we have a full history of the sensor, 
-not just two separate events.
+<P>Let's return to the example of the two spacecraft attached to grids in the <a href='#StandardConfigurationOfTwoGrids'>standard configuration</a>.
+Let's focus on the history of a single sensor, a sensor belonging to the boosted grid, but let's 
+record that history in <em>both</em> the boosted grid and the unboosted grid.
+This is almost the same space-time diagram as before, but now we have a full history of the sensor, not just two separate events.
 
 <P>
 <canvas id='movingSensor' width='160' height='160' style='margin:1.0em;'>
@@ -1605,27 +1697,22 @@ not just two separate events.
  movingSensor(ctx);
 </script>
 
-<P>In the <em>Zoomer</em> grid, the sensor doesn't move, &beta;=0.
-In the <em>Home Base</em> grid, the <em>Zoomer</em>-sensor is moving at &beta;=0.87.
-The dots show three ticks of the <em>Zoomer</em>-sensor's clock. 
+<P>In the boosted grid, the sensor doesn't move, &beta;=0.
+In the unboosted grid, the boosted-grid sensor is moving at &beta;=0.87.
+The dots show three ticks of the sensor's clock. 
 You can easily see the effect of time dilation.
-As the <em>Zoomer</em>-sensor passes through the <em>Home Base</em> grid, it shares its 
-current time reading with the various <em>Home Base</em> sensors it meets along the way. 
+As the boosted-grid sensor passes through the unboosted grid, it shares its current time reading with the various sensors in the unboosted grid it meets along the way. 
 (Remember that these sensors only record local events.)
-Note that the <em>Home Base</em> sensors record an event like this, for example: 
-at a <em>Home Base</em> time of 6.0s, the 
-passing <em>Zoomer</em>-sensor says that its <em>own</em> time was 3.0s.
+Note that the sensors in the unboosted grid record an event like this, for example: 
+at a time of 6.0s in the unboosted grid, the passing boosted-grid sensor says that its <em>own</em> time was 3.0s.
 
-<P>It's important to have this exact picture in your head when thinking about 
-time dilation. 
-The clock moves through a sensor grid, and as it moves through the grid, 
-the moving clock's time is compared with the time on the many grid sensors it meets along the way.
-To see the effect of time dilation, you need at least 3 clocks: the moving clock, 
-and at least 2 grid sensors to compare it to.
+<P>It's important to have this exact picture in your head when thinking about time dilation. 
+The clock moves through a sensor grid, and as it moves through the grid, the moving clock's time is compared with the time on the many grid sensors it meets along the way.
+To see the effect of time dilation, you need at least 3 clocks: the moving clock, and at least 2 stationary sensors to compare it to.
 
 <P>This example uses a sensor clock, but the same effect is seen with any object.
-If a banana takes 7 days to turn brown on the <em>Zoomer</em> spacecraft, then,
-according to the the sensor readings in the <em>Home Base</em> grid, it will take 14 days (if &beta;=0.87).
+If a banana takes 7 days to turn brown on a spacecraft attached to the boosted grid, then,
+according to the the sensor readings in the unboosted grid, it will take 14 days (if &beta;=0.87).
 That is, <b>moving bananas take longer to turn brown</b>.
 
 
@@ -1635,13 +1722,13 @@ That is, <b>moving bananas take longer to turn brown</b>.
 As &beta; gets closer to the speed limit of 1, the value of the warp factor <span class='greek'>&gamma;</span> increases <em>without limit</em>.
 The warp factor keeps going up, and up, and up, the closer &beta; gets to 1.
 The warp factor <span class='greek'>&gamma;</span> gives the size of the time dilation effect.
-For the <em>Zoomer</em> spacecraft moving with respect to <em>Home Base</em>, 
- <span class='highlight'><b>there's no limit to the amount of time dilation</b></span> seen by <em>Home Base</em>.
-For a traveller in <em>Zoomer</em>, the travel-time from one place to another, from their point of view, is 
-just the time on their wristwatch. (The wristwatch is a sensor in <em>Zoomer</em>'s grid.)
+For a boosted spacecraft moving with respect to an unboosted grid, 
+ <span class='highlight'><b>there's no limit to the amount of time dilation</b></span> seen by the unboosted grid.
+For a traveller in the boosted spacecraft, the travel-time from one place to another, from their point of view, is 
+just the time on their wristwatch. (The wristwatch is a sensor in the boosted grid.)
 
 
-<P>So, for the <em>Zoomer</em>-astronaut, the travel-time to any destination can approach zero time.
+<P>So, for an astronaut on the boosted spacecraft, the travel-time to any destination can approach zero time.
 
 <P>Here's an example, using a proton in the <a href='http://en.wikipedia.org/wiki/Large_Hadron_Collider'>Large Hadron Collider</a>.
 Pretend that one of these protons is sent on a proton vacation to the <a href='http://en.wikipedia.org/wiki/Pleiades'>Pleiades</a>, 
@@ -1662,12 +1749,12 @@ travel-time on the proton's wristwatch:
 
 This is a stunning fact. 
 There is a universal speed limit <em>c</em>, but from the point of view 
-of an actual traveller, this <b>does <em>not limit the travel-time</em> seen by a traveller in any way</b>.
-In principle, a traveller's travel-time from any place in the Universe to any other place in the Universe 
+of an actual traveller, this <b>does <em>not limit the wristwatch travel-time</em> seen by a traveller in any way</b>.
+In principle, a traveller's wristwatch travel-time from any place in the Universe to any other place in the Universe 
 can be made as small as desired, by getting closer to the speed limit. <em>Zounds!</em> 
 
 <P>As &beta; approaches 1 and <span class='greek'>&gamma;</span> climbs higher and higher,
-<span class='highlight'><b>the geometry of space-time lets you travel quickly to the stars</b></span>.
+<span class='highlight'><b>time dilation lets you travel quickly to the stars</b></span>.
 
 
 
@@ -1711,7 +1798,7 @@ provides <b>a rule to distinguish between accelerated and unaccelerated motion</
 <P>In an inertial grid, a freely moving object moves without any acceleration. 
 It doesn't change speed, and it doesn't change the direction in which it's moving.
 In a space-time diagram, the history of a freely moving object is the simplest kind 
-of history - a straight line, at some angle with respect to the vertical ct axis.
+of history - a straight line, at some angle with respect to the vertical <em>ct</em> axis.
 For any such object, we know that we can pick a grid where the object is actually at rest; in that grid,
 the history is a vertical line. 
 
@@ -1820,7 +1907,7 @@ Here are the details:
 <ul>
 <li><em>S</em>: the total action
 <li><em>a</em> and <em>b</em>: the events at the start and end of the history
-<li><em>m</em>: the (rest) mass of the object
+<li><em>m</em>: the mass of the object
 <li><em>c</em>: the speed limit
 <li><em>ds</em>: the interval s for a tiny part of the object's history
 </ul>
@@ -1838,7 +1925,7 @@ there are 4 kinds of <em>allowable transformations</em>.
 Only one of these transformations involves a speed: the <em>boost</em> transformation, 
 where one grid is moving with respect to another, at a fixed speed, and in a fixed direction.
 
-<P>The simplest case of a boost looks like this:
+<P>The simplest case of a boost is just the <a href='#StandardConfigurationOfTwoGrids'>standard configuration of two grids</a> mentioned above:
 <P>
 <canvas id='lorentzGrids1' width='300' height='160' style='margin:1.0em;'>
  Canvas not supported. Please upgrade your browser. 
@@ -1848,7 +1935,7 @@ where one grid is moving with respect to another, at a fixed speed, and in a fix
  var ctx = canvas.getContext('2d');
  lorentzGrids1(ctx);
 </script>
-<canvas id='lorentzGrids2' width='160' height='160' style='margin:1.0em;'>
+<canvas id='lorentzGrids2' width='180' height='160' style='margin:1.0em;'>
  Canvas not supported. Please upgrade your browser. 
 </canvas>
 <script>
@@ -1857,15 +1944,8 @@ where one grid is moving with respect to another, at a fixed speed, and in a fix
  lorentzGrids2(ctx);
 </script>
 
-<P>We use two grids, grid G with unprimed coordinates (ct,x), and grid G' with primed coordinates (ct',x').
-
-<P>These two grids are almost the same.
-Their spatial axes all point in the same directions, and they share the same event for the origin:
-<pre>(ct,x,y,z)=(ct',x',y',z')=(0,0,0,0)</pre>
-The only difference is that grid G' (in red) moves along the x-axis, in either the positive or negative direction, with respect to grid G (in black).
-Here, &beta; is a <em>velocity</em> - it has both a size (the speed) <em>and</em> a direction (along the + or - x-axis, as indicated by the sign of &beta;).
-Given the event coordinates in grid G, the task is to find the coordinates for the same event
-in grid G' (the <em>boosted</em> grid), which is moving in this specific way with respect to grid G.
+<P>Given the event coordinates in the unboosted grid G (in black), the task is to find the coordinates for the same event
+in the boosted grid G' (in red).
 
 <P>As always, each event must keep the same squared interval s<sup>2</sup> with respect to the origin event. 
 In each boosted grid, each event will 'flow' along its interval shell.
@@ -2037,7 +2117,7 @@ The example shows both the active and passive styles of showing a boost in a spa
 
 <P>This example also illustrates the effect of time dilation, and the source of its <span class='greek'>&gamma;</span> factor.
 
-<P>In the unprimed grid G (black), two ticks of a clock are represented by: 
+<P>In the unprimed grid G (black), two ticks of a stationary clock at <em>x=0</em> are represented by: 
 <ul>
  <li>tick #1: <em>(ct,x)=(0,0)</em>, the origin event
  <li>tick #2: <em>(ct,x)=(1,0)</em>
@@ -2153,12 +2233,12 @@ The distance between the two objects <em>at that time</em>, and <em>in that grid
 <P>More generally, <b>a time-slice is used to define the spatial geometry of an object at a given time, in a given grid.</b>
 Since time runs differently in different grids, the geometry of an object is relative to a grid, and not invariant. 
 
-<P>Let's return to the <em>Zoomer</em> and <em>Home Base</em> spacecraft, 
-and look at the <em>spatial geometry</em> (especially the size) of the <em>Zoomer</em> spacecraft according to a grid attached to the <em>Home Base</em> spacecraft.
+<P>Let's return to the <a href='#StandardConfigurationOfTwoGrids'>standard configuration for two grids</a>.
+Pretend that a spacecraft is attached to the boosted grid.
+Let's look at the <em>spatial geometry</em> (especially the size) of the spacecraft attached to the boosted grid, from the perspective of the unboosted grid.
 
-
-<P>In the <em>Zoomer</em> grid the spacecraft is at rest, and the dimensions of the <em>Zoomer</em> spacecraft have some fixed values.
-If we take the direction of motion of the <em>Zoomer</em> spacecraft as the <em>x'</em>-direction, then 
+<P>In the boosted grid the spacecraft is at rest, and the dimensions of the spacecraft have some fixed values.
+Since the direction of motion of the boosted spacecraft is in the <em>x'</em>-direction, then 
 we might say, for example, that it has these dimensions:
 <ul>
  <li><span class='greek'>&Delta;</span>x'=20 meters long (in the direction of motion)
@@ -2166,7 +2246,7 @@ we might say, for example, that it has these dimensions:
  <li><span class='greek'>&Delta;</span>z'=5 meters high
 </ul>
 
-Does the <em>Home Base</em> grid measure the same dimensions for the moving <em>Zoomer</em> spacecraft? 
+Does the unboosted grid measure the same dimensions for the boosted spacecraft? 
 No. It measures these dimensions:
 <ul>
  <li><span class='greek'>&Delta;</span>x=20/<span class='greek'>&gamma;</span> meters long (in the direction of motion)
@@ -2174,9 +2254,9 @@ No. It measures these dimensions:
  <li><span class='greek'>&Delta;</span>z=5 meters high
 </ul>
 
-In summary, the dimensions of the <em>Zoomer</em> spacecraft are:
+In summary, the dimensions of the boosted spacecraft are:
 <P><table class='report'>
- <tr><th>Dimension <th>Zoomer Grid<th>Home Base Grid
+ <tr><th>Dimension <th>Boosted Grid<th>Unboosted Grid
  <tr><td>length <td>20 m <td>(20/<span class='greek'>&gamma;) m
  <tr><td>width <td>8 m <td>8 m
  <tr><td>height <td>5 m <td>5 m
@@ -2184,7 +2264,7 @@ In summary, the dimensions of the <em>Zoomer</em> spacecraft are:
 
  
 <P>For y and z, the dimensions are the same. 
-<b>The dimension of an object in the direction of motion is divided by <span class='greek'>&gamma;</span></b> (with <span class='greek'>&gamma;</span> calculated using the speed of <em>Zoomer</em> with respect to <em>Home Base</em>).
+<b>The dimension of an object in the direction of motion is divided by <span class='greek'>&gamma;</span></b> (with <span class='greek'>&gamma;</span> calculated using the relative speed of the two grids).
 Since <span class='greek'>&gamma;</span> is greater than or equal to 1, that dimension is smaller (contracted).
 The same can be said of the <em>volume</em> of the moving object as well, with the volume also divided by the same number <span class='greek'>&gamma;</span>.
 
@@ -2322,6 +2402,8 @@ There are at least two possible points points of view the questioner may have:
 
 Both of these points of view are incorrect.
 
+<P>For more on this, see <a href='part2.html#PrototypeEffects'>Part II</a>, where the Doppler effect and aberration as taken as prototypes for understanding 
+relativistic effects in general.
 
 
 <a name='SpaceTimeVolumesInvariant'></a>
@@ -2457,7 +2539,7 @@ Because of this, many people refer to space-time as having a <b>1+3 structure</b
 To create new rules that are compatible with special relativity, you 
 need to <a href='#RuleAboutRules'>express them using invariants</a>.
 
-<P><span class='highlight'><b>The boost transformation is the template for building all other invariants</b></span>:
+<P><span class='highlight'><b>The boost transformation is a template for building other invariants</b></span>:
 <br><img src='formulas/boosttransformationfull.png' class='equation'> 
 
 <br>The basic facts about the <a href='#Boosts'>boost transformation</a> are:
@@ -2578,6 +2660,73 @@ and define the transformation of all 4-vectors:
 <P>Dimensionless quantities are infrequent in physics, so perhaps this fact is noteworthy.
 
 
+<a name='TheProblemOfLanguage'></a>
+<h2>The Problem Of Language</h2>
+
+<P>
+At a very young age, we learn what might be called <em>Newtonian</em> ideas about space and time.
+When learning to speak, our vocabulary and language are strongly influenced by those Newtonian ideas.
+The problem is that those ideas are wrong.
+So, in a sense, our language is wrong too.
+ 
+<P>When moving from the old world of Newton to the new world of Einstein, what should we do with the old words, such as <em>space</em> and <em>time</em>?
+ 
+<P>There are two choices:
+<ul>
+ <li>reuse the old Newtonian words, and <em>re-point</em> them to the new Einsteinian ideas
+ <li>invent new words to point to the new ideas
+</ul>
+ 
+ 
+<P>Re-pointing the old words to the new ideas is problematic.
+<b>The old words are contaminated, and unconsciously mislead you down the path of error and confusion.</b>
+This occurs especially with items that are <em>invariant</em> in Newton's world, but <em>relative</em> in Einstein's world.
+
+<P>Using new words for the new ideas seems to be the safer option. 
+As an example, you might use a scheme to reflect the important distinction between <em>relative</em> and <em>invariant</em> physical quantities,
+which is the core of the theory. 
+
+<P>You could classify quantities that are relational as <em>rel-properties</em>, and give them the conventional prefix <em>rel</em>: 
+<ul>
+ <li>rel-time
+ <li>rel-distance
+ <li>rel-simultaneity
+ <li>rel-speed
+ <li>rel-energy
+ <li>rel-momentum
+ <li>rel-geometry
+ <li>rel-length
+ <li>rel-direction
+ <li>rel-frequency
+ <li><em>and so on...</em>
+</ul>
+
+<P>While invariant quantities are given no special prefix:
+<ul>
+ <li>speed limit <em>c</em>
+ <li>interval between two events
+ <li>wristwatch-time (proper time)
+ <li>light cone of an event
+ <li>time-like, light-like, and space-like relations between two events
+ <li>past, future and elsewhere of an event
+ <li>mass of a particle
+ <li>charge of a particle
+ <li><em>and so on...</em>
+</ul>
+
+
+<P>This is certainly repetitive, since most physical quantities are relative.
+But it could <b>clarify your thought by removing Newtonian impurities from your language.</b>
+(No authors actually go this far, but perhaps they should.)
+  
+<P>Clarity of thought and clarity of language are one and the same thing, so this issue is of some importance.
+
+<div class='aside-remarks'>
+"Language can be enormously confusing when it is used to discuss relativity, because words and even grammar often introduce physical 
+ assumptions into what we say with such subtlety that we fail to realize that the assumptions are present." 
+<br>- N. David Mermin, <em>Space and Time in Special Relativity</em> 
+</div>
+
 
 <a name='AvoidCommonPitfalls'></a>
 <h2>Avoid Common Pitfalls</h2>
@@ -2596,6 +2745,17 @@ The word <em>observer</em> does not push you toward that image.
 It pushes you in the exact opposite direction, toward a camera, not a grid. 
 That's not good.
 
+<P><div class='aside-remarks'>
+"That innocent but ambiguous term [observer] has created endless confusion for more than half a century.
+It fails to distinguish between two totally different concepts of observer. 
+One is right.
+The other is wrong.
+The camera epitomizes the wrong idea - wrong because it is not located where the action is."
+<br>- John Wheeler, <em>A Journey Into Gravity and Spacetime</em> 
+ 
+</div> 
+
+
 <P><b>The term <em>relativistic mass</em> is usually deprecated</b>
 <br>Many authors are uncomfortable with the term <em>relativistic mass</em>, since it can lead to confusion.
 Instead, they suggest that the mass of an object should be defined as its invariant rest mass.
@@ -2609,6 +2769,13 @@ This is wrong, at least in its unqualified form.
 According the traveller's wristwatch time (which is what the traveller cares about), 
 the time will be less than 400 years, if they are travelling at ultra-relativistic speeds, because of time dilation.
 Indeed, there's <em>no lower limit</em> to the travel-time, according to the traveller's wristwatch.
+
+<P><b>The word <em>paradox</em> is misapplied</b>
+<br>Many authors speak of various <em>paradoxes</em> when describing relativistic effects.
+This term is misleading. 
+They are really referring to <em>mistakes in reasoning</em>, usually caused by the insidious influence of obsolete Newtonian ideas.  
+By definition, a paradox is self-contradictory. 
+SR is definitely <em>not</em> self-contradictory.  
 
 <a name='WhereSRFitsIn'></a>
 <h2>How Special Relativity Relates to Other Parts of Physics</h2>

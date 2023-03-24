@@ -670,7 +670,7 @@ function skippingRopeorig(ctx /*160x160*/){
 function skippingRopeSpacecraft(ctx /*160x160*/){
   spacetime2dSmallAxesNoCone(ctx);  
   ctx.fillText('\u03B2=0', 20, 60); 
-  ctx.fillText('Zoomer', 8, 10); 
+  ctx.fillText('Boosted', 8, 10); 
   ctx.fillText('Grid', 18, 25); 
   ctx.fillText('A', 18, 140); 
   ctx.fillText('B', 18, 80); 
@@ -680,7 +680,7 @@ function skippingRopeSpacecraft(ctx /*160x160*/){
 }
 function skippingRopeEarth(ctx /*160x160*/){
   spacetime2dSmallAxesNoCone(ctx);  
-  ctx.fillText('Home Base', 15, 10); 
+  ctx.fillText('Unboosted', 15, 10); 
   ctx.fillText('Grid', 34, 24); 
   ctx.fillText('A', 18, 140); 
   ctx.fillText('B', 135, 35); 
@@ -718,8 +718,10 @@ function skippingRopeDeltaTs(ctx /*160x160*/){
   ctx.lineWidth=3;
   ctx.fillText('A', 18, 140); 
   ctx.fillText('B', 133, 33); 
+  ctx.fillText('Unboosted', 92, 10); 
   //line(ctx,30,140,135,20);//homebase
   ctx.fillText('B', 18, 80); 
+  ctx.fillText('Boosted', 14, 60); 
   //line(ctx,30,140,30,80);//zoomer
   spot(ctx,30,140,2);
   spot(ctx,135,20,2);
@@ -954,9 +956,8 @@ function timeDilationMeasuredInTheLab(ctx){
 function movingSensor(ctx /*160x160*/){
   spacetime2dSmallAxesNoCone(ctx);  
   ctx.lineWidth=1;
-  ctx.fillText('Zoomer', 5, 60); 
-  ctx.fillText('Home', 110, 60); 
-  ctx.fillText('Base', 110, 76); 
+  ctx.fillText('Boosted', 5, 60); 
+  ctx.fillText('Unboosted', 87, 85); 
   ctx.fillText('A', 18, 140); 
   ctx.fillText('B', 133, 33); 
   line(ctx,30,140,135,20);//homebase
