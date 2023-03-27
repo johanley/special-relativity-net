@@ -600,21 +600,25 @@ The raw measurements of event coordinates made in each grid are specific to that
 
 <a name='InertialGridFamily'></a>
 <h2>Inertial Grid Family</h2>
-It's very important than inertial grids form a <em>family</em> (or what mathematicians call a <em>group</em>).
+It's very important than inertial grids form a <em>family</em>.
 If you have one inertial grid, then you can make another one by applying one or more of the 
 <span title='The full Lorentz group'><b>four allowable grid transformations</b></span>:
 <ul>
- <li><b>change the starting point</b> (displacement): change the place selected for the origin (x y z)=(0 0 0), or 
- the moment in time for which t=0.
- <li><b>rotate</b>: change the directions of the spatial <em>xyz</em> axes, to point to some other <em><b>fixed</b></em> directions. 
- <li><b>mirror reflection</b>: swap the directions of the positive and negative directions for 1 or 3 axes.
- (The case of swapping 2 axes is actually the same as a rotation, so it's left out here.) 
- You can do this for the time as well, by having the clocks go backwards into the future.
- <li><b>boost</b>: let the grid move in some <b><em>fixed</em></b> direction, at a <b><em>constant</em></b> speed (this is the only change that involves 
- one grid moving with respect to another).
+ <li><b>displacement in space or time</b>: change the place selected for the origin (<em>x y z</em>)=(<em>0 0 0</em>), or the moment in time for which <em>t</em>=<em>0</em>.
+ <li><b>reflection in space or time</b>: swap the plus and minus directions for either 1 or 3 of the <em>xyz</em> axes.
+ The case of swapping 2 of the <em>xyz</em> axes is actually the same as a rotation, so it's not counted as a reflection. 
+ You can <em>reflect</em> the time as well, simply by having the clocks go backwards into the future.
+ <li><b>rotation in space</b>: change the directions of the spatial <em>xyz</em> axes, to point to some other <em><b>fixed</b></em> directions. 
+ <li><b>boost</b>: let the grid move along one of the <em>xyz</em> axes (a fixed direction), 
+ at a <b><em>constant</em></b> speed with respect to a given grid (this is the only change that involves one grid moving with respect to another).
 </ul>
 
-If you have an inertial grid to start with, 
+<P>
+(The above set of transformations is an example of what mathematicians call a <a href='https://en.wikipedia.org/wiki/Group_theory'>group</a>.
+Some physicists call this group the <a href='https://archive.org/details/gravitationcosmo00stev_0/page/28/mode/2up?q=poincare&view=theater'>Poincaré group</a>, but the jargon varies among authors.
+The transformations of the Poincaré group leave the space-time interval invariant - see below.)
+
+<P>If you have an inertial grid to start with, 
 then you can gleefully mix and match the above transformations in any way you want, and you will 
 always end up with another inertial grid; you will always stay within the inertial grid family.
 (You can explore these transformations using this <a href='animations/inertial-grid-family-3d/grid3d.html'>animation</a>.)
@@ -2051,7 +2055,7 @@ As you would expect from the above, the formulas depend only on c, &beta;, and <
 <img src='formulas/boosttransformation.png' class='equation'> 
 
 
-<P>Let's call these equations the <b>boost transformation</b> (also called the <b>Lorentz transformation</b>).
+<P>Let's call these equations the <b>boost transformation</b>.
 These equations describe how an event changes coordinates during a boost from one inertial grid to another. 
 
 <P>Remember that -1<&beta;<1. That is, &beta; is the <em>velocity</em> along the x axis, not just the speed.
