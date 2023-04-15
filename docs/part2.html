@@ -82,6 +82,14 @@ These signals:
  <li>are <b>often detected by a single sensor</b>, but sometimes by an <em>array</em> of multiple sensors (<a href='http://www.almaobservatory.org/'>ALMA</a> is an example of an array).
 </ul>
 
+<div class='aside-remarks'>
+ Part II does not make use of the <a href='index.html#TheProblemOfLanguage'><em>rel</em></a> prefix convention used in Part I, 
+ where it's used to distinguish between <em>relative</em> and <em>invariant</em> physical quantities.
+ This was useful in Part I especially because it references a number of physical quantities that are <em>invariant</em> in the world of Newton, but <em>relative</em> in the world of Einstein. 
+ <P>
+ In optics, however, almost all physical quantities (frequency, direction, and so on) are relative according to Newton <em>and</em> according to Einstein.
+ So for optics it seems less compelling to make the relative/invariant distinction.
+</div>
 
 <a name='WhatASensorMeasures'></a>
 <h2>Signals: Energy And Direction</h2>
@@ -131,7 +139,7 @@ That collection makes up a <b>history tube</b> in space time. It corresponds to 
 at one moment in time <em>according to the detector's wristwatch</em>.
 You can see that, in general, the intersection events are the same as the <em>emission events</em> of the 
 light signal, corresponding to light emitted from the surface of the extended object.
-The emission events don't all share the same ct value: they aren't simultaneous. 
+The emission events don't all share the same <em>ct</em> value: they aren't simultaneous. 
 This is because <span class='highlight'><b>the light cone slices across the history tube at a 45&deg; angle.</b></span>
 However, the light signal <em>detection events</em> are indeed simultaneous, since the light signals all meet up
 at the same event.
@@ -166,7 +174,7 @@ over the region where it intersects the object's history.
 </table>
 
 <P>Sometimes a light-slice of an object's history in spacetime can be approximated using a plane instead of a cone, 
-with the plane oriented at 45 degrees with respect to the ct axis (and oriented in the right direction).
+with the plane oriented at 45 degrees with respect to the <em>ct</em> axis (and oriented in the right direction).
 This only works if the object subtends a small angle at the detector.
 In that case, the curvature of the past light cone is very small in the region of the object's history. 
  
@@ -254,7 +262,7 @@ We're making use of various colors for wave vectors, to show their <em>relative 
 
 
 <a name='BoostEventsOnTheLightCone'></a>
-<h2>Events On The Light Cone With Constant ct</h2>
+<h2>Events On The Light Cone With Constant <em>ct</em></h2>
 Both the frequency and direction of motion of a photon are specific to a grid.
 How do they change during a boost?
 Well, let's go back to space-time events for a moment.
@@ -395,8 +403,27 @@ As a measure of the amount of concentration, this site uses the idea of the <b>h
 meaning the angular radius from the direction of motion that encloses 
 what would be half the sky in an unboosted grid.
 
+<a name='AberrationPreservesAngles'></a>
+<h2>Aberration Preserves Angles</h2>
+Think of a constellation of stars in the night sky, with the stars being joined together with imaginary lines to make a shape. 
+Those lines make angles with each other. 
+If you apply aberration to the starlight, the directions of the stars change, but the <em>angles</em> made by the constellation lines actually stay the same.
+<b>This is an example of what mathematicians call a conformal transformation</b>.
 
+<P>
+Conformal transformations preserve angles, but not lengths.
+That is:  
+<P>
+<ul>
+ <li>the angles made by pairs of lines or curves are preserved
+ <li><em>small</em> (infinitesimal) shapes transform into the same shape, but generally of a different size and orientation
+ <li><em>large</em> shapes generally transform into a distorted shape
+</ul>
 
+In the case of aberration of starlight in the night sky, <em>circular</em> shapes of any size transform into other circular shapes. 
+
+<P>In relativity, conformal transformations always preserve light-like relations (<em></>s<sup>2</sup></em> = 0), but not time-like or space-like relations.
+That means they preserve light cones and cause-and-effect relations, but generally distort everything else.
 
 <a name='DopplerEffect'></a>
 <h2>Frequency: Doppler Effect</h2>

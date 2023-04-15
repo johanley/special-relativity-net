@@ -734,7 +734,7 @@ function skippingRopeDeltaTs(ctx /*160x160*/){
   line(ctx,100,140,100,80);//zoomer
   tickMarkHorizontal(ctx,100,140,3);
   tickMarkHorizontal(ctx,100,80,3);
-  ctx.fillText('\u0394ct', 92, 110); 
+  ctx.fillText("\u0394ct'", 92, 110); 
   line(ctx,146,140,146,20);//homebase
   tickMarkHorizontal(ctx,146,140,3);
   tickMarkHorizontal(ctx,146,20,3);
@@ -1029,7 +1029,7 @@ function transformGrid(ctx /*160x160*/){
 /** The two grids for which the Lorentz transform is applicable. */
 function lorentzGrids1(ctx){
   myFont(ctx);
-  text(ctx,"Time not 0", 10,10);
+  text(ctx,"t not 0", 8,10);
   text(ctx,"G",30,75);
   
   moveableAxes(ctx,20,140,100,"ct","x");
@@ -1049,7 +1049,7 @@ function lorentzGrids1(ctx){
 }
 function lorentzGrids2(ctx){
   myFont(ctx);
-  text(ctx,"Time = 0", 30,10);
+  text(ctx,"t = 0", 50,10);
   
   moveableAxes(ctx,60,140,100,"ct","x");
   var primeGridColor = "rgb(255,0,0)";

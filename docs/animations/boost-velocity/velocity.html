@@ -78,7 +78,7 @@
 <P>
 <form method='GET' action='velocity.html' class='user-input-small'>
  <table align='center'>
- <tr title='Speed of the object in the unboosted grid.' ><td>Speed<td><input id='speed' name='speed' value='0.5' size='5'>
+ <tr title='Speed of the object in the unboosted grid.' ><td>Rel-Speed<td><input id='speed' name='speed' value='0.5' size='5'>
  <tr title='Boost to another grid; where to end the animation.' ><td>Boost<td><input id='betamax' name='beta' value='0.6' size='5'>
  <tr title='Number of data points to use'>
   <td>Angles
@@ -97,20 +97,20 @@
 
 <p><a href='../../index.html#BoostVelocity'>Back to Main</a>.
 
-<P><h3>Boosted Velocity</h3>
-Change of velocity during a boost.
+<P><h3>Boosted Rel-Velocity</h3>
+Change of rel-velocity during a boost.
  
 <P>
-This animation uses <em>two</em> speeds/velocities, not one:
+This animation uses <em>two</em> rel-speeds/velocities, not one:
 <ul>
- <li>the usual &beta;, for the speed of a <em>boosted grid</em> with respect to another, along the x-axis.
- <li>the velocity of an <em>object</em>. The object has a velocity in both the unboosted grid (green dots),
- and the boosted grid (white dots).
+ <li>the usual &beta;, for the rel-speed of a <em>boosted grid</em> with respect to another, along the <em>x</em>-axis.
+ <li>the rel-velocity of an <em>object</em>. 
+ The object has a rel-velocity in both the unboosted grid (green dots), and the boosted grid (white dots).
 </ul>
 
-<p>Each velocity vector starts at the origin (in the center), and ends in a single dot.
+<p>Each rel-velocity vector starts at the origin (in the center), and ends in a single dot.
 The &beta;x-component is vertical, and the &beta;y-component is horizontal (as shown by the axes in the center.)
-The center has speed=0, and the large outer circle with the degree divisions represents the speed limit (speed=1).
+The center has rel-speed=0, and the large outer circle with the degree divisions represents the speed limit (rel-speed=1).
 
 <P>The &beta; boost between grids is positive in the direction of the +&beta;x-axis.
 It starts out as the classical aberration formula, and the form stays as a circle.
@@ -118,9 +118,10 @@ As speeds increase, the form changes to an ellipse, contracts, and compresses ag
 
 <P>Note that:
 <ul>
- <li>the boosted speed never exceeds the speed limit (the large outer circle).
- <li>when the object's speed is 1 in the unboosted grid, its speed remains 1 in the boosted grid.
- <li>when the object's speed is 1, only the direction of the velocity vector changes. 
+ <li>the boosted rel-speed never exceeds the speed limit (the large outer circle).
+ <li>when the object's rel-speed is 1 in the unboosted grid, its rel-speed remains 1 in the boosted grid.
+ <li>when the object's rel-speed is 1, only the direction of the velocity vector changes. 
+ The circle of dots remains a circle.
  This is simply the aberration of light.
 </ul>
 

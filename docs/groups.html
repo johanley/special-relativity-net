@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="keywords" content="special relativity, lorentz transformations, time dilation, einstein, light cone, space-time interval, invariants, speed of light, inertial frames, frame of reference, groups, poincaré, lorentz">
+ <meta name="description" content="Introduction to special relativity.">
+ <meta name="viewport" content="width=device-width"> 
+ <link rel="stylesheet" type="text/css" href="css/stylesheet.css?v=13" media="all"> 
+ <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
+ <title>Special Relativity - Groups</title>
+</head>
+
+<body>
+
+<a href='contents.html'>Contents</a>
+
+
+<h2>Notes on Groups</h2>
+
+<P>In the context of special relativity, groups always refer to a defining set of transformations to an inertial grid.
+There are 4 basic kinds of transformations from one inertial grid to another:
+<ul>
+ <li><b>displacement in space or time</b>: change the place selected for the origin (<em>x y z</em>)=(<em>0 0 0</em>), or the moment in time for which <em>t</em>=<em>0</em>.
+ <li><b>reflection in space or time</b>: swap the plus and minus directions for either 1 or 3 of the <em>xyz</em> axes.
+ The case of swapping 2 of the <em>xyz</em> axes is actually the same as a reorientation, so it's not counted as a reflection. 
+ You can <em>reflect</em> the time as well, simply by having the clocks go backwards into the future.
+ These operations are often referred to as <em>P</em> for parity, and <em>T</em> for time-reversal.
+ <li><b>reorientation in space</b>: change the directions of the spatial <em>xyz</em> axes, to point to some other <em><b>fixed</b></em> directions. 
+ <li><b>boost</b>: let the grid move along one of the <em>xyz</em> axes (a fixed direction), 
+ at a <b><em>constant</em></b> speed with respect to a given grid (this is the only change that involves one grid moving with respect to another).
+</ul>
+
+
+<P>Somewhat confusingly, the jargon related to the groups used in special relativity varies among authors. 
+
+<P>As a good starting point, here are the definitions used by Steven Weinberg in his book <em>Quantum Theory of Fields</em>.
+Be warned that other variations exist.
+
+<P>
+<table class='report' style='border:1px;'>
+  <col>
+  <colgroup span="3"></colgroup>
+ <tr><th><th colspan='3' scope='colgroup'>Weinberg
+ <tr><th>Transformation<th>1<th>2<th>3
+ <tr><td>Displacement in space-time      <td>y<td>n<td>-  
+ <tr><td>Reflection in space-time (P, T) <td>y<td>y<td>n  
+ <tr><td>Reorientation in space          <td>y<td>y<td>y  
+ <tr><td>Boost                           <td>y<td>y<td>y 
+</table>
+
+<P>
+S. Weinberg, <em>The Quantum Theory of Fields</em>, vol I:
+<ul>
+ <li>Weinberg 1: <em>Poincaré Group</em>, or <em>Inhomogenous Lorentz Group</em>. 
+ <li>Weinberg 2: <em>Homogeneous Lorentz Group</em>. Leaves out displacements.  
+ <li>Weinberg 3: <em>Proper Orthochronous Lorentz Group</em>. Leaves out parity and time-reversal. Displacement may or may not be included as an additional criterion.
+</ul>
+
+<P>According to Weinberg, the full Poincaré Group corresponds to the full set of transformations that leave <em>dx<sup>i</sup>dx<sub>i</sub></em> invariant.
+It has 10 continuous parameters: 4 for translation, 6 for space-time reorientations.
+The previous statement leaves out the discrete symmetries of <em>P</em> and <em>T</em>. 
+The space-time reorientations can be broken down into 3 space reorientations, and 3 boosts.
+
+<P>According to Weinberg, the topology of Minkowski space-time is R(4) x R(3) x S(3)/Z<sub>2</sub>, and its doubly-connected. 
+Here, S(3)/Z<sub>2</sub> is the 3-sphere, but with opposite points identified. 
+
+
+<P>
+<table class='report' style='border:1px;'>
+ <tr><th>Transformation                  <th>Min. <th>Lan. <th>Hawk.
+ <tr><td>Displacement in space-time      <td>y    <td>y    <td>y 
+ <tr><td>Reflection in space-time (P, T) <td>n    <td>n    <td>n
+ <tr><td>Reorientation in space          <td>y    <td>y    <td>y
+ <tr><td>Boost                           <td>y    <td>y    <td>y
+</table>
+
+<ul>
+ <li>H. Minkowski, <a href='https://archive.org/details/principleofrelat00lore/page/74/mode/2up?view=theater'><em>Space and Time</em></a>. 
+ He names the group <em>G<sub>c</sub></em>. He uses geometrical constructions instead of the algebraic equations for a boost.
+ <li>Landau and Lifshitz, <a href='https://archive.org/details/classicaltheoryo0000land_k6k2'><em>The Classical Theory of Fields</em></a>. 
+ No group is named. 
+ They state the desire to derive the coordinate transformation between any two inertial grids, using the invariance of the squared-interval. 
+ The transformations are enumerated, but leave out the reflections.
+ <li>Hawking and Ellis, <em>The Large-Scale Structure of Space-Time</em>. 
+ They name the group the <em>Inhomogeneous Lorentz Group</em>. 
+ They use Killing vectors as a starting point. 
+ Note that this differs from Weinberg. 
+ <li>Robert Wald, <em>General Relativity</em>. 
+ He refers to the <em>Poincaré transformations</em> as consisting in all linear transformations which leave the square-interval unchanged (as does Weinberg). 
+ He doesn't enumerate the transformations.
+</ul>
+
+<P>Two groups related to the Poincaré Group:
+<ul>
+ <li>Conformal Group
+ <li>ISL(2,C)
+</ul>
+
+<P>The <em>Conformal Space-Time Group</em> contains the Poincaré Group as a subgroup. 
+It's defined by insisting that only light-like intervals are invariant.
+It transforms a light cone into itself, and leaves the speed limit invariant.
+More generally, it preserves light-like, time-like, and space-like separations (causal structure). 
+It has 15 parameters.
+In this case, <em>dx<sup>i</sup>dx<sub>i</sub></em> is in general proportional, but not equal, between grids.
+(I think the "constant" of proportionality is allowed to vary across space-time.)
+Geometrically, conformal transformations always preserve angles.
+"The maximal spacetime symmetry group of massless particles is the conformal group. (<a href='https://physicstravelguide.com/advanced_tools/group_theory/conformal_group'>link</a>)"
+
+<P>
+The ISL(2,C) group is a <em>covering group</em> of the Poincaré Group. It leads to spinors, which are, I believe, a generalization of tensors.
+
+<P>In geometrodynamics, knowledge of the light-cone goes most of the way towards giving you the metric - what's missing is a conformal factor that varies from event to event.  
+ 
+ 
+<P>Weinberg defines the <em>Lorentz</em> Transformation to be the full affine form, with no restriction on reflections.
+Other authors exclude displacements and/or reflections from being included in what they call Lorentz Transformations.
+So the definition of what exactly constitutes a Lorentz Transformation varies between authors.
+
+<P>Many physicists refer to <em>affine</em> transformations (which include displacements) as <em>linear</em> transformations. 
+Mathematicians would never do that.
+
+<P>In his 1972 book <em>Gravitation and Cosmology</em>, Weinberg does not use the term <em>orthochronous</em>.
+Instead, he uses the term <em>proper</em> to refer to both <em>P</em> and <em>T</em>. 
+
+
+<P>The non-continuous transformations P and T seem to have a special status.
+Some fundamental interactions in physics are P-invariant and T-invariant, but others are not.  
+
+<P>Some other group names that I've seen (again, this may vary between authors):
+<table class='report' style='border:1px;'>
+ <tr><th>Transformation                  <th>O(1,3)<th>SO(1,3)<th>SO<sup>+</sup>(1,3)<th>R(4)  <th>SO(3) 
+ <tr><td>Displacement in space-time      <td>n     <td>n      <td>n                  <td>y      <td>n              
+ <tr><td>Reflection in space P           <td>y     <td>n      <td>n                  <td>n      <td>n
+ <tr><td>Reflection in time T            <td>y     <td>y      <td>n                  <td>n      <td>n
+ <tr><td>Rotation in space               <td>y     <td>y      <td>y                  <td>n      <td>y
+ <tr><td>Boost                           <td>y     <td>y      <td>y                  <td>n      <td>n
+</table>
+
+<P>SL(2,C) are 2x2 complex matrices with det=+1, 3 complex params and 6 real params. 
+SL(2,C) is a covering group of the Homogeneous Lorentz Group O(1,3).
+
+<P>U(n) are nxn Hermitian (inverse = conjugate) matrices.
+ 
+<P>SU(n) are nxn Hermitian matrices with det=+1. 
+
+<P>SU(2) is a double-cover of SO(3).
+
+<P>Wikipedia: "A Lie group G is said to be simply connected if every loop in G can be shrunk continuously to a point in G....
+An example of a simply connected group is the special unitary group SU(2), which as a manifold is the 3-sphere. 
+The rotation group SO(3), on the other hand, is not simply connected. (See Topology of SO(3).) 
+The failure of SO(3) to be simply connected is intimately connected to the distinction between integer spin and half-integer spin in quantum mechanics."
+
+
+
+<P>In <a href='https://www.youtube.com/watch?v=mg93Dm-vYc8'>a chat</a> with Eric Weinstein, Roger Penrose talks about a connection between relativistic aberration,
+2-spinors, and conformal transformations of the Riemann sphere onto itself (stereographic projection).
+This relates to the Penrose paper about the invariance of circular outlines of objects, as the intersection of a past light cone of a detector with an object's history.
+That circularity apparently has as its source the same math of the stereographic projection.
+It might be useful to note that a circular outline is an invariant property, since there don't seem to be many invariant properties in optics.
+
+
+<P><a href='https://physicstravelguide.com/advanced_tools/group_theory/poincare_group#tab__why_is_it_interesting'>Link</a>:
+"The double cover of the Poincaré group is the fundamental spacetime symmetry of modern physics and is a crucial component of the standard model of particle physics."
+
+<P>"The Hilbert space of one-particle states is always an irreducible representation space of the Poincare group... T
+he construction of the unitary irreducible representations of the Poincare group is probably the most successful part of special relativity (in particle physics, not in gravitation theory, for which it is a disaster). 
+It permits us to classify all kinds of particles and implies the main conservation laws (energy-momentum and angular momentum)."
+ 
+<div id="footer">  
+  Copyright &copy; John O'Hanley. 
+  All Rights Reserved. <a href='mailto:johnohanley85@gmail.com'>Contact</a>
+</div>
+
+</body>
+</html>
