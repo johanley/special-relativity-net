@@ -1436,7 +1436,7 @@ function passiveBoost(ctx){
   dashedLine(ctx,spotx,spoty,spotx+deltax,spoty-deltax*beta);
   dashedLine(ctx,spotx,spoty,spotx-deltay*beta,spoty+deltay);
   
-  greek(14, spotx+8,spoty-16, "-\u03B2\u03B3");
+  greek(14, spotx+8,spoty-16, "-\u03B3\u03B2");
   greek(14, spotx-18,spoty+20, "\u03B3");
   
   ctx.restore();
@@ -1471,7 +1471,7 @@ function activeBoost(ctx){
   dashedLine(ctx,spotx,spoty,cx,spoty);
   dashedLine(ctx,spotx,spoty,spotx,cy);
   
-  greek(14, spotx+4,spoty-8, "-\u03B2\u03B3");
+  greek(14, spotx+4,spoty-8, "-\u03B3\u03B2");
   greek(14, spotx-10,spoty+40, "\u03B3");
   ctx.restore();
   

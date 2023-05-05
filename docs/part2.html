@@ -32,15 +32,14 @@
 <h2>Grids, Sensors, and Signals</h2>
 The idea of a <a href='index.html#Grids'>sensor grid</a> was introduced earlier as a way of making measurements on moving objects, 
 and recording their histories as they pass the sensors.
-Here, sensors make only <em>local</em> measurements on <em>local</em> events.
+With a grid, sensors make only <em>local</em> measurements on <em>local</em> events.
 That's the simplest way of making measurements of position and time.
 In this way, it's possible to simply express the fundamental ideas of relativity.
 
-<p>Earlier, we defined a <a href='index.html#SpeedLimit'>signal</a> as a physical object (matter, radiation) that moves energy from one place to another.
+<p>Earlier, we defined a <a href='index.html#SpeedLimit'>signal</a> as a physical object (matter or radiation) that moves energy from one place to another.
 This section focuses on <b>radiant signals</b> only (or just <em>signals</em> for short).
-The most common radiant signal is light (photons of electromagnetic radiation).
-In addition to making measurements on passing objects, sensors can also 
-make measurements by detecting radiant signals.
+The best example of a radiant signal is a photon of electromagnetic radiation (light waves, radio waves, and so on).
+As well as making measurements on passing objects, sensors can also make measurements by detecting radiant signals.
 The best example of this is an astronomical telescope.
 It's usually not possible to travel to distant astronomical objects, 
 so astronomers are left with the only source of data left to them: the incoming signals hitting their detectors. 
@@ -73,22 +72,22 @@ The only difference is that the signal usually <em>refers back to</em> a distant
  far the most common kind of signal detected by astronomers.
  <li>cosmic rays, with &beta; usually close to 1.
  <li>massless neutrinos, with &beta;=1. (If neutrinos do in fact have a small mass, then their &beta; must be less than 1.)
- <li>gravitational waves, with &beta;=1. These were first detected in September 2015.
+ <li>gravity waves, with &beta;=1. These were first detected in September 2015.
 </ul>
 These signals:
 <ul>
  <li>usually travel at the speed limit.
- <li>are either <em>on</em> the past light cone of the sensor (signal &beta;=1), or <em>within</em> the past light cone (signal &beta;&lt;1).
- <li>are <b>often detected by a single sensor</b>, but sometimes by an <em>array</em> of multiple sensors (<a href='http://www.almaobservatory.org/'>ALMA</a> is an example of an array).
+ <li>are either <em>on</em> the past light cone of the sensor (signal &beta;=1), or <em>within</em> its past light cone (signal &beta;&lt;1).
+ <li>are <b>often detected by a single sensor</b>, but sometimes by an <em>array</em> of multiple sensors are used (<a href='http://www.almaobservatory.org/'>ALMA</a> is an example of an array).
 </ul>
 
 <div class='aside-remarks'>
  Part II does not make use of the <a href='index.html#TheProblemOfLanguage'><em>rel</em></a> prefix convention used in Part I, 
- where it's used to distinguish between <em>relative</em> and <em>invariant</em> physical quantities.
+ where it's used to emphasize the difference between <em>relative</em> and <em>invariant</em> physical quantities.
  This was useful in Part I especially because it references a number of physical quantities that are <em>invariant</em> in the world of Newton, but <em>relative</em> in the world of Einstein. 
  <P>
  In optics, however, almost all physical quantities (frequency, direction, and so on) are relative according to Newton <em>and</em> according to Einstein.
- So for optics it seems less compelling to make the relative/invariant distinction.
+ So for optics it seems less compelling to make the relative/invariant distinction using the <em>rel</em> convention.
 </div>
 
 <a name='WhatASensorMeasures'></a>
@@ -155,9 +154,6 @@ When the object is moving with respect to the detector, <em>and</em> when the di
 then the differences show up as distortions in the detected image. 
 The larger the differences in travel-time, the greater the distortions.
 
-<P>When the object is sufficiently distant from the detector, then the light cone can be approximated as a plane instead of a cone, 
-over the region where it intersects the object's history. 
-
 
 <a name='Slices'></a>
 <h2>Light-Slice and Time-Slice</h2>
@@ -181,8 +177,7 @@ In that case, the curvature of the past light cone is very small in the region o
  
 <a name='LightDirectionAndFrequency'></a>
 <h2>Photon Signals</h2>
-The remainder of Part II is specific to the most common kind of radiant signal: 
-light, or
+The remainder of Part II is specific to light, or
 <a href='http://en.wikipedia.org/wiki/Electromagnetic_spectrum'>electromagnetic radiation</a>.
 Electromagnetic radiation is carried by <a href='http://en.wikipedia.org/wiki/Photon'>photons</a>, 
 massless particles that always travel at the speed limit (through empty space).
@@ -234,7 +229,7 @@ The energy and direction of motion of a photon with respect to a grid are repres
  photonVector(ctx);
 </script>
 
-<P>These diagrams are similar in structure to space-time, but:
+<P>These diagrams are similar in structure to regular space-time diagrams, but:
 <ul>
  <li>different units are used on the axes
  <li>the photon is restricted to the light cone
@@ -269,7 +264,7 @@ Well, let's go back to space-time events for a moment.
 If you apply the <a href='index.html#Boosts'>boost transformation</a> to events that:
 <ul>
  <li>are on the light cone of the origin
- <li>have a constant value of ct
+ <li>have a constant value of <em>ct</em>
 </ul>
 then you can see also, at the same time, exactly how the energy and direction of a photon change during the same boost.
 
@@ -312,8 +307,8 @@ shows two important effects:
  <li>the change in the <em>photon's energy</em> corresponds to 
  the change in <em>length</em> of the radial lines. 
  This is called the <a href='#DopplerEffect'>Doppler effect</a>.
- Radial lines that get <em>longer</em> are shown in blue (to denote <em>higher</em> relative energy), 
- while radial lines that get <em>shorter</em> are shown in red (to denote <em>lower</em> relative energy).
+ Radial lines that get <em>longer</em> are shown in blue (to show <em>higher</em> relative energy), 
+ while radial lines that get <em>shorter</em> are shown in red (to show <em>lower</em> relative energy).
 </ul>
 
 
@@ -391,7 +386,7 @@ In the formulas below, the prime denotes the boosted grid, and the angles are wi
 <P>
 The effect of aberration can be equivalently seen as:
 <ul>
- <li>the boost transformation of <em>events</em> on the light cone having constant ct (as mentioned above):  
+ <li>the boost transformation of <em>events</em> on the light cone having constant <em>ct</em> (as mentioned above):  
  <a href='animations/light-cone-boost/lightboost.html?beta=0.6&numRadialLines=8&anim=true'>animation</a>
  <li>the boost transformation for a <em>velocity</em> having speed=1: 
  <a href='animations/boost-velocity/velocity.html?speed=1&beta=0.6&numAngles=8&anim=on'>animation</a>
@@ -422,12 +417,12 @@ That is:
 
 In the case of aberration of starlight in the night sky, <em>circular</em> shapes of any size transform into other circular shapes. 
 
-<P>In relativity, conformal transformations always preserve light-like relations (<em></>s<sup>2</sup></em> = 0), but not time-like or space-like relations.
+<P>In relativity, conformal transformations always preserve light-like relations (<em></>s<sup>2</sup></em> = 0), but generally distort time-like and space-like relations.
 That means they preserve light cones and cause-and-effect relations, but generally distort everything else.
 
 <a name='DopplerEffect'></a>
 <h2>Frequency: Doppler Effect</h2>
-Any process that repeats itself is called <em>periodic</em>.
+A process that repeats itself is called <em>periodic</em>.
 Some examples:
 <ul>
  <li>the ticking of a clock
@@ -472,7 +467,7 @@ There are two cases, depending on whether the signal source and the detector are
 
 <P>Here the signal source and the two detectors are not moving with respect to each other:
 <P>
-<canvas id='dopplerEffect1' width='200' height='200' style='margin:1.0em;'>
+<canvas id='dopplerEffect1' width='220' height='220' style='margin:1.0em;'>
  Canvas not supported. Please upgrade your browser. 
 </canvas>
 <script>
@@ -482,7 +477,7 @@ There are two cases, depending on whether the signal source and the detector are
 </script>
 
 <P>Here the signal source is moving directly away from detector D1 and directly toward detector D2:
-<P><canvas id='dopplerEffect2' width='200' height='200' style='margin:1.0em;'>
+<P><canvas id='dopplerEffect2' width='220' height='220' style='margin:1.0em;'>
  Canvas not supported. Please upgrade your browser. 
 </canvas>
 <script>
@@ -493,7 +488,7 @@ There are two cases, depending on whether the signal source and the detector are
 
 <P><b>The change in frequency of a signal from a source moving relative to a detector is called the Doppler effect.</b>
 Here's an <a href='animations/doppler2d/doppler2d.html?beta=0.6&anim=true'>animation</a> showing the effect 
-for motion along the x axis.
+for motion along the <em>x</em> axis.
 The Doppler effect has two underlying causes, which can work in opposing ways:
 <ul>
  <li>changes in the <em>travel-time</em> of signals from the source to the detector.
@@ -501,7 +496,7 @@ The Doppler effect has two underlying causes, which can work in opposing ways:
  When the source moves <em>towards</em> the sensor, the signals arrive more often, serving to <em>increase</em> the frequency.
  <li>time dilation - the faster the object, the slower the physics. So, the frequency of <em>emission</em> 
  of signals from the signal source always slows down. 
- That is, time dilation always <em>reduces</em> a frequency. In the diagram above, the spacing of the dots for the moving source is larger than for the stationary source.
+ That is, time dilation always <em>reduces</em> a frequency. In the diagram above, the vertical spacing of the dots for the moving source is larger than for the stationary source.
 </ul>
 
 A change in frequency is often described as:
@@ -734,7 +729,7 @@ If you wanted to see an actual fly-by of a star, you would have to plan it preci
 
 
 <P>
-Here are <b>two interesting graphs</b> showing the total number of visible stars, their total relative brightness, and how they change with increasing &beta;.
+Here are <b>two interesting graphs</b> showing the total number of stars visible from the Earth, their total relative brightness, and how they change with increasing &beta;.
 These diagrams were created using 2,539,802 stars taken from the <a href='http://cdsarc.u-strasbg.fr/viz-bin/Cat?I/259'>Tycho-2 star catalog</a>.
 The limiting magnitude of 5.0 was selected to correspond to viewing the stars through a spacecraft window.
 As in the simulation, the direction of motion is towards Polaris.
@@ -865,17 +860,17 @@ an <em>apparent velocity</em> (symbol <em>b</em>).
  radialAndTransverse(ctx);
 </script>
 
-<P>The apparent velocity b is usually split into two parts:
+<P>The apparent velocity <em>b</em> is usually split into two parts:
 <ul> 
- <li>the <b>transverse velocity</b> b<sub>t</sub>, at 90&deg; to the line of sight. 
- <li>the <b>radial velocity</b> b<sub>r</sub>, along the line of sight, and moving either directly towards the detector, 
+ <li>the <b>transverse velocity</b> <em>b<sub>t</sub></em>, at 90&deg; to the line of sight. 
+ <li>the <b>radial velocity</b> <em>b<sub>r</sub></em>, along the line of sight, and moving either directly towards the detector, 
  or directly away from it. 
 </ul>
 
 
 <P>In an inertial grid, the true velocity of an object is extracted from the event data gathered by <em>multiple</em> sensors, 
 strung out along the object's history.
-Here, we're measuring the <em>apparent</em> velocity b using direction data from a <em>single</em> sensor 
+Here, we're measuring the <em>apparent</em> velocity <em>b</em> using direction data from a <em>single</em> sensor 
 (located far from the emitter),
 combined with an independent meausurement of the distance.
 Remember that the apparent direction comes from the <a href='#intersection'>geometric intersection</a> 
@@ -884,10 +879,10 @@ emitter's history.
 This is another example of a <a href='index.html#GeometricPoints'>geometric point that 
 doesn't obey the speed limit rule</a>. 
 The apparent velocity of an object is not at all the same as its true velocity.
-(To emphasize this, it's best to use a different symbol b instead of &beta;.)
+(To emphasize this, it's best to use a different symbol <em>b</em> instead of &beta;.)
 
 <P>Notice the <b>scissors effect</b> in the following diagrams for radial motion.
-At high &beta;, the history of an approaching emitter can be at a very small angle with respect to the detector's light cone.
+At high &beta;, the history of an approaching emitter can be at a very small angle with respect to the detector's past light cone.
 Geometrically, it's sort of like the closing of a pair of scissors.
 As time passes, the intersection point will sweep across the emitter's history.
 The higher &beta;, the faster the sweeping speed of the intersection point.
@@ -912,8 +907,7 @@ The same sort of effect is seen even when the motion is not purely radial.
 </script>
 
 <P>Here's an 
-<a href='animations/apparent-velocity-intersection/bint.html?beta=0.80'>animation</a> that demonstrates the 
-scissors effect. 
+<a href='animations/apparent-velocity-intersection/bint.html?beta=0.80'>animation</a> showing the scissors effect. 
 
 <P>The scissors effect means that, <em>in the limiting case</em>, <b>no early warning</b> of an approaching threat is possible 
 if the threat moves towards you at an ultra-relativistic speed. 
@@ -975,8 +969,7 @@ If a jet is pointed away from the Earth, its brightness decreases.
 
 In general, it's difficult for astronomers to find the distances to objects. 
 It's interesting to note that these astrophysical jets provide a new, relativistic way of 
-<a href='http://www2.astro.psu.edu/~niel/astro485/assigned-articles/mirabel-microquasars-in-galaxy.pdf'>measuring distances</a>.
-
+<a href='https://personal.psu.edu/wnb3/astro485/assigned-articles/mirabel-microquasars-in-galaxy.pdf'>measuring distances</a>.
 
 
 <!--

@@ -289,23 +289,35 @@ function dopplerEllipse(ctx/*300x200*/){
 }
 
 /** Showing the effect is from travel-time and time dilation. */
-function dopplerEffect(ctx/*200x200*/,beta){
+function dopplerEffect(ctx/*220x220*/,beta){
   myFont(ctx);
-  var CTRX=100;
-  var CTRY=100;
-  var SIZE = 90;
+  var CTRX=110;
+  var CTRY=110;
+  var SIZE = 80;
   var WRISTWATCH_TICK = 20; 
   var NUM_DETECTOR_TICKS=4; 
   //var FONT = 'bold 16px sans-serif';
   var SPOT_COLOR = "rgb(0,0,0)";
   var TICK_COLOR = "rgb(0,0,0)";
-  //axes in the lower left
+
+  var tweak=10;
+
+  //axes
+  var originX = 8;
+  var originY = 220-originX;
+  var length = 50;
+  line(ctx,originX,originY+tweak,originX,originY-length); //ct
+  text(ctx,"ct",originX-0.7*tweak,originY-length-0.5*tweak);
+  arrowUp(ctx,originX,originY-length);
+  line(ctx,originX-tweak,originY,originX+length,originY); //x
+  text(ctx,"x",originX+length+0.3*tweak,originY+0.3*tweak);
+  arrowRight(ctx,originX+length,originY);
+  
   //two stationary detectors
   line(ctx,CTRX-SIZE,CTRY-SIZE,CTRX-SIZE,CTRY+SIZE);
   line(ctx,CTRX+SIZE,CTRY-SIZE,CTRX+SIZE,CTRY+SIZE);
-  var tweak=10;
-  text(ctx,"D1",CTRX-SIZE-tweak,CTRY+SIZE+tweak);
-  text(ctx,"D2",CTRX+SIZE-tweak,CTRY+SIZE+tweak);
+  text(ctx,"D1",CTRX-SIZE-tweak,CTRY+SIZE+1.2*tweak);
+  text(ctx,"D2",CTRX+SIZE-tweak,CTRY+SIZE+1.2*tweak);
   ctx.save();
   ctx.fillStyle=SPOT_COLOR;
   for(var idx=0; idx<=NUM_DETECTOR_TICKS; ++idx){
